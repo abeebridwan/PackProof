@@ -1,0 +1,22 @@
+{
+  "credentialsConfigured": {
+    "MODEL_API_KEY": true,
+    "SUPABASE_URL": false,
+    "SUPABASE_PUBLISHABLE_KEY": false,
+    "PACKPROOF_HTTPS_TARGET": false,
+    "PROBE_TLS_CERT": false,
+    "PROBE_TLS_KEY": false
+  },
+  "userConfirmedMetaCreditsUsd": 140,
+  "creditBalanceIndependentlyChecked": false,
+  "userReportsOtherResourcesAvailable": true,
+  "deviceModels": {
+    "primary": "vivo Y03 (user-reported)",
+    "secondary": null
+  },
+  "testedPhones": 0,
+  "adbAvailable": false,
+  "httpsTarget": null,
+  "supabaseAccessVerified": false,
+  "note": "Presence only; never prints credential values. User availability is not a completed account, host, or phone test."
+}

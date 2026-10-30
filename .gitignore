@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.local/
+.env*
+!.env.example
+*.pem
+*.key
+*.private.jwk
+test-results/
+playwright-report/

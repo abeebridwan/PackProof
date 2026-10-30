@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "environment": "desktop Chromium, not Android",
+  "browserVersion": "156.0.8078.47",
+  "nodeVersion": "v24.22.2",
+  "nodeToBrowser": true,
+  "browserToNode": true,
+  "nonextractableDeviceKey": true,
+  "exactBytesSha256": "6bc4712bccf8389699cbf8d8b6fa36fae9a29a0ea58613dead8159c85fe72f09",
+  "negativeChecks": [
+    "browser unknown key",
+    "browser wrong root role",
+    "browser SHA-256 tamper",
+    "browser signature tamper",
+    "Node rejects tampered browser signature"
+  ],
+  "desktopSurfaceChecks": [
+    "manual input preserves leading zeros",
+    "small valid JSON import",
+    "malformed JSON rejected"
+  ],
+  "phoneTestsPassed": false,
+  "syntheticImage": ".local/p0-demo.png"
+}

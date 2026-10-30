@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "project": "PackProof",
+  "productVersion": "v10",
+  "status": "partial",
+  "currentPhase": "P0",
+  "timezone": "Africa/Lagos",
+  "officialDeadline": "2026-11-05T03:00:00+01:00",
+  "internalTarget": "2026-11-04T20:00:00+01:00",
+  "phases": [
+    {
+      "id": "P0",
+      "status": "partial",
+      "evidence": [
+        "docs/packproof/evidence/P0.md",
+        "docs/packproof/evidence/provider.json",
+        "docs/packproof/evidence/provider-attempt-1.json",
+        "docs/packproof/evidence/provider-attempt-2.json",
+        "docs/packproof/evidence/provider-attempt-3.json",
+        "docs/packproof/evidence/sam/special-token-output.txt",
+        "docs/packproof/evidence/crypto-browser.json",
+        "docs/packproof/evidence/vitest.json",
+        "docs/packproof/evidence/bundle-check.json",
+        "docs/packproof/evidence/access.json",
+        "docs/packproof/evidence/PHONE_CHECKS.md"
+      ],
+      "passed": [
+        "F1",
+        "F2"
+      ],
+      "failed": [],
+      "blocked": [
+        "F3",
+        "F4"
+      ],
+      "acceptance": {
+        "F1": {
+          "status": "passed",
+          "limitation": "Actual provider calls on synthetic demo fixture; not general visual accuracy"
+        },
+        "F2": {
+          "status": "passed",
+          "limitation": "Node 24 and actual desktop Chromium; no Android test"
+        },
+        "F3": {
+          "status": "blocked",
+          "reason": "vivo Y03 not physically tested; second phone, achieved QR rate/reliability unknown"
+        },
+        "F4": {
+          "status": "blocked",
+          "reason": "HTTPS target and Supabase access unverified; two-phone local file transport not_run"
+        }
+      },
+      "manualChecks": {
+        "devicePrimary": "vivo Y03 (user-reported)",
+        "deviceSecondary": null,
+        "androidCamera": "not_run",
+        "androidManualFallback": "not_run",
+        "twoPhoneQr": "not_run",
+        "achievedFramesPerSecond": null,
+        "scanReliability": null,
+        "phoneFileExportImport": "not_run",
+        "transport": null,
+        "httpsHost": "blocked",
+        "supabaseAccess": "blocked"
+      }
+    },
+    {
+      "id": "P1",
+      "status": "not_started",
+      "evidence": [],
+      "passed": [],
+      "failed": [],
+      "blocked": []
+    },
+    {
+      "id": "P2",
+      "status": "not_started",
+      "evidence": [],
+      "passed": [],
+      "failed": [],
+      "blocked": []
+    },
+    {
+      "id": "P3",
+      "status": "not_started",
+      "evidence": [],
+      "passed": [],
+      "failed": [],
+      "blocked": []
+    },
+    {
+      "id": "P4",
+      "status": "not_started",
+      "evidence": [],
+      "passed": [],
+      "failed": [],
+      "blocked": []
+    }
+  ],
+  "providerLiveResults": {
+    "muse": "passed",
+    "sam": "passed",
+    "glimmer": "untested"
+  },
+  "experiments": {
+    "glimmer_cloud": "conditional",
+    "student_android": "conditional",
+    "radio_bulletin": "conditional"
+  },
+  "liveUrl": null,
+  "actualSpendUsd": null,
+  "deliveryDeviations": [
+    "P0 manual hardware gates pending; no desktop substitution",
+    "No HTTPS target or connected Supabase project verified",
+    "Synthetic visual feasibility only; noun phrase SAM empty; prompted-box SAM passed",
+    "Initial provider failures retained; internal request cap adjusted from 6 to 7 within unchanged $3 total reservations"
+  ],
+  "p0Budget": {
+    "maximumUsd": 3,
+    "reservedUsd": 3,
+    "modelRequests": 7,
+    "furtherCallsAllowed": false,
+    "userConfirmedMetaCreditsUsd": 140,
+    "balanceIndependentlyVerified": false,
+    "partialKnownUsageEstimateUsd": 0.014813,
+    "actualBillingKnown": false
+  },
+  "p1Ready": false,
+  "handoffDirectory": "project_handoff",
+  "repositoryStatus": "Git initialized; project files untracked; no commits made by this work",
+  "localToolchain": {
+    "node": "24.22.2",
+    "pnpm": "12.16.1",
+    "directory": ".local/toolchain",
+    "setupCommand": "bash scripts/setup-toolchain.sh",
+    "activationCommand": "export PATH=\"$PWD/.local/toolchain/node_modules/.bin:$PATH\"",
+    "frozenInstall": "passed"
+  }
+}

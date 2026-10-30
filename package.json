@@ -1,0 +1,36 @@
+{
+  "name": "packproof-p0",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24.22.2 <25", "pnpm": "12.16.1" },
+  "packageManager": "pnpm@12.16.1",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run tests/unit",
+    "build": "node --import tsx scripts/spikes/build.ts",
+    "probe:serve": "node --env-file-if-exists=.env.local --import tsx scripts/spikes/serve.ts",
+    "probe:crypto": "node --import tsx scripts/spikes/crypto-browser.ts",
+    "probe:provider": "node --env-file-if-exists=.env.local --import tsx scripts/spikes/provider.ts",
+    "probe:access": "node --env-file-if-exists=.env.local --import tsx scripts/spikes/access.ts",
+    "probe:bundle": "node --import tsx scripts/spikes/check-bundle.ts"
+  },
+  "dependencies": {
+    "@meta-sam/parser": "0.1.0",
+    "@zxing/browser": "0.2.1",
+    "jose": "6.2.14",
+    "openai": "7.45.1",
+    "qrcode": "1.5.4",
+    "sharp": "0.35.5",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "@types/qrcode": "1.5.6",
+    "esbuild": "0.28.2",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5"
+  }
+}

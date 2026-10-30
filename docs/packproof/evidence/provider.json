@@ -1,0 +1,232 @@
+{
+  "endpoint": "https://api.meta.ai/v1",
+  "models": [
+    "muse-spark-1.3",
+    "sam-3.1"
+  ],
+  "muse": {
+    "status": "passed",
+    "first": {
+      "responseId": "chatcmpl-01a18ec7-386e-7075-9565-e70c24c061d8",
+      "requestId": "4bbb0079-3e57-48ec-b369-bc8d93d004f3",
+      "actualModel": "muse-spark-1.3",
+      "usage": {
+        "completion_tokens": 193,
+        "prompt_tokens": 634,
+        "total_tokens": 827,
+        "completion_tokens_details": {
+          "reasoning_tokens": 101
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "resumedFrom": "provider-attempt-1.json",
+      "reconstructedToolEnvelope": true
+    },
+    "final": {
+      "responseId": "chatcmpl-01a18ec8-06ae-749f-b449-0ef0524753bc",
+      "requestId": "05cfc697-aae7-4e55-aa19-b4a10f2499ae",
+      "actualModel": "muse-spark-1.3",
+      "usage": {
+        "completion_tokens": 790,
+        "prompt_tokens": 572,
+        "total_tokens": 1362,
+        "completion_tokens_details": {
+          "reasoning_tokens": 713
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "finishReason": "stop",
+      "contentLength": 166,
+      "responseFields": [
+        "id",
+        "choices",
+        "created",
+        "model",
+        "object",
+        "usage"
+      ],
+      "messageFields": [
+        "content",
+        "refusal",
+        "role"
+      ]
+    },
+    "tool": {
+      "callId": "call_68e3bc0c-3762-458b-acc6-5068aa1f45f6",
+      "result": {
+        "demo": true,
+        "datasetVersion": "p0-fixtures-1",
+        "itemId": "10000000-0000-4000-8000-000000000001",
+        "recordIds": [
+          "20000000-0000-4000-8000-000000000001"
+        ],
+        "productMark": "FP-1001",
+        "packagingMark": "PK-2001",
+        "status": "found"
+      }
+    },
+    "answer": {
+      "demo": true,
+      "status": "found",
+      "itemId": "10000000-0000-4000-8000-000000000001",
+      "packagingMark": "PK-2001",
+      "recordIds": [
+        "20000000-0000-4000-8000-000000000001"
+      ]
+    },
+    "preservedFrom": "provider-attempt-2.json"
+  },
+  "sam": {
+    "status": "passed",
+    "responseId": "resp_6ae510907aa7f906c0554da7",
+    "requestId": "e84a3d62-c719-49a7-a416-8ecb63e02e18",
+    "actualModel": "sam-3.1",
+    "usage": {
+      "images_processed": 1,
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "sourceSha256": "8d36437869eb775ed6c7cf584aed2ce8a0385ee741db2ee539cfefe8099d31ce",
+    "sourceDimensions": {
+      "width": 600,
+      "height": 480
+    },
+    "prompt": "<0f>0<|box;x1=138;y1=117;x2=461;y2=362;w=600;h=480|><|point;x=200;y=230;w=600;h=480|>",
+    "boxes": [
+      {
+        "kind": "box",
+        "order": 0,
+        "objectId": "0",
+        "left": 138,
+        "top": 117,
+        "right": 462,
+        "bottom": 364
+      }
+    ],
+    "bounds": {
+      "left": 138,
+      "top": 117,
+      "right": 462,
+      "bottom": 364
+    },
+    "maskDimensions": {
+      "width": 324,
+      "height": 247
+    },
+    "overlayTransform": "nearest resize raster to half-open source bounds",
+    "nonzeroPixels": 79533,
+    "maskSha256": "d451a4b45930c6cf078d5f29acfb8ae8376fb82dfd21005b392ec6fb5cded5b1",
+    "parser": "@meta-sam/parser@0.1.0",
+    "outcome": {
+      "status": "completed"
+    },
+    "diagnosticsCount": 0,
+    "artifactDirectory": "docs/packproof/evidence/sam"
+  },
+  "visual": {
+    "status": "passed",
+    "reading": {
+      "value": "0071842",
+      "quality": "readable"
+    },
+    "gateStatus": "supported",
+    "responseId": "chatcmpl-01a18ec8-c32c-706c-8057-94c204d0c335",
+    "requestId": "5eb5f2de-5450-485d-8c49-d5e5fa77afcf",
+    "actualModel": "muse-spark-1.3",
+    "usage": {
+      "completion_tokens": 663,
+      "prompt_tokens": 1048,
+      "total_tokens": 1711,
+      "completion_tokens_details": {
+        "reasoning_tokens": 639
+      },
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "evidenceRefs": [
+      "sam/original-demo.png",
+      "sam/grounded-demo.png",
+      "sam/crop-demo.png"
+    ]
+  },
+  "actualSpendUsd": null,
+  "modelRequestsAttempted": 2,
+  "account": {
+    "status": "passed",
+    "requestedModelAccess": {
+      "muse-spark-1.3": true,
+      "sam-3.1": true
+    },
+    "shape": {
+      "object": "list",
+      "dataFields": [
+        "id",
+        "object",
+        "created",
+        "owned_by"
+      ]
+    }
+  },
+  "reservedBudget": {
+    "reservedCents": 300,
+    "requests": 7
+  },
+  "samEnvelope": {
+    "responseId": "resp_6ae510907aa7f906c0554da7",
+    "requestId": "e84a3d62-c719-49a7-a416-8ecb63e02e18",
+    "actualModel": "sam-3.1",
+    "usage": {
+      "images_processed": 1,
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "outcome": {
+      "status": "completed"
+    },
+    "diagnostics": [],
+    "records": [
+      {
+        "kind": "box",
+        "order": 0,
+        "objectId": "0",
+        "left": 138,
+        "top": 117,
+        "right": 462,
+        "bottom": 364
+      },
+      {
+        "kind": "mask",
+        "objectId": "0",
+        "bounds": {
+          "left": 138,
+          "top": 117,
+          "right": 462,
+          "bottom": 364
+        },
+        "width": 324,
+        "height": 247,
+        "encoding": "one_bit"
+      }
+    ],
+    "rawOutputBytes": 188
+  }
+}
