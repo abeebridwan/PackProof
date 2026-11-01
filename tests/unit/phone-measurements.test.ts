@@ -1,11 +1,27 @@
 import { describe, it, expect } from 'vitest';
-import { checkTransport, FrameBatch, scanMetrics, type ScanObservation } from '../../scripts/spikes/phone-measurements.js';
+import { checkTransport, FrameBatch, isExpectedScanMiss, scanMetrics, type ScanObservation } from '../../scripts/spikes/phone-measurements.js';
+import { ChecksumException, FormatException, NotFoundException } from '@zxing/library';
 import { utf8 } from '../../src/domain/verification/p0-crypto.js';
 
 const createdAt = '2026-11-01T12:00:00.000Z';
 const batch: FrameBatch = { batchId: '10000000-0000-4000-8000-000000000001', createdAt, expiresAt: '2026-11-01T12:02:00.000Z', demo: true,
   frames: Array.from({ length: 128 }, (_, i) => `pp0_${i.toString().padStart(22, '0')}`) };
 const observations = (sequence: number[]) => sequence.map((i, n): ScanObservation => ({ handle: batch.frames[i]!, atMs: n * 50, observedAt: '2026-11-01T12:00:01.000Z' }));
+describe('normal QR misses on the bundled phone surface', () => {
+  it('recognizes real ZXing exceptions even with renamed bundled error names', () => {
+    for (const Exception of [NotFoundException, ChecksumException, FormatException]) {
+      const error = new Exception();
+      Object.defineProperty(error, 'name', { value: `${Exception.name}2` });
+      expect(isExpectedScanMiss(error)).toBe(true);
+    }
+  });
+  it('does not hide permission, camera, or ordinary errors with a similar name', () => {
+    const lookalike = new Error('unrelated failure'); lookalike.name = 'NotFoundException2';
+    for (const error of [new DOMException('denied', 'NotAllowedError'), new DOMException('no camera', 'NotFoundError'), new Error('camera failed'), lookalike]) {
+      expect(isExpectedScanMiss(error)).toBe(false);
+    }
+  });
+});
 describe('QR measurements are distinct from authorization', () => {
   it('counts duplicate observations without crediting them as extra sequence frames', () => {
     const m = scanMetrics(observations([0, 0, 1, 1, 2]), [batch], 10, 1000);

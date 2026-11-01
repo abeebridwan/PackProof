@@ -1,0 +1,19 @@
+{
+  "source": "docs/packproof/evidence/phones/vivo-y03-2026-11-01.json",
+  "provenance": "User pasted the downloaded physical-phone report in chat; raw report preserved separately.",
+  "deviceMetadata": "Entered by user, not independently authenticated or normalized against the reduced user-agent.",
+  "httpsCameraManual": "Phone report confirms secure context, 480x640 capture, and human-entered 0123.",
+  "browserCrypto": "Phone report records Node verification and all listed negative checks; nonextractable browser key.",
+  "browserToNode": {
+    "status": "passed",
+    "node": "v24.22.2",
+    "method": "Node jose compactVerify of submitted phone signature, exact challenge match, ES256/header checks",
+    "limitation": "Public key supplied in same phone report: signature consistency only, not authenticated device identity or trusted root enrollment."
+  },
+  "cameraPermissionDenial": "not evidenced in submitted report",
+  "qr": "not_run: zero decoded frames; 14.7976 attempts/second is not successful scanning FPS",
+  "transport": "not_run: certificate sharing is not the JSON export/import test",
+  "uiIssue": "Normal bundled ZXing NotFoundException2 scan miss was incorrectly shown as an error; fixed using exception identity. Original report retained.",
+  "f3": "blocked: second phone and 5/10 fps bidirectional QR measurements pending",
+  "f4": "blocked: phone transport and target infrastructure checks pending"
+}

@@ -28,7 +28,10 @@
         "docs/packproof/evidence/phone-browser-local.json",
         "docs/packproof/evidence/crypto-browser-amendment.json",
         "docs/packproof/evidence/vitest-amendment.json",
-        "project_handoff/Architecture_Amendments.md"
+        "project_handoff/Architecture_Amendments.md",
+        "docs/packproof/evidence/phones/vivo-y03-2026-11-01.json",
+        "docs/packproof/evidence/phones/vivo-y03-2026-11-01-assessment.json",
+        "docs/packproof/evidence/phones/scan-miss-desktop-regression.json"
       ],
       "passed": [
         "F1",
@@ -46,22 +49,22 @@
         },
         "F2": {
           "status": "passed",
-          "limitation": "Node 24 and actual desktop Chromium; no Android test"
+          "limitation": "Desktop Node/browser checks plus user-submitted vivo Y03 crypto report and Node verification of its browser signature; phone key proves signature consistency, not authenticated enrollment."
         },
         "F3": {
           "status": "blocked",
-          "reason": "vivo Y03/second-phone checks not_run. Local HTTPS and desktop QR/transport-error measurements pass; no physical-device equivalence."
+          "reason": "User-submitted vivo Y03 HTTPS/camera/manual/crypto report received. Two-phone QR 5/10 fps trials not_run; camera permission-denial fallback not evidenced in this report."
         },
         "F4": {
           "status": "blocked",
-          "reason": "Supabase account listing passed; no PackProof target selected or Postgres/Auth/private Storage verified. No existing host/deployment or real phone transport evidence."
+          "reason": "Phone LAN HTTPS reached and report downloaded. Two-phone JSON transport not_run. Supabase account list passed, but no PackProof target/services selected or hosted deployment verified."
         }
       },
       "manualChecks": {
         "devicePrimary": "vivo Y03 (user-reported)",
         "deviceSecondary": null,
-        "androidCamera": "not_run",
-        "androidManualFallback": "not_run",
+        "androidCamera": "passed",
+        "androidManualFallback": "partial: manual entry passed; permission-denial scenario not evidenced",
         "twoPhoneQr": "not_run",
         "achievedFramesPerSecond": null,
         "scanReliability": null,
@@ -71,7 +74,14 @@
         "supabaseAccess": "blocked",
         "supabaseAccountList": "passed",
         "localHttps": "passed",
-        "phoneHttpsTrust": "not_run"
+        "phoneHttpsTrust": "passed_user_submitted_report",
+        "androidManualEntry": "passed",
+        "androidCrypto": "passed",
+        "phoneBrowserToNodeSignature": "passed_signature_consistency_only",
+        "phoneReport": "docs/packproof/evidence/phones/vivo-y03-2026-11-01.json",
+        "androidVersion": "Android 16; V2332 Build/BP2A.250605.031. (user-entered)",
+        "browserVersion": "Chrome 156.0.8078.73 (user-entered)",
+        "phoneHttpsUrl": "https://192.168.1.70:4173/"
       }
     },
     {
@@ -123,7 +133,8 @@
     "P0 manual hardware gates pending; no desktop substitution",
     "Synthetic visual feasibility only; noun phrase SAM empty; prompted-box SAM passed",
     "Initial provider failures retained; internal request cap adjusted from 6 to 7 within unchanged $3 total reservations",
-    "1 November: Supabase account listing verified, but no selected PackProof project/services; local TLS verified, no phone-reachable deployment"
+    "1 November: Supabase account listing verified, but no selected PackProof project/services; local TLS verified, no phone-reachable deployment",
+    "1 November phone report: vivo Y03 local LAN HTTPS, 480x640 capture, leading-zero manual entry and crypto passed; bidirectional QR and JSON transport pending without a second phone. Bundled normal scan-miss error fixed."
   ],
   "p0Budget": {
     "maximumUsd": 3,
@@ -180,7 +191,7 @@
     "existingSites": 0,
     "publicDeployment": "not_run",
     "localHttps": "passed",
-    "phoneTlsTrust": "not_run",
+    "phoneTlsTrust": "passed_user_submitted_report",
     "phoneTransport": "not_run"
   },
   "testingGuide": "TESTING.md"

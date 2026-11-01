@@ -1,6 +1,6 @@
 # Phone and transport checks
 
-**F3/F4 remain blocked.** Intended phone A: vivo Y03. Phone B, Android/browser versions and reachable phone HTTPS URL are not yet supplied. No physical phone was tested. Desktop HTTPS/animation checks are in `phone-browser-local.json`; they do not pass these gates.
+**F3/F4 remain blocked.** User-submitted physical vivo Y03 report now confirms LAN HTTPS, 480×640 capture, leading-zero manual entry and browser crypto: `phones/vivo-y03-2026-11-01.json` and its assessment. Android/browser metadata is user-entered. Permission-denial fallback is not evidenced in that report. No second phone is available; bidirectional QR and JSON transport tests remain pending. Desktop HTTPS/animation checks in `phone-browser-local.json` remain separate evidence.
 
 ## 1. Open the existing probe
 
@@ -24,10 +24,10 @@ For phone testing use an existing trusted HTTPS reverse proxy, or provide a cert
 
 | Required setup fact | Actual value |
 | --- | --- |
-| Phone-accessible HTTPS URL | pending — provide full URL, not localhost |
-| A model / Android / browser version | vivo Y03 / pending / pending |
+| Phone-accessible HTTPS URL | https://192.168.1.70:4173/ — user phone report confirms secure context |
+| A model / Android / browser version | vivo Y03 / Android 16; V2332 Build/BP2A.250605.031. / Chrome 156.0.8078.73 — user-entered |
 | B model / Android / browser version | pending / pending / pending |
-| HTTPS certificate trusted on both | not_run |
+| HTTPS certificate trusted on both | primary phone reached secure page; second phone not_run |
 
 ## 2. Camera and QR (internet/LAN server available)
 

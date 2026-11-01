@@ -1,0 +1,68 @@
+{
+  "kind": "P0-manual-probe",
+  "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Mobile Safari/537.36",
+  "url": "https://192.168.1.70:4173/",
+  "secureContext": true,
+  "camera": {
+    "status": "capturing",
+    "width": 480,
+    "height": 640
+  },
+  "transport": "not_run",
+  "startedAt": "2026-11-01T21:36:58.107Z",
+  "error": "NotFoundException2",
+  "lastError": {
+    "operation": "scan",
+    "code": "NotFoundException2",
+    "at": "2026-11-01T21:39:12.500Z"
+  },
+  "scan": {
+    "attempts": 1094,
+    "successes": 0,
+    "distinct": 0,
+    "duplicates": 0,
+    "matched": 0,
+    "unknown": 0,
+    "expired": 0,
+    "outOfOrder": 0,
+    "longestConsecutiveDistinctFrames": 0,
+    "threeConsecutiveObserved": false,
+    "elapsedMs": 73931.10000000149,
+    "attemptsPerSecond": 14.797561513354704,
+    "note": "Device clock and local probe catalog only; not authenticated P2 validation",
+    "scans": []
+  },
+  "capture": {
+    "width": 480,
+    "height": 640,
+    "source": "live-camera",
+    "at": "2026-11-01T21:38:54.961Z"
+  },
+  "cameraStopped": true,
+  "manual": {
+    "value": "0123",
+    "source": "human-input",
+    "modelConfirmed": false
+  },
+  "crypto": {
+    "nodeToBrowser": true,
+    "browserToken": "eyJhbGciOiJFUzI1NiIsInR5cCI6InBhY2twcm9vZi1wMCtqd3MiLCJraWQiOiJwMC1icm93c2VyIn0.Y2MwZTlhNTRkYWZjYzYwYzM1NjNlYmI5MmNjNWQ4N2ExYzI0MmIwMDdlNjdhYjdmMTRhNDlhNDQwNjQwMWEzNw.faBxZNXGlld8HHhFnjLBqVLToQEZ3iTEsxPs0VNPDpFx0X1jeHq6wkvQf273PxrZba19XBdanfeg-Ubkp6L9bA",
+    "challenge": "cc0e9a54dafcc60c3563ebb92cc5d87a1c242b007e67ab7f14a49a4406401a37",
+    "browserPublicJwk": {
+      "crv": "P-256",
+      "kty": "EC",
+      "x": "NQd9Pl41bZrplLZ5QvuVQ5cRzdrVTvOyT-FOYAIg5Ho",
+      "y": "6pOxG4I4TNVifuzS-H2jYwUh5xKcvlWf_PKSt50ZlUs"
+    },
+    "unknownRejected": true,
+    "rootRejected": true,
+    "tamperRejected": true,
+    "signatureTamperRejected": true,
+    "privateKeyExtractable": false
+  },
+  "deviceModel": "vivo Y03 ",
+  "androidVersion": "Android 16; V2332 Build/BP2A.250605.031.",
+  "browserVersion": "Chrome 156.0.8078.73",
+  "transportDescription": "not recorded",
+  "finishedAt": "2026-11-01T21:43:42.003Z"
+}

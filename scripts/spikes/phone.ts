@@ -3,7 +3,7 @@ import QRCode from 'qrcode';
 import { exportJWK } from 'jose';
 import { TransportFixture, PublicJwk } from '../../src/contracts/p0.js';
 import { assertHash, sha256, signBytes, utf8, verifyBytes, type TrustedKey } from '../../src/domain/verification/p0-crypto.js';
-import { checkTransport, Fingerprint, FrameBatch, scanMetrics, type ScanObservation } from './phone-measurements.js';
+import { checkTransport, Fingerprint, FrameBatch, isExpectedScanMiss, scanMetrics, type ScanObservation } from './phone-measurements.js';
 
 const el = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const report: Record<string, unknown> = { kind: 'P0-manual-probe', userAgent: navigator.userAgent, url: location.origin + location.pathname, secureContext: isSecureContext, camera: 'not_run', transport: 'not_run', startedAt: new Date().toISOString() };
@@ -74,7 +74,7 @@ action('camera', async () => {
       const handle = result.getText(); scans.push({ handle, atMs: Math.round(performance.now() - scanStart), observedAt: new Date().toISOString() });
       if (!catalog.some(b => b.frames.includes(handle)) && performance.now() - lastCatalogAttempt > 1000) void refreshCatalog().catch(e => failed(e, 'scan-catalog'));
     }
-    if (error && !['NotFoundException', 'ChecksumException', 'FormatException'].includes(error.name)) failed(error, 'scan');
+    if (error && !isExpectedScanMiss(error)) failed(error, 'scan');
     report.scan = { ...scanMetrics(scans, catalog, attempts, performance.now() - scanStart), scans };
     if (performance.now() - lastScanUi > 250) { lastScanUi = performance.now(); show(); }
   });

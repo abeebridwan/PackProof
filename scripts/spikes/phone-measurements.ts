@@ -1,6 +1,13 @@
 import { z } from 'zod';
+import { ChecksumException, FormatException, NotFoundException } from '@zxing/library';
 import { TransportFixture } from '../../src/contracts/p0.js';
 import { sha256 } from '../../src/domain/verification/p0-crypto.js';
+
+// Bundling may rename constructors (e.g. NotFoundException2). These are scan
+// misses, not camera failures; use the same exception identities as the reader.
+export function isExpectedScanMiss(error: unknown): boolean {
+  return error instanceof NotFoundException || error instanceof ChecksumException || error instanceof FormatException;
+}
 
 export const FrameHandle = z.string().regex(/^pp0_[A-Za-z0-9_-]{22}$/);
 export const FrameBatch = z.strictObject({
