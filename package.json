@@ -18,7 +18,10 @@
     "probe:access": "node --env-file-if-exists=.env.local --import tsx scripts/spikes/access.ts",
     "probe:bundle": "node --import tsx scripts/spikes/check-bundle.ts",
     "probe:langchain": "node --import tsx scripts/spikes/langchain-offline.ts",
-    "probe:phone": "node --import tsx scripts/spikes/phone-browser.ts"
+    "probe:phone": "node --import tsx scripts/spikes/phone-browser.ts",
+    "probe:package": "node --import tsx scripts/spikes/package-probe.ts",
+    "probe:infrastructure": "node --env-file-if-exists=.env.local --import tsx scripts/spikes/infrastructure.ts",
+    "probe:deployment": "node --import tsx scripts/spikes/deployment-browser.ts"
   },
   "dependencies": {
     "@langchain/core": "1.3.2",

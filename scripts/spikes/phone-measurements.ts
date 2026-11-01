@@ -39,6 +39,8 @@ export function scanMetrics(scans: readonly ScanObservation[], batches: readonly
   return { attempts, successes: scans.length, distinct: seen.size, duplicates, matched, unknown, expired, outOfOrder,
     longestConsecutiveDistinctFrames: longest, threeConsecutiveObserved: longest >= 3,
     elapsedMs, attemptsPerSecond: elapsedMs > 0 ? attempts * 1000 / elapsedMs : 0,
+    successfulReadsPerSecond: elapsedMs > 0 ? scans.length * 1000 / elapsedMs : 0,
+    distinctFramesPerSecond: elapsedMs > 0 ? seen.size * 1000 / elapsedMs : 0,
     note: 'Device clock and local probe catalog only; not authenticated P2 validation' };
 }
 

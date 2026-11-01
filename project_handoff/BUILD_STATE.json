@@ -31,7 +31,18 @@
         "project_handoff/Architecture_Amendments.md",
         "docs/packproof/evidence/phones/vivo-y03-2026-11-01.json",
         "docs/packproof/evidence/phones/vivo-y03-2026-11-01-assessment.json",
-        "docs/packproof/evidence/phones/scan-miss-desktop-regression.json"
+        "docs/packproof/evidence/phones/scan-miss-desktop-regression.json",
+        "docs/packproof/evidence/deployment-artifact.json",
+        "docs/packproof/evidence/deployment-browser.json",
+        "docs/packproof/evidence/infrastructure-services.json",
+        "docs/packproof/evidence/vitest-infrastructure.json",
+        "docs/packproof/evidence/supabase-readonly.json",
+        "docs/packproof/evidence/public-deployment.json",
+        "docs/packproof/evidence/supabase-ca.json",
+        "docs/packproof/evidence/postgres-direct.json",
+        "docs/packproof/evidence/bundle-negative-checks.json",
+        "docs/packproof/evidence/phones/vivo-y03-user-confirmation-2026-11-02.json",
+        "docs/packproof/evidence/private-bucket-2026-11-02.json"
       ],
       "passed": [
         "F1",
@@ -53,25 +64,25 @@
         },
         "F3": {
           "status": "blocked",
-          "reason": "User-submitted vivo Y03 HTTPS/camera/manual/crypto report received. Two-phone QR 5/10 fps trials not_run; camera permission-denial fallback not evidenced in this report."
+          "reason": "Primary phone camera/crypto evidence preserved; scanner-fix rerun, permission error and manual fallback passed by user confirmation on 2 November (no new device report). Two-phone 5/10 fps QR performance explicitly deferred, not_run."
         },
         "F4": {
           "status": "blocked",
-          "reason": "Phone LAN HTTPS reached and report downloaded. Two-phone JSON transport not_run. Supabase account list passed, but no PackProof target/services selected or hosted deployment verified."
+          "reason": "Private bucket and all existing infrastructure checks passed. Bidirectional physical JSON transport/alteration trials explicitly deferred by user; not_run, not waived."
         }
       },
       "manualChecks": {
         "devicePrimary": "vivo Y03 (user-reported)",
         "deviceSecondary": null,
         "androidCamera": "passed",
-        "androidManualFallback": "partial: manual entry passed; permission-denial scenario not evidenced",
+        "androidManualFallback": "passed_user_reported",
         "twoPhoneQr": "not_run",
         "achievedFramesPerSecond": null,
         "scanReliability": null,
         "phoneFileExportImport": "not_run",
         "transport": null,
-        "httpsHost": "blocked",
-        "supabaseAccess": "blocked",
+        "httpsHost": "passed",
+        "supabaseAccess": "passed",
         "supabaseAccountList": "passed",
         "localHttps": "passed",
         "phoneHttpsTrust": "passed_user_submitted_report",
@@ -81,7 +92,169 @@
         "phoneReport": "docs/packproof/evidence/phones/vivo-y03-2026-11-01.json",
         "androidVersion": "Android 16; V2332 Build/BP2A.250605.031. (user-entered)",
         "browserVersion": "Chrome 156.0.8078.73 (user-entered)",
-        "phoneHttpsUrl": "https://192.168.1.70:4173/"
+        "phoneHttpsUrl": "https://192.168.1.70:4173/",
+        "scannerPhoneRerun": "passed_user_reported",
+        "cameraPermissionDenial": "passed_user_reported",
+        "supabaseProjectRef": "hvbzxeuedookkwleyjmx",
+        "publicHttpsUrl": "https://packproof-p0.vercel.app",
+        "publicPhoneRerun": "not_run",
+        "phoneConfirmation": "docs/packproof/evidence/phones/vivo-y03-user-confirmation-2026-11-02.json",
+        "twoPhoneTestingDeferredByUser": true
+      },
+      "subchecks": {
+        "F3": {
+          "primaryPhoneHttps": {
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/phones/vivo-y03-2026-11-01.json"
+          },
+          "primaryPhoneCapture": {
+            "status": "passed",
+            "dimensions": [
+              480,
+              640
+            ]
+          },
+          "primaryPhoneManualEntry": {
+            "status": "passed",
+            "value": "0123"
+          },
+          "primaryPhoneCrypto": {
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/phones/vivo-y03-2026-11-01-assessment.json"
+          },
+          "scannerDesktopRegression": {
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/phone-browser-local.json"
+          },
+          "scannerPhoneRerun": {
+            "status": "passed",
+            "provenance": "user_chat_confirmation",
+            "evidence": "docs/packproof/evidence/phones/vivo-y03-user-confirmation-2026-11-02.json",
+            "limitation": "User reports completing the test; no new scan report or counters attached"
+          },
+          "permissionDenialPhoneFallback": {
+            "status": "passed",
+            "provenance": "user_chat_confirmation",
+            "evidence": "docs/packproof/evidence/phones/vivo-y03-user-confirmation-2026-11-02.json",
+            "detail": "Camera-permission error displayed; manual leading zeros retained"
+          },
+          "secondPhone": {
+            "status": "blocked",
+            "reason": "Two-phone testing explicitly deferred by user; no results submitted"
+          },
+          "qrAtoB5": {
+            "status": "not_run",
+            "deferredByUser": true
+          },
+          "qrAtoB10": {
+            "status": "not_run",
+            "deferredByUser": true
+          },
+          "qrBtoA5": {
+            "status": "not_run",
+            "deferredByUser": true
+          },
+          "qrBtoA10": {
+            "status": "not_run",
+            "deferredByUser": true
+          },
+          "successfulQrThroughput": {
+            "status": "not_run",
+            "note": "Original phone report has zero successful reads. Attempts/s is not successful throughput.",
+            "deferredByUser": true
+          }
+        },
+        "F4": {
+          "priorAccountList": {
+            "status": "passed"
+          },
+          "targetAccount": {
+            "status": "passed",
+            "projectRef": "hvbzxeuedookkwleyjmx"
+          },
+          "confirmedFreeProject": {
+            "status": "not_run",
+            "detail": "Supabase project created by user; agent made no creation or billing change. Vercel Hobby independently verified."
+          },
+          "projectUrlAndRef": {
+            "status": "passed",
+            "url": "https://hvbzxeuedookkwleyjmx.supabase.co"
+          },
+          "postgres": {
+            "status": "passed",
+            "detail": "Official CLI metadata SELECT, PostgreSQL 17.11"
+          },
+          "auth": {
+            "status": "passed",
+            "http": 200
+          },
+          "privateStorage": {
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/private-bucket-2026-11-02.json",
+            "detail": "Expected bucket exists with public=false; object/RLS policies not exercised"
+          },
+          "migrationPermission": {
+            "status": "passed",
+            "detail": "CLI and direct psql CREATE privilege introspection; no migrations/DDL executed"
+          },
+          "serverSecretConfiguration": {
+            "status": "passed",
+            "detail": "Legacy service-role key, exact project, ignored owner-only env; never deployed"
+          },
+          "publishableKeyConfiguration": {
+            "status": "passed",
+            "detail": "Actual modern publishable key accepted by Auth"
+          },
+          "bundleSecretIsolation": {
+            "status": "passed"
+          },
+          "deploymentArtifact": {
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/deployment-browser.json"
+          },
+          "vercelAccount": {
+            "status": "passed",
+            "username": "abeeb1000",
+            "plan": "hobby"
+          },
+          "publicHttps": {
+            "status": "passed",
+            "url": "https://packproof-p0.vercel.app"
+          },
+          "publicApplicationAndCameraEligibility": {
+            "status": "passed",
+            "detail": "Fresh desktop browser, strict TLS, no login; actual phone test remains separate"
+          },
+          "publicBrowserCrypto": {
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/deployment-browser.json"
+          },
+          "jsonAtoB": {
+            "status": "not_run",
+            "deferredByUser": true
+          },
+          "jsonBtoA": {
+            "status": "not_run",
+            "deferredByUser": true
+          },
+          "physicallyTransportedAlterationRejection": {
+            "status": "not_run",
+            "deferredByUser": true
+          },
+          "postgresRuntime": {
+            "status": "passed",
+            "detail": "Corrected password accepted, verify-full TLS, bounded read-only SELECT",
+            "evidence": "docs/packproof/evidence/postgres-direct.json"
+          },
+          "storageApi": {
+            "status": "passed",
+            "http": 200
+          },
+          "databaseTls": {
+            "status": "passed",
+            "detail": "Official CA/hostname verification passed on successful direct PostgreSQL connection"
+          }
+        }
       }
     },
     {
@@ -127,14 +300,18 @@
     "student_android": "conditional",
     "radio_bulletin": "conditional"
   },
-  "liveUrl": null,
+  "liveUrl": "https://packproof-p0.vercel.app",
   "actualSpendUsd": null,
   "deliveryDeviations": [
     "P0 manual hardware gates pending; no desktop substitution",
     "Synthetic visual feasibility only; noun phrase SAM empty; prompted-box SAM passed",
     "Initial provider failures retained; internal request cap adjusted from 6 to 7 within unchanged $3 total reservations",
     "1 November: Supabase account listing verified, but no selected PackProof project/services; local TLS verified, no phone-reachable deployment",
-    "1 November phone report: vivo Y03 local LAN HTTPS, 480x640 capture, leading-zero manual entry and crypto passed; bidirectional QR and JSON transport pending without a second phone. Bundled normal scan-miss error fixed."
+    "1 November phone report: vivo Y03 local LAN HTTPS, 480x640 capture, leading-zero manual entry and crypto passed; bidirectional QR and JSON transport pending without a second phone. Bundled normal scan-miss error fixed.",
+    "1 November infrastructure continuation: user chose different Supabase account and Vercel. Existing project untouched; creation/deployment pending normal login and confirmed no-cost scopes. Portable/Vercel probe artifacts pass local browser checks; Vercel in-memory catalog is not durable across instances.",
+    "Intended accounts resolved: exact PackProof Supabase project healthy, CLI SQL/Auth/Storage API verified, Vercel Hobby public P0 probe deployed and browser-tested. No private bucket exists; direct DB URL needs correction. Physical phone gates remain pending.",
+    "Corrected database password accepted: direct PostgreSQL verify-full TLS and read-only permission query passed. No reset, migration, seed or application data write.",
+    "2 November explicit sequencing exception: user confirms single-phone tests, private bucket independently verified, two-phone tests deferred. Independent bounded P1 foundation work authorized; P0 remains partial/F3-F4 blocked and full p1Ready false."
   ],
   "p0Budget": {
     "maximumUsd": 3,
@@ -157,7 +334,7 @@
     "activationCommand": "export PATH=\"$PWD/.local/toolchain/node_modules/.bin:$PATH\"",
     "frozenInstall": "passed"
   },
-  "lastUpdated": "2026-11-01",
+  "lastUpdated": "2026-11-02",
   "architectureAmendment": "project_handoff/Architecture_Amendments.md",
   "compatibility": {
     "langchain": {
@@ -184,15 +361,63 @@
   },
   "infrastructure": {
     "supabaseAccountList": "passed",
-    "packproofProjectSelected": false,
-    "postgres": "not_run",
-    "auth": "not_run",
-    "privateStorage": "not_run",
+    "packproofProjectSelected": true,
+    "postgres": "passed_via_cli_and_direct_psql",
+    "auth": "passed",
+    "privateStorage": "passed: packproof-p0-private exists, public=false; object policies not tested",
     "existingSites": 0,
-    "publicDeployment": "not_run",
+    "publicDeployment": "passed",
     "localHttps": "passed",
     "phoneTlsTrust": "passed_user_submitted_report",
-    "phoneTransport": "not_run"
+    "phoneTransport": "not_run: explicitly deferred by user",
+    "targetSupabaseAccount": "passed",
+    "supabaseCliVersion": "2.105.0",
+    "supabaseProjectCreation": "user-created exact project verified; no duplicate created",
+    "migrationPermission": "passed_readonly_introspection",
+    "serverSecretConfiguration": "passed",
+    "publishableKeyConfiguration": "passed",
+    "preferredHosting": "Vercel",
+    "vercelAccount": "passed: abeeb1000, owner Hobby scope",
+    "deploymentArtifact": "passed_local_only",
+    "deploymentArchive": ".local/packproof-p0-probe.tgz",
+    "publicHttps": "passed",
+    "cloudflareRequired": false,
+    "vercelCliVersion": "65.9.0",
+    "supabaseProjectRef": "hvbzxeuedookkwleyjmx",
+    "supabaseProjectUrl": "https://hvbzxeuedookkwleyjmx.supabase.co",
+    "postgresVersion": "17.11",
+    "postgresRuntimeConnection": "passed: verify-full TLS, corrected password, read-only query",
+    "storageApi": "passed",
+    "publicUrl": "https://packproof-p0.vercel.app",
+    "deploymentEnvironmentVariableCount": 0,
+    "deploymentNodeVersion": "24.x"
   },
-  "testingGuide": "TESTING.md"
+  "testingGuide": "TESTING.md",
+  "continuationBaselineCommit": "e0c94a6dbe355196a522f3e078b491db7acdfceb",
+  "latestLocalValidation": {
+    "status": "passed",
+    "tests": 43,
+    "testFiles": 5,
+    "evidence": "docs/packproof/evidence/vitest-infrastructure.json",
+    "newMetaRequests": 0,
+    "actualSpendUsd": null
+  },
+  "p1IndependentWorkAuthorized": true,
+  "nextAuthorizedWork": {
+    "phase": "P1",
+    "scope": "One bounded independent foundation task selected by prompt generator; no P1 implementation performed in this handoff update",
+    "authorizedOn": "2026-11-02",
+    "basis": "Explicit user instruction to defer two-phone tests and continue building",
+    "formalP0Verified": false,
+    "pendingGates": [
+      "F3 two-phone QR trials and measured reliability",
+      "F4 physical JSON transport/alteration trials"
+    ],
+    "noPaidMetaCallsUnderP0Budget": true,
+    "exclusions": [
+      "No full P1/P2/P3/P4 implementation in one prompt",
+      "No claim that deferred tests passed or were waived",
+      "No weakening of deterministic verification/authority/RLS/release gates"
+    ]
+  }
 }

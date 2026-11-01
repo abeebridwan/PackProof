@@ -1,0 +1,19 @@
+{
+  "status": "prepared",
+  "source": "official Supabase CLI v2.105.0 public production CA templates",
+  "certificates": [
+    {
+      "source": "https://raw.githubusercontent.com/supabase/cli/v2.105.0/apps/cli-go/internal/gen/types/templates/prod-ca-2021.crt",
+      "sha256": "700723581420dd1ac98fd7e9ac529f0ef210eadcaf87fc868a3ad7d114c2f3b7",
+      "details": "subject=C=US, ST=Delware, L=New Castle, O=Supabase Inc, CN=Supabase Root 2021 CA\nissuer=C=US, ST=Delware, L=New Castle, O=Supabase Inc, CN=Supabase Root 2021 CA\nnotBefore=Apr 28 10:56:53 2021 GMT\nnotAfter=Apr 26 10:56:53 2031 GMT"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/supabase/cli/v2.105.0/apps/cli-go/internal/gen/types/templates/prod-ca-2025.crt",
+      "sha256": "5865d2b26f6128e5795a13ae58b6543599bdb82d808f7f62e3c9a8d7e8527970",
+      "details": "subject=C=US, ST=Delware, L=New Castle, O=Supabase Inc, CN=Supabase Root 2021 CA\nissuer=C=US, ST=Delware, L=New Castle, O=Supabase Inc, CN=Supabase Root 2021 CA\nnotBefore=Sep  3 08:01:25 2025 GMT\nnotAfter=Sep  1 08:01:25 2035 GMT"
+    }
+  ],
+  "location": ".local/tls/supabase-roots.crt",
+  "privateKeys": false,
+  "sslMode": "verify-full"
+}

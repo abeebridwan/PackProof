@@ -1,0 +1,54 @@
+{
+  "status": "passed_local_artifact",
+  "browserVersion": "156.0.8078.47",
+  "results": [
+    {
+      "kind": "standalone artifact, desktop localhost only",
+      "url": "http://127.0.0.1:34501/",
+      "http": 200,
+      "cameraSecureContextEligible": true,
+      "cameraCapture": "not_run",
+      "nodeToBrowser": true,
+      "browserToNode": true,
+      "assets": {
+        "/phone.js": 200,
+        "/crypto-challenge": 200,
+        "/frames": 200,
+        "/frame-catalog": 200
+      }
+    },
+    {
+      "kind": "Vercel adapter emulation, not Vercel deployment",
+      "url": "http://127.0.0.1:41125/",
+      "http": 200,
+      "cameraSecureContextEligible": true,
+      "cameraCapture": "not_run",
+      "nodeToBrowser": true,
+      "browserToNode": true,
+      "assets": {
+        "/phone.js": 200,
+        "/crypto-challenge": 200,
+        "/frames": 200,
+        "/frame-catalog": 200
+      }
+    },
+    {
+      "kind": "public HTTPS; browser certificate verification enabled",
+      "url": "https://packproof-p0.vercel.app/",
+      "http": 200,
+      "cameraSecureContextEligible": true,
+      "cameraCapture": "not_run",
+      "nodeToBrowser": true,
+      "browserToNode": true,
+      "assets": {
+        "/phone.js": 200,
+        "/crypto-challenge": 200,
+        "/frames": 200,
+        "/frame-catalog": 200
+      }
+    }
+  ],
+  "publicDeployment": "passed_browser_checks",
+  "physicalPhoneTests": "not_run",
+  "serverlessCatalog": "per warm instance; scaling/cold-start persistence unverified"
+}

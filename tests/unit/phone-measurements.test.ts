@@ -25,7 +25,11 @@ describe('normal QR misses on the bundled phone surface', () => {
 describe('QR measurements are distinct from authorization', () => {
   it('counts duplicate observations without crediting them as extra sequence frames', () => {
     const m = scanMetrics(observations([0, 0, 1, 1, 2]), [batch], 10, 1000);
-    expect(m).toMatchObject({ successes: 5, distinct: 3, duplicates: 2, matched: 3, longestConsecutiveDistinctFrames: 3, threeConsecutiveObserved: true, attemptsPerSecond: 10 });
+    expect(m).toMatchObject({ successes: 5, distinct: 3, duplicates: 2, matched: 3, longestConsecutiveDistinctFrames: 3, threeConsecutiveObserved: true, attemptsPerSecond: 10, successfulReadsPerSecond: 5, distinctFramesPerSecond: 3 });
+  });
+  it('never turns attempts or zero-duration measurements into successful QR throughput', () => {
+    expect(scanMetrics([], [], 100, 1000)).toMatchObject({ attemptsPerSecond: 100, successfulReadsPerSecond: 0, distinctFramesPerSecond: 0 });
+    expect(scanMetrics(observations([0, 0, 1]), [batch], 100, 0)).toMatchObject({ attemptsPerSecond: 0, successfulReadsPerSecond: 0, distinctFramesPerSecond: 0 });
   });
   it('one screenshot never creates three consecutive frames', () => {
     expect(scanMetrics(observations([2, 2, 2, 2]), [batch], 4, 1000)).toMatchObject({ longestConsecutiveDistinctFrames: 1, threeConsecutiveObserved: false, duplicates: 3 });

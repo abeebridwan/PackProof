@@ -10,7 +10,7 @@ const tls = process.env.PROBE_TEST_TLS_CERT && process.env.PROBE_TEST_TLS_KEY ? 
 } : undefined;
 const server = await startProbe(0, '127.0.0.1', tls);
 const url = `${tls ? 'https' : 'http'}://127.0.0.1:${(server.address() as AddressInfo).port}`;
-const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH ?? '/usr/bin/google-chrome', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH ?? '/usr/bin/google-chrome', args: ['--no-sandbox', '--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream'] });
 try {
   // Ignoring a local test certificate tests HTTPS serving, never Android trust or deployment.
   const page = await browser.newPage({ ignoreHTTPSErrors: Boolean(tls) });
@@ -44,9 +44,20 @@ try {
     animation.push(result.animation);
   }
   await page.screenshot({ path: 'docs/packproof/evidence/phone-probe-amendment-desktop.png', fullPage: true });
+  const synthetic = await browser.newPage({ ignoreHTTPSErrors: Boolean(tls) });
+  await synthetic.goto(url); await synthetic.click('#camera');
+  await synthetic.waitForFunction(() => {
+    const text = document.querySelector('#output')?.textContent;
+    return text?.startsWith('{') && JSON.parse(text).scan?.attempts >= 15;
+  });
+  await synthetic.click('#capture'); await synthetic.click('#stop');
+  const scanner = JSON.parse((await synthetic.textContent('#output'))!);
+  if (scanner.error || scanner.lastError || await synthetic.textContent('#feedback')) throw new Error('Normal ZXing miss became a UI error');
+  if (scanner.scan.successes !== 0 || scanner.scan.successfulReadsPerSecond !== 0 || scanner.scan.distinctFramesPerSecond !== 0 || !(scanner.capture.width > 0)) throw new Error('Synthetic QR throughput misreported');
   await evidence('phone-browser-local', { status: 'passed', checkedAt: new Date().toISOString(), environment: 'desktop Chromium only', browserVersion: browser.version(),
     tls: tls ? 'HTTPS served with local test certificate; verification bypass limited to this automated test' : 'desktop localhost HTTP secure context',
-    url, actualPhonesTested: 0, camera: 'permission denial simulated; no hardware capture', checks: ['permission feedback', 'manual leading zeros', 'opaque handle batch/catalog', 'matching file fingerprint', 'schema-valid altered-file rejection', '5/10 target animation measurements'],
+    url, actualPhonesTested: 0, camera: 'permission denial and synthetic video simulated; no hardware capture', checks: ['permission feedback', 'manual leading zeros', 'opaque handle batch/catalog', 'matching file fingerprint', 'schema-valid altered-file rejection', '5/10 target animation measurements', 'bundled ZXing continues after ordinary misses without UI errors', 'successful QR throughput stays zero on empty frames'],
+    syntheticScanner: { attempts: scanner.scan.attempts, successes: scanner.scan.successes, successfulReadsPerSecond: scanner.scan.successfulReadsPerSecond, distinctFramesPerSecond: scanner.scan.distinctFramesPerSecond },
     animation, f3: 'blocked', f4Transport: 'not_run' });
   console.log(JSON.stringify({ status: 'passed', environment: 'desktop only', tls: Boolean(tls), measuredFps: animation.map(a => (a as { actualFps: number }).actualFps), actualPhonesTested: 0 }));
 } finally { await browser.close(); await new Promise<void>(resolve => server.close(() => resolve())); }

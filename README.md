@@ -16,7 +16,9 @@ The repository currently provides a working development foundation and standalon
 - A browser test page for camera capture, manual identifiers, rotating QR handles and small JSON file export/import.
 - An offline LangChain compatibility spike with strict tool execution and optional privacy-filtered LangSmith events. LangGraph persistence is documented for the full Investigator.
 
-The full installable PWA, authenticated seller handovers, Supabase-backed records and offline evidence viewer are planned. Actual camera, QR and file-sharing checks on the intended vivo Y03 and a second phone are still pending. Current visual results establish feasibility on a synthetic fixture; they do not establish accuracy on real products.
+Open the [live feasibility probe](https://packproof-p0.vercel.app) on a phone or browser. It provides local camera/manual/crypto/QR/file controls; product investigations and customer records are not connected to this page.
+
+The full installable PWA, authenticated seller handovers, Supabase-backed records and offline evidence viewer are planned. The vivo Y03 has passed camera capture, manual leading zeros and crypto checks. The user also confirmed the scanner rerun and camera-permission/manual fallback. Two-phone QR and file-sharing trials remain pending. Supabase Auth, Storage API, direct TLS-verified PostgreSQL access and read-only migration-permission checks are verified; the expected private bucket is verified, while production object/RLS policies remain untested. Current visual results establish feasibility on a synthetic fixture; they do not establish accuracy on real products.
 
 ## Local setup
 

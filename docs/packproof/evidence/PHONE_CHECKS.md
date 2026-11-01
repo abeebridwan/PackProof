@@ -1,6 +1,6 @@
 # Phone and transport checks
 
-**F3/F4 remain blocked.** User-submitted physical vivo Y03 report now confirms LAN HTTPS, 480×640 capture, leading-zero manual entry and browser crypto: `phones/vivo-y03-2026-11-01.json` and its assessment. Android/browser metadata is user-entered. Permission-denial fallback is not evidenced in that report. No second phone is available; bidirectional QR and JSON transport tests remain pending. Desktop HTTPS/animation checks in `phone-browser-local.json` remain separate evidence.
+**F3/F4 remain blocked.** User-submitted physical vivo Y03 report now confirms LAN HTTPS, 480×640 capture, leading-zero manual entry and browser crypto: `phones/vivo-y03-2026-11-01.json` and its assessment. Android/browser metadata is user-entered. On 2 November the user confirmed completion of the scanner rerun, camera-permission error and preserved manual zeros; see phones/vivo-y03-user-confirmation-2026-11-02.json (chat attestation, no new report). Two-phone QR and JSON transport tests were explicitly deferred, not waived. Independent bounded P1 foundation work is authorized; these physical gates remain pending. Desktop HTTPS/animation checks in `phone-browser-local.json` remain separate evidence.
 
 ## 1. Open the existing probe
 

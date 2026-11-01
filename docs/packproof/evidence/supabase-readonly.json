@@ -1,0 +1,21 @@
+{
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "status": "passed",
+  "transport": "authenticated Supabase CLI db query --linked; temporary login initialization handled by official CLI",
+  "queryKind": "SELECT only: database/server/schema existence and CREATE privilege introspection",
+  "postgresVersion": "17.11",
+  "database": "postgres",
+  "role": "postgres",
+  "canCreateSchema": true,
+  "canCreateInPublic": true,
+  "authSchemaExists": true,
+  "storageSchemaExists": true,
+  "appDataWrites": 0,
+  "migrationsExecuted": 0,
+  "runtimeDatabaseUrlConfigured": true,
+  "limitation": "CLI and direct psql read-only connectivity verified; CREATE privileges inspected without DDL. No private bucket or production schema created.",
+  "command": "supabase db query --linked --workdir .local/supabase-probe --file <absolute .local/infrastructure/p0-readonly.sql> --output json",
+  "runtimeDatabaseUrlValid": true,
+  "runtimeConnectionAttempted": true,
+  "runtimeConnection": "passed"
+}

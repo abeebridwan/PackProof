@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-02",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "status": "passed",
+  "method": "Authenticated read-only GET /storage/v1/bucket",
+  "http": 200,
+  "bucketId": "packproof-p0-private",
+  "exists": true,
+  "public": false,
+  "privateBucketCount": 1,
+  "objectPoliciesTested": false,
+  "objectsReadOrUploaded": false,
+  "writes": 0,
+  "limitation": "Verifies private bucket configuration and server listing access; does not establish production object/RLS policies"
+}

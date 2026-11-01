@@ -1,9 +1,12 @@
 {
   "credentialsConfigured": {
     "MODEL_API_KEY": true,
-    "SUPABASE_URL": false,
-    "SUPABASE_PUBLISHABLE_KEY": false,
-    "PACKPROOF_HTTPS_TARGET": false,
+    "SUPABASE_PROJECT_REF": true,
+    "SUPABASE_URL": true,
+    "SUPABASE_PUBLISHABLE_KEY": true,
+    "SUPABASE_SECRET_KEY": true,
+    "SUPABASE_DB_URL": true,
+    "PACKPROOF_HTTPS_TARGET": true,
     "PROBE_TLS_CERT": false,
     "PROBE_TLS_KEY": false,
     "LANGSMITH_API_KEY": false
@@ -15,7 +18,8 @@
     "primary": "vivo Y03 (user-reported)",
     "secondary": null
   },
-  "testedPhones": 0,
+  "phonesTestedByThisCommand": 0,
+  "recordedPhoneReports": 1,
   "adbAvailable": false,
   "installedTools": {
     "supabase": true,
@@ -23,55 +27,159 @@
     "mkcert": true,
     "openssl": true
   },
-  "httpsTarget": null,
-  "supabaseProjectServicesVerified": false,
+  "httpsTarget": "https://packproof-p0.vercel.app",
   "lastRecordedInfrastructureCheck": {
-    "checkedAt": "2026-11-01",
+    "checkedAt": "2026-11-01T22:48:43.296167+00:00",
+    "baselineCommit": "e0c94a6dbe355196a522f3e078b491db7acdfceb",
     "supabase": {
+      "cliVersion": "2.105.0",
       "accountList": "passed",
-      "projectCount": 1,
-      "packproofProjectSelected": false,
-      "packproofNamedProjects": 0,
-      "postgres": "not_run",
-      "auth": "not_run",
-      "privateStorage": "not_run",
-      "reason": "Existing account is accessible through read-only CLI listing. No project identified for PackProof; unrelated project not modified.",
-      "manualResolution": "Select the existing target project or connect Supabase; configure project URL/publishable key, then verify Postgres/Auth/private Storage read-only. No new project or migrations were created."
+      "organizationList": "passed",
+      "projectCount": 2,
+      "organizationCount": 1,
+      "existingHealthyProjects": 1,
+      "existingProjectSuitability": "Exact user-selected PackProof project verified; unrelated projects untouched.",
+      "targetAccount": "passed: CLI can access the exact user-selected project",
+      "packproofProjectSelected": true,
+      "projectCreationAuthorized": true,
+      "projectCreationAttempted": false,
+      "freePlanConfirmed": false,
+      "creationGate": "Resolved by user-created project; agent did not create a duplicate or change billing. Supabase plan not independently checked.",
+      "projectRef": "hvbzxeuedookkwleyjmx",
+      "projectUrl": "https://hvbzxeuedookkwleyjmx.supabase.co",
+      "postgres": "passed via official CLI SELECT and direct psql",
+      "auth": "passed: HTTP 200 with publishable key",
+      "privateStorage": "not_run: no private bucket exists; no bucket/object created",
+      "migrationPermission": "passed: direct psql and CLI CREATE privilege introspection; no DDL",
+      "serverSecretConfigured": true,
+      "publishableKeyConfigured": true,
+      "serviceCheck": "infrastructure-services.json",
+      "manualResolution": "Database connection verified. Private bucket/object-policy checks and physical transport evidence remain pending.",
+      "latestAccountList": "passed",
+      "latestProjectCount": 2,
+      "userReportsDedicatedProjectCreated": true,
+      "latestPackproofNameMatches": 1,
+      "projectStatus": "ACTIVE_HEALTHY",
+      "projectName": "PackProof",
+      "region": "eu-west-3",
+      "projectCreatedBy": "user",
+      "postgresVersion": "17.11",
+      "postgresRuntime": "passed: verify-full TLS and read-only SELECT",
+      "storageApi": "passed: HTTP 200 with server-only legacy service-role key",
+      "sqlEvidence": "supabase-readonly.json",
+      "directConnectionEvidence": "postgres-direct.json",
+      "caEvidence": "supabase-ca.json"
     },
     "hosting": {
       "sitesAccountList": "passed",
       "existingSites": 0,
-      "deployment": "not_run",
-      "configuredHttpsTarget": false,
-      "manualResolution": "Supply an existing trusted HTTPS target/reverse proxy and permission to deploy the minimal Node probe; no existing Sites or configured host were found."
+      "preferredProvider": "Vercel",
+      "vercelSavedCredentialExpired": false,
+      "vercelCliVersionCandidate": "65.9.0",
+      "vercelCliInstalledByThisTask": false,
+      "vercelFreePlanVerified": true,
+      "cloudflareRequired": false,
+      "optionalQuickTunnel": {
+        "availableByDocumentation": true,
+        "binaryVersion": "2026.10.7",
+        "binarySha256": "1f99fb518b83dec2ba8d870a7cc991d82a77e6196295a3d2754ba17ab9f91872",
+        "officialChecksumVerified": true,
+        "started": false,
+        "reason": "Paused when user chose Vercel; downloaded binary stays ignored and unused."
+      },
+      "deploymentArtifact": "passed",
+      "artifactEvidence": "deployment-artifact.json",
+      "localArtifactBrowserChecks": "passed",
+      "publicDeployment": "passed",
+      "publicHttps": "passed",
+      "publicUrl": "https://packproof-p0.vercel.app",
+      "manualResolution": "Public probe is usable. Keep F3 two-phone QR measurements on single-process LAN because Vercel catalog persistence across instances is unverified.",
+      "vercelCliVersionVerified": "65.9.0",
+      "latestVercelWhoami": "passed",
+      "vercelCliSession": "signed_in_to_intended_account",
+      "vercelAccount": "abeeb1000",
+      "vercelScope": "ridwan-abeebs-projects",
+      "vercelPlan": "hobby",
+      "vercelOwnerScope": true,
+      "publicEvidence": "public-deployment.json",
+      "configuredHttpsTarget": true,
+      "publicAssets": "passed; SHA-256 matches reviewed artifact",
+      "publicCameraSecureContextEligibility": "passed desktop browser; actual phone rerun pending",
+      "publicBrowserCrypto": "passed Node/browser signatures and rejection checks",
+      "deployedEnvironmentVariableCount": 0,
+      "deploymentNodeVersion": "24.x (artifact engines override project default)",
+      "historicalAccountHttp": {
+        "vercel": 403,
+        "cloudflare": 403,
+        "note": "Earlier pre-login checks; current Vercel authenticated requests pass HTTP 200."
+      }
     },
     "tls": {
-      "mkcertAvailable": true,
-      "configuredCertificate": false,
-      "configuredKey": false,
-      "phoneTrust": "not_run",
-      "existingLocalCa": true,
-      "localLeafCertificatePrepared": true,
-      "localCertificateHosts": [
-        "localhost",
-        "127.0.0.1",
-        "::1"
-      ],
       "localHttpsServing": "passed",
-      "publicOrLanDeployment": "not_run",
-      "privateKeysLocation": "ignored .local/tls; no keys in evidence"
+      "phoneTrust": "passed",
+      "phoneEvidence": "phones/vivo-y03-2026-11-01.json",
+      "phoneOrigin": "https://192.168.1.70:4173",
+      "publicDeployment": "not_run",
+      "privateKeysLocation": "ignored .local/tls; no private keys in artifacts or evidence"
+    },
+    "secretIsolation": {
+      "browserBundle": "passed",
+      "deploymentArchive": "passed; seven explicitly allowed files, no credentials or media",
+      "keyringMetadataLookup": "blocked by automatic approval review; no retry or alternative keyring access attempted"
     },
     "meta": {
-      "credentialsConfigured": true,
-      "creditsUserReportedUsd": 140,
-      "balanceVerified": false,
-      "additionalRequests": 0
+      "additionalRequests": 0,
+      "budgetLedgerUnchanged": true,
+      "actualSpendUsd": null
     },
     "langsmith": {
-      "credentialsConfigured": false,
       "remoteTraceDelivery": "not_run",
-      "status": "optional; offline SDK compatibility passed, remote account unavailable/unverified; disabled tracing works"
+      "optionalOfflineSdkRegression": "passed"
     }
+  },
+  "lastRecordedServiceCheck": {
+    "checkedAt": "2026-11-01T22:48:11.295Z",
+    "projectRef": "hvbzxeuedookkwleyjmx",
+    "projectUrl": "https://hvbzxeuedookkwleyjmx.supabase.co",
+    "checks": {
+      "project": {
+        "status": "passed",
+        "detail": "Configured project URL and reference agree; remote ownership checked separately."
+      },
+      "publishableKey": {
+        "status": "passed",
+        "detail": "Publishable or legacy anon key type; acceptance checked with Auth below."
+      },
+      "serverSecret": {
+        "status": "passed",
+        "detail": "Server-only secret/service-role key type; no value recorded or bundled."
+      },
+      "auth": {
+        "status": "passed",
+        "http": 200,
+        "detail": "Read-only Auth settings accepted publishable key; no users/sessions created."
+      },
+      "storage": {
+        "status": "passed",
+        "http": 200,
+        "detail": "Privileged read-only bucket listing succeeded; bucket names/contents omitted."
+      },
+      "privateStorage": {
+        "status": "not_run",
+        "detail": "Storage API available, but no existing private bucket. No bucket created."
+      },
+      "postgres": {
+        "status": "passed",
+        "detail": "Actual SELECT through TLS-verified PostgreSQL connection in read-only mode."
+      },
+      "migrationPermission": {
+        "status": "passed",
+        "detail": "Read-only CREATE privilege introspection only; no migration or DDL executed."
+      }
+    },
+    "writes": 0,
+    "providerRequests": 0,
+    "note": "Explicit read-only checks only; missing credentials stay blocked. No project creation, production schema, seeds, user creation, bucket/object writes, or billing changes."
   },
   "note": "Configuration/executable inventory only. Historical read-only service checks are separately timestamped; this inventory performs no service/model requests. No secret values or URL credentials/query strings are printed."
 }

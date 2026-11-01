@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "environment": "isolated ignored directory; fake canary only; served/deployed assets unchanged",
+  "cases": [
+    {
+      "kind": "database URL leak",
+      "status": "passed_rejected"
+    },
+    {
+      "kind": "server-only infrastructure module",
+      "status": "passed_rejected"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-11-01T23:00:55.986Z",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "projectUrl": "https://hvbzxeuedookkwleyjmx.supabase.co",
+  "checks": {
+    "project": {
+      "status": "passed",
+      "detail": "Configured project URL and reference agree; remote ownership checked separately."
+    },
+    "publishableKey": {
+      "status": "passed",
+      "detail": "Publishable or legacy anon key type; acceptance checked with Auth below."
+    },
+    "serverSecret": {
+      "status": "passed",
+      "detail": "Server-only secret/service-role key type; no value recorded or bundled."
+    },
+    "auth": {
+      "status": "passed",
+      "http": 200,
+      "detail": "Read-only Auth settings accepted publishable key; no users/sessions created."
+    },
+    "storage": {
+      "status": "passed",
+      "http": 200,
+      "detail": "Privileged read-only bucket listing succeeded; bucket names/contents omitted."
+    },
+    "privateStorage": {
+      "status": "passed",
+      "detail": "Existing bucket marked private; object/RLS access policies not exercised."
+    },
+    "postgres": {
+      "status": "passed",
+      "detail": "Actual SELECT through TLS-verified PostgreSQL connection in read-only mode."
+    },
+    "migrationPermission": {
+      "status": "passed",
+      "detail": "Read-only CREATE privilege introspection only; no migration or DDL executed."
+    }
+  },
+  "writes": 0,
+  "providerRequests": 0,
+  "note": "Explicit read-only checks only; missing credentials stay blocked. No project creation, production schema, seeds, user creation, bucket/object writes, or billing changes."
+}

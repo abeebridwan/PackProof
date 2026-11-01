@@ -7,7 +7,7 @@ import { signBytes } from '../../src/domain/verification/p0-crypto.js';
 import { type FrameBatch } from './phone-measurements.js';
 
 // Ephemeral server probe key stays in memory. Only its public half reaches the browser.
-export async function startProbe(port = 4173, host = '127.0.0.1', tls?: { cert: Buffer; key: Buffer }) {
+export async function createProbeHandler(): Promise<http.RequestListener> {
   const pair = await generateKeyPair('ES256');
   const publicJwk = await exportJWK(pair.publicKey);
   const challenge = randomBytes(32).toString('hex');
@@ -33,6 +33,10 @@ export async function startProbe(port = 4173, host = '127.0.0.1', tls?: { cert: 
     if (!path) return send(404, 'text/plain', 'Not found');
     void readFile(path).then(bytes => send(200, path.endsWith('.js') ? 'text/javascript' : 'text/html', bytes)).catch(() => send(503, 'text/plain', 'Run pnpm build first'));
   };
+  return handler;
+}
+export async function startProbe(port = 4173, host = '127.0.0.1', tls?: { cert: Buffer; key: Buffer }) {
+  const handler = await createProbeHandler();
   const server = tls ? https.createServer(tls, handler) : http.createServer(handler);
   await new Promise<void>((resolve, reject) => { server.once('error', reject); server.listen(port, host, resolve); });
   return server;

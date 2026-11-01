@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-02",
+  "source": "User confirmation in chat, not an uploaded or instrument-generated device report",
+  "deviceModel": "vivo Y03 (previously user-reported intended phone)",
+  "userStatement": "1, 2 completed and 2 showed erro message on camera permission and the zeros remain .. for the two phon e .. we defered the tesing to later .. let's continute buing .. mention that in the report of the prompt generatior",
+  "scannerFixRerun": {
+    "status": "passed",
+    "provenance": "User reports completing step 2, which included the no-QR scanner rerun",
+    "limitation": "No fresh scan log, counters or device report supplied; no throughput result inferred"
+  },
+  "cameraPermissionDeniedFeedback": {
+    "status": "passed",
+    "provenance": "User explicitly reports a camera-permission error message"
+  },
+  "manualLeadingZerosWithCameraDenied": {
+    "status": "passed",
+    "provenance": "User explicitly reports that leading zeros remained; exact input not restated"
+  },
+  "newDeviceReportAttached": false,
+  "twoPhoneTests": {
+    "status": "not_run",
+    "deferredByUser": true,
+    "measuredQrFps": null,
+    "successfulQrThroughput": null,
+    "phoneToPhoneTransport": "not_run",
+    "physicallyTransportedAlterationRejection": "not_run"
+  }
+}

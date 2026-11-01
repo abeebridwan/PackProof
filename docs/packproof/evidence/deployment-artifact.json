@@ -1,0 +1,47 @@
+{
+  "status": "prepared",
+  "node": "v24.22.2",
+  "directory": ".local/p0-deploy",
+  "archive": ".local/packproof-p0-probe.tgz",
+  "files": [
+    {
+      "path": "server.mjs",
+      "bytes": 790367,
+      "sha256": "0c6ba4e9ac98d389815115650b510537c69dee0306d64bb346c222b20db1d559"
+    },
+    {
+      "path": "api/probe.mjs",
+      "bytes": 789949,
+      "sha256": "cf69d173bd9fbb570cb6945cf262efd8837ec0fdc3d44297e4cc0745ef828685"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 3068,
+      "sha256": "27c8324fc2897abba67b62835fa3443ed992909cbafdbaae65c5c84e6edf820f"
+    },
+    {
+      "path": "dist/phone.js",
+      "bytes": 2013860,
+      "sha256": "ffda3164a3102c287d14717ea7fec7b890756030e5e71faafcb0086ecc45c171"
+    },
+    {
+      "path": "package.json",
+      "bytes": 164,
+      "sha256": "ddc671207dea2877db53cf69c45688de752754911dcf346bcb2f74b805c2e2d6"
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 664,
+      "sha256": "ffad71e870f04b837c73b98741cd94b474e64c17e1d2cd905a1140837cb811a3"
+    },
+    {
+      "path": "Caddyfile",
+      "bytes": 51,
+      "sha256": "50061e059528589c8cd7fbbb84e2feddad25f329dd75a631028de747b8b94094"
+    }
+  ],
+  "providerRequests": 0,
+  "credentialsIncluded": false,
+  "publicDeployment": "not_run",
+  "serverlessLimitation": "Vercel frame catalog is per warm instance, not durable. Physical QR trials should use the existing single-process LAN server."
+}

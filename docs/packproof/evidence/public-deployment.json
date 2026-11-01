@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "provider": "Vercel",
+  "account": "abeeb1000",
+  "scope": "ridwan-abeebs-projects",
+  "plan": "hobby",
+  "projectId": "prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t",
+  "deploymentId": "dpl_D7pkPvwB485zgggB2GBzkzfib1Mq",
+  "url": "https://packproof-p0.vercel.app",
+  "readyState": "READY",
+  "configuredDeploymentNode": "24.x",
+  "projectDefaultNode": "26.x",
+  "runtimeNote": "Artifact engines.node 24.x overrides project default; deployment settings confirm 24.x. Hosted patch version not independently exposed.",
+  "publicUnauthenticatedAccess": "passed",
+  "tlsCertificateVerification": "passed by fresh browser without bypass",
+  "browserEvidence": "deployment-browser.json",
+  "deployedEnvironmentVariableCount": 0,
+  "providerRequests": 0,
+  "supabaseCredentialsDeployed": false,
+  "assets": [
+    {
+      "route": "/",
+      "http": 200,
+      "sha256": "27c8324fc2897abba67b62835fa3443ed992909cbafdbaae65c5c84e6edf820f",
+      "matchesReviewedArtifact": true
+    },
+    {
+      "route": "/phone.js",
+      "http": 200,
+      "sha256": "ffda3164a3102c287d14717ea7fec7b890756030e5e71faafcb0086ecc45c171",
+      "matchesReviewedArtifact": true
+    }
+  ],
+  "serverlessCatalogLimitation": "In-memory per warm instance; scaling/cold-start durability unverified. Use the single-process LAN probe for physical QR trials."
+}

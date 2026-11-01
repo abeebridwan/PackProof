@@ -6,7 +6,7 @@
   "nodeToBrowser": true,
   "browserToNode": true,
   "nonextractableDeviceKey": true,
-  "exactBytesSha256": "5fa54feafdc853a7f61e3eb32b73ab20a34f6f7d77597301f41979be1ed7b3fa",
+  "exactBytesSha256": "b13291b59bcc1c6376e469bfc738793c023f4d78db4a177b8e847ef89e311b04",
   "negativeChecks": [
     "browser unknown key",
     "browser wrong root role",

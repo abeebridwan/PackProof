@@ -1,0 +1,16 @@
+{
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "status": "passed",
+  "stage": "read_only_query",
+  "tls": "CA and hostname verification passed using official production roots",
+  "sqlExecuted": true,
+  "sslMode": "verify-full",
+  "caEvidence": "supabase-ca.json",
+  "credentialsLogged": false,
+  "passwordReset": false,
+  "resolution": "Corrected database password accepted; no password reset. Earlier failures retained in BUILD_LOG.",
+  "checkedAt": "2026-11-01T22:48:43.296167+00:00",
+  "readOnly": true,
+  "migrationPermission": "passed: SELECT-only CREATE privilege introspection; no DDL",
+  "writes": 0
+}
