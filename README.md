@@ -14,6 +14,7 @@ The repository currently provides a working development foundation and standalon
 - A demonstrated Muse reading of a visible marking from a grounded synthetic image.
 - ES256 signing and verification between Node and a browser, SHA-256 integrity checks, and rejection of tampered data and untrusted keys.
 - A browser test page for camera capture, manual identifiers, rotating QR handles and small JSON file export/import.
+- An offline LangChain compatibility spike with strict tool execution and optional privacy-filtered LangSmith events. LangGraph persistence is documented for the full Investigator.
 
 The full installable PWA, authenticated seller handovers, Supabase-backed records and offline evidence viewer are planned. Actual camera, QR and file-sharing checks on the intended vivo Y03 and a second phone are still pending. Current visual results establish feasibility on a synthetic fixture; they do not establish accuracy on real products.
 
@@ -35,6 +36,8 @@ Local checks and the browser test page can run without model credentials. For pr
 
 ## Development commands
 
+See [TESTING.md](TESTING.md) for feature-by-feature commands, expected results and manual browser steps.
+
 ```bash
 pnpm typecheck
 pnpm test
@@ -53,6 +56,8 @@ pnpm probe:access
 | `pnpm probe:crypto` | Exercise Node/browser signing, verification and local browser checks. |
 | `pnpm probe:access` | Report which access settings are configured, without printing credentials. |
 | `pnpm probe:serve` | Serve the browser test page locally. |
+| `pnpm probe:langchain` | Check LangChain tools and LangSmith serialization with intercepted offline transports; no live model calls. |
+| `pnpm probe:phone` | Run desktop browser checks for the phone surface, including permission errors and altered-file rejection; does not qualify real phones. |
 
 The browser crypto check requires Chrome at `/usr/bin/google-chrome`, or a `CHROME_PATH` override, and permission to start a local loopback server. Desktop results are recorded separately from phone results.
 
@@ -67,7 +72,7 @@ Open `http://127.0.0.1:4173` on the development computer. The page provides loca
 
 For phone access, configure `PROBE_TLS_CERT` and `PROBE_TLS_KEY` with a certificate/key trusted by the phones, set `PROBE_HOST=0.0.0.0`, and restart the server. Open the computer's reachable HTTPS address on each phone. Camera access requires browser permission and a secure context; the desktop localhost exception does not provide trusted HTTPS to another device.
 
-Follow the [phone test instructions](docs/packproof/evidence/PHONE_CHECKS.md) to record devices, capture dimensions, achieved QR rates, scan reliability and the exact Bluetooth or local Wi-Fi file-sharing route. The QR page is a feasibility tool; it does not approve ownership transfers. JSON file sharing is a transport check, not a completed offline verification flow.
+Follow the [phone test instructions](docs/packproof/evidence/PHONE_CHECKS.md) to record devices, capture dimensions, achieved QR rates, duplicate scans, consecutive distinct frames and the exact Bluetooth or local Wi-Fi file-sharing route. Supply the exporter's separate bytes/hash/nonce fingerprint before importing a received file; otherwise it stays uncompared. The QR page is a feasibility tool; it does not approve ownership transfers. JSON file sharing is a transport check, not a completed offline verification flow.
 
 ## Provider access
 
@@ -87,4 +92,4 @@ Live inference consumes credits. `scripts/spikes/provider.ts` enforces persisten
 | `docs/packproof/evidence/` | Validation reports, actual provider artifacts and manual test instructions. |
 | `project_handoff/` | Product specification, implementation plan, developer contracts and build records. |
 
-See the [product specification](project_handoff/PackProof_v10_Product_Vision_and_Specification.md), [current implementation status](project_handoff/BUILD_STATE.json), [build history](project_handoff/BUILD_LOG.md) and [product direction notes](project_handoff/Product_Direction_Notes.md) for the detailed requirements and roadmap, including conditional Glimmer POS/Android and radio/voice work.
+See the [product specification](project_handoff/PackProof_v10_Product_Vision_and_Specification.md), [architecture amendments](project_handoff/Architecture_Amendments.md), [current implementation status](project_handoff/BUILD_STATE.json), [build history](project_handoff/BUILD_LOG.md) and [product direction notes](project_handoff/Product_Direction_Notes.md) for detailed requirements, orchestration/persistence design and conditional Glimmer POS/Android and radio/voice work.

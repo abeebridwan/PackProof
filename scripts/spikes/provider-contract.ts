@@ -7,10 +7,13 @@ const Call = z.strictObject({ id: z.string().min(1).max(256), type: z.literal('f
 export function executeToolCalls(raw: unknown) {
   const calls = z.array(Call).length(1).parse(raw);
   const call = calls[0]!;
-  const args = LookupArgs.parse(JSON.parse(call.function.arguments));
+  return { callId: call.id, result: executeDemoLookup(JSON.parse(call.function.arguments)) };
+}
+export function executeDemoLookup(raw: unknown) {
+  const args = LookupArgs.parse(raw);
   // Bind this probe to its requested product; model-supplied identifiers cannot change it.
   if (args.productMark !== 'FP-1001') throw new Error('Wrong probe subject');
-  return { callId: call.id, result: lookupFixture(args) };
+  return lookupFixture(args);
 }
 export function parseReading(raw: unknown) {
   const reading = VisualReading.parse(raw);

@@ -5,7 +5,8 @@
     "SUPABASE_PUBLISHABLE_KEY": false,
     "PACKPROOF_HTTPS_TARGET": false,
     "PROBE_TLS_CERT": false,
-    "PROBE_TLS_KEY": false
+    "PROBE_TLS_KEY": false,
+    "LANGSMITH_API_KEY": false
   },
   "userConfirmedMetaCreditsUsd": 140,
   "creditBalanceIndependentlyChecked": false,
@@ -16,7 +17,61 @@
   },
   "testedPhones": 0,
   "adbAvailable": false,
+  "installedTools": {
+    "supabase": true,
+    "docker": true,
+    "mkcert": true,
+    "openssl": true
+  },
   "httpsTarget": null,
-  "supabaseAccessVerified": false,
-  "note": "Presence only; never prints credential values. User availability is not a completed account, host, or phone test."
+  "supabaseProjectServicesVerified": false,
+  "lastRecordedInfrastructureCheck": {
+    "checkedAt": "2026-11-01",
+    "supabase": {
+      "accountList": "passed",
+      "projectCount": 1,
+      "packproofProjectSelected": false,
+      "packproofNamedProjects": 0,
+      "postgres": "not_run",
+      "auth": "not_run",
+      "privateStorage": "not_run",
+      "reason": "Existing account is accessible through read-only CLI listing. No project identified for PackProof; unrelated project not modified.",
+      "manualResolution": "Select the existing target project or connect Supabase; configure project URL/publishable key, then verify Postgres/Auth/private Storage read-only. No new project or migrations were created."
+    },
+    "hosting": {
+      "sitesAccountList": "passed",
+      "existingSites": 0,
+      "deployment": "not_run",
+      "configuredHttpsTarget": false,
+      "manualResolution": "Supply an existing trusted HTTPS target/reverse proxy and permission to deploy the minimal Node probe; no existing Sites or configured host were found."
+    },
+    "tls": {
+      "mkcertAvailable": true,
+      "configuredCertificate": false,
+      "configuredKey": false,
+      "phoneTrust": "not_run",
+      "existingLocalCa": true,
+      "localLeafCertificatePrepared": true,
+      "localCertificateHosts": [
+        "localhost",
+        "127.0.0.1",
+        "::1"
+      ],
+      "localHttpsServing": "passed",
+      "publicOrLanDeployment": "not_run",
+      "privateKeysLocation": "ignored .local/tls; no keys in evidence"
+    },
+    "meta": {
+      "credentialsConfigured": true,
+      "creditsUserReportedUsd": 140,
+      "balanceVerified": false,
+      "additionalRequests": 0
+    },
+    "langsmith": {
+      "credentialsConfigured": false,
+      "remoteTraceDelivery": "not_run",
+      "status": "optional; offline SDK compatibility passed, remote account unavailable/unverified; disabled tracing works"
+    }
+  },
+  "note": "Configuration/executable inventory only. Historical read-only service checks are separately timestamped; this inventory performs no service/model requests. No secret values or URL credentials/query strings are printed."
 }

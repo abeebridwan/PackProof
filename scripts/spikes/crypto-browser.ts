@@ -23,10 +23,10 @@ try {
   if (await page.textContent('#manualResult') !== 'Human supplied mark: 000123') throw new Error('Manual fallback lost leading zeros');
   const transport = { schemaVersion: 1, demo: true, kind: 'transport-feasibility-only', nonce: 'a'.repeat(32), note: 'Not an OfflineProof pack' };
   await page.setInputFiles('#import', { name: 'transport.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(transport)) });
-  await page.waitForFunction(() => document.querySelector('#output')?.textContent?.includes('imported-file-only'));
+  await page.waitForFunction(() => document.querySelector('#output')?.textContent?.includes('imported-uncompared'));
   await page.setInputFiles('#import', { name: 'bad.json', mimeType: 'application/json', buffer: Buffer.from('{broken') });
   await page.waitForFunction(() => document.querySelector('#output')?.textContent?.includes('SyntaxError'));
-  await page.screenshot({ path: 'docs/packproof/evidence/phone-probe-desktop.png', fullPage: true });
+  await page.screenshot({ path: 'docs/packproof/evidence/phone-probe-amendment-desktop.png', fullPage: true });
   // Controlled synthetic image only; no customer media. Expected mark is never in the visual prompt.
   await page.setContent('<html><body style="margin:0;background:#d8dfd5"><div style="width:600px;height:480px;display:grid;place-items:center"><div style="background:white;border:8px solid #225044;padding:35px;font:28px monospace;text-align:center">PACKPROOF<br>DEMO PACKAGE<br><br>0071842<br><small>SYNTHETIC FIXTURE</small></div></div></body></html>');
   await mkdir('.local', { recursive: true });
@@ -38,6 +38,6 @@ try {
     negativeChecks: ['browser unknown key', 'browser wrong root role', 'browser SHA-256 tamper', 'browser signature tamper', 'Node rejects tampered browser signature'],
     desktopSurfaceChecks: ['manual input preserves leading zeros', 'small valid JSON import', 'malformed JSON rejected'],
     phoneTestsPassed: false, syntheticImage: '.local/p0-demo.png' };
-  await writeFile('docs/packproof/evidence/crypto-browser.json', JSON.stringify(evidence, null, 2) + '\n');
+  await writeFile('docs/packproof/evidence/crypto-browser-amendment.json', JSON.stringify(evidence, null, 2) + '\n');
   console.log(JSON.stringify(evidence));
 } finally { await browser.close(); await new Promise<void>(resolve => server.close(() => resolve())); }

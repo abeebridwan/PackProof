@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-11-01T14:48:37.297Z",
+  "mode": "offline-compatibility-only",
+  "liveMetaRequests": 0,
+  "remoteLangSmithRequests": 0,
+  "packages": {
+    "@langchain/core": "1.3.2",
+    "@langchain/openai": "1.8.0",
+    "langsmith": "0.11.6"
+  },
+  "adapter": "ChatOpenAI with shared Meta gateway configuration; useResponsesApi=false; max_completion_tokens override",
+  "fixture": {
+    "source": "docs/packproof/evidence/provider.json",
+    "kind": "reconstructed from sanitized observed envelopes; not full raw response replay",
+    "responseIds": [
+      "chatcmpl-01a18ec7-386e-7075-9565-e70c24c061d8",
+      "chatcmpl-01a18ec8-06ae-749f-b449-0ef0524753bc"
+    ]
+  },
+  "offlineInterceptedModelRequests": 2,
+  "toolActions": 1,
+  "limits": {
+    "toolActions": 8,
+    "recaptureRequests": 3,
+    "providerRetries": 2
+  },
+  "answer": {
+    "demo": true,
+    "status": "found",
+    "itemId": "10000000-0000-4000-8000-000000000001",
+    "packagingMark": "PK-2001",
+    "recordIds": [
+      "20000000-0000-4000-8000-000000000001"
+    ]
+  },
+  "tracing": {
+    "mode": "actual SDK with intercepted offline transport",
+    "localTraceRequests": 6,
+    "delivered": 6,
+    "failed": 0,
+    "dropped": 0,
+    "invalid": 0,
+    "remoteAccountVerified": false
+  },
+  "limitations": [
+    "No new live Meta/LangChain call; budget remains exhausted",
+    "LangGraph durable pause/resume is design only",
+    "No persistent investigations or remote tracing"
+  ]
+}

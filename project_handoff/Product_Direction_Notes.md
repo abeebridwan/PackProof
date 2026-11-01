@@ -11,3 +11,9 @@ Both paths use the same PackProof backend and contracts, with signed cached reco
 P0 remains the feasibility checkpoint only. No Glimmer hosting, student training, radio delivery, or full app is authorized by this clarification.
 
 Progress communication: report each completed task and its evidence in chat after every bounded prompt. Preserve blockers and report what is ready next.
+
+## 1 November 2026 amendments
+
+The Evidence Investigator will use LangChain for Muse tool orchestration, LangGraph for necessary durable user-input pause/resume and LangSmith for optional tracing/evaluation. This supplements the original v10 stack decision; deterministic backend gates and the independent offline verifier remain authoritative. Only an isolated offline compatibility spike is implemented now. See [Architecture_Amendments.md](Architecture_Amendments.md) for exact package findings, the six unchanged H2 tool schemas, H3 limits and persistence/tracing design.
+
+Hosted Glimmer's connected workflows include product/seller investigation and preparation of grounded verified radio/voice bulletins, with deterministic evidence checks before publication. The distinct Glimmer-distilled student targets POS/Android offline explanations and next-step guidance from cached signed records, explicitly disclosing stale, missing or incomplete evidence. Neither workflow can override signature, issuer, ownership or transfer rules. Actual training, held-out evaluation and hardware testing are required after P0–P4 pass; no Glimmer hosting, distillation, radio infrastructure or POS-native app starts in this task.

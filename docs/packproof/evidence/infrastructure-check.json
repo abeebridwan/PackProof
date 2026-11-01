@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-11-01",
+  "supabase": {
+    "accountList": "passed",
+    "projectCount": 1,
+    "packproofProjectSelected": false,
+    "packproofNamedProjects": 0,
+    "postgres": "not_run",
+    "auth": "not_run",
+    "privateStorage": "not_run",
+    "reason": "Existing account is accessible through read-only CLI listing. No project identified for PackProof; unrelated project not modified.",
+    "manualResolution": "Select the existing target project or connect Supabase; configure project URL/publishable key, then verify Postgres/Auth/private Storage read-only. No new project or migrations were created."
+  },
+  "hosting": {
+    "sitesAccountList": "passed",
+    "existingSites": 0,
+    "deployment": "not_run",
+    "configuredHttpsTarget": false,
+    "manualResolution": "Supply an existing trusted HTTPS target/reverse proxy and permission to deploy the minimal Node probe; no existing Sites or configured host were found."
+  },
+  "tls": {
+    "mkcertAvailable": true,
+    "configuredCertificate": false,
+    "configuredKey": false,
+    "phoneTrust": "not_run",
+    "existingLocalCa": true,
+    "localLeafCertificatePrepared": true,
+    "localCertificateHosts": [
+      "localhost",
+      "127.0.0.1",
+      "::1"
+    ],
+    "localHttpsServing": "passed",
+    "publicOrLanDeployment": "not_run",
+    "privateKeysLocation": "ignored .local/tls; no keys in evidence"
+  },
+  "meta": {
+    "credentialsConfigured": true,
+    "creditsUserReportedUsd": 140,
+    "balanceVerified": false,
+    "additionalRequests": 0
+  },
+  "langsmith": {
+    "credentialsConfigured": false,
+    "remoteTraceDelivery": "not_run",
+    "status": "optional; offline SDK compatibility passed, remote account unavailable/unverified; disabled tracing works"
+  }
+}

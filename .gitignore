@@ -8,3 +8,4 @@ dist/
 *.private.jwk
 test-results/
 playwright-report/
+.vitest/

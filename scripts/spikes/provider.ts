@@ -10,8 +10,9 @@ import { lookupFixture, validateAnswer } from './fixture-registry.js';
 import { decodeSam } from './sam.js';
 import { ProbeBudget } from './budget.js';
 import { evidence } from './evidence.js';
+import { META_BASE_URL, createMetaClient } from './meta-gateway.js';
 
-const baseURL = 'https://api.meta.ai/v1';
+const baseURL = META_BASE_URL;
 const key = process.env.MODEL_API_KEY;
 const results: Record<string, unknown> = { endpoint: baseURL, models: ['muse-spark-1.3', 'sam-3.1'], muse: { status: 'not_run' }, sam: { status: 'not_run' }, visual: { status: 'not_run' }, actualSpendUsd: 0, modelRequestsAttempted: 0 };
 let requests = 0;
@@ -29,7 +30,7 @@ async function run() {
   // Existing $2.50 reservations stay charged. Final two capped repair requests reserve $0.25
   // each, backed by observed usage + current pricing. Persistent hard $3 + 7-request cap.
   const budget = new ProbeBudget(process.argv.includes('--sam-only') ? 25 : 50, Math.floor(credits * 100));
-  const client = new OpenAI({ baseURL, apiKey: key, maxRetries: 0, timeout: 45_000 });
+  const client = createMetaClient(key);
   const reserve = () => { const ledger = budget.reserve(); requests++; results.modelRequestsAttempted = requests; results.reservedBudget = ledger; results.actualSpendUsd = null; };
   const caps = { model: 'muse-spark-1.3', max_completion_tokens: 2048, stream: false as const };
   // Availability check is a real account operation, separate from model inference.

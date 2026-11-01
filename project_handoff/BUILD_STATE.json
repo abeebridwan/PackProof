@@ -22,7 +22,13 @@
         "docs/packproof/evidence/vitest.json",
         "docs/packproof/evidence/bundle-check.json",
         "docs/packproof/evidence/access.json",
-        "docs/packproof/evidence/PHONE_CHECKS.md"
+        "docs/packproof/evidence/PHONE_CHECKS.md",
+        "docs/packproof/evidence/langchain-compatibility.json",
+        "docs/packproof/evidence/infrastructure-check.json",
+        "docs/packproof/evidence/phone-browser-local.json",
+        "docs/packproof/evidence/crypto-browser-amendment.json",
+        "docs/packproof/evidence/vitest-amendment.json",
+        "project_handoff/Architecture_Amendments.md"
       ],
       "passed": [
         "F1",
@@ -44,11 +50,11 @@
         },
         "F3": {
           "status": "blocked",
-          "reason": "vivo Y03 not physically tested; second phone, achieved QR rate/reliability unknown"
+          "reason": "vivo Y03/second-phone checks not_run. Local HTTPS and desktop QR/transport-error measurements pass; no physical-device equivalence."
         },
         "F4": {
           "status": "blocked",
-          "reason": "HTTPS target and Supabase access unverified; two-phone local file transport not_run"
+          "reason": "Supabase account listing passed; no PackProof target selected or Postgres/Auth/private Storage verified. No existing host/deployment or real phone transport evidence."
         }
       },
       "manualChecks": {
@@ -62,7 +68,10 @@
         "phoneFileExportImport": "not_run",
         "transport": null,
         "httpsHost": "blocked",
-        "supabaseAccess": "blocked"
+        "supabaseAccess": "blocked",
+        "supabaseAccountList": "passed",
+        "localHttps": "passed",
+        "phoneHttpsTrust": "not_run"
       }
     },
     {
@@ -112,9 +121,9 @@
   "actualSpendUsd": null,
   "deliveryDeviations": [
     "P0 manual hardware gates pending; no desktop substitution",
-    "No HTTPS target or connected Supabase project verified",
     "Synthetic visual feasibility only; noun phrase SAM empty; prompted-box SAM passed",
-    "Initial provider failures retained; internal request cap adjusted from 6 to 7 within unchanged $3 total reservations"
+    "Initial provider failures retained; internal request cap adjusted from 6 to 7 within unchanged $3 total reservations",
+    "1 November: Supabase account listing verified, but no selected PackProof project/services; local TLS verified, no phone-reachable deployment"
   ],
   "p0Budget": {
     "maximumUsd": 3,
@@ -128,7 +137,7 @@
   },
   "p1Ready": false,
   "handoffDirectory": "project_handoff",
-  "repositoryStatus": "Git initialized; project files untracked; no commits made by this work",
+  "repositoryStatus": "Git initialized; P0 source/evidence tracked; local credentials/TLS keys ignored; see Git for current revision",
   "localToolchain": {
     "node": "24.22.2",
     "pnpm": "12.16.1",
@@ -136,5 +145,43 @@
     "setupCommand": "bash scripts/setup-toolchain.sh",
     "activationCommand": "export PATH=\"$PWD/.local/toolchain/node_modules/.bin:$PATH\"",
     "frozenInstall": "passed"
-  }
+  },
+  "lastUpdated": "2026-11-01",
+  "architectureAmendment": "project_handoff/Architecture_Amendments.md",
+  "compatibility": {
+    "langchain": {
+      "status": "passed_offline_only",
+      "coreVersion": "1.3.2",
+      "openaiAdapterVersion": "1.8.0",
+      "liveMetaRequests": 0,
+      "fixture": "reconstructed saved protocol envelopes + real demo registry"
+    },
+    "langgraph": {
+      "status": "design_only",
+      "versionCandidate": "1.6.0",
+      "installed": false,
+      "persistentInvestigationsBuilt": false
+    },
+    "langsmith": {
+      "status": "offline_sdk_tested",
+      "version": "0.11.6",
+      "remoteAccess": "unverified",
+      "remoteTracesDelivered": false,
+      "disabledTracing": "passed",
+      "outageIsolation": "passed"
+    }
+  },
+  "infrastructure": {
+    "supabaseAccountList": "passed",
+    "packproofProjectSelected": false,
+    "postgres": "not_run",
+    "auth": "not_run",
+    "privateStorage": "not_run",
+    "existingSites": 0,
+    "publicDeployment": "not_run",
+    "localHttps": "passed",
+    "phoneTlsTrust": "not_run",
+    "phoneTransport": "not_run"
+  },
+  "testingGuide": "TESTING.md"
 }
