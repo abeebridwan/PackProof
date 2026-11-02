@@ -1,0 +1,30 @@
+{
+  "label": "p1c-after",
+  "at": "2026-11-02T01:51:11.094Z",
+  "mode": "actual Supabase + recorded model transport",
+  "providerRequests": 0,
+  "elapsedMs": 9069,
+  "queryCount": 109,
+  "cumulativeQueryMs": 8286,
+  "connections": 3,
+  "byVerb": {
+    "INSERT": 39,
+    "UPDATE": 7,
+    "SELECT": 25,
+    "BEGIN": 15,
+    "COMMIT": 15,
+    "WITH": 8
+  },
+  "byGroup": {
+    "investigations": 11,
+    "checkpoints": 39,
+    "transactionOrOther": 39,
+    "operations": 9,
+    "signedEvidence": 6,
+    "events": 5
+  },
+  "actions": 4,
+  "finding": "supported",
+  "mandatoryFinalizerEvents": 4,
+  "note": "One cold runtime request from this laptop; cumulative query time includes overlapping work. Not a live model or deployed latency benchmark."
+}

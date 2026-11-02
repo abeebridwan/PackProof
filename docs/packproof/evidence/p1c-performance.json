@@ -1,0 +1,53 @@
+{
+  "phase": "P1C",
+  "status": "passed",
+  "providerRequests": 0,
+  "newProviderSpendUsd": 0,
+  "p0LedgerChanged": false,
+  "p1LedgerChanged": false,
+  "beforeMs": 10045,
+  "afterMs": 9069,
+  "improvementPercent": 9.72,
+  "queriesBefore": 123,
+  "queriesAfter": 109,
+  "queryReductionPercent": 11.38,
+  "signedSnapshotQueriesBefore": 8,
+  "signedSnapshotQueriesAfter": 6,
+  "checkpointClientQueriesBefore": 39,
+  "checkpointClientQueriesAfter": 39,
+  "connectionsBefore": 3,
+  "connectionsAfter": 3,
+  "scope": "One cold request before and after, actual Supabase and recorded AI; client queries only. Network variability applies. Not an optimized live Muse or deployed latency claim.",
+  "actions": 4,
+  "mandatoryFinalizerEvents": 4,
+  "changes": [
+    "Reuse immutable server-owned checkpoint start time; do not reread unchanged progress after each model operation; DB reservation still enforces access and limits",
+    "Read private investigation and ordered trace together under forced RLS in one SQL snapshot",
+    "Coalesce only identical in-flight SQL reads inside one owner-bound runtime; never cache settled values; retain separate parsing and signature validation"
+  ],
+  "validation": {
+    "typecheck": "passed",
+    "unitTests": 132,
+    "unitFiles": 10,
+    "integrationTests": 15,
+    "productionBuild": "passed",
+    "bundleSecretChecks": "passed: 26 Next client assets",
+    "productionBrowser": "passed: production Chromium 390px, actual Supabase and recorded AI; both sellers, notice, gap, pause/resume/reload, leading zeros, unresolved physical state, controlled error and no overflow",
+    "shopARepair": "passed controlled non-JSON native tool-turn adapter case against actual Supabase; NOT a new live Muse pass",
+    "shopAActualLive": "failed before repair, unchanged",
+    "liveIncompleteEvidence": "not_run, unchanged",
+    "persistenceAndRls": "passed actual integration, including ordered-view equivalence, foreign/missing denial, limits and checkpoint recovery",
+    "serverStopped": true,
+    "changedFileSecretScan": "passed: 45 pending files, zero configured-secret/private-key matches",
+    "privateOutputTracePaths": 0,
+    "preservation": "passed: both real ledgers, live receipts, signed fixture/root, lockfile, migrations, protected P0/P1A files and exact P0 phase/budget unchanged"
+  },
+  "evidence": [
+    "docs/packproof/evidence/p1c-latency-before.json",
+    "docs/packproof/evidence/p1c-latency-after.json",
+    "docs/packproof/evidence/vitest-p1c-optimization-unit.json",
+    "docs/packproof/evidence/vitest-p1c-optimization-integration.json",
+    "docs/packproof/evidence/p1c-adapter-supabase.json",
+    "docs/packproof/evidence/p1c-browser.json"
+  ]
+}

@@ -34,7 +34,9 @@
     "start": "next start --hostname 0.0.0.0",
     "db:migrate:p1b": "node --env-file-if-exists=.env.local --import tsx scripts/p1b/migrate.ts",
     "db:migrate:performance": "node --env-file-if-exists=.env.local --import tsx scripts/p1b/migrate-performance.ts",
-    "evaluate:p1b": "node --env-file-if-exists=.env.local --import tsx scripts/p1b/evaluate.ts"
+    "evaluate:p1b": "node --env-file-if-exists=.env.local --import tsx scripts/p1b/evaluate.ts",
+    "p1c:budget": "node --import tsx scripts/p1c/budget.ts",
+    "p1c:live": "node --env-file-if-exists=.env.local --import tsx scripts/p1c/live.ts"
   },
   "dependencies": {
     "@langchain/core": "1.3.2",

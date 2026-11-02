@@ -17,7 +17,7 @@ The repository currently provides a working development foundation and standalon
 - A Supabase data foundation with immutable signed claims, versioned issuer-directory audit history, scoped key permissions and restricted writes.
 - Signed fictional units, packaging mappings, seller authorization, packaging notices and explicit custody gaps, with typed server read services.
 - A mobile-first Next.js Evidence Investigator with six typed tools, mandatory server finalization, private session-scoped API routes, private image capture storage and durable LangGraph pause/resume.
-- LangChain runs the tool loop against recorded protocol responses; the read tools use real signed Supabase records. Optional LangSmith traces contain only allowed metadata. Live Muse/SAM execution remains disabled.
+- LangChain runs the web tool loop against recorded protocol responses; the read tools use real signed Supabase records. A separate guarded CLI has completed a real Muse investigation for Shop B, including four tools and a cited final answer. Optional LangSmith traces contain only allowed metadata. New live image analysis remains disabled.
 
 Open the [live feasibility probe](https://packproof-p0.vercel.app) on a phone or browser. It provides local camera/manual/crypto/QR/file controls; product investigations and customer records are not connected to this page.
 
@@ -62,6 +62,8 @@ pnpm probe:access
 | `pnpm db:migrate:p1b` | Apply/verify the additive P1B runtime migration and restricted official Postgres checkpointer. |
 | `pnpm db:migrate:performance` | Apply/verify the additive operation-reservation performance function after P1B migration. |
 | `pnpm evaluate:p1b` | Run the shared 12-case evaluation against a signed database snapshot using recorded responses. |
+| `pnpm p1c:budget status` | Inspect the independent P1 approval/reservation ledger; does not approve spending. |
+| `pnpm p1c:live` | Run guarded operator-only live validation after separate approval; refuses all Meta requests while unapproved. |
 | `pnpm probe:bundle` | Check browser inputs and output for server modules and configured secrets. |
 | `pnpm probe:crypto` | Exercise Node/browser signing, verification and local browser checks. |
 | `pnpm probe:access` | Report which access settings are configured, without printing credentials. |
@@ -82,6 +84,8 @@ The browser crypto check requires Chrome at `/usr/bin/google-chrome`, or a `CHRO
 `pnpm dev` opens the local app on port 3000. Choose a fictional scenario, investigate its records, then review the cited product, seller, notice and custody findings. If asked for another view, supply the literal code or a small private image and resume the same investigation. New images remain unknown without authorized live analysis; physical association never follows from a matched code alone.
 
 Use the existing ignored Supabase configuration. For an HTTPS reverse proxy, set `APP_ORIGIN` to its exact public origin. P1B evidence and current limitations are recorded in [P1B.md](docs/packproof/evidence/P1B.md). The app has a PWA manifest and responsive layout; offline installation/verification belongs to P4.
+
+The separately approved P1 live-validation run used all eight allowed Meta requests: Shop B passed its complete tool/result/finalizer flow; Shop A failed at SDK parsing before the repair, and the live custody-gap case was not run. The response adapter now handles the demonstrated Meta tool-turn incompatibility without another inference request. Usage-based estimate: **$0.0340**; **$2 reserved**, actual billing unknown. The exhausted P1 ledger persists under ignored `.local/p1c/`; the P0 ledger is unchanged. The web UI still uses recorded AI. Do not change `P1_PROVIDER_MODE` to enable live spending. See [P1C evidence](docs/packproof/evidence/P1C.md) for receipts, remaining checks and the request cap. P1 remains partial; no new deployment or P2 readiness is claimed. A later controller comparison with recorded AI measured **10.05→9.07 seconds** and **123→109 database requests**, with all mandatory checks retained. This is one local before/after sample; live Muse latency after optimization has not been measured.
 
 ## Try the P0 browser test page
 

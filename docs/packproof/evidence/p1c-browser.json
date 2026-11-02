@@ -1,0 +1,13 @@
+{
+  "mode": "production local UI + actual Supabase + recorded AI; not live acceptance",
+  "providerRequests": 0,
+  "actualPhone": false,
+  "inputsProgressSignedResultsAndNotice": "passed",
+  "shopARefusal": "passed",
+  "historyGap": "passed",
+  "pauseResumeReload": "passed",
+  "leadingZerosAndNoPhysicalSuccess": "passed",
+  "controlledErrorState": "passed",
+  "mobileNoOverflow": "passed",
+  "status": "passed"
+}

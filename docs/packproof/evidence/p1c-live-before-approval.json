@@ -1,0 +1,49 @@
+{
+  "phase": "P1C",
+  "status": "blocked",
+  "approval": "missing",
+  "blocked": "p1_approval_required",
+  "limits": {
+    "totalCents": 200,
+    "requests": 8,
+    "reservationCents": 25,
+    "inputTokens": 16000,
+    "outputTokens": 2048,
+    "timeoutMs": 45000,
+    "retries": 2
+  },
+  "reservedCents": 0,
+  "inferenceReservations": 0,
+  "inferenceRequestsAttemptedThisRun": 0,
+  "tokenPreflightsThisRun": 0,
+  "usageEstimatedUsd": 0,
+  "usageCoverage": 0,
+  "actualBilledUsd": null,
+  "pricing": {
+    "verifiedAt": "2026-11-02",
+    "source": "https://dev.meta.ai/docs/pricing-rate-limits",
+    "inputPerMillion": 1.25,
+    "cachedInputPerMillion": 0.15,
+    "outputPerMillion": 4.25
+  },
+  "scenarios": [
+    {
+      "scenario": "A",
+      "status": "not_run",
+      "reason": "p1_approval_required"
+    },
+    {
+      "scenario": "B",
+      "status": "not_run",
+      "reason": "p1_approval_required"
+    },
+    {
+      "scenario": "C",
+      "status": "not_run",
+      "reason": "p1_approval_required"
+    }
+  ],
+  "requestEvidence": "per-scenario p1c-live-a/b/c.json files only when executed",
+  "liveLatencyAvailable": false,
+  "p0LedgerChanged": false
+}

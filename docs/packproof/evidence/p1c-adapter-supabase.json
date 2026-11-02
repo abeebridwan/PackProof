@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "mode": "simulated provider transport + actual Supabase; NOT live acceptance",
+  "providerRequests": 0,
+  "simulatedRequests": 8,
+  "findings": [
+    {
+      "seller": "A",
+      "status": "blocked",
+      "toolResultCorrelation": true,
+      "signedSourceRefsPresent": true,
+      "mandatoryFinalizerChecks": 4,
+      "nativeToolTurnCommentaryBridge": true,
+      "retries": 0,
+      "physicalStatus": "not_inspected"
+    },
+    {
+      "seller": "B",
+      "status": "supported",
+      "toolResultCorrelation": true,
+      "signedSourceRefsPresent": true,
+      "mandatoryFinalizerChecks": 4,
+      "nativeToolTurnCommentaryBridge": true,
+      "retries": 0,
+      "physicalStatus": "not_inspected"
+    }
+  ]
+}

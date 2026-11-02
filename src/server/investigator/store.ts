@@ -1,7 +1,7 @@
 import type {Pool,PoolClient} from 'pg';
 import {Capture,InvestigationInput,EvidenceRequest,Finding,ToolName} from '../../contracts/investigation.js';
 import {sha256,utf8} from '../../domain/verification/p0-crypto.js';
-import type {Owner,Row,InvestigationStore,ToolResult} from './types.js';
+import type {Owner,Row,InvestigationStore,ToolResult,StoredEvent} from './types.js';
 export class InvestigationError extends Error {constructor(readonly code:string,readonly status=409){super(code);}}
 export const canonical=(v:unknown):string=>JSON.stringify(v,(_key,value)=>value && typeof value==='object'&&!Array.isArray(value)?Object.fromEntries(Object.entries(value).sort(([a],[b])=>a.localeCompare(b))):value);
 const fromRow=(r:Record<string,unknown>):Row=>({id:String(r.id),revision:Number(r.revision),status:String(r.status),input:InvestigationInput.parse(r.input),actions:Number(r.actions),recaptures:Number(r.recaptures),retries:Number(r.retries),request:r.evidence_request?EvidenceRequest.parse(r.evidence_request):null,finding:r.finding?Finding.parse(r.finding):null,error:r.error_code?String(r.error_code):null,createdAt:new Date(String(r.created_at)).toISOString()});
@@ -11,6 +11,18 @@ export class PostgresInvestigationStore implements InvestigationStore{
  private async transaction<T>(fn:(client:PoolClient)=>Promise<T>){const c=await this.pool.connect();try{await c.query('BEGIN');const value=await fn(c);await c.query('COMMIT');return value;}catch(e){await c.query('ROLLBACK');throw e;}finally{c.release();}}
  async create(owner:Owner,input:InvestigationInput){this.authorize(owner);const r=await this.pool.query('INSERT INTO packproof.investigations(id,owner_user_id,session_hash,namespace,input) VALUES($1,$2,$3,$4,$5) RETURNING *',[crypto.randomUUID(),owner.userId,owner.sessionHash,input.namespace,input]);return fromRow(r.rows[0]);}
  async get(owner:Owner,id:string){this.authorize(owner);const r=await this.pool.query('SELECT * FROM packproof.investigations WHERE id=$1',[id]);if(!r.rows[0])throw new InvestigationError('not_found',404);return fromRow(r.rows[0]);}
+ async readView(owner:Owner,id:string){
+  this.authorize(owner);
+  // Read the owner-visible row and ordered trace in one SQL snapshot. Both
+  // tables retain forced RLS; a missing/foreign row still raises not_found.
+  const r=await this.pool.query(`SELECT i.*,coalesce((
+   SELECT jsonb_agg(jsonb_build_object('tool',e.tool_name,'result',e.result_json,'source',e.event_source) ORDER BY e.created_at,e.id)
+   FROM packproof.tool_events e WHERE e.investigation_id=i.id
+  ),'[]'::jsonb) AS trace_events FROM packproof.investigations i WHERE i.id=$1`,[id]);
+  const value=r.rows[0];if(!value)throw new InvestigationError('not_found',404);
+  const events=(value.trace_events as StoredEvent[]).map(e=>({...e,tool:ToolName.parse(e.tool)}));
+  return {row:fromRow(value),events};
+ }
  async save(owner:Owner,id:string,patch:Partial<Pick<Row,'status'|'request'|'finding'|'error'>>){this.authorize(owner);const fields:Record<string,string>={status:'status',request:'evidence_request',finding:'finding',error:'error_code'};const entries=Object.entries(patch);if(!entries.length){await this.get(owner,id);return;}const r=await this.pool.query(`UPDATE packproof.investigations SET ${entries.map(([k],i)=>`${fields[k]}=$${i+2}`).join(',')} WHERE id=$1 RETURNING id`,[id,...entries.map(([,v])=>v)]);if(!r.rowCount)throw new InvestigationError('not_found',404);}
  async operation<T>(owner:Owner,id:string,key:string,args:unknown,kind:'model'|'tool'|'retry'|'resume',effect:()=>Promise<T>,options:{recapture?:boolean;reservationCents?:number;sessionCapCents?:number}={}){
   this.authorize(owner);const hash=await sha256(utf8(canonical(args)));

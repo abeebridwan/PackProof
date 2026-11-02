@@ -1,0 +1,351 @@
+{
+  "phase": "P1C",
+  "status": "blocked",
+  "approval": "explicitly_approved",
+  "blocked": "p1_live_scenario_failed",
+  "limits": {
+    "totalCents": 200,
+    "requests": 8,
+    "reservationCents": 25,
+    "inputTokens": 16000,
+    "outputTokens": 2048,
+    "timeoutMs": 45000,
+    "retries": 2
+  },
+  "reservedCents": 75,
+  "inferenceReservations": 3,
+  "inferenceRequestsAttemptedThisRun": 3,
+  "tokenPreflightsThisRun": 3,
+  "usageEstimatedUsd": 0.0073138000000000005,
+  "usageCoverage": 3,
+  "actualBilledUsd": null,
+  "pricing": {
+    "verifiedAt": "2026-11-02",
+    "source": "https://dev.meta.ai/docs/pricing-rate-limits",
+    "inputPerMillion": 1.25,
+    "cachedInputPerMillion": 0.15,
+    "outputPerMillion": 4.25
+  },
+  "scenarios": [
+    {
+      "scenario": "A",
+      "status": "failed",
+      "mode": "live",
+      "totalMs": 15926,
+      "providerInferenceMs": 4621,
+      "tokenPreflightMs": 4175,
+      "modelOperationMs": 0,
+      "toolOperationMs": 0,
+      "verificationMs": 1142,
+      "roundTrip": false,
+      "structuredFinalAnswer": false,
+      "identifiersComplete": true,
+      "mandatoryChecks": true,
+      "requests": [
+        {
+          "operationKey": "ac1215e6-3046-49fb-ac5f-3cb6656aadac:1:0:0",
+          "requestId": "bdea5abb-e04f-4568-a1bf-a9e8ca7b66e5",
+          "requestSha256": "a03de8f95dcca7941bfbdec608a230ac02e6a4fffc4b78c239faf25bd86a77b2",
+          "countedInputTokens": 2420,
+          "latencyMs": 3509,
+          "preflightMs": 1655,
+          "inferenceMs": 1854,
+          "toolResults": [],
+          "response": {
+            "responseId": "chatcmpl-01a199e5-7c80-7687-a9cc-b896c2683a63",
+            "model": "muse-spark-1.3",
+            "finishReason": "tool_calls",
+            "calls": [
+              {
+                "id": "call_f31a5ce7-16e1-4efe-b661-4e4980c960d0",
+                "name": "lookup_product",
+                "args": {
+                  "namespace": "packproof-demo",
+                  "productMark": "FP-1001",
+                  "packagingMark": "PK-2001"
+                }
+              }
+            ],
+            "answer": null,
+            "usage": {
+              "inputTokens": 2265,
+              "outputTokens": 286,
+              "cachedTokens": 0
+            }
+          },
+          "outcome": "validated"
+        },
+        {
+          "operationKey": "ac1215e6-3046-49fb-ac5f-3cb6656aadac:1:0:1",
+          "requestId": "84d8d522-d11d-49c7-983a-1949a5213d7e",
+          "requestSha256": "a03de8f95dcca7941bfbdec608a230ac02e6a4fffc4b78c239faf25bd86a77b2",
+          "countedInputTokens": 2420,
+          "latencyMs": 2844,
+          "preflightMs": 1375,
+          "inferenceMs": 1469,
+          "toolResults": [],
+          "response": {
+            "responseId": "chatcmpl-01a199e5-8a94-773b-b04e-49519f273dd8",
+            "model": "muse-spark-1.3",
+            "finishReason": "tool_calls",
+            "calls": [
+              {
+                "id": "call_5e3420c3-5bb9-4c73-aafd-ddabf0803248",
+                "name": "lookup_product",
+                "args": {
+                  "namespace": "packproof-demo",
+                  "productMark": "FP-1001",
+                  "packagingMark": "PK-2001"
+                }
+              }
+            ],
+            "answer": null,
+            "usage": {
+              "inputTokens": 2265,
+              "outputTokens": 326,
+              "cachedTokens": 2161
+            }
+          },
+          "outcome": "validated"
+        },
+        {
+          "operationKey": "ac1215e6-3046-49fb-ac5f-3cb6656aadac:1:0:2",
+          "requestId": "5dc807dd-7ad1-402f-97ed-1b8758cba825",
+          "requestSha256": "a03de8f95dcca7941bfbdec608a230ac02e6a4fffc4b78c239faf25bd86a77b2",
+          "countedInputTokens": 2420,
+          "latencyMs": 2443,
+          "preflightMs": 1145,
+          "inferenceMs": 1298,
+          "toolResults": [],
+          "response": {
+            "responseId": "chatcmpl-01a199e5-9699-7561-a4ec-78f0ba6a18dc",
+            "model": "muse-spark-1.3",
+            "finishReason": "tool_calls",
+            "calls": [
+              {
+                "id": "call_78f6cf16-5fb7-43ab-be92-fb90043ea6f7",
+                "name": "lookup_product",
+                "args": {
+                  "namespace": "packproof-demo",
+                  "productMark": "FP-1001",
+                  "packagingMark": "PK-2001"
+                }
+              }
+            ],
+            "answer": null,
+            "usage": {
+              "inputTokens": 2265,
+              "outputTokens": 229,
+              "cachedTokens": 2161
+            }
+          },
+          "outcome": "validated"
+        }
+      ],
+      "result": {
+        "id": "ac1215e6-3046-49fb-ac5f-3cb6656aadac",
+        "revision": 1,
+        "status": "unavailable",
+        "mode": "live",
+        "input": {
+          "namespace": "packproof-demo",
+          "productMark": "FP-1001",
+          "packagingMark": "PK-2001",
+          "sellerId": "30000000-0000-4000-8000-000000000004",
+          "listingText": "Controlled fictional P1 validation; no customer data.",
+          "context": "listing",
+          "captureId": null
+        },
+        "actions": 0,
+        "recaptures": 0,
+        "retries": 2,
+        "finding": {
+          "status": "unavailable",
+          "recordStatus": "supported",
+          "sellerStatus": "blocked",
+          "physicalStatus": "not_inspected",
+          "demo": true,
+          "mode": "live",
+          "summary": "Investigation could not produce a validated explanation. No supported finding was issued.",
+          "claims": [],
+          "product": {
+            "status": "supported",
+            "reason": "Signed marks are consistent; physical association remains unresolved",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000310",
+              "30000000-0000-4000-8000-000000000311",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T01:35:23.129Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "label": "Fictional PackProof demonstration data",
+              "itemId": "10000000-0000-4000-8000-000000000001",
+              "scope": "unit",
+              "modelCode": "DEMO-FORMULA",
+              "batchCode": "BATCH-01",
+              "issuer": {
+                "id": "30000000-0000-4000-8000-000000000002",
+                "kind": "issuer",
+                "label": "Fictional Formula Producer",
+                "demo": true
+              },
+              "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+              "mappingStatus": "matched",
+              "physicalBinding": "unresolved",
+              "recordIds": [
+                "30000000-0000-4000-8000-000000000310",
+                "30000000-0000-4000-8000-000000000311",
+                "30000000-0000-4000-8000-000000000209"
+              ]
+            }
+          },
+          "seller": {
+            "status": "blocked",
+            "reason": "Transfer blocked: seller is not authorized for this registered item.",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000310",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T01:35:23.576Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Review signed source records"
+            ],
+            "data": {
+              "demo": true,
+              "itemId": "10000000-0000-4000-8000-000000000001",
+              "sellerId": "30000000-0000-4000-8000-000000000004",
+              "registeredSeller": true,
+              "authorized": false,
+              "ownerVersion": 1,
+              "authorityRecordIds": [
+                "30000000-0000-4000-8000-000000000310",
+                "30000000-0000-4000-8000-000000000209"
+              ],
+              "asOf": "2026-11-02T01:35:23.576Z"
+            }
+          },
+          "notices": {
+            "status": "supported",
+            "reason": "Applicable fictional notices in this dataset; external source coverage is unknown",
+            "evidence_refs": [],
+            "scope": "unit",
+            "asOf": "2026-11-02T01:35:23.577Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "notices": [],
+              "coverage": "demo_dataset_only",
+              "directoryVersion": 5,
+              "retrievedAt": "2026-11-02T01:35:23.577Z"
+            }
+          },
+          "history": {
+            "status": "supported",
+            "reason": "Permitted dated demo history; completeness outside this dataset is unknown",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000312",
+              "30000000-0000-4000-8000-000000000314"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T01:35:23.577Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "events": [
+                {
+                  "recordId": "30000000-0000-4000-8000-000000000312",
+                  "kind": "receipt",
+                  "occurredAt": "2026-11-01T12:00:00.000Z"
+                }
+              ],
+              "gaps": [],
+              "conflicts": [],
+              "snapshot": {
+                "recordId": "30000000-0000-4000-8000-000000000314",
+                "holderReference": "demo-registered-holder-one",
+                "asOf": "2026-11-01T12:00:00.000Z"
+              }
+            }
+          },
+          "missingChecks": [
+            "lookup_product",
+            "lookup_seller",
+            "get_product_notices",
+            "get_custody_history"
+          ],
+          "asOf": "2026-11-02T01:35:24.032Z",
+          "policyVersion": "p1b-mandatory-finalizer-1"
+        },
+        "request": null,
+        "trace": [
+          {
+            "tool": "get_product_notices",
+            "status": "supported",
+            "source": "mandatory_finalizer",
+            "evidence_refs": [],
+            "reason": "Applicable fictional notices in this dataset; external source coverage is unknown"
+          },
+          {
+            "tool": "lookup_product",
+            "status": "supported",
+            "source": "mandatory_finalizer",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000310",
+              "30000000-0000-4000-8000-000000000311",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "reason": "Signed marks are consistent; physical association remains unresolved"
+          },
+          {
+            "tool": "lookup_seller",
+            "status": "blocked",
+            "source": "mandatory_finalizer",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000310",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "reason": "Transfer blocked: seller is not authorized for this registered item."
+          },
+          {
+            "tool": "get_custody_history",
+            "status": "supported",
+            "source": "mandatory_finalizer",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000312",
+              "30000000-0000-4000-8000-000000000314"
+            ],
+            "reason": "Permitted dated demo history; completeness outside this dataset is unknown"
+          }
+        ],
+        "errorCode": "provider_unavailable"
+      }
+    },
+    {
+      "scenario": "B",
+      "status": "not_run",
+      "reason": "p1_live_scenario_failed"
+    },
+    {
+      "scenario": "C",
+      "status": "not_run",
+      "reason": "p1_live_scenario_failed"
+    }
+  ],
+  "requestEvidence": "per-scenario p1c-live-a/b/c.json files only when executed",
+  "liveLatencyAvailable": true,
+  "p0LedgerChanged": false
+}

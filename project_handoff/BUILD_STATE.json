@@ -292,45 +292,72 @@
         "docs/packproof/evidence/vitest-p1b-cycle-unit.json",
         "docs/packproof/evidence/vitest-p1b-cycle-integration.json",
         "docs/packproof/evidence/p1b-performance-migration.json",
-        "docs/packproof/evidence/p1b-performance-migration-repeat.json"
+        "docs/packproof/evidence/p1b-performance-migration-repeat.json",
+        "docs/packproof/evidence/P1C.md",
+        "docs/packproof/evidence/p1c-live.json",
+        "docs/packproof/evidence/p1c-adapter-supabase.json",
+        "docs/packproof/evidence/p1c-browser.json",
+        "docs/packproof/evidence/p1c-ui.png",
+        "docs/packproof/evidence/vitest-p1c-unit.json",
+        "docs/packproof/evidence/vitest-p1c-integration.json",
+        "docs/packproof/evidence/p1c.json",
+        "docs/packproof/evidence/p1c-live-before-approval.json",
+        "docs/packproof/evidence/p1c-live-attempt-1.json",
+        "docs/packproof/evidence/p1c-live-a.json",
+        "docs/packproof/evidence/p1c-live-b.json",
+        "docs/packproof/evidence/p1c-latency-before.json",
+        "docs/packproof/evidence/p1c-latency-after.json",
+        "docs/packproof/evidence/vitest-p1c-optimization-unit.json",
+        "docs/packproof/evidence/vitest-p1c-optimization-integration.json",
+        "docs/packproof/evidence/p1c-performance.json"
       ],
-      "passed": [],
+      "passed": [
+        "A1",
+        "A2",
+        "A3"
+      ],
       "failed": [],
       "blocked": [],
       "subtasks": {
         "P1A": "completed_foundation_only",
-        "P1B": "implemented_replay_verified_live_blocked"
+        "P1B": "implemented_replay_verified_live_blocked",
+        "P1C": "live_partial_shop_b_passed_shop_a_failed_budget_exhausted"
       },
       "acceptance": {
         "A1": {
-          "status": "partial",
+          "status": "passed",
           "replayAndLocalChecks": "passed",
-          "liveMuseValidation": "not_run",
-          "evidence": "docs/packproof/evidence/P1B.md"
+          "liveMuseValidation": "passed Shop B",
+          "evidence": "docs/packproof/evidence/P1B.md",
+          "latestContinuationEvidence": "docs/packproof/evidence/P1C.md"
         },
         "A2": {
-          "status": "partial",
+          "status": "passed",
           "replayAndLocalChecks": "passed",
-          "liveMuseValidation": "not_run",
-          "evidence": "docs/packproof/evidence/P1B.md"
+          "liveMuseValidation": "actual failed A independently verifies seller false",
+          "evidence": "docs/packproof/evidence/P1B.md",
+          "latestContinuationEvidence": "docs/packproof/evidence/P1C.md"
         },
         "A3": {
-          "status": "partial",
+          "status": "passed",
           "replayAndLocalChecks": "passed",
-          "liveMuseValidation": "not_run",
-          "evidence": "docs/packproof/evidence/P1B.md"
+          "liveMuseValidation": "failed A remained unavailable; exhausted-ledger rerun made zero new calls",
+          "evidence": "docs/packproof/evidence/P1B.md",
+          "latestContinuationEvidence": "docs/packproof/evidence/P1C.md"
         },
         "A4": {
           "status": "partial",
           "replayAndLocalChecks": "passed",
-          "liveMuseValidation": "not_run",
-          "evidence": "docs/packproof/evidence/P1B.md"
+          "liveMuseValidation": "closer-view journey not_run",
+          "evidence": "docs/packproof/evidence/P1B.md",
+          "latestContinuationEvidence": "docs/packproof/evidence/P1C.md"
         },
         "I1": {
           "status": "partial",
           "replayAndLocalChecks": "passed",
-          "liveMuseValidation": "not_run",
-          "evidence": "docs/packproof/evidence/P1B.md"
+          "liveMuseValidation": "Shop B pair/unit/notice passed; A failed; C not_run",
+          "evidence": "docs/packproof/evidence/P1B.md",
+          "latestContinuationEvidence": "docs/packproof/evidence/P1C.md"
         }
       },
       "foundation": {
@@ -514,6 +541,294 @@
           ]
         },
         "performanceMigration": "202611020003"
+      },
+      "liveValidation": {
+        "phase": "P1C",
+        "status": "partial",
+        "preparation": "passed",
+        "liveValidation": "partial",
+        "approval": {
+          "status": "explicitly_approved",
+          "statement": "I approve up to $2 USD for P1 live Meta validation, maximum 8 inference requests.",
+          "approvedAt": "2026-11-02T01:33:24.882Z",
+          "source": "Explicit user chat approval, 2 November 2026",
+          "persistentLedger": ".local/p1c/budget.json",
+          "remainingInferenceRequests": 0
+        },
+        "limits": {
+          "totalCents": 200,
+          "requests": 8,
+          "reservationCents": 25,
+          "inputTokens": 16000,
+          "outputTokens": 2048,
+          "timeoutMs": 45000,
+          "retries": 2
+        },
+        "reservedCents": 200,
+        "providerRequests": 8,
+        "tokenPreflightRequests": 8,
+        "newProviderSpendUsd": null,
+        "usageEstimatedUsd": 0.034008300000000005,
+        "actualBilledUsd": null,
+        "providerRequestIds": [
+          "bdea5abb-e04f-4568-a1bf-a9e8ca7b66e5",
+          "84d8d522-d11d-49c7-983a-1949a5213d7e",
+          "5dc807dd-7ad1-402f-97ed-1b8758cba825",
+          "338daa15-d888-4cb3-b29d-cfdf70b263b6",
+          "693a4066-ec9c-464a-94ad-e317b5323396",
+          "7e494381-4a16-4966-bad9-c71f1275e0e5",
+          "8eb74d3f-2976-4768-a3c4-50505ded1bb8",
+          "31b90188-45f9-4c7b-bd8b-04180f66b042"
+        ],
+        "liveResponseEvidence": [
+          "docs/packproof/evidence/p1c-live-a.json",
+          "docs/packproof/evidence/p1c-live-b.json"
+        ],
+        "pricing": {
+          "verifiedAt": "2026-11-02",
+          "source": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "inputPerMillion": 1.25,
+          "cachedInputPerMillion": 0.15,
+          "outputPerMillion": 4.25
+        },
+        "liveScenarios": [
+          {
+            "scenario": "A",
+            "status": "failed",
+            "totalMs": 15926,
+            "providerInferenceMs": 4621,
+            "tokenPreflightMs": 4175,
+            "toolOperationMs": 0,
+            "verificationMs": 1142,
+            "findingStatus": "unavailable",
+            "roundTrip": false,
+            "structuredFinalAnswer": false
+          },
+          {
+            "scenario": "B",
+            "status": "passed",
+            "totalMs": 28166,
+            "providerInferenceMs": 11024,
+            "tokenPreflightMs": 5363,
+            "toolOperationMs": 3309,
+            "verificationMs": 1134,
+            "findingStatus": "supported",
+            "roundTrip": true,
+            "structuredFinalAnswer": true
+          },
+          {
+            "scenario": "C",
+            "status": "not_run",
+            "reason": "insufficient remaining request allowance for expected complete round-trip"
+          }
+        ],
+        "validation": {
+          "typecheck": "passed",
+          "unitTests": 132,
+          "unitFiles": 10,
+          "integrationTests": 15,
+          "integrationMode": "actual Supabase; provider boundary injected with fake key, NOT live Meta",
+          "baseline101Unit14IntegrationRetained": true,
+          "productionBuild": "passed",
+          "bundleSecretChecks": "passed: 26 Next client asset files",
+          "privateOutputTracePaths": 0,
+          "productionBrowser": "passed after optimization: production Chromium 390px, actual Supabase and recorded AI",
+          "actualPhone": "not_run",
+          "finalizerNegatives": "passed: omitted seller/history, invented refs, contradicted record, unknown mark, unsupported conclusion, tool-output injection, malformed/incomplete provider envelopes",
+          "graphPersistence": "passed: actual Postgres pause/resume, counters/idempotency, RLS and lost-cycle recovery",
+          "langsmith": "sanitized metadata and estimate fields; disabled/outage regressions passed; remote delivery not_run (not configured)",
+          "liveLatencyMs": 28166,
+          "priorRecordedBenchmarkMs": 10349,
+          "newDeployment": false,
+          "liveLatencyScope": "One successful Shop B run, 28,166ms; failed A 15,926ms; not replay/deployed SLA",
+          "realMetaRoundTrip": "passed Shop B only",
+          "budgetExhaustedRerun": "passed: zero new inference/preflight calls; failed A and passed B retained",
+          "adapterNativeBridge": "passed: four actual tool turns with SyntaxError/non-JSON content; final structured reply parsed through LangChain",
+          "unitReport": "docs/packproof/evidence/vitest-p1c-optimization-unit.json",
+          "integrationReport": "docs/packproof/evidence/vitest-p1c-optimization-integration.json",
+          "shopAAfterRepair": "passed controlled adapter against actual Supabase with synthetic non-JSON tool-turn content, no retries; actual live A remains failed/not rerun"
+        },
+        "acceptance": {
+          "A1": {
+            "status": "passed",
+            "independentChecks": "passed",
+            "liveMuse": "passed Shop B",
+            "reason": "All four signed Supabase read services and final cited claims in actual native round-trip"
+          },
+          "A2": {
+            "status": "passed",
+            "independentChecks": "passed controlled negative cases",
+            "liveMuse": "actual failed A independently verifies seller false",
+            "reason": "Missing/omitted checks and unknown issuer/mark cannot establish support; no invented authority"
+          },
+          "A3": {
+            "status": "passed",
+            "independentChecks": "passed controlled malformed/injection/failure/limit cases",
+            "liveMuse": "failed A remained unavailable; exhausted-ledger rerun made zero new calls",
+            "reason": "Successful receipt bridge cannot accept malformed native output or bypass independent gates"
+          },
+          "A4": {
+            "status": "partial",
+            "independentChecks": "passed actual Supabase durable pause/resume and recorded production UI",
+            "liveMuse": "closer-view journey not_run",
+            "reason": "Actual live closer-view and intended Android P1 interaction remain unobserved"
+          },
+          "I1": {
+            "status": "partial",
+            "independentChecks": "passed pair/product-only/carton/batch/unit/notice fixtures",
+            "liveMuse": "Shop B pair/unit/notice passed; A failed; C not_run",
+            "reason": "Live scenario coverage incomplete; fixture results are not substituted for live acceptance"
+          }
+        },
+        "p0Status": "partial",
+        "p0LedgerChanged": false,
+        "p0TwoPhoneChecks": "deferred_not_run",
+        "p1Status": "partial",
+        "p1Verified": false,
+        "p2Ready": false,
+        "deploymentReadiness": "production build and existing recorded browser checks pass; not deployed; full P1 verification incomplete",
+        "publicP0UrlUnchanged": "https://packproof-p0.vercel.app",
+        "blockers": [
+          "All eight P1 requests used: Shop A complete live round-trip after repair remains unverified; custody-gap live case not_run",
+          "Additional live work needs a new explicit bounded authorization; never reset or increase the exhausted ledger implicitly",
+          "Intended Android P1 journey not_run",
+          "Deferred P0 two-phone QR/JSON/transported-file tamper checks remain not_run"
+        ],
+        "evidence": [
+          "docs/packproof/evidence/P1C.md",
+          "docs/packproof/evidence/p1c-live.json",
+          "docs/packproof/evidence/p1c-adapter-supabase.json",
+          "docs/packproof/evidence/p1c-browser.json",
+          "docs/packproof/evidence/p1c-ui.png",
+          "docs/packproof/evidence/vitest-p1c-unit.json",
+          "docs/packproof/evidence/vitest-p1c-integration.json",
+          "docs/packproof/evidence/p1c-live-before-approval.json",
+          "docs/packproof/evidence/p1c-live-attempt-1.json",
+          "docs/packproof/evidence/p1c-live-a.json",
+          "docs/packproof/evidence/p1c-live-b.json",
+          "docs/packproof/evidence/p1c-latency-before.json",
+          "docs/packproof/evidence/p1c-latency-after.json",
+          "docs/packproof/evidence/vitest-p1c-optimization-unit.json",
+          "docs/packproof/evidence/vitest-p1c-optimization-integration.json",
+          "docs/packproof/evidence/p1c-performance.json"
+        ],
+        "nextBoundedWork": "P1C only: complete the actual Shop A round-trip after repair, then affordable incomplete-evidence coverage if needed. All eight prior requests are used: require a new explicit bounded authorization before paid calls and preserve prior ledgers/failed receipts. Add an explicitly authorized versioned rerun path rather than erasing executed cases; current CLI skips them. Preserve freshness and phone deferrals. Do not start P2.",
+        "usageTotals": {
+          "inputTokens": 22493,
+          "outputTokens": 2505,
+          "cachedTokens": 4322
+        },
+        "repairs": [
+          "Strict native receipt bridge for SDK-incompatible non-JSON tool-turn commentary; actual IDs/args/answers preserved, no extra inference",
+          "Status-less SDK parsing exceptions no longer automatically retryable",
+          "Cumulative scenario/preflight evidence retained on restart and exhausted-ledger rerun"
+        ],
+        "performanceFollowup": {
+          "phase": "P1C",
+          "status": "passed",
+          "providerRequests": 0,
+          "newProviderSpendUsd": 0,
+          "p0LedgerChanged": false,
+          "p1LedgerChanged": false,
+          "beforeMs": 10045,
+          "afterMs": 9069,
+          "improvementPercent": 9.72,
+          "queriesBefore": 123,
+          "queriesAfter": 109,
+          "queryReductionPercent": 11.38,
+          "signedSnapshotQueriesBefore": 8,
+          "signedSnapshotQueriesAfter": 6,
+          "checkpointClientQueriesBefore": 39,
+          "checkpointClientQueriesAfter": 39,
+          "connectionsBefore": 3,
+          "connectionsAfter": 3,
+          "scope": "One cold request before and after, actual Supabase and recorded AI; client queries only. Network variability applies. Not an optimized live Muse or deployed latency claim.",
+          "actions": 4,
+          "mandatoryFinalizerEvents": 4,
+          "changes": [
+            "Reuse immutable server-owned checkpoint start time; do not reread unchanged progress after each model operation; DB reservation still enforces access and limits",
+            "Read private investigation and ordered trace together under forced RLS in one SQL snapshot",
+            "Coalesce only identical in-flight SQL reads inside one owner-bound runtime; never cache settled values; retain separate parsing and signature validation"
+          ],
+          "validation": {
+            "typecheck": "passed",
+            "unitTests": 132,
+            "unitFiles": 10,
+            "integrationTests": 15,
+            "productionBuild": "passed",
+            "bundleSecretChecks": "passed: 26 Next client assets",
+            "productionBrowser": "passed: production Chromium 390px, actual Supabase and recorded AI; both sellers, notice, gap, pause/resume/reload, leading zeros, unresolved physical state, controlled error and no overflow",
+            "shopARepair": "passed controlled non-JSON native tool-turn adapter case against actual Supabase; NOT a new live Muse pass",
+            "shopAActualLive": "failed before repair, unchanged",
+            "liveIncompleteEvidence": "not_run, unchanged",
+            "persistenceAndRls": "passed actual integration, including ordered-view equivalence, foreign/missing denial, limits and checkpoint recovery",
+            "serverStopped": true,
+            "changedFileSecretScan": "passed: 45 pending files, zero configured-secret/private-key matches",
+            "privateOutputTracePaths": 0,
+            "preservation": "passed: both real ledgers, live receipts, signed fixture/root, lockfile, migrations, protected P0/P1A files and exact P0 phase/budget unchanged"
+          },
+          "evidence": [
+            "docs/packproof/evidence/p1c-latency-before.json",
+            "docs/packproof/evidence/p1c-latency-after.json",
+            "docs/packproof/evidence/vitest-p1c-optimization-unit.json",
+            "docs/packproof/evidence/vitest-p1c-optimization-integration.json",
+            "docs/packproof/evidence/p1c-adapter-supabase.json",
+            "docs/packproof/evidence/p1c-browser.json"
+          ]
+        }
+      },
+      "performanceFollowup": {
+        "phase": "P1C",
+        "status": "passed",
+        "providerRequests": 0,
+        "newProviderSpendUsd": 0,
+        "p0LedgerChanged": false,
+        "p1LedgerChanged": false,
+        "beforeMs": 10045,
+        "afterMs": 9069,
+        "improvementPercent": 9.72,
+        "queriesBefore": 123,
+        "queriesAfter": 109,
+        "queryReductionPercent": 11.38,
+        "signedSnapshotQueriesBefore": 8,
+        "signedSnapshotQueriesAfter": 6,
+        "checkpointClientQueriesBefore": 39,
+        "checkpointClientQueriesAfter": 39,
+        "connectionsBefore": 3,
+        "connectionsAfter": 3,
+        "scope": "One cold request before and after, actual Supabase and recorded AI; client queries only. Network variability applies. Not an optimized live Muse or deployed latency claim.",
+        "actions": 4,
+        "mandatoryFinalizerEvents": 4,
+        "changes": [
+          "Reuse immutable server-owned checkpoint start time; do not reread unchanged progress after each model operation; DB reservation still enforces access and limits",
+          "Read private investigation and ordered trace together under forced RLS in one SQL snapshot",
+          "Coalesce only identical in-flight SQL reads inside one owner-bound runtime; never cache settled values; retain separate parsing and signature validation"
+        ],
+        "validation": {
+          "typecheck": "passed",
+          "unitTests": 132,
+          "unitFiles": 10,
+          "integrationTests": 15,
+          "productionBuild": "passed",
+          "bundleSecretChecks": "passed: 26 Next client assets",
+          "productionBrowser": "passed: production Chromium 390px, actual Supabase and recorded AI; both sellers, notice, gap, pause/resume/reload, leading zeros, unresolved physical state, controlled error and no overflow",
+          "shopARepair": "passed controlled non-JSON native tool-turn adapter case against actual Supabase; NOT a new live Muse pass",
+          "shopAActualLive": "failed before repair, unchanged",
+          "liveIncompleteEvidence": "not_run, unchanged",
+          "persistenceAndRls": "passed actual integration, including ordered-view equivalence, foreign/missing denial, limits and checkpoint recovery",
+          "serverStopped": true,
+          "changedFileSecretScan": "passed: 45 pending files, zero configured-secret/private-key matches",
+          "privateOutputTracePaths": 0,
+          "preservation": "passed: both real ledgers, live receipts, signed fixture/root, lockfile, migrations, protected P0/P1A files and exact P0 phase/budget unchanged"
+        },
+        "evidence": [
+          "docs/packproof/evidence/p1c-latency-before.json",
+          "docs/packproof/evidence/p1c-latency-after.json",
+          "docs/packproof/evidence/vitest-p1c-optimization-unit.json",
+          "docs/packproof/evidence/vitest-p1c-optimization-integration.json",
+          "docs/packproof/evidence/p1c-adapter-supabase.json",
+          "docs/packproof/evidence/p1c-browser.json"
+        ]
       }
     },
     {
@@ -564,7 +879,9 @@
     "Corrected database password accepted: direct PostgreSQL verify-full TLS and read-only permission query passed. No reset, migration, seed or application data write.",
     "2 November explicit sequencing exception: user confirms single-phone tests, private bucket independently verified, two-phone tests deferred. Independent bounded P1 foundation work authorized; P0 remains partial/F3-F4 blocked and full p1Ready false.",
     "2 November P1A: additive schema applied to verified empty dedicated PackProof development project; 27 fictional signed records and typed read services verified. P1 remains partial; full A1-A4/I1 and deferred physical gates remain incomplete. No new paid model calls.",
-    "2 November P1B: six-tool LangChain Investigator, scoped APIs/UI and actual Supabase LangGraph checkpoints verified with deterministic protocol fixtures and separate-process restart. New live Muse/SAM disabled; P1 partial/P2 not ready. Physical F3/F4 deferrals unchanged."
+    "2 November P1B: six-tool LangChain Investigator, scoped APIs/UI and actual Supabase LangGraph checkpoints verified with deterministic protocol fixtures and separate-process restart. New live Muse/SAM disabled; P1 partial/P2 not ready. Physical F3/F4 deferrals unchanged.",
+    "2 November P1C after explicit $2/eight-request approval: initial SDK parsing failure consumed three Shop A calls and two retries. Native response bridge repaired the demonstrated non-JSON tool-turn incompatibility; Shop B complete live flow passed in five remaining calls. A failed/C not_run retained; P1 partial/P2 false; no further requests authorized. Usage estimate $0.0340083, $2 reserved, actual billing unknown. P0 ledger/deferrals unchanged.",
+    "2 November P1 performance continuation: recorded-controller actual Supabase sample 10,045\u21929,069ms, client requests123\u2192109. Identical in-flight SQL reads shared only within one owner runtime, with independent signature checks and no settled cache; private row/ordered trace read together under RLS; redundant model-step reads removed while preserving server checkpoint expiry and atomic DB limits. 132 unit/15 integration and production UI/build/bundle passed. Controlled Shop A adapter repaired-shape passed; no actual live rerun, zero new Meta calls. User requests commit/handoff; no deployment or P2 advancement."
   ],
   "p0Budget": {
     "maximumUsd": 3,
@@ -591,12 +908,12 @@
   "architectureAmendment": "project_handoff/Architecture_Amendments.md",
   "compatibility": {
     "langchain": {
-      "status": "passed_offline_only",
+      "status": "live_partial_native_meta_bridge_verified_shop_b",
       "coreVersion": "1.3.2",
       "openaiAdapterVersion": "1.8.0",
-      "liveMetaRequests": 0,
+      "liveMetaRequests": 8,
       "fixture": "reconstructed saved protocol envelopes + real demo registry",
-      "investigator": "actual six-tool controller verified with deterministic reconstructed P1 protocol fixtures; new live Meta not_run"
+      "investigator": "Guarded live B passed via LangChain requests/tools plus strict native receipt bridge on four SDK-incompatible tool turns; A failed; C not_run. Web runtime remains recorded."
     },
     "langgraph": {
       "status": "implemented_postgres_checkpoint_verified",
@@ -653,46 +970,47 @@
   "continuationBaselineCommit": "e0c94a6dbe355196a522f3e078b491db7acdfceb",
   "latestLocalValidation": {
     "status": "passed",
-    "tests": 99,
-    "testFiles": 8,
-    "integrationTests": 9,
+    "tests": 132,
+    "testFiles": 10,
+    "integrationTests": 15,
     "integrationEnvironment": "actual dedicated Supabase project",
     "evaluationCases": 12,
     "falseSupported": 0,
     "unsupportedCitations": 0,
-    "browser": "passed production Chromium plus mobile viewport; no physical phone claim",
+    "browser": "passed optimized production Chromium/390px against actual Supabase with recorded AI; no physical phone claim",
     "separateProcessRestart": "passed",
-    "evidence": "docs/packproof/evidence/vitest-p1b-unit.json",
-    "integrationEvidence": "docs/packproof/evidence/vitest-p1b-integration.json",
+    "evidence": "docs/packproof/evidence/vitest-p1c-optimization-unit.json",
+    "integrationEvidence": "docs/packproof/evidence/vitest-p1c-optimization-integration.json",
     "newMetaRequests": 0,
-    "actualSpendUsd": null
+    "actualSpendUsd": null,
+    "liveValidation": "partial; B passed, A failed before adapter repair, C not_run",
+    "phase": "P1C",
+    "scope": "P1C performance continuation; eight earlier live requests unchanged"
   },
   "p1IndependentWorkAuthorized": true,
-  "nextAuthorizedWork": {
-    "phase": "P1",
-    "scope": "P1B implementation complete at recorded/local validation scope. Stop; next bounded P1 live-validation/repair task needs a separate prompt and explicit budget before paid calls. Do not begin P2.",
-    "authorizedOn": "2026-11-02",
-    "basis": "Explicit user instruction to defer two-phone tests and continue building",
-    "formalP0Verified": false,
-    "pendingGates": [
-      "F3 two-phone QR trials and measured reliability",
-      "F4 physical JSON transport/alteration trials"
-    ],
-    "noPaidMetaCallsUnderP0Budget": true,
-    "exclusions": [
-      "No full P1/P2/P3/P4 implementation in one prompt",
-      "No claim that deferred tests passed or were waived",
-      "No weakening of deterministic verification/authority/RLS/release gates"
-    ],
-    "completedTask": "P1B Evidence Investigator and orchestration (replayed model validation)"
-  },
+  "nextAuthorizedWork": "P1C only: complete the actual Shop A round-trip after repair, then affordable incomplete-evidence coverage if needed. All eight prior requests are used: require a new explicit bounded authorization before paid calls and preserve prior ledgers/failed receipts. Add an explicitly authorized versioned rerun path rather than erasing executed cases; current CLI skips them. Preserve freshness and phone deferrals. Do not start P2.",
   "p1bReadiness": {
     "foundationReady": true,
     "implementationStarted": true,
     "implementationStatus": "implemented_replay_verified_live_blocked",
     "nextPromptRequired": true,
-    "liveProviderBudgetAuthorized": false,
-    "p0PhysicalDeferralsUnchanged": true
+    "liveProviderBudgetAuthorized": true,
+    "p0PhysicalDeferralsUnchanged": true,
+    "liveProviderRequestsRemaining": 0
   },
-  "p2Ready": false
+  "p2Ready": false,
+  "p1Budget": {
+    "approval": "explicitly_approved",
+    "approvedAt": "2026-11-02T01:33:24.882Z",
+    "maximumUsd": 2,
+    "maximumInferenceRequests": 8,
+    "modelRequests": 8,
+    "tokenPreflightRequests": 8,
+    "reservedUsd": 2,
+    "remainingInferenceRequests": 0,
+    "furtherCallsAllowed": false,
+    "usageEstimatedUsd": 0.034008300000000005,
+    "actualBilledUsd": null,
+    "ledger": ".local/p1c/budget.json"
+  }
 }

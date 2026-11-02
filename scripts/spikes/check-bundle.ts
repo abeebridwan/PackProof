@@ -3,7 +3,7 @@ import { parseEnv } from 'node:util';
 import { evidence } from './evidence.js';
 const inputs = JSON.parse(await readFile('dist/bundle-inputs.json', 'utf8')) as string[];
 const bundle = await readFile('dist/phone.js', 'utf8');
-const forbiddenInputs = inputs.filter(p => /src\/server\/|scripts\/p1b?\/|scripts\/spikes\/(provider|budget|access|serve|fixture-registry|meta-gateway|langchain|safe-tracing|infrastructure|deploy-entry|vercel-entry|package-probe|deployment-browser)|node_modules\/.*(openai|sharp|meta-sam|langchain|langsmith)|\.env/.test(p));
+const forbiddenInputs = inputs.filter(p => /src\/server\/|scripts\/p1[bc]?\/|scripts\/spikes\/(provider|budget|access|serve|fixture-registry|meta-gateway|langchain|safe-tracing|infrastructure|deploy-entry|vercel-entry|package-probe|deployment-browser)|node_modules\/.*(openai|sharp|meta-sam|langchain|langsmith)|\.env/.test(p));
 if (forbiddenInputs.length) throw new Error('Server-only module in browser bundle');
 if (/MODEL_API_KEY|PACK_SIGNING_JWK|TRANSFER_SIGNING_JWK|SUPABASE_SECRET_KEY|SUPABASE_DB_URL|BEGIN PRIVATE KEY|offline-keys\.json/.test(bundle)) throw new Error('Secret marker in browser bundle');
 let env: Record<string, string | undefined> = {};

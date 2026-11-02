@@ -8,6 +8,7 @@ export const TraceEvent = z.strictObject({
   tool: z.enum(['lookup_demo_product','lookup_product','lookup_seller','get_product_notices','get_custody_history','inspect_product_image','request_additional_evidence']).optional(), model: z.literal('muse-spark-1.3').optional(),
   refs: z.array(z.uuid()).max(8), latencyMs: z.number().int().min(0).max(60_000),
   inputTokens: z.number().int().nonnegative().optional(), outputTokens: z.number().int().nonnegative().optional(),
+  estimatedCostUsd:z.number().min(0).max(0.25).optional(),pricingVerifiedAt:z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   errorCode: z.enum(['provider_unavailable', 'invalid_output', 'action_limit']).optional(),
 });
 export type TraceEvent = z.infer<typeof TraceEvent>;

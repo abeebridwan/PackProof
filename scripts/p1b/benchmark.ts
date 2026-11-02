@@ -8,7 +8,7 @@ import {sha256,utf8} from '../../src/domain/verification/p0-crypto.js';
 // arguments, credentials, cookies, media or private investigation identifiers.
 // Counts describe client requests, not statements executed inside SQL functions.
 const label=process.argv[2];
-if(!['before','after','cycle-before','cycle-after'].includes(label??''))throw new Error('Use before, after, cycle-before or cycle-after');
+if(!['before','after','cycle-before','cycle-after','p1c-before','p1c-after'].includes(label??''))throw new Error('Use before, after, cycle-before, cycle-after, p1c-before or p1c-after');
 const app=await runtime({sessionHash:await sha256(utf8(crypto.randomUUID())),userId:null});
 let queries=0,queryMs=0,connections=0;
 const byVerb:Record<string,number>={};
@@ -33,7 +33,8 @@ try{
  const result=await startInvestigation(app.options,{namespace:'packproof-demo',productMark:'FP-1002',packagingMark:'PK-2002',sellerId:'30000000-0000-4000-8000-000000000005',listingText:'Fictional latency measurement',context:'listing',captureId:null});
  const report={label,at:new Date().toISOString(),mode:'actual Supabase + recorded model transport',providerRequests:0,elapsedMs:Math.round(performance.now()-start),queryCount:queries,cumulativeQueryMs:Math.round(queryMs),connections,byVerb,byGroup,actions:result.actions,finding:result.finding?.status,mandatoryFinalizerEvents:result.trace.filter(t=>t.source==='mandatory_finalizer').length,note:'One cold runtime request from this laptop; cumulative query time includes overlapping work. Not a live model or deployed latency benchmark.'};
  if(result.status!=='complete'||report.actions!==4||report.mandatoryFinalizerEvents!==4)throw new Error('Incomplete benchmark');
- await writeFile(`docs/packproof/evidence/p1b-latency-${label}.json`,JSON.stringify(report,null,2)+'\n');
+ const filename=label!.startsWith('p1c-')?`p1c-latency-${label!.slice(4)}`:`p1b-latency-${label}`;
+ await writeFile(`docs/packproof/evidence/${filename}.json`,JSON.stringify(report,null,2)+'\n');
  console.log(JSON.stringify(report));
 }catch{
  process.exitCode=1;console.error('Latency measurement failed; no database details logged.');

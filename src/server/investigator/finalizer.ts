@@ -16,7 +16,7 @@ export function factCatalog(results:Partial<Record<ToolName,ToolResult>>):Claim[
  }
  return facts;
 }
-export async function finalize(options:{input:InvestigationInput;services:EvidenceServices;selected:Partial<Record<ToolName,ToolResult>>;answer:unknown;error:string|null;at?:string;clock?:()=>string;maxAgeMs?:number;audit?:(name:ToolName,result:ToolResult)=>Promise<void>}){
+export async function finalize(options:{input:InvestigationInput;services:EvidenceServices;selected:Partial<Record<ToolName,ToolResult>>;answer:unknown;error:string|null;mode?:'live'|'recorded-demo';at?:string;clock?:()=>string;maxAgeMs?:number;audit?:(name:ToolName,result:ToolResult)=>Promise<void>}){
  const i=options.input;
  const product=await options.services.lookupProduct({namespace:i.namespace,productMark:i.productMark,packagingMark:i.packagingMark});
  const item=product.data?.itemId;
@@ -52,5 +52,5 @@ export async function finalize(options:{input:InvestigationInput;services:Eviden
  const summary=status==='supported'?'Fictional listing records support this relationship and registered seller. The physical item has not been inspected.':status==='blocked'?(seller?.status==='blocked'?seller.reason:product.status==='blocked'?product.reason:inspected?.reason??product.reason):status==='unavailable'?'Investigation could not produce a validated explanation. No supported finding was issued.':status==='stale'?'Evidence is stale or its retrieval time is unreliable. Refresh before relying on it.':'More evidence is needed. Record consistency and physical association remain separate.';
  // Model text and invented citations never reach the UI. Only verified fact sentences are selected.
  const selectedFacts=badCitations?[]:ids.map(id=>facts.find(f=>f.id===id)!);
- return Finding.parse({status,recordStatus:product.status,sellerStatus:seller?.status??'needs_evidence',physicalStatus:i.context==='listing'?'not_inspected':'unresolved',demo:true,mode:'recorded-demo',summary,claims:selectedFacts,product,seller,notices,history,missingChecks,asOf:at,policyVersion:'p1b-mandatory-finalizer-1'});
+ return Finding.parse({status,recordStatus:product.status,sellerStatus:seller?.status??'needs_evidence',physicalStatus:i.context==='listing'?'not_inspected':'unresolved',demo:true,mode:options.mode??'recorded-demo',summary,claims:selectedFacts,product,seller,notices,history,missingChecks,asOf:at,policyVersion:'p1b-mandatory-finalizer-1'});
 }
