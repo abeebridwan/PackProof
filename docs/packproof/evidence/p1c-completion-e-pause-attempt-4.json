@@ -1,0 +1,85 @@
+{
+  "stage": "e-nullable",
+  "attempt": 4,
+  "scenarioVersion": "nullable-wire-2",
+  "status": "failed",
+  "scope": "Actual JSON-null tool selection and correlated real Supabase result; two-turn probe, not a complete investigation or physical inspection",
+  "grantId": "p1c-repair-2026-11-02",
+  "approval": {
+    "statement": "I approve up to $4 USD for P1C completion, unilimieted additional Meta inference requests including retries.",
+    "approvedAt": "2026-11-02T08:56:50.626Z"
+  },
+  "limits": {
+    "totalCents": 400,
+    "requests": null,
+    "reservationCents": 25,
+    "inputTokens": 16000,
+    "outputTokens": 2048,
+    "timeoutMs": 45000,
+    "retries": 2
+  },
+  "originalAttempts": [
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-2.json"
+  ],
+  "startedAt": "2026-11-02T08:58:32.582Z",
+  "completedAt": "2026-11-02T08:58:43.338Z",
+  "error": "p1_nullable_call_invalid",
+  "requests": [
+    {
+      "operationKey": "43730b3a-4dbe-48be-a678-4d320957292e:1:0:0",
+      "requestId": "059d3b06-ce37-4b13-bf92-e38b97bfdf32",
+      "requestSha256": "958f779a493d6c9ee2704a0a776b486867038c68c60a82e38a0fff577c1bc926",
+      "countedInputTokens": 2517,
+      "latencyMs": 3754,
+      "preflightMs": 1506,
+      "inferenceMs": 2248,
+      "toolResults": [],
+      "response": {
+        "responseId": "chatcmpl-01a19b7b-79bc-75aa-9287-2ca3990e4f26",
+        "model": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": [
+          {
+            "id": "call_3ae8d143-b25e-45ac-bedb-551d032a1ff8",
+            "name": "lookup_product",
+            "args": {
+              "namespace": "packproof-demo",
+              "productMark": "FP-1002",
+              "packagingMark": "null"
+            }
+          }
+        ],
+        "answer": null,
+        "usage": {
+          "inputTokens": 2358,
+          "outputTokens": 314,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "text"
+      },
+      "adapter": "native_validated_fallback",
+      "adapterFailure": "SyntaxError"
+    }
+  ],
+  "tokenPreflights": 1,
+  "totalMs": 10755,
+  "providerInferenceMs": 2248,
+  "tokenPreflightMs": 1506,
+  "result": null,
+  "reservedCents": 50,
+  "usageEstimatedUsd": 0.0082975,
+  "actualBilledUsd": null,
+  "pricing": {
+    "verifiedAt": "2026-11-02",
+    "source": "https://dev.meta.ai/docs/pricing-rate-limits",
+    "inputPerMillion": 1.25,
+    "cachedInputPerMillion": 0.15,
+    "outputPerMillion": 4.25
+  }
+}

@@ -62,7 +62,7 @@ export function investigatorGraph(o:GraphOptions){
  .addNode('tool',toolStep)
  .addNode('pause_assessment',async({value:s})=>{
   const checkStart=now();
-  const finding=await finalize({mode,input:s.input,services:o.services,selected:s.results,answer:{claimIds:factCatalog(s.results).map(f=>f.id)},error:null,clock:()=>new Date(now()).toISOString(),audit:(name,result)=>o.store.audit(o.owner,s.id,name,result,`pause:${s.revision}:${name}`)});
+  const finding=await finalize({mode,input:s.input,services:o.services,selected:s.results,answer:{claimIds:factCatalog(s.results).map(f=>f.id)},error:null,pendingEvidence:true,clock:()=>new Date(now()).toISOString(),audit:(name,result)=>o.store.audit(o.owner,s.id,name,result,`pause:${s.revision}:${name}`)});
   if(o.metrics)o.metrics.verificationMs+=now()-checkStart;
   await o.store.save(o.owner,s.id,{finding,status:'needs_input'});
   return {value:{...s,finding}};

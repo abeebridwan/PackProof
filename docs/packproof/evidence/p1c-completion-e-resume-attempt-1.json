@@ -1,0 +1,1008 @@
+{
+  "attemptId": "p1c-repair-2026-11-02:e-resume:5",
+  "scenarioVersion": "missing-package-first-1",
+  "grantId": "p1c-repair-2026-11-02",
+  "originalAttempts": [
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-2.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-3.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-4.json"
+  ],
+  "startedAt": "2026-11-02T09:01:34.164Z",
+  "completedAt": "2026-11-02T09:02:08.813Z",
+  "stage": "e-resume",
+  "status": "passed",
+  "error": null,
+  "requests": [
+    {
+      "operationKey": "33949d42-b7a8-4052-be87-62b0e91fccae:2:1:0",
+      "requestId": "28effb73-c302-49ba-8870-01984691321a",
+      "requestSha256": "10530a025298f7624a9bb8ea8a82e73414ea17121a6187be77913d560a9a682c",
+      "countedInputTokens": 2839,
+      "latencyMs": 4822,
+      "preflightMs": 850,
+      "inferenceMs": 3971,
+      "toolResults": [
+        {
+          "callId": "call_4f0c9c22-c65d-4acc-aa19-b2cbec5dd3e4",
+          "name": "request_additional_evidence",
+          "result": {
+            "status": "needs_evidence",
+            "reason": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable.",
+            "evidence_refs": [],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:20.355Z",
+            "policyVersion": "p1b-evidence-request-1",
+            "next_actions": [
+              "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+            ],
+            "data": {
+              "state": "needs_input",
+              "investigationId": "33949d42-b7a8-4052-be87-62b0e91fccae",
+              "evidenceRevision": 1,
+              "instruction": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+            }
+          }
+        }
+      ],
+      "response": {
+        "responseId": "chatcmpl-01a19b7e-3743-734e-b92c-13ad593c2fb2",
+        "model": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": [
+          {
+            "id": "call_7b376422-4c22-49cc-8fb1-fe874028a2db",
+            "name": "lookup_product",
+            "args": {
+              "namespace": "packproof-demo",
+              "productMark": "FP-1002",
+              "packagingMark": "PK-2002"
+            }
+          }
+        ],
+        "answer": null,
+        "usage": {
+          "inputTokens": 2684,
+          "outputTokens": 820,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "text"
+      },
+      "adapter": "native_validated_fallback",
+      "adapterFailure": "SyntaxError"
+    },
+    {
+      "operationKey": "33949d42-b7a8-4052-be87-62b0e91fccae:2:2:0",
+      "requestId": "903d3034-3b3e-4168-8e66-1b2de5ab2dc9",
+      "requestSha256": "3366e33b432d9d98b1f597019e57e8b3a56e41e633d1131fc4dbdee164bbc4d9",
+      "countedInputTokens": 3331,
+      "latencyMs": 2858,
+      "preflightMs": 567,
+      "inferenceMs": 2291,
+      "toolResults": [
+        {
+          "callId": "call_4f0c9c22-c65d-4acc-aa19-b2cbec5dd3e4",
+          "name": "request_additional_evidence",
+          "result": {
+            "status": "needs_evidence",
+            "reason": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable.",
+            "evidence_refs": [],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:20.355Z",
+            "policyVersion": "p1b-evidence-request-1",
+            "next_actions": [
+              "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+            ],
+            "data": {
+              "state": "needs_input",
+              "investigationId": "33949d42-b7a8-4052-be87-62b0e91fccae",
+              "evidenceRevision": 1,
+              "instruction": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+            }
+          }
+        },
+        {
+          "callId": "call_7b376422-4c22-49cc-8fb1-fe874028a2db",
+          "name": "lookup_product",
+          "result": {
+            "status": "supported",
+            "reason": "Signed marks are consistent; physical association remains unresolved",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000320",
+              "30000000-0000-4000-8000-000000000321",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:43.189Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "label": "Fictional PackProof demonstration data",
+              "itemId": "10000000-0000-4000-8000-000000000002",
+              "scope": "unit",
+              "modelCode": "DEMO-FORMULA",
+              "batchCode": "BATCH-02",
+              "issuer": {
+                "id": "30000000-0000-4000-8000-000000000002",
+                "kind": "issuer",
+                "label": "Fictional Formula Producer",
+                "demo": true
+              },
+              "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+              "mappingStatus": "matched",
+              "physicalBinding": "unresolved",
+              "recordIds": [
+                "30000000-0000-4000-8000-000000000320",
+                "30000000-0000-4000-8000-000000000321",
+                "30000000-0000-4000-8000-000000000209"
+              ]
+            }
+          }
+        }
+      ],
+      "response": {
+        "responseId": "chatcmpl-01a19b7e-4865-73be-94ea-3db5d8d16f5f",
+        "model": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": [
+          {
+            "id": "call_4fb5f1fe-8b9b-45cf-a215-a94b04357a7f",
+            "name": "lookup_seller",
+            "args": {
+              "itemId": "10000000-0000-4000-8000-000000000002",
+              "sellerId": "30000000-0000-4000-8000-000000000005"
+            }
+          }
+        ],
+        "answer": null,
+        "usage": {
+          "inputTokens": 3176,
+          "outputTokens": 473,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "text"
+      },
+      "adapter": "native_validated_fallback",
+      "adapterFailure": "SyntaxError"
+    },
+    {
+      "operationKey": "33949d42-b7a8-4052-be87-62b0e91fccae:2:3:0",
+      "requestId": "3798e0b4-47b2-4e54-a97e-570d24b146f6",
+      "requestSha256": "a6f3dca598180d7f4b0bb0f74d3e7bcc7d5d5729792a775a361f4bf85123913e",
+      "countedInputTokens": 3744,
+      "latencyMs": 3061,
+      "preflightMs": 838,
+      "inferenceMs": 2223,
+      "toolResults": [
+        {
+          "callId": "call_4f0c9c22-c65d-4acc-aa19-b2cbec5dd3e4",
+          "name": "request_additional_evidence",
+          "result": {
+            "status": "needs_evidence",
+            "reason": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable.",
+            "evidence_refs": [],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:20.355Z",
+            "policyVersion": "p1b-evidence-request-1",
+            "next_actions": [
+              "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+            ],
+            "data": {
+              "state": "needs_input",
+              "investigationId": "33949d42-b7a8-4052-be87-62b0e91fccae",
+              "evidenceRevision": 1,
+              "instruction": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+            }
+          }
+        },
+        {
+          "callId": "call_7b376422-4c22-49cc-8fb1-fe874028a2db",
+          "name": "lookup_product",
+          "result": {
+            "status": "supported",
+            "reason": "Signed marks are consistent; physical association remains unresolved",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000320",
+              "30000000-0000-4000-8000-000000000321",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:43.189Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "label": "Fictional PackProof demonstration data",
+              "itemId": "10000000-0000-4000-8000-000000000002",
+              "scope": "unit",
+              "modelCode": "DEMO-FORMULA",
+              "batchCode": "BATCH-02",
+              "issuer": {
+                "id": "30000000-0000-4000-8000-000000000002",
+                "kind": "issuer",
+                "label": "Fictional Formula Producer",
+                "demo": true
+              },
+              "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+              "mappingStatus": "matched",
+              "physicalBinding": "unresolved",
+              "recordIds": [
+                "30000000-0000-4000-8000-000000000320",
+                "30000000-0000-4000-8000-000000000321",
+                "30000000-0000-4000-8000-000000000209"
+              ]
+            }
+          }
+        },
+        {
+          "callId": "call_4fb5f1fe-8b9b-45cf-a215-a94b04357a7f",
+          "name": "lookup_seller",
+          "result": {
+            "status": "supported",
+            "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000320",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:47.711Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "itemId": "10000000-0000-4000-8000-000000000002",
+              "sellerId": "30000000-0000-4000-8000-000000000005",
+              "registeredSeller": true,
+              "authorized": true,
+              "ownerVersion": 1,
+              "authorityRecordIds": [
+                "30000000-0000-4000-8000-000000000320",
+                "30000000-0000-4000-8000-000000000209"
+              ],
+              "asOf": "2026-11-02T09:01:47.711Z"
+            }
+          }
+        }
+      ],
+      "response": {
+        "responseId": "chatcmpl-01a19b7e-5c7d-713d-bedf-9c6e3729dcb7",
+        "model": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": [
+          {
+            "id": "call_c58b9e45-3af0-422f-8cab-f6061c9c35e1",
+            "name": "get_product_notices",
+            "args": {
+              "itemId": "10000000-0000-4000-8000-000000000002"
+            }
+          }
+        ],
+        "answer": null,
+        "usage": {
+          "inputTokens": 3589,
+          "outputTokens": 492,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "text"
+      },
+      "adapter": "native_validated_fallback",
+      "adapterFailure": "SyntaxError"
+    },
+    {
+      "operationKey": "33949d42-b7a8-4052-be87-62b0e91fccae:2:4:0",
+      "requestId": "6bf1885e-e5fd-4521-a46d-e8aa201d5b9b",
+      "requestSha256": "ecef51aaf9d76b07f051e9813dfe25ff9a96fa14b50135024ac0f17854445937",
+      "countedInputTokens": 4135,
+      "latencyMs": 2677,
+      "preflightMs": 943,
+      "inferenceMs": 1734,
+      "toolResults": [
+        {
+          "callId": "call_4f0c9c22-c65d-4acc-aa19-b2cbec5dd3e4",
+          "name": "request_additional_evidence",
+          "result": {
+            "status": "needs_evidence",
+            "reason": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable.",
+            "evidence_refs": [],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:20.355Z",
+            "policyVersion": "p1b-evidence-request-1",
+            "next_actions": [
+              "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+            ],
+            "data": {
+              "state": "needs_input",
+              "investigationId": "33949d42-b7a8-4052-be87-62b0e91fccae",
+              "evidenceRevision": 1,
+              "instruction": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+            }
+          }
+        },
+        {
+          "callId": "call_7b376422-4c22-49cc-8fb1-fe874028a2db",
+          "name": "lookup_product",
+          "result": {
+            "status": "supported",
+            "reason": "Signed marks are consistent; physical association remains unresolved",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000320",
+              "30000000-0000-4000-8000-000000000321",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:43.189Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "label": "Fictional PackProof demonstration data",
+              "itemId": "10000000-0000-4000-8000-000000000002",
+              "scope": "unit",
+              "modelCode": "DEMO-FORMULA",
+              "batchCode": "BATCH-02",
+              "issuer": {
+                "id": "30000000-0000-4000-8000-000000000002",
+                "kind": "issuer",
+                "label": "Fictional Formula Producer",
+                "demo": true
+              },
+              "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+              "mappingStatus": "matched",
+              "physicalBinding": "unresolved",
+              "recordIds": [
+                "30000000-0000-4000-8000-000000000320",
+                "30000000-0000-4000-8000-000000000321",
+                "30000000-0000-4000-8000-000000000209"
+              ]
+            }
+          }
+        },
+        {
+          "callId": "call_4fb5f1fe-8b9b-45cf-a215-a94b04357a7f",
+          "name": "lookup_seller",
+          "result": {
+            "status": "supported",
+            "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000320",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:47.711Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "itemId": "10000000-0000-4000-8000-000000000002",
+              "sellerId": "30000000-0000-4000-8000-000000000005",
+              "registeredSeller": true,
+              "authorized": true,
+              "ownerVersion": 1,
+              "authorityRecordIds": [
+                "30000000-0000-4000-8000-000000000320",
+                "30000000-0000-4000-8000-000000000209"
+              ],
+              "asOf": "2026-11-02T09:01:47.711Z"
+            }
+          }
+        },
+        {
+          "callId": "call_c58b9e45-3af0-422f-8cab-f6061c9c35e1",
+          "name": "get_product_notices",
+          "result": {
+            "status": "supported",
+            "reason": "Applicable fictional notices in this dataset; external source coverage is unknown",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000402"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:53.054Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "notices": [
+                {
+                  "recordId": "30000000-0000-4000-8000-000000000402",
+                  "kind": "packaging_revision",
+                  "explanation": "Fictional packaging revision: the visible wrapper artwork changed for BATCH-02; this explains the demo change, not product safety.",
+                  "effectiveFrom": "2026-10-01T00:00:00.000Z",
+                  "effectiveUntil": "2027-01-01T00:00:00.000Z"
+                }
+              ],
+              "coverage": "demo_dataset_only",
+              "directoryVersion": 5,
+              "retrievedAt": "2026-11-02T09:01:53.054Z"
+            }
+          }
+        }
+      ],
+      "response": {
+        "responseId": "chatcmpl-01a19b7e-6edd-7131-a495-afd16852e505",
+        "model": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": [
+          {
+            "id": "call_f0d45396-0ae3-48d4-b03f-7bd022209210",
+            "name": "get_custody_history",
+            "args": {
+              "itemId": "10000000-0000-4000-8000-000000000002"
+            }
+          }
+        ],
+        "answer": null,
+        "usage": {
+          "inputTokens": 3980,
+          "outputTokens": 67,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "null"
+      },
+      "adapter": "langchain"
+    },
+    {
+      "operationKey": "33949d42-b7a8-4052-be87-62b0e91fccae:2:5:0",
+      "requestId": "b366d30b-a001-4bc8-9eaf-750db857c07f",
+      "requestSha256": "51d0fb389550957e30a522d64b39337cb38a6133325bb61b09b3dbcbd55c4c83",
+      "countedInputTokens": 4509,
+      "latencyMs": 4203,
+      "preflightMs": 351,
+      "inferenceMs": 3852,
+      "toolResults": [
+        {
+          "callId": "call_4f0c9c22-c65d-4acc-aa19-b2cbec5dd3e4",
+          "name": "request_additional_evidence",
+          "result": {
+            "status": "needs_evidence",
+            "reason": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable.",
+            "evidence_refs": [],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:20.355Z",
+            "policyVersion": "p1b-evidence-request-1",
+            "next_actions": [
+              "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+            ],
+            "data": {
+              "state": "needs_input",
+              "investigationId": "33949d42-b7a8-4052-be87-62b0e91fccae",
+              "evidenceRevision": 1,
+              "instruction": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+            }
+          }
+        },
+        {
+          "callId": "call_7b376422-4c22-49cc-8fb1-fe874028a2db",
+          "name": "lookup_product",
+          "result": {
+            "status": "supported",
+            "reason": "Signed marks are consistent; physical association remains unresolved",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000320",
+              "30000000-0000-4000-8000-000000000321",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:43.189Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "label": "Fictional PackProof demonstration data",
+              "itemId": "10000000-0000-4000-8000-000000000002",
+              "scope": "unit",
+              "modelCode": "DEMO-FORMULA",
+              "batchCode": "BATCH-02",
+              "issuer": {
+                "id": "30000000-0000-4000-8000-000000000002",
+                "kind": "issuer",
+                "label": "Fictional Formula Producer",
+                "demo": true
+              },
+              "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+              "mappingStatus": "matched",
+              "physicalBinding": "unresolved",
+              "recordIds": [
+                "30000000-0000-4000-8000-000000000320",
+                "30000000-0000-4000-8000-000000000321",
+                "30000000-0000-4000-8000-000000000209"
+              ]
+            }
+          }
+        },
+        {
+          "callId": "call_4fb5f1fe-8b9b-45cf-a215-a94b04357a7f",
+          "name": "lookup_seller",
+          "result": {
+            "status": "supported",
+            "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000320",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:47.711Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "itemId": "10000000-0000-4000-8000-000000000002",
+              "sellerId": "30000000-0000-4000-8000-000000000005",
+              "registeredSeller": true,
+              "authorized": true,
+              "ownerVersion": 1,
+              "authorityRecordIds": [
+                "30000000-0000-4000-8000-000000000320",
+                "30000000-0000-4000-8000-000000000209"
+              ],
+              "asOf": "2026-11-02T09:01:47.711Z"
+            }
+          }
+        },
+        {
+          "callId": "call_c58b9e45-3af0-422f-8cab-f6061c9c35e1",
+          "name": "get_product_notices",
+          "result": {
+            "status": "supported",
+            "reason": "Applicable fictional notices in this dataset; external source coverage is unknown",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000402"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:53.054Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "notices": [
+                {
+                  "recordId": "30000000-0000-4000-8000-000000000402",
+                  "kind": "packaging_revision",
+                  "explanation": "Fictional packaging revision: the visible wrapper artwork changed for BATCH-02; this explains the demo change, not product safety.",
+                  "effectiveFrom": "2026-10-01T00:00:00.000Z",
+                  "effectiveUntil": "2027-01-01T00:00:00.000Z"
+                }
+              ],
+              "coverage": "demo_dataset_only",
+              "directoryVersion": 5,
+              "retrievedAt": "2026-11-02T09:01:53.054Z"
+            }
+          }
+        },
+        {
+          "callId": "call_f0d45396-0ae3-48d4-b03f-7bd022209210",
+          "name": "get_custody_history",
+          "result": {
+            "status": "supported",
+            "reason": "Permitted dated demo history; completeness outside this dataset is unknown",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000322",
+              "30000000-0000-4000-8000-000000000324"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T09:01:57.837Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "events": [
+                {
+                  "recordId": "30000000-0000-4000-8000-000000000322",
+                  "kind": "receipt",
+                  "occurredAt": "2026-11-01T12:00:00.000Z"
+                }
+              ],
+              "gaps": [],
+              "conflicts": [],
+              "snapshot": {
+                "recordId": "30000000-0000-4000-8000-000000000324",
+                "holderReference": "demo-shop-b",
+                "asOf": "2026-11-01T12:00:00.000Z"
+              }
+            }
+          }
+        }
+      ],
+      "response": {
+        "responseId": "chatcmpl-01a19b7e-8839-7006-bbb5-4b4c98049b19",
+        "model": "muse-spark-1.3",
+        "finishReason": "stop",
+        "calls": [],
+        "answer": {
+          "claimIds": [
+            "product.records",
+            "seller.authorization",
+            "notice.30000000-0000-4000-8000-000000000402",
+            "history.coverage"
+          ]
+        },
+        "usage": {
+          "inputTokens": 4354,
+          "outputTokens": 709,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "json"
+      },
+      "adapter": "langchain"
+    }
+  ],
+  "tokenPreflights": 5,
+  "totalMs": 34649,
+  "providerInferenceMs": 14071,
+  "tokenPreflightMs": 3549,
+  "modelOperationMs": 20287,
+  "toolOperationMs": 5417,
+  "verificationMs": 2341,
+  "result": {
+    "id": "33949d42-b7a8-4052-be87-62b0e91fccae",
+    "revision": 2,
+    "status": "complete",
+    "mode": "live",
+    "input": {
+      "namespace": "packproof-demo",
+      "productMark": "FP-1002",
+      "packagingMark": "PK-2002",
+      "sellerId": "30000000-0000-4000-8000-000000000005",
+      "listingText": "Controlled fictional evidence validation; no customer data.",
+      "context": "listing",
+      "captureId": null
+    },
+    "actions": 5,
+    "recaptures": 1,
+    "retries": 0,
+    "finding": {
+      "status": "supported",
+      "recordStatus": "supported",
+      "sellerStatus": "supported",
+      "physicalStatus": "not_inspected",
+      "demo": true,
+      "mode": "live",
+      "summary": "Fictional listing records support this relationship and registered seller. The physical item has not been inspected.",
+      "claims": [
+        {
+          "id": "product.records",
+          "kind": "issuer",
+          "text": "Signed marks are consistent; physical association remains unresolved",
+          "evidence_refs": [
+            "30000000-0000-4000-8000-000000000320",
+            "30000000-0000-4000-8000-000000000321",
+            "30000000-0000-4000-8000-000000000209"
+          ]
+        },
+        {
+          "id": "seller.authorization",
+          "kind": "seller",
+          "text": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+          "evidence_refs": [
+            "30000000-0000-4000-8000-000000000320",
+            "30000000-0000-4000-8000-000000000209"
+          ]
+        },
+        {
+          "id": "notice.30000000-0000-4000-8000-000000000402",
+          "kind": "notice",
+          "text": "Fictional packaging revision: the visible wrapper artwork changed for BATCH-02; this explains the demo change, not product safety.",
+          "evidence_refs": [
+            "30000000-0000-4000-8000-000000000402"
+          ]
+        },
+        {
+          "id": "history.coverage",
+          "kind": "history",
+          "text": "Permitted dated demo history; completeness outside this dataset is unknown",
+          "evidence_refs": [
+            "30000000-0000-4000-8000-000000000322",
+            "30000000-0000-4000-8000-000000000324"
+          ]
+        }
+      ],
+      "product": {
+        "status": "supported",
+        "reason": "Signed marks are consistent; physical association remains unresolved",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000321",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T09:02:03.637Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "label": "Fictional PackProof demonstration data",
+          "itemId": "10000000-0000-4000-8000-000000000002",
+          "scope": "unit",
+          "modelCode": "DEMO-FORMULA",
+          "batchCode": "BATCH-02",
+          "issuer": {
+            "id": "30000000-0000-4000-8000-000000000002",
+            "kind": "issuer",
+            "label": "Fictional Formula Producer",
+            "demo": true
+          },
+          "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+          "mappingStatus": "matched",
+          "physicalBinding": "unresolved",
+          "recordIds": [
+            "30000000-0000-4000-8000-000000000320",
+            "30000000-0000-4000-8000-000000000321",
+            "30000000-0000-4000-8000-000000000209"
+          ]
+        }
+      },
+      "seller": {
+        "status": "supported",
+        "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T09:02:04.251Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "itemId": "10000000-0000-4000-8000-000000000002",
+          "sellerId": "30000000-0000-4000-8000-000000000005",
+          "registeredSeller": true,
+          "authorized": true,
+          "ownerVersion": 1,
+          "authorityRecordIds": [
+            "30000000-0000-4000-8000-000000000320",
+            "30000000-0000-4000-8000-000000000209"
+          ],
+          "asOf": "2026-11-02T09:02:04.251Z"
+        }
+      },
+      "notices": {
+        "status": "supported",
+        "reason": "Applicable fictional notices in this dataset; external source coverage is unknown",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000402"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T09:02:04.251Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "notices": [
+            {
+              "recordId": "30000000-0000-4000-8000-000000000402",
+              "kind": "packaging_revision",
+              "explanation": "Fictional packaging revision: the visible wrapper artwork changed for BATCH-02; this explains the demo change, not product safety.",
+              "effectiveFrom": "2026-10-01T00:00:00.000Z",
+              "effectiveUntil": "2027-01-01T00:00:00.000Z"
+            }
+          ],
+          "coverage": "demo_dataset_only",
+          "directoryVersion": 5,
+          "retrievedAt": "2026-11-02T09:02:04.251Z"
+        }
+      },
+      "history": {
+        "status": "supported",
+        "reason": "Permitted dated demo history; completeness outside this dataset is unknown",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000322",
+          "30000000-0000-4000-8000-000000000324"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T09:02:04.251Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "events": [
+            {
+              "recordId": "30000000-0000-4000-8000-000000000322",
+              "kind": "receipt",
+              "occurredAt": "2026-11-01T12:00:00.000Z"
+            }
+          ],
+          "gaps": [],
+          "conflicts": [],
+          "snapshot": {
+            "recordId": "30000000-0000-4000-8000-000000000324",
+            "holderReference": "demo-shop-b",
+            "asOf": "2026-11-01T12:00:00.000Z"
+          }
+        }
+      },
+      "missingChecks": [],
+      "asOf": "2026-11-02T09:02:05.488Z",
+      "policyVersion": "p1b-mandatory-finalizer-1"
+    },
+    "request": null,
+    "trace": [
+      {
+        "tool": "request_additional_evidence",
+        "status": "needs_evidence",
+        "source": "model_tool",
+        "evidence_refs": [],
+        "reason": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable."
+      },
+      {
+        "tool": "lookup_seller",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks"
+      },
+      {
+        "tool": "lookup_product",
+        "status": "needs_evidence",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000321",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Two-mark relationship not checked"
+      },
+      {
+        "tool": "get_product_notices",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000402"
+        ],
+        "reason": "Applicable fictional notices in this dataset; external source coverage is unknown"
+      },
+      {
+        "tool": "get_custody_history",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000322",
+          "30000000-0000-4000-8000-000000000324"
+        ],
+        "reason": "Permitted dated demo history; completeness outside this dataset is unknown"
+      },
+      {
+        "tool": "lookup_product",
+        "status": "supported",
+        "source": "model_tool",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000321",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Signed marks are consistent; physical association remains unresolved"
+      },
+      {
+        "tool": "lookup_seller",
+        "status": "supported",
+        "source": "model_tool",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks"
+      },
+      {
+        "tool": "get_product_notices",
+        "status": "supported",
+        "source": "model_tool",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000402"
+        ],
+        "reason": "Applicable fictional notices in this dataset; external source coverage is unknown"
+      },
+      {
+        "tool": "get_custody_history",
+        "status": "supported",
+        "source": "model_tool",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000322",
+          "30000000-0000-4000-8000-000000000324"
+        ],
+        "reason": "Permitted dated demo history; completeness outside this dataset is unknown"
+      },
+      {
+        "tool": "get_product_notices",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000402"
+        ],
+        "reason": "Applicable fictional notices in this dataset; external source coverage is unknown"
+      },
+      {
+        "tool": "lookup_seller",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks"
+      },
+      {
+        "tool": "lookup_product",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000321",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Signed marks are consistent; physical association remains unresolved"
+      },
+      {
+        "tool": "get_custody_history",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000322",
+          "30000000-0000-4000-8000-000000000324"
+        ],
+        "reason": "Permitted dated demo history; completeness outside this dataset is unknown"
+      }
+    ],
+    "errorCode": null
+  },
+  "roundTrip": true,
+  "structuredAnswer": true,
+  "identifiersComplete": true,
+  "mandatoryChecks": true,
+  "outcome": true
+}

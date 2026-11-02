@@ -64,6 +64,9 @@ pnpm probe:access
 | `pnpm evaluate:p1b` | Run the shared 12-case evaluation against a signed database snapshot using recorded responses. |
 | `pnpm p1c:budget status` | Inspect the independent P1 approval/reservation ledger; does not approve spending. |
 | `pnpm p1c:live` | Run guarded operator-only live validation after separate approval; refuses all Meta requests while unapproved. |
+| `pnpm p1c:budget --completion status` | Inspect the fixed follow-up grant; its16-request allowance is exhausted. |
+| `pnpm p1c:budget --repair status` | Inspect the new $4 dollar-only grant without making a provider call. |
+| `pnpm p1c:complete` | Report/run the separately authorized completion attempts; preserves prior evidence and skips completed cases. |
 | `pnpm probe:bundle` | Check browser inputs and output for server modules and configured secrets. |
 | `pnpm probe:crypto` | Exercise Node/browser signing, verification and local browser checks. |
 | `pnpm probe:access` | Report which access settings are configured, without printing credentials. |
@@ -85,7 +88,9 @@ The browser crypto check requires Chrome at `/usr/bin/google-chrome`, or a `CHRO
 
 Use the existing ignored Supabase configuration. For an HTTPS reverse proxy, set `APP_ORIGIN` to its exact public origin. P1B evidence and current limitations are recorded in [P1B.md](docs/packproof/evidence/P1B.md). The app has a PWA manifest and responsive layout; offline installation/verification belongs to P4.
 
-The separately approved P1 live-validation run used all eight allowed Meta requests: Shop B passed its complete tool/result/finalizer flow; Shop A failed at SDK parsing before the repair, and the live custody-gap case was not run. The response adapter now handles the demonstrated Meta tool-turn incompatibility without another inference request. Usage-based estimate: **$0.0340**; **$2 reserved**, actual billing unknown. The exhausted P1 ledger persists under ignored `.local/p1c/`; the P0 ledger is unchanged. The web UI still uses recorded AI. Do not change `P1_PROVIDER_MODE` to enable live spending. See [P1C evidence](docs/packproof/evidence/P1C.md) for receipts, remaining checks and the request cap. P1 remains partial; no new deployment or P2 readiness is claimed. A later controller comparison with recorded AI measured **10.05→9.07 seconds** and **123→109 database requests**, with all mandatory checks retained. This is one local before/after sample; live Muse latency after optimization has not been measured.
+Guarded operator validation has passed real Muse investigations for Shop A's authorization refusal, Shop B's signed notice, the custody gap, and controlled closer-view pause/resume across separate processes. Missing packaging now triggers a specific evidence request before lookup; the supplied code can resume the investigation. Muse's direct nullable-argument generation remains an observed limitation and is never coerced into success. The web UI remains recorded AI, and physical association is never inferred from matching records. See [P1C evidence](docs/packproof/evidence/P1C.md) for receipts, budgets and validation. P1 remains partial pending intended Android UI observation; P2 has not started.
+
+The recorded-AI controller comparison remains **10.05→9.07 seconds** and **123→109 database requests**, with mandatory checks retained. It is one local before/after sample, separate from live-model timings.
 
 ## Try the P0 browser test page
 

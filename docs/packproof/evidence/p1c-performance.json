@@ -49,5 +49,24 @@
     "docs/packproof/evidence/vitest-p1c-optimization-integration.json",
     "docs/packproof/evidence/p1c-adapter-supabase.json",
     "docs/packproof/evidence/p1c-browser.json"
-  ]
+  ],
+  "latestLiveRepair": {
+    "scope": "Actual Muse missing-package request-first pause/resume; distinct from recorded-provider benchmark",
+    "evidence": [
+      "docs/packproof/evidence/p1c-completion-e-pause-attempt-5.json",
+      "docs/packproof/evidence/p1c-completion-e-resume-attempt-1.json"
+    ],
+    "pauseMs": 11315,
+    "resumeMs": 34649,
+    "resumeModelOperationMs": 20287,
+    "resumeToolOperationMs": 5417,
+    "resumeVerificationMs": 2341,
+    "providerInferenceMs": 16743,
+    "tokenPreflightMs": 4528,
+    "clientSqlCount": null,
+    "timingsOverlap": true,
+    "requests": 6,
+    "grantUsageEstimateIncludesTwoRejectedProbesUsd": 0.04602175,
+    "actualBilledUsd": null
+  }
 }

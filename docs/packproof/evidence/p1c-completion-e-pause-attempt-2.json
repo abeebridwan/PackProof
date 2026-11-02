@@ -1,0 +1,262 @@
+{
+  "stage": "e-pause-repair",
+  "status": "failed",
+  "error": null,
+  "requests": [
+    {
+      "operationKey": "652f68c8-8e3f-4ee5-9847-f921562a27a5:1:0:0",
+      "requestId": "5355656c-51cd-4875-bd04-1744c000febb",
+      "requestSha256": "723981112d1e0acf9dfb81a07b645d72dc0d5060a556e6c1d077f45b0a224581",
+      "countedInputTokens": 2474,
+      "latencyMs": 5071,
+      "preflightMs": 2430,
+      "inferenceMs": 2641,
+      "toolResults": [],
+      "response": {
+        "responseId": "chatcmpl-01a19a07-4867-7378-baa7-824ca8dbe464",
+        "model": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": [
+          {
+            "id": "call_060582f4-a671-4629-bf7c-e8cf1c58e02c",
+            "name": "lookup_product",
+            "args": {
+              "namespace": "packproof-demo",
+              "productMark": "FP-1002",
+              "packagingMark": "null"
+            }
+          }
+        ],
+        "answer": null,
+        "usage": {
+          "inputTokens": 2319,
+          "outputTokens": 403,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "text"
+      },
+      "adapter": "native_validated_fallback",
+      "adapterFailure": "SyntaxError"
+    }
+  ],
+  "tokenPreflights": 1,
+  "totalMs": 10386,
+  "providerInferenceMs": 2641,
+  "tokenPreflightMs": 2430,
+  "modelOperationMs": 6267,
+  "toolOperationMs": 0,
+  "verificationMs": 849,
+  "result": {
+    "id": "652f68c8-8e3f-4ee5-9847-f921562a27a5",
+    "revision": 1,
+    "status": "unavailable",
+    "mode": "live",
+    "input": {
+      "namespace": "packproof-demo",
+      "productMark": "FP-1002",
+      "packagingMark": null,
+      "sellerId": "30000000-0000-4000-8000-000000000005",
+      "listingText": "Controlled fictional evidence validation; no customer data.",
+      "context": "listing",
+      "captureId": null
+    },
+    "actions": 1,
+    "recaptures": 0,
+    "retries": 0,
+    "finding": {
+      "status": "unavailable",
+      "recordStatus": "needs_evidence",
+      "sellerStatus": "supported",
+      "physicalStatus": "not_inspected",
+      "demo": true,
+      "mode": "live",
+      "summary": "Investigation could not produce a validated explanation. No supported finding was issued.",
+      "claims": [],
+      "product": {
+        "status": "needs_evidence",
+        "reason": "Two-mark relationship not checked",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000321",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T02:12:11.612Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "label": "Fictional PackProof demonstration data",
+          "itemId": "10000000-0000-4000-8000-000000000002",
+          "scope": "unit",
+          "modelCode": "DEMO-FORMULA",
+          "batchCode": "BATCH-02",
+          "issuer": {
+            "id": "30000000-0000-4000-8000-000000000002",
+            "kind": "issuer",
+            "label": "Fictional Formula Producer",
+            "demo": true
+          },
+          "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+          "mappingStatus": "not_checked",
+          "physicalBinding": "unresolved",
+          "recordIds": [
+            "30000000-0000-4000-8000-000000000320",
+            "30000000-0000-4000-8000-000000000321",
+            "30000000-0000-4000-8000-000000000209"
+          ]
+        }
+      },
+      "seller": {
+        "status": "supported",
+        "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T02:12:12.002Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "itemId": "10000000-0000-4000-8000-000000000002",
+          "sellerId": "30000000-0000-4000-8000-000000000005",
+          "registeredSeller": true,
+          "authorized": true,
+          "ownerVersion": 1,
+          "authorityRecordIds": [
+            "30000000-0000-4000-8000-000000000320",
+            "30000000-0000-4000-8000-000000000209"
+          ],
+          "asOf": "2026-11-02T02:12:12.002Z"
+        }
+      },
+      "notices": {
+        "status": "supported",
+        "reason": "Applicable fictional notices in this dataset; external source coverage is unknown",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000402"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T02:12:12.002Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "notices": [
+            {
+              "recordId": "30000000-0000-4000-8000-000000000402",
+              "kind": "packaging_revision",
+              "explanation": "Fictional packaging revision: the visible wrapper artwork changed for BATCH-02; this explains the demo change, not product safety.",
+              "effectiveFrom": "2026-10-01T00:00:00.000Z",
+              "effectiveUntil": "2027-01-01T00:00:00.000Z"
+            }
+          ],
+          "coverage": "demo_dataset_only",
+          "directoryVersion": 5,
+          "retrievedAt": "2026-11-02T02:12:12.002Z"
+        }
+      },
+      "history": {
+        "status": "supported",
+        "reason": "Permitted dated demo history; completeness outside this dataset is unknown",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000322",
+          "30000000-0000-4000-8000-000000000324"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T02:12:12.002Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "events": [
+            {
+              "recordId": "30000000-0000-4000-8000-000000000322",
+              "kind": "receipt",
+              "occurredAt": "2026-11-01T12:00:00.000Z"
+            }
+          ],
+          "gaps": [],
+          "conflicts": [],
+          "snapshot": {
+            "recordId": "30000000-0000-4000-8000-000000000324",
+            "holderReference": "demo-shop-b",
+            "asOf": "2026-11-01T12:00:00.000Z"
+          }
+        }
+      },
+      "missingChecks": [
+        "lookup_product",
+        "lookup_seller",
+        "get_product_notices",
+        "get_custody_history"
+      ],
+      "asOf": "2026-11-02T02:12:12.222Z",
+      "policyVersion": "p1b-mandatory-finalizer-1"
+    },
+    "request": null,
+    "trace": [
+      {
+        "tool": "lookup_product",
+        "status": "needs_evidence",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000321",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Two-mark relationship not checked"
+      },
+      {
+        "tool": "lookup_seller",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks"
+      },
+      {
+        "tool": "get_product_notices",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000402"
+        ],
+        "reason": "Applicable fictional notices in this dataset; external source coverage is unknown"
+      },
+      {
+        "tool": "get_custody_history",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000322",
+          "30000000-0000-4000-8000-000000000324"
+        ],
+        "reason": "Permitted dated demo history; completeness outside this dataset is unknown"
+      }
+    ],
+    "errorCode": "tool_scope_mismatch"
+  },
+  "roundTrip": false,
+  "structuredAnswer": false,
+  "identifiersComplete": true,
+  "mandatoryChecks": true,
+  "outcome": false
+}

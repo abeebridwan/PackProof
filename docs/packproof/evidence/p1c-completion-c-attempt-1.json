@@ -1,0 +1,830 @@
+{
+  "stage": "c",
+  "status": "passed",
+  "error": null,
+  "requests": [
+    {
+      "operationKey": "7270f37e-900a-417f-84bf-694821339305:1:0:0",
+      "requestId": "9ded1312-a376-49a7-84de-15008ec363ed",
+      "requestSha256": "360cb8e5b6511bdd5f0797c5f9e1d82c30112ab0ecd2b2e886a74bb8d4366c3e",
+      "countedInputTokens": 2419,
+      "latencyMs": 3321,
+      "preflightMs": 1241,
+      "inferenceMs": 2080,
+      "toolResults": [],
+      "response": {
+        "responseId": "chatcmpl-01a19a04-784d-755b-a2c4-9394f756b604",
+        "model": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": [
+          {
+            "id": "call_3a47b942-7e81-4375-8b4d-90f735ef4f2d",
+            "name": "lookup_product",
+            "args": {
+              "namespace": "packproof-demo",
+              "productMark": "FP-GAP-01",
+              "packagingMark": "PK-GAP-01"
+            }
+          }
+        ],
+        "answer": null,
+        "usage": {
+          "inputTokens": 2264,
+          "outputTokens": 277,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "text"
+      },
+      "adapter": "native_validated_fallback",
+      "adapterFailure": "SyntaxError"
+    },
+    {
+      "operationKey": "7270f37e-900a-417f-84bf-694821339305:1:1:0",
+      "requestId": "496f722e-9a43-4367-b538-d7278b06ee06",
+      "requestSha256": "253aec3e91447e1284b5c65603ab42ae391279ede43e59dc01347aaf83c5251c",
+      "countedInputTokens": 2913,
+      "latencyMs": 3482,
+      "preflightMs": 1312,
+      "inferenceMs": 2170,
+      "toolResults": [
+        {
+          "callId": "call_3a47b942-7e81-4375-8b4d-90f735ef4f2d",
+          "name": "lookup_product",
+          "result": {
+            "status": "supported",
+            "reason": "Signed marks are consistent; physical association remains unresolved",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000330",
+              "30000000-0000-4000-8000-000000000331",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T02:09:07.151Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "label": "Fictional PackProof demonstration data",
+              "itemId": "30000000-0000-4000-8000-000000000103",
+              "scope": "unit",
+              "modelCode": "DEMO-FORMULA",
+              "batchCode": "BATCH-GAP",
+              "issuer": {
+                "id": "30000000-0000-4000-8000-000000000002",
+                "kind": "issuer",
+                "label": "Fictional Formula Producer",
+                "demo": true
+              },
+              "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+              "mappingStatus": "matched",
+              "physicalBinding": "unresolved",
+              "recordIds": [
+                "30000000-0000-4000-8000-000000000330",
+                "30000000-0000-4000-8000-000000000331",
+                "30000000-0000-4000-8000-000000000209"
+              ]
+            }
+          }
+        }
+      ],
+      "response": {
+        "responseId": "chatcmpl-01a19a04-8ab2-732d-a10b-a4a46d1a159e",
+        "model": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": [
+          {
+            "id": "call_d719593b-0539-49e9-9069-208d2a20cfa9",
+            "name": "lookup_seller",
+            "args": {
+              "itemId": "30000000-0000-4000-8000-000000000103",
+              "sellerId": "30000000-0000-4000-8000-000000000005"
+            }
+          }
+        ],
+        "answer": null,
+        "usage": {
+          "inputTokens": 2758,
+          "outputTokens": 472,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "text"
+      },
+      "adapter": "native_validated_fallback",
+      "adapterFailure": "SyntaxError"
+    },
+    {
+      "operationKey": "7270f37e-900a-417f-84bf-694821339305:1:2:0",
+      "requestId": "ce6edb4b-8047-4340-bd6f-4ed6b875030d",
+      "requestSha256": "17a71065f1edb9822c5e4be5989bc6886eb8e9bffc31fe495b6dd3d327f56095",
+      "countedInputTokens": 3326,
+      "latencyMs": 2067,
+      "preflightMs": 924,
+      "inferenceMs": 1143,
+      "toolResults": [
+        {
+          "callId": "call_3a47b942-7e81-4375-8b4d-90f735ef4f2d",
+          "name": "lookup_product",
+          "result": {
+            "status": "supported",
+            "reason": "Signed marks are consistent; physical association remains unresolved",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000330",
+              "30000000-0000-4000-8000-000000000331",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T02:09:07.151Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "label": "Fictional PackProof demonstration data",
+              "itemId": "30000000-0000-4000-8000-000000000103",
+              "scope": "unit",
+              "modelCode": "DEMO-FORMULA",
+              "batchCode": "BATCH-GAP",
+              "issuer": {
+                "id": "30000000-0000-4000-8000-000000000002",
+                "kind": "issuer",
+                "label": "Fictional Formula Producer",
+                "demo": true
+              },
+              "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+              "mappingStatus": "matched",
+              "physicalBinding": "unresolved",
+              "recordIds": [
+                "30000000-0000-4000-8000-000000000330",
+                "30000000-0000-4000-8000-000000000331",
+                "30000000-0000-4000-8000-000000000209"
+              ]
+            }
+          }
+        },
+        {
+          "callId": "call_d719593b-0539-49e9-9069-208d2a20cfa9",
+          "name": "lookup_seller",
+          "result": {
+            "status": "supported",
+            "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000330",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T02:09:11.827Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "itemId": "30000000-0000-4000-8000-000000000103",
+              "sellerId": "30000000-0000-4000-8000-000000000005",
+              "registeredSeller": true,
+              "authorized": true,
+              "ownerVersion": 1,
+              "authorityRecordIds": [
+                "30000000-0000-4000-8000-000000000330",
+                "30000000-0000-4000-8000-000000000209"
+              ],
+              "asOf": "2026-11-02T02:09:11.827Z"
+            }
+          }
+        }
+      ],
+      "response": {
+        "responseId": "chatcmpl-01a19a04-977a-716c-a381-a9435accbe29",
+        "model": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": [
+          {
+            "id": "call_55d416bb-1ec3-4ce0-af29-b974b70af56e",
+            "name": "get_product_notices",
+            "args": {
+              "itemId": "30000000-0000-4000-8000-000000000103"
+            }
+          }
+        ],
+        "answer": null,
+        "usage": {
+          "inputTokens": 3171,
+          "outputTokens": 205,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "text"
+      },
+      "adapter": "native_validated_fallback",
+      "adapterFailure": "SyntaxError"
+    },
+    {
+      "operationKey": "7270f37e-900a-417f-84bf-694821339305:1:3:0",
+      "requestId": "5e2999ea-eb28-48bc-b2bd-37cae079f56f",
+      "requestSha256": "c7f8a708b5beda799eb358311a30d16b5dccd5a55caa715dabe4c6f5057e6256",
+      "countedInputTokens": 3558,
+      "latencyMs": 2646,
+      "preflightMs": 1050,
+      "inferenceMs": 1596,
+      "toolResults": [
+        {
+          "callId": "call_3a47b942-7e81-4375-8b4d-90f735ef4f2d",
+          "name": "lookup_product",
+          "result": {
+            "status": "supported",
+            "reason": "Signed marks are consistent; physical association remains unresolved",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000330",
+              "30000000-0000-4000-8000-000000000331",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T02:09:07.151Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "label": "Fictional PackProof demonstration data",
+              "itemId": "30000000-0000-4000-8000-000000000103",
+              "scope": "unit",
+              "modelCode": "DEMO-FORMULA",
+              "batchCode": "BATCH-GAP",
+              "issuer": {
+                "id": "30000000-0000-4000-8000-000000000002",
+                "kind": "issuer",
+                "label": "Fictional Formula Producer",
+                "demo": true
+              },
+              "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+              "mappingStatus": "matched",
+              "physicalBinding": "unresolved",
+              "recordIds": [
+                "30000000-0000-4000-8000-000000000330",
+                "30000000-0000-4000-8000-000000000331",
+                "30000000-0000-4000-8000-000000000209"
+              ]
+            }
+          }
+        },
+        {
+          "callId": "call_d719593b-0539-49e9-9069-208d2a20cfa9",
+          "name": "lookup_seller",
+          "result": {
+            "status": "supported",
+            "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000330",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T02:09:11.827Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "itemId": "30000000-0000-4000-8000-000000000103",
+              "sellerId": "30000000-0000-4000-8000-000000000005",
+              "registeredSeller": true,
+              "authorized": true,
+              "ownerVersion": 1,
+              "authorityRecordIds": [
+                "30000000-0000-4000-8000-000000000330",
+                "30000000-0000-4000-8000-000000000209"
+              ],
+              "asOf": "2026-11-02T02:09:11.827Z"
+            }
+          }
+        },
+        {
+          "callId": "call_55d416bb-1ec3-4ce0-af29-b974b70af56e",
+          "name": "get_product_notices",
+          "result": {
+            "status": "supported",
+            "reason": "Applicable fictional notices in this dataset; external source coverage is unknown",
+            "evidence_refs": [],
+            "scope": "unit",
+            "asOf": "2026-11-02T02:09:15.096Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "notices": [],
+              "coverage": "demo_dataset_only",
+              "directoryVersion": 5,
+              "retrievedAt": "2026-11-02T02:09:15.096Z"
+            }
+          }
+        }
+      ],
+      "response": {
+        "responseId": "chatcmpl-01a19a04-a689-776f-b5ee-26e9eb8f11e6",
+        "model": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": [
+          {
+            "id": "call_490ede0e-343b-400f-9f71-b7cad8f78669",
+            "name": "get_custody_history",
+            "args": {
+              "itemId": "30000000-0000-4000-8000-000000000103"
+            }
+          }
+        ],
+        "answer": null,
+        "usage": {
+          "inputTokens": 3404,
+          "outputTokens": 354,
+          "cachedTokens": 241
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "text"
+      },
+      "adapter": "native_validated_fallback",
+      "adapterFailure": "SyntaxError"
+    },
+    {
+      "operationKey": "7270f37e-900a-417f-84bf-694821339305:1:4:0",
+      "requestId": "60323501-5887-42ea-9b63-6a65190da3e3",
+      "requestSha256": "4c6eccefa89df0ca77dbf8b86cdc72632ebf76086df847aa682d26800778ef17",
+      "countedInputTokens": 4049,
+      "latencyMs": 2779,
+      "preflightMs": 544,
+      "inferenceMs": 2235,
+      "toolResults": [
+        {
+          "callId": "call_3a47b942-7e81-4375-8b4d-90f735ef4f2d",
+          "name": "lookup_product",
+          "result": {
+            "status": "supported",
+            "reason": "Signed marks are consistent; physical association remains unresolved",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000330",
+              "30000000-0000-4000-8000-000000000331",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T02:09:07.151Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "label": "Fictional PackProof demonstration data",
+              "itemId": "30000000-0000-4000-8000-000000000103",
+              "scope": "unit",
+              "modelCode": "DEMO-FORMULA",
+              "batchCode": "BATCH-GAP",
+              "issuer": {
+                "id": "30000000-0000-4000-8000-000000000002",
+                "kind": "issuer",
+                "label": "Fictional Formula Producer",
+                "demo": true
+              },
+              "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+              "mappingStatus": "matched",
+              "physicalBinding": "unresolved",
+              "recordIds": [
+                "30000000-0000-4000-8000-000000000330",
+                "30000000-0000-4000-8000-000000000331",
+                "30000000-0000-4000-8000-000000000209"
+              ]
+            }
+          }
+        },
+        {
+          "callId": "call_d719593b-0539-49e9-9069-208d2a20cfa9",
+          "name": "lookup_seller",
+          "result": {
+            "status": "supported",
+            "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000330",
+              "30000000-0000-4000-8000-000000000209"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T02:09:11.827Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "itemId": "30000000-0000-4000-8000-000000000103",
+              "sellerId": "30000000-0000-4000-8000-000000000005",
+              "registeredSeller": true,
+              "authorized": true,
+              "ownerVersion": 1,
+              "authorityRecordIds": [
+                "30000000-0000-4000-8000-000000000330",
+                "30000000-0000-4000-8000-000000000209"
+              ],
+              "asOf": "2026-11-02T02:09:11.827Z"
+            }
+          }
+        },
+        {
+          "callId": "call_55d416bb-1ec3-4ce0-af29-b974b70af56e",
+          "name": "get_product_notices",
+          "result": {
+            "status": "supported",
+            "reason": "Applicable fictional notices in this dataset; external source coverage is unknown",
+            "evidence_refs": [],
+            "scope": "unit",
+            "asOf": "2026-11-02T02:09:15.096Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "notices": [],
+              "coverage": "demo_dataset_only",
+              "directoryVersion": 5,
+              "retrievedAt": "2026-11-02T02:09:15.096Z"
+            }
+          }
+        },
+        {
+          "callId": "call_490ede0e-343b-400f-9f71-b7cad8f78669",
+          "name": "get_custody_history",
+          "result": {
+            "status": "needs_evidence",
+            "reason": "Explicit custody history gap remains unresolved; present evidence cannot close it",
+            "evidence_refs": [
+              "30000000-0000-4000-8000-000000000332",
+              "30000000-0000-4000-8000-000000000333",
+              "30000000-0000-4000-8000-000000000334"
+            ],
+            "scope": "unit",
+            "asOf": "2026-11-02T02:09:18.946Z",
+            "policyVersion": "p1a-demo-evidence-1",
+            "next_actions": [
+              "Inspect the physical item separately"
+            ],
+            "data": {
+              "demo": true,
+              "events": [
+                {
+                  "recordId": "30000000-0000-4000-8000-000000000332",
+                  "kind": "receipt",
+                  "occurredAt": "2026-11-01T12:00:00.000Z"
+                }
+              ],
+              "gaps": [
+                {
+                  "recordId": "30000000-0000-4000-8000-000000000333",
+                  "from": "2026-10-01T00:00:00.000Z",
+                  "until": "2026-10-15T00:00:00.000Z",
+                  "reason": "Fictional missing earlier custody interval; present observation cannot resolve it",
+                  "resolved": false
+                }
+              ],
+              "conflicts": [],
+              "snapshot": {
+                "recordId": "30000000-0000-4000-8000-000000000334",
+                "holderReference": "demo-shop-b",
+                "asOf": "2026-11-01T12:00:00.000Z"
+              }
+            }
+          }
+        }
+      ],
+      "response": {
+        "responseId": "chatcmpl-01a19a04-b684-7299-a048-17b8a83f97ec",
+        "model": "muse-spark-1.3",
+        "finishReason": "stop",
+        "calls": [],
+        "answer": {
+          "claimIds": [
+            "product.records",
+            "seller.authorization",
+            "notices.coverage",
+            "history.coverage"
+          ]
+        },
+        "usage": {
+          "inputTokens": 3894,
+          "outputTokens": 379,
+          "cachedTokens": 0
+        }
+      },
+      "outcome": "validated",
+      "wireShape": {
+        "jsonContentType": true,
+        "assistantRole": true,
+        "contentKind": "json"
+      },
+      "adapter": "langchain"
+    }
+  ],
+  "tokenPreflights": 5,
+  "totalMs": 23826,
+  "providerInferenceMs": 9224,
+  "tokenPreflightMs": 5071,
+  "modelOperationMs": 16578,
+  "toolOperationMs": 3073,
+  "verificationMs": 851,
+  "result": {
+    "id": "7270f37e-900a-417f-84bf-694821339305",
+    "revision": 1,
+    "status": "complete",
+    "mode": "live",
+    "input": {
+      "namespace": "packproof-demo",
+      "productMark": "FP-GAP-01",
+      "packagingMark": "PK-GAP-01",
+      "sellerId": "30000000-0000-4000-8000-000000000005",
+      "listingText": "Controlled fictional evidence validation; no customer data.",
+      "context": "listing",
+      "captureId": null
+    },
+    "actions": 4,
+    "recaptures": 0,
+    "retries": 0,
+    "finding": {
+      "status": "needs_evidence",
+      "recordStatus": "supported",
+      "sellerStatus": "supported",
+      "physicalStatus": "not_inspected",
+      "demo": true,
+      "mode": "live",
+      "summary": "More evidence is needed. Record consistency and physical association remain separate.",
+      "claims": [
+        {
+          "id": "product.records",
+          "kind": "issuer",
+          "text": "Signed marks are consistent; physical association remains unresolved",
+          "evidence_refs": [
+            "30000000-0000-4000-8000-000000000330",
+            "30000000-0000-4000-8000-000000000331",
+            "30000000-0000-4000-8000-000000000209"
+          ]
+        },
+        {
+          "id": "seller.authorization",
+          "kind": "seller",
+          "text": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+          "evidence_refs": [
+            "30000000-0000-4000-8000-000000000330",
+            "30000000-0000-4000-8000-000000000209"
+          ]
+        },
+        {
+          "id": "notices.coverage",
+          "kind": "limitation",
+          "text": "Applicable fictional notices in this dataset; external source coverage is unknown",
+          "evidence_refs": []
+        },
+        {
+          "id": "history.coverage",
+          "kind": "history",
+          "text": "Explicit custody history gap remains unresolved; present evidence cannot close it",
+          "evidence_refs": [
+            "30000000-0000-4000-8000-000000000332",
+            "30000000-0000-4000-8000-000000000333",
+            "30000000-0000-4000-8000-000000000334"
+          ]
+        }
+      ],
+      "product": {
+        "status": "supported",
+        "reason": "Signed marks are consistent; physical association remains unresolved",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000330",
+          "30000000-0000-4000-8000-000000000331",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T02:09:22.784Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "label": "Fictional PackProof demonstration data",
+          "itemId": "30000000-0000-4000-8000-000000000103",
+          "scope": "unit",
+          "modelCode": "DEMO-FORMULA",
+          "batchCode": "BATCH-GAP",
+          "issuer": {
+            "id": "30000000-0000-4000-8000-000000000002",
+            "kind": "issuer",
+            "label": "Fictional Formula Producer",
+            "demo": true
+          },
+          "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+          "mappingStatus": "matched",
+          "physicalBinding": "unresolved",
+          "recordIds": [
+            "30000000-0000-4000-8000-000000000330",
+            "30000000-0000-4000-8000-000000000331",
+            "30000000-0000-4000-8000-000000000209"
+          ]
+        }
+      },
+      "seller": {
+        "status": "supported",
+        "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000330",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T02:09:23.193Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "itemId": "30000000-0000-4000-8000-000000000103",
+          "sellerId": "30000000-0000-4000-8000-000000000005",
+          "registeredSeller": true,
+          "authorized": true,
+          "ownerVersion": 1,
+          "authorityRecordIds": [
+            "30000000-0000-4000-8000-000000000330",
+            "30000000-0000-4000-8000-000000000209"
+          ],
+          "asOf": "2026-11-02T02:09:23.193Z"
+        }
+      },
+      "notices": {
+        "status": "supported",
+        "reason": "Applicable fictional notices in this dataset; external source coverage is unknown",
+        "evidence_refs": [],
+        "scope": "unit",
+        "asOf": "2026-11-02T02:09:23.193Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "notices": [],
+          "coverage": "demo_dataset_only",
+          "directoryVersion": 5,
+          "retrievedAt": "2026-11-02T02:09:23.193Z"
+        }
+      },
+      "history": {
+        "status": "needs_evidence",
+        "reason": "Explicit custody history gap remains unresolved; present evidence cannot close it",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000332",
+          "30000000-0000-4000-8000-000000000333",
+          "30000000-0000-4000-8000-000000000334"
+        ],
+        "scope": "unit",
+        "asOf": "2026-11-02T02:09:23.193Z",
+        "policyVersion": "p1a-demo-evidence-1",
+        "next_actions": [
+          "Inspect the physical item separately"
+        ],
+        "data": {
+          "demo": true,
+          "events": [
+            {
+              "recordId": "30000000-0000-4000-8000-000000000332",
+              "kind": "receipt",
+              "occurredAt": "2026-11-01T12:00:00.000Z"
+            }
+          ],
+          "gaps": [
+            {
+              "recordId": "30000000-0000-4000-8000-000000000333",
+              "from": "2026-10-01T00:00:00.000Z",
+              "until": "2026-10-15T00:00:00.000Z",
+              "reason": "Fictional missing earlier custody interval; present observation cannot resolve it",
+              "resolved": false
+            }
+          ],
+          "conflicts": [],
+          "snapshot": {
+            "recordId": "30000000-0000-4000-8000-000000000334",
+            "holderReference": "demo-shop-b",
+            "asOf": "2026-11-01T12:00:00.000Z"
+          }
+        }
+      },
+      "missingChecks": [],
+      "asOf": "2026-11-02T02:09:23.405Z",
+      "policyVersion": "p1b-mandatory-finalizer-1"
+    },
+    "request": null,
+    "trace": [
+      {
+        "tool": "lookup_product",
+        "status": "supported",
+        "source": "model_tool",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000330",
+          "30000000-0000-4000-8000-000000000331",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Signed marks are consistent; physical association remains unresolved"
+      },
+      {
+        "tool": "lookup_seller",
+        "status": "supported",
+        "source": "model_tool",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000330",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks"
+      },
+      {
+        "tool": "get_product_notices",
+        "status": "supported",
+        "source": "model_tool",
+        "evidence_refs": [],
+        "reason": "Applicable fictional notices in this dataset; external source coverage is unknown"
+      },
+      {
+        "tool": "get_custody_history",
+        "status": "needs_evidence",
+        "source": "model_tool",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000332",
+          "30000000-0000-4000-8000-000000000333",
+          "30000000-0000-4000-8000-000000000334"
+        ],
+        "reason": "Explicit custody history gap remains unresolved; present evidence cannot close it"
+      },
+      {
+        "tool": "lookup_seller",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000330",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks"
+      },
+      {
+        "tool": "lookup_product",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000330",
+          "30000000-0000-4000-8000-000000000331",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "reason": "Signed marks are consistent; physical association remains unresolved"
+      },
+      {
+        "tool": "get_product_notices",
+        "status": "supported",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [],
+        "reason": "Applicable fictional notices in this dataset; external source coverage is unknown"
+      },
+      {
+        "tool": "get_custody_history",
+        "status": "needs_evidence",
+        "source": "mandatory_finalizer",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000332",
+          "30000000-0000-4000-8000-000000000333",
+          "30000000-0000-4000-8000-000000000334"
+        ],
+        "reason": "Explicit custody history gap remains unresolved; present evidence cannot close it"
+      }
+    ],
+    "errorCode": null
+  },
+  "roundTrip": true,
+  "structuredAnswer": true,
+  "identifiersComplete": true,
+  "mandatoryChecks": true,
+  "outcome": true
+}

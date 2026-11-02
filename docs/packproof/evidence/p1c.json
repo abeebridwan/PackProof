@@ -2,29 +2,25 @@
   "phase": "P1C",
   "status": "partial",
   "preparation": "passed",
-  "liveValidation": "partial",
+  "liveValidation": "main_live_scenarios_and_missing_package_resume_passed_android_pending",
   "approval": {
-    "status": "explicitly_approved",
-    "statement": "I approve up to $2 USD for P1 live Meta validation, maximum 8 inference requests.",
-    "approvedAt": "2026-11-02T01:33:24.882Z",
-    "source": "Explicit user chat approval, 2 November 2026",
-    "persistentLedger": ".local/p1c/budget.json",
-    "remainingInferenceRequests": 0
+    "status": "explicitly_approved_three_distinct_grants",
+    "initialStatement": "I approve up to $2 USD for P1 live Meta validation, maximum 8 inference requests.",
+    "completionStatement": "I approve up to $4 USD for P1C completion, maximum 16 additional Meta inference requests including retries.",
+    "completionApprovedAt": "2026-11-02T02:08:32.085Z",
+    "remainingInferenceRequests": null,
+    "initialLedger": ".local/p1c/budget.json",
+    "completionLedger": ".local/p1c-completion-2026-11-02/budget.json",
+    "repairStatement": "I approve up to $4 USD for P1C completion, unilimieted additional Meta inference requests including retries.",
+    "repairApprovedAt": "2026-11-02T08:56:50.626Z",
+    "repairLedger": ".local/p1c-repair-2026-11-02/budget.json",
+    "remainingUnreservedCents": 200
   },
-  "limits": {
-    "totalCents": 200,
-    "requests": 8,
-    "reservationCents": 25,
-    "inputTokens": 16000,
-    "outputTokens": 2048,
-    "timeoutMs": 45000,
-    "retries": 2
-  },
-  "reservedCents": 200,
-  "providerRequests": 8,
-  "tokenPreflightRequests": 8,
+  "reservedCents": 800,
+  "providerRequests": 32,
+  "tokenPreflightRequests": 32,
   "newProviderSpendUsd": null,
-  "usageEstimatedUsd": 0.034008300000000005,
+  "usageEstimatedUsd": 0.1782992,
   "actualBilledUsd": null,
   "providerRequestIds": [
     "bdea5abb-e04f-4568-a1bf-a9e8ca7b66e5",
@@ -34,11 +30,45 @@
     "693a4066-ec9c-464a-94ad-e317b5323396",
     "7e494381-4a16-4966-bad9-c71f1275e0e5",
     "8eb74d3f-2976-4768-a3c4-50505ded1bb8",
-    "31b90188-45f9-4c7b-bd8b-04180f66b042"
+    "31b90188-45f9-4c7b-bd8b-04180f66b042",
+    "f3c4635e-03bb-4b4f-bbc8-390ccde8b424",
+    "1a46d239-e4e2-4cda-911f-3064767ab5c2",
+    "10219699-c7b2-452d-a97e-5fe2f631f73d",
+    "9ded1312-a376-49a7-84de-15008ec363ed",
+    "496f722e-9a43-4367-b538-d7278b06ee06",
+    "ce6edb4b-8047-4340-bd6f-4ed6b875030d",
+    "5e2999ea-eb28-48bc-b2bd-37cae079f56f",
+    "60323501-5887-42ea-9b63-6a65190da3e3",
+    "7e825f1d-1a41-412a-954b-aacd4abbf60b",
+    "5355656c-51cd-4875-bd04-1744c000febb",
+    "48376ea9-765a-4bb4-9aa2-77ed90039c32",
+    "fb11b005-5eb5-4802-9197-cc6c5c6de119",
+    "0ded2373-5d83-44eb-813f-15b4d5cf1188",
+    "379e6d28-d127-498a-9df0-272ed6331b95",
+    "649aa2b8-51e1-4182-9c21-a6d12ea4bde8",
+    "d939757e-3a32-4739-a4d8-2e667017f4bb",
+    "568b9305-eb2a-45e2-96a4-d9cc368b22bb",
+    "059d3b06-ce37-4b13-bf92-e38b97bfdf32",
+    "284314bc-676a-474a-858b-dfa4c0d3a58a",
+    "28effb73-c302-49ba-8870-01984691321a",
+    "903d3034-3b3e-4168-8e66-1b2de5ab2dc9",
+    "3798e0b4-47b2-4e54-a97e-570d24b146f6",
+    "6bf1885e-e5fd-4521-a46d-e8aa201d5b9b",
+    "b366d30b-a001-4bc8-9eaf-750db857c07f"
   ],
   "liveResponseEvidence": [
     "docs/packproof/evidence/p1c-live-a.json",
-    "docs/packproof/evidence/p1c-live-b.json"
+    "docs/packproof/evidence/p1c-live-b.json",
+    "docs/packproof/evidence/p1c-completion-a-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-c-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-2.json",
+    "docs/packproof/evidence/p1c-completion-p-pause-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-p-resume-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-3.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-4.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-5.json",
+    "docs/packproof/evidence/p1c-completion-e-resume-attempt-1.json"
   ],
   "pricing": {
     "verifiedAt": "2026-11-02",
@@ -50,32 +80,36 @@
   "liveScenarios": [
     {
       "scenario": "A",
-      "status": "failed",
-      "totalMs": 15926,
-      "providerInferenceMs": 4621,
-      "tokenPreflightMs": 4175,
-      "toolOperationMs": 0,
-      "verificationMs": 1142,
-      "findingStatus": "unavailable",
-      "roundTrip": false,
-      "structuredFinalAnswer": false
+      "status": "passed",
+      "evidence": "docs/packproof/evidence/p1c-completion-a-attempt-1.json",
+      "priorFailedEvidence": "docs/packproof/evidence/p1c-live-a.json"
     },
     {
       "scenario": "B",
-      "status": "passed",
-      "totalMs": 28166,
-      "providerInferenceMs": 11024,
-      "tokenPreflightMs": 5363,
-      "toolOperationMs": 3309,
-      "verificationMs": 1134,
-      "findingStatus": "supported",
-      "roundTrip": true,
-      "structuredFinalAnswer": true
+      "status": "passed_prior_grant",
+      "evidence": "docs/packproof/evidence/p1c-live-b.json",
+      "repeatedThisGrant": false
     },
     {
       "scenario": "C",
-      "status": "not_run",
-      "reason": "insufficient remaining request allowance for expected complete round-trip"
+      "status": "passed",
+      "evidence": "docs/packproof/evidence/p1c-completion-c-attempt-1.json"
+    },
+    {
+      "scenario": "physical_closer_view_resume",
+      "status": "passed",
+      "evidence": "docs/packproof/evidence/p1c-completion-p-resume-attempt-1.json",
+      "physicalAssociation": "unresolved",
+      "actualPhotoOrPhone": false
+    },
+    {
+      "scenario": "absent_packaging_code",
+      "status": "passed_request_first_workflow",
+      "failedNullableLookupAttempts": 4,
+      "pause": "docs/packproof/evidence/p1c-completion-e-pause-attempt-5.json",
+      "resume": "docs/packproof/evidence/p1c-completion-e-resume-attempt-1.json",
+      "nativeJsonNullGeneration": "not_proven",
+      "physicalAssociation": "not_inspected"
     }
   ],
   "validation": {
@@ -85,10 +119,10 @@
     "integrationTests": 15,
     "integrationMode": "actual Supabase; provider boundary injected with fake key, NOT live Meta",
     "baseline101Unit14IntegrationRetained": true,
-    "productionBuild": "passed",
-    "bundleSecretChecks": "passed: 26 Next client asset files",
+    "productionBuild": "passed latest isolated build",
+    "bundleSecretChecks": "passed:26 isolated current production client assets and private trace-path checks",
     "privateOutputTracePaths": 0,
-    "productionBrowser": "passed after optimization: production Chromium 390px, actual Supabase and recorded AI",
+    "productionBrowser": "passed latest isolated production Chromium390px, actual Supabase and recorded AI",
     "actualPhone": "not_run",
     "finalizerNegatives": "passed: omitted seller/history, invented refs, contradicted record, unknown mark, unsupported conclusion, tool-output injection, malformed/incomplete provider envelopes",
     "graphPersistence": "passed: actual Postgres pause/resume, counters/idempotency, RLS and lost-cycle recovery",
@@ -97,43 +131,77 @@
     "priorRecordedBenchmarkMs": 10349,
     "newDeployment": false,
     "liveLatencyScope": "One successful Shop B run, 28,166ms; failed A 15,926ms; not replay/deployed SLA",
-    "realMetaRoundTrip": "passed Shop B only",
+    "realMetaRoundTrip": "passed actual A/B/C, physical-context and missing-code request-first pause/resume",
     "budgetExhaustedRerun": "passed: zero new inference/preflight calls; failed A and passed B retained",
     "adapterNativeBridge": "passed: four actual tool turns with SyntaxError/non-JSON content; final structured reply parsed through LangChain",
     "unitReport": "docs/packproof/evidence/vitest-p1c-optimization-unit.json",
     "integrationReport": "docs/packproof/evidence/vitest-p1c-optimization-integration.json",
-    "shopAAfterRepair": "passed controlled adapter against actual Supabase with synthetic non-JSON tool-turn content, no retries; actual live A remains failed/not rerun"
+    "shopAAfterRepair": "passed actual live: 3 requests, seller blocked, cited final answer",
+    "latestCompletionChecks": {
+      "typecheck": "passed",
+      "targetedTests": 59,
+      "testFiles": 3,
+      "targetedReport": "docs/packproof/evidence/vitest-p1c-completion-targeted.json",
+      "actualSupabaseEarlyPauseAssessment": "passed: four mandatory reads, no Meta request",
+      "newMetaRequests": 8,
+      "fullUnitSuite": "not_rerun: previous baseline 132 at 7b72f85",
+      "fullIntegrationSuite": "not_rerun: previous baseline 15 at 7b72f85; actual live and deterministic Supabase checks ran",
+      "productionBuild": "passed isolated current source build; existing development server preserved",
+      "bundleSecretChecks": "passed root P0/current assets and all26 isolated production client assets; no private output-trace paths",
+      "browser": {
+        "status": "passed",
+        "evidence": "docs/packproof/evidence/p1c-browser.json",
+        "mode": "production local UI + actual Supabase + recorded AI; not live acceptance",
+        "actualPhone": false,
+        "providerRequests": 0,
+        "isolatedProductionBuild": "passed",
+        "buildCommand": "NEXT_TELEMETRY_DISABLED=1 node node_modules/next/dist/bin/next build .local/p1c-production --webpack",
+        "browserCommand": "node --import tsx scripts/p1c/browser.ts",
+        "developmentCheck": {
+          "status": "blocked",
+          "failedAttempts": 2,
+          "lastFailedStage": "pause",
+          "observed": "Existing port-3000 page did not hydrate in automation; HMR WebSocket handshake ERR_INVALID_HTTP_RESPONSE. No investigation POST was observed. Isolated production hydration and full UI checks passed."
+        },
+        "temporaryServerStopped": true,
+        "existingPort3000ServerPreserved": true
+      },
+      "actualAndroid": "not_run",
+      "twoPhoneChecks": "deferred_not_run",
+      "productionBuildCommand": "NEXT_TELEMETRY_DISABLED=1 node node_modules/next/dist/bin/next build .local/p1c-production --webpack",
+      "idempotentCliReruns": "passed: pause, resume and historical default commands made zero new requests; receipts/old aggregate retained"
+    }
   },
   "acceptance": {
     "A1": {
       "status": "passed",
       "independentChecks": "passed",
-      "liveMuse": "passed Shop B",
-      "reason": "All four signed Supabase read services and final cited claims in actual native round-trip"
+      "liveMuse": "passed A/B/C actual typed exchanges; physical-context follow-up independently finalized",
+      "reason": "Actual signed read services, correlated native tool results and schema-valid cited final answers"
     },
     "A2": {
       "status": "passed",
       "independentChecks": "passed controlled negative cases",
-      "liveMuse": "actual failed A independently verifies seller false",
+      "liveMuse": "A blocked seller; C explicit gap needs_evidence; physical association remains unresolved",
       "reason": "Missing/omitted checks and unknown issuer/mark cannot establish support; no invented authority"
     },
     "A3": {
       "status": "passed",
       "independentChecks": "passed controlled malformed/injection/failure/limit cases",
-      "liveMuse": "failed A remained unavailable; exhausted-ledger rerun made zero new calls",
+      "liveMuse": "Two nullable-scope failures stayed unavailable; new grant cap/history/locking tests and zero-call exhausted rerun passed",
       "reason": "Successful receipt bridge cannot accept malformed native output or bypass independent gates"
     },
     "A4": {
-      "status": "partial",
+      "status": "blocked",
       "independentChecks": "passed actual Supabase durable pause/resume and recorded production UI",
-      "liveMuse": "closer-view journey not_run",
-      "reason": "Actual live closer-view and intended Android P1 interaction remain unobserved"
+      "liveMuse": "passed controlled physical-context and absent-code closer-view pause/separate-process resume",
+      "reason": "Intended vivo Y03 P1 UI observation remains not_run; controlled live mechanism and recorded browser separation are not a phone observation"
     },
     "I1": {
-      "status": "partial",
+      "status": "passed",
       "independentChecks": "passed pair/product-only/carton/batch/unit/notice fixtures",
-      "liveMuse": "Shop B pair/unit/notice passed; A failed; C not_run",
-      "reason": "Live scenario coverage incomplete; fixture results are not substituted for live acceptance"
+      "liveMuse": "A/B seller outcomes and C gap passed; B applicable notice and physical limitations preserved",
+      "reason": "Controlled pair/mismatch/product-only/container/batch/unit tests plus actual signed live scenarios; no physical authenticity inferred"
     }
   },
   "p0Status": "partial",
@@ -145,10 +213,8 @@
   "deploymentReadiness": "production build and existing recorded browser checks pass; not deployed; full P1 verification incomplete",
   "publicP0UrlUnchanged": "https://packproof-p0.vercel.app",
   "blockers": [
-    "All eight P1 requests used: Shop A complete live round-trip after repair remains unverified; custody-gap live case not_run",
-    "Additional live work needs a new explicit bounded authorization; never reset or increase the exhausted ledger implicitly",
-    "Intended Android P1 journey not_run",
-    "Deferred P0 two-phone QR/JSON/transported-file tamper checks remain not_run"
+    "Intended vivo Y03 P1 UI interaction not_run; no physical observation inferred from desktop or controlled codes",
+    "P0 two-phone QR/JSON/transported-file tamper trials remain explicitly deferred; unchanged"
   ],
   "evidence": [
     "docs/packproof/evidence/P1C.md",
@@ -166,18 +232,35 @@
     "docs/packproof/evidence/p1c-latency-after.json",
     "docs/packproof/evidence/vitest-p1c-optimization-unit.json",
     "docs/packproof/evidence/vitest-p1c-optimization-integration.json",
-    "docs/packproof/evidence/p1c-performance.json"
+    "docs/packproof/evidence/p1c-performance.json",
+    "docs/packproof/evidence/p1c-completion.json",
+    "docs/packproof/evidence/p1c-completion-a-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-c-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-2.json",
+    "docs/packproof/evidence/p1c-completion-p-pause-attempt-1.json",
+    "docs/packproof/evidence/p1c-completion-p-resume-attempt-1.json",
+    "docs/packproof/evidence/vitest-p1c-completion-targeted.json",
+    "docs/packproof/evidence/vitest-p1c-completion-preserved-flows.json",
+    "docs/packproof/evidence/p1c-completion-assessment.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-3.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-4.json",
+    "docs/packproof/evidence/p1c-completion-e-pause-attempt-5.json",
+    "docs/packproof/evidence/p1c-completion-e-resume-attempt-1.json"
   ],
-  "nextBoundedWork": "P1C only: complete the actual Shop A round-trip after repair, then affordable incomplete-evidence coverage if needed. All eight prior requests are used: require a new explicit bounded authorization before paid calls and preserve prior ledgers/failed receipts. Add an explicitly authorized versioned rerun path rather than erasing executed cases; current CLI skips them. Preserve freshness and phone deferrals. Do not start P2.",
+  "nextBoundedWork": "P1 only: record the intended vivo Y03 UI journey when available. Reuse successful live evidence; no additional inference is needed now. Preserve freshness and settled two-phone deferrals. Stop at P1C; no P2 or deployment authorization.",
   "usageTotals": {
-    "inputTokens": 22493,
-    "outputTokens": 2505,
-    "cachedTokens": 4322
+    "inputTokens": 96073,
+    "outputTokens": 14877,
+    "cachedTokens": 4563
   },
   "repairs": [
     "Strict native receipt bridge for SDK-incompatible non-JSON tool-turn commentary; actual IDs/args/answers preserved, no extra inference",
     "Status-less SDK parsing exceptions no longer automatically retryable",
-    "Cumulative scenario/preflight evidence retained on restart and exhausted-ledger rerun"
+    "Cumulative scenario/preflight evidence retained on restart and exhausted-ledger rerun",
+    "Live missing-package request precedes lookup; canonical H2 nullable schema and strict scope unchanged",
+    "Pending-request server assessment accepts empty selected-fact list without allowing empty final model answers",
+    "Stable dollar-only grant with immutable predecessor binding, external anti-recreation registration and preserved old ledgers"
   ],
   "performanceFollowup": {
     "phase": "P1C",
@@ -231,5 +314,85 @@
       "docs/packproof/evidence/p1c-adapter-supabase.json",
       "docs/packproof/evidence/p1c-browser.json"
     ]
-  }
+  },
+  "completion": {
+    "grantId": "p1c-completion-2026-11-02",
+    "status": "passed",
+    "reservedCents": 400,
+    "inferenceRequests": 16,
+    "usageEstimatedUsd": 0.09826915,
+    "actualBilledUsd": null,
+    "evidence": "docs/packproof/evidence/p1c-completion.json",
+    "scope": "Prior fixed 16-request grant; immutable attempts retained"
+  },
+  "initialGrant": {
+    "limits": {
+      "totalCents": 200,
+      "requests": 8,
+      "reservationCents": 25,
+      "inputTokens": 16000,
+      "outputTokens": 2048,
+      "timeoutMs": 45000,
+      "retries": 2
+    },
+    "providerRequests": 8,
+    "reservedCents": 200,
+    "usageEstimatedUsd": 0.0340083,
+    "actualBilledUsd": null,
+    "ledger": ".local/p1c/budget.json"
+  },
+  "repair": {
+    "grantId": "p1c-repair-2026-11-02",
+    "approval": {
+      "statement": "I approve up to $4 USD for P1C completion, unilimieted additional Meta inference requests including retries.",
+      "approvedAt": "2026-11-02T08:56:50.626Z"
+    },
+    "limits": {
+      "totalCents": 400,
+      "requests": null,
+      "reservationCents": 25,
+      "inputTokens": 16000,
+      "outputTokens": 2048,
+      "timeoutMs": 45000,
+      "retries": 2
+    },
+    "ledger": ".local/p1c-repair-2026-11-02/budget.json",
+    "predecessorSha256": "f8cdc02dad3a821e563dbf838bbfea671e48145156685fe4470c47337a089cbf",
+    "providerRequests": 8,
+    "tokenPreflights": 8,
+    "reservedCents": 200,
+    "remainingUnreservedCents": 200,
+    "usageEstimatedUsd": 0.04602175,
+    "actualBilledUsd": null,
+    "automaticProviderRetries": 0,
+    "usageTotals": {
+      "inputTokens": 24778,
+      "outputTokens": 3541,
+      "cachedTokens": 0
+    },
+    "providerRequestIds": [
+      "568b9305-eb2a-45e2-96a4-d9cc368b22bb",
+      "059d3b06-ce37-4b13-bf92-e38b97bfdf32",
+      "284314bc-676a-474a-858b-dfa4c0d3a58a",
+      "28effb73-c302-49ba-8870-01984691321a",
+      "903d3034-3b3e-4168-8e66-1b2de5ab2dc9",
+      "3798e0b4-47b2-4e54-a97e-570d24b146f6",
+      "6bf1885e-e5fd-4521-a46d-e8aa201d5b9b",
+      "b366d30b-a001-4bc8-9eaf-750db857c07f"
+    ],
+    "attemptEvidence": [
+      "docs/packproof/evidence/p1c-completion-e-pause-attempt-3.json",
+      "docs/packproof/evidence/p1c-completion-e-pause-attempt-4.json",
+      "docs/packproof/evidence/p1c-completion-e-pause-attempt-5.json",
+      "docs/packproof/evidence/p1c-completion-e-resume-attempt-1.json"
+    ],
+    "stoppedEarly": true,
+    "reason": "Missing-package workflow repaired; no unnecessary further inference",
+    "nativeNullableGeneration": "failed observed attempts; no coercion. Request-first routing avoids unsupported generation."
+  },
+  "limitations": [
+    "Native Muse lookup arguments repeatedly used string null despite exact schema; scope rejection remains strict. Request-first routing handles absent packaging without coercion.",
+    "Original attempt-5 pause finding predates the empty-citation repair; corrected assessment verified separately with actual Supabase and zero Meta calls.",
+    "Signed demo custody snapshot freshness ends 2026-11-02T12:00:00Z; no implicit refresh/re-sign/reseed."
+  ]
 }

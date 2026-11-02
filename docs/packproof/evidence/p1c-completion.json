@@ -1,0 +1,68 @@
+{
+  "phase": "P1C",
+  "grantId": "p1c-completion-2026-11-02",
+  "status": "passed",
+  "blocked": null,
+  "approval": {
+    "statement": "I approve up to $4 USD for P1C completion, maximum 16 additional Meta inference requests including retries.",
+    "approvedAt": "2026-11-02T02:08:32.085Z"
+  },
+  "limits": {
+    "totalCents": 400,
+    "requests": 16,
+    "reservationCents": 25,
+    "inputTokens": 16000,
+    "outputTokens": 2048,
+    "timeoutMs": 45000,
+    "retries": 2
+  },
+  "reservedCents": 400,
+  "inferenceRequests": 16,
+  "inferenceRequestsThisRun": 0,
+  "tokenPreflights": 16,
+  "usageEstimatedUsd": 0.09826915,
+  "usageCoverage": 16,
+  "actualBilledUsd": null,
+  "priorLiveB": "docs/packproof/evidence/p1c-live-b.json",
+  "missingCodeAfterScopedSchemaRepair": "not_run",
+  "stages": [
+    {
+      "stage": "a",
+      "status": "passed",
+      "evidence": "docs/packproof/evidence/p1c-completion-a-attempt-1.json"
+    },
+    {
+      "stage": "c",
+      "status": "passed",
+      "evidence": "docs/packproof/evidence/p1c-completion-c-attempt-1.json"
+    },
+    {
+      "stage": "e-pause",
+      "status": "failed",
+      "evidence": "docs/packproof/evidence/p1c-completion-e-pause-attempt-1.json"
+    },
+    {
+      "stage": "e-pause-repair",
+      "status": "failed",
+      "evidence": "docs/packproof/evidence/p1c-completion-e-pause-attempt-2.json"
+    },
+    {
+      "stage": "e-resume",
+      "status": "not_run",
+      "evidence": null
+    },
+    {
+      "stage": "p-pause",
+      "status": "paused",
+      "evidence": "docs/packproof/evidence/p1c-completion-p-pause-attempt-1.json"
+    },
+    {
+      "stage": "p-resume",
+      "status": "passed",
+      "evidence": "docs/packproof/evidence/p1c-completion-p-resume-attempt-1.json"
+    }
+  ],
+  "originalLedgersUnchanged": true,
+  "actualPhone": "not_run",
+  "scope": "Controlled live Shop A, custody gap and physical-context closer-view/resume; not full P1 verification"
+}
