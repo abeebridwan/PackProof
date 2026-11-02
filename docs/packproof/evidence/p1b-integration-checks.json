@@ -1,0 +1,14 @@
+{
+  "phase": "P1B",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "mode": "actual Supabase + deterministic recorded model transport",
+  "providerRequests": 0,
+  "databaseActionRecaptureRetryModelLimits": "passed",
+  "concurrentRowLockFreshSnapshotAndForeignReservationDenied": "passed",
+  "lostCycleCheckpointRestoredWithoutRepeatedEffects": "passed",
+  "atomicToolResultEventRollbackAndPrivateAudit": "passed",
+  "atomicReservationsConcurrentReplayBudgetAndPrivateUpdates": "passed",
+  "postgresCheckpointRestartAndResumeIdempotency": "passed",
+  "sessionRlsCheckpointIsolationAndNoOwnershipWrites": "passed",
+  "actualPrivateStorageCaptureAndParserReplay": "passed"
+}

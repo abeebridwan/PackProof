@@ -11,3 +11,6 @@ playwright-report/
 .vitest/
 .serena
 supabase/.temp/
+
+.next/
+*.tsbuildinfo

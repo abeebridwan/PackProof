@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "id": "30000000-0000-4000-8000-000000000310",
+  "sha256": "1cb84292b4c637d5b12a41897d190e0506fc457aed43911bd681a61c7cdd91ef",
+  "privateKeyExported": false,
+  "privateKeyLocation": "ignored owner-only offline CLI file",
+  "serverKeyAccess": false,
+  "providerRequests": 0
+}

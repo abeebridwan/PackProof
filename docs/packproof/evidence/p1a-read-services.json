@@ -1,0 +1,205 @@
+{
+  "phase": "P1A",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "checkedAt": "2026-11-01T23:17:48.849Z",
+  "databaseRole": "service_role (read grants only; writes revoked)",
+  "findings": {
+    "productOne": {
+      "status": "supported",
+      "reason": "Signed marks are consistent; physical association remains unresolved",
+      "evidence_refs": [
+        "30000000-0000-4000-8000-000000000310",
+        "30000000-0000-4000-8000-000000000311",
+        "30000000-0000-4000-8000-000000000209"
+      ],
+      "scope": "unit",
+      "asOf": "2026-11-01T23:17:38.435Z",
+      "policyVersion": "p1a-demo-evidence-1",
+      "next_actions": [
+        "Inspect the physical item separately"
+      ],
+      "data": {
+        "demo": true,
+        "label": "Fictional PackProof demonstration data",
+        "itemId": "10000000-0000-4000-8000-000000000001",
+        "scope": "unit",
+        "modelCode": "DEMO-FORMULA",
+        "batchCode": "BATCH-01",
+        "issuer": {
+          "id": "30000000-0000-4000-8000-000000000002",
+          "kind": "issuer",
+          "label": "Fictional Formula Producer",
+          "demo": true
+        },
+        "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+        "mappingStatus": "matched",
+        "physicalBinding": "unresolved",
+        "recordIds": [
+          "30000000-0000-4000-8000-000000000310",
+          "30000000-0000-4000-8000-000000000311",
+          "30000000-0000-4000-8000-000000000209"
+        ]
+      }
+    },
+    "shopA": {
+      "status": "blocked",
+      "reason": "Transfer blocked: seller is not authorized for this registered item.",
+      "evidence_refs": [
+        "30000000-0000-4000-8000-000000000310",
+        "30000000-0000-4000-8000-000000000209"
+      ],
+      "scope": "unit",
+      "asOf": "2026-11-01T23:17:40.203Z",
+      "policyVersion": "p1a-demo-evidence-1",
+      "next_actions": [
+        "Review signed source records"
+      ],
+      "data": {
+        "demo": true,
+        "itemId": "10000000-0000-4000-8000-000000000001",
+        "sellerId": "30000000-0000-4000-8000-000000000004",
+        "registeredSeller": true,
+        "authorized": false,
+        "ownerVersion": 1,
+        "authorityRecordIds": [
+          "30000000-0000-4000-8000-000000000310",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "asOf": "2026-11-01T23:17:40.203Z"
+      }
+    },
+    "productTwo": {
+      "status": "supported",
+      "reason": "Signed marks are consistent; physical association remains unresolved",
+      "evidence_refs": [
+        "30000000-0000-4000-8000-000000000320",
+        "30000000-0000-4000-8000-000000000321",
+        "30000000-0000-4000-8000-000000000209"
+      ],
+      "scope": "unit",
+      "asOf": "2026-11-01T23:17:41.961Z",
+      "policyVersion": "p1a-demo-evidence-1",
+      "next_actions": [
+        "Inspect the physical item separately"
+      ],
+      "data": {
+        "demo": true,
+        "label": "Fictional PackProof demonstration data",
+        "itemId": "10000000-0000-4000-8000-000000000002",
+        "scope": "unit",
+        "modelCode": "DEMO-FORMULA",
+        "batchCode": "BATCH-02",
+        "issuer": {
+          "id": "30000000-0000-4000-8000-000000000002",
+          "kind": "issuer",
+          "label": "Fictional Formula Producer",
+          "demo": true
+        },
+        "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+        "mappingStatus": "matched",
+        "physicalBinding": "unresolved",
+        "recordIds": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000321",
+          "30000000-0000-4000-8000-000000000209"
+        ]
+      }
+    },
+    "shopB": {
+      "status": "supported",
+      "reason": "Fictional registered seller authorized as of this record; transfer requires fresh commit checks",
+      "evidence_refs": [
+        "30000000-0000-4000-8000-000000000320",
+        "30000000-0000-4000-8000-000000000209"
+      ],
+      "scope": "unit",
+      "asOf": "2026-11-01T23:17:43.639Z",
+      "policyVersion": "p1a-demo-evidence-1",
+      "next_actions": [
+        "Inspect the physical item separately"
+      ],
+      "data": {
+        "demo": true,
+        "itemId": "10000000-0000-4000-8000-000000000002",
+        "sellerId": "30000000-0000-4000-8000-000000000005",
+        "registeredSeller": true,
+        "authorized": true,
+        "ownerVersion": 1,
+        "authorityRecordIds": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000209"
+        ],
+        "asOf": "2026-11-01T23:17:43.639Z"
+      }
+    },
+    "notices": {
+      "status": "supported",
+      "reason": "Applicable fictional notices in this dataset; external source coverage is unknown",
+      "evidence_refs": [
+        "30000000-0000-4000-8000-000000000402"
+      ],
+      "scope": "unit",
+      "asOf": "2026-11-01T23:17:45.515Z",
+      "policyVersion": "p1a-demo-evidence-1",
+      "next_actions": [
+        "Inspect the physical item separately"
+      ],
+      "data": {
+        "demo": true,
+        "notices": [
+          {
+            "recordId": "30000000-0000-4000-8000-000000000402",
+            "kind": "packaging_revision",
+            "explanation": "Fictional packaging revision: the visible wrapper artwork changed for BATCH-02; this explains the demo change, not product safety.",
+            "effectiveFrom": "2026-10-01T00:00:00.000Z",
+            "effectiveUntil": "2027-01-01T00:00:00.000Z"
+          }
+        ],
+        "coverage": "demo_dataset_only",
+        "directoryVersion": 5,
+        "retrievedAt": "2026-11-01T23:17:45.515Z"
+      }
+    },
+    "gap": {
+      "status": "needs_evidence",
+      "reason": "Explicit custody history gap remains unresolved; present evidence cannot close it",
+      "evidence_refs": [
+        "30000000-0000-4000-8000-000000000332",
+        "30000000-0000-4000-8000-000000000333",
+        "30000000-0000-4000-8000-000000000334"
+      ],
+      "scope": "unit",
+      "asOf": "2026-11-01T23:17:47.226Z",
+      "policyVersion": "p1a-demo-evidence-1",
+      "next_actions": [
+        "Inspect the physical item separately"
+      ],
+      "data": {
+        "demo": true,
+        "events": [
+          {
+            "recordId": "30000000-0000-4000-8000-000000000332",
+            "kind": "receipt",
+            "occurredAt": "2026-11-01T12:00:00.000Z"
+          }
+        ],
+        "gaps": [
+          {
+            "recordId": "30000000-0000-4000-8000-000000000333",
+            "from": "2026-10-01T00:00:00.000Z",
+            "until": "2026-10-15T00:00:00.000Z",
+            "reason": "Fictional missing earlier custody interval; present observation cannot resolve it",
+            "resolved": false
+          }
+        ],
+        "conflicts": [],
+        "snapshot": {
+          "recordId": "30000000-0000-4000-8000-000000000334",
+          "holderReference": "demo-shop-b",
+          "asOf": "2026-11-01T12:00:00.000Z"
+        }
+      }
+    }
+  },
+  "providerRequests": 0
+}

@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "source": "actual Postgres pause created with previous separate plan/tool graph before this optimization",
+  "resumedWith": "combined model/tool cycle graph and one-call reservation",
+  "beforeActions": 5,
+  "afterActions": 6,
+  "revision": 2,
+  "finding": "supported",
+  "providerRequests": 0
+}

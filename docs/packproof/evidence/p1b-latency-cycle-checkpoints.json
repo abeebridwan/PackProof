@@ -1,0 +1,30 @@
+{
+  "label": "cycle-after",
+  "at": "2026-11-02T00:53:02.316Z",
+  "mode": "actual Supabase + recorded model transport",
+  "providerRequests": 0,
+  "elapsedMs": 14461,
+  "queryCount": 159,
+  "cumulativeQueryMs": 12723,
+  "connections": 3,
+  "byVerb": {
+    "INSERT": 39,
+    "UPDATE": 7,
+    "SELECT": 48,
+    "BEGIN": 24,
+    "COMMIT": 24,
+    "WITH": 17
+  },
+  "byGroup": {
+    "investigations": 32,
+    "checkpoints": 39,
+    "transactionOrOther": 48,
+    "operations": 27,
+    "signedEvidence": 8,
+    "events": 5
+  },
+  "actions": 4,
+  "finding": "supported",
+  "mandatoryFinalizerEvents": 4,
+  "note": "One cold runtime request from this laptop; cumulative query time includes overlapping work. Not a live model or deployed latency benchmark."
+}

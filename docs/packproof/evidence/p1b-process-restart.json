@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "beginPid": 85607,
+  "resumePid": 85605,
+  "separateNodeProcesses": true,
+  "restoredFrom": "official PostgresSaver in restricted Supabase schema",
+  "actions": 6,
+  "revision": 2,
+  "finding": "supported",
+  "providerRequests": 0
+}

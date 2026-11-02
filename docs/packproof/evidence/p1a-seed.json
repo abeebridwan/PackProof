@@ -1,0 +1,13 @@
+{
+  "phase": "P1A",
+  "status": "passed",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "checkedAt": "2026-11-01T23:13:50.003Z",
+  "beforeCount": 0,
+  "afterCount": 27,
+  "signedRecords": 27,
+  "productUnits": 3,
+  "negativeCasesSeeded": false,
+  "privateKeyStorage": ".local/p1/offline-keys.json (ignored, owner-only, CLI only)",
+  "providerRequests": 0
+}

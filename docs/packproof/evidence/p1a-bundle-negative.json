@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "server-source",
+      "status": "passed",
+      "rejected": true
+    },
+    {
+      "case": "offline-signing-cli",
+      "status": "passed",
+      "rejected": true
+    },
+    {
+      "case": "offline-key-marker",
+      "status": "passed",
+      "rejected": true
+    }
+  ],
+  "realSecretsUsed": false,
+  "servedAssetsModified": false
+}

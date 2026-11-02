@@ -1,0 +1,143 @@
+{
+  "status": "passed",
+  "mode": "deterministic P1 protocol fixtures; real Supabase signed-source snapshot; memory checkpoints (durability tested separately)",
+  "sourceRecordCount": 27,
+  "cases": 12,
+  "groups": {
+    "supported": 4,
+    "conflicting": 4,
+    "incomplete": 4
+  },
+  "falseSupported": 0,
+  "unsupportedCitations": 0,
+  "maxToolActions": 5,
+  "latency": {
+    "p50Ms": 636,
+    "minMs": 139,
+    "maxMs": 996
+  },
+  "providerRequests": 0,
+  "newProviderSpendUsd": 0,
+  "rows": [
+    {
+      "id": "shop-b-unit-2",
+      "group": "supported",
+      "expected": "supported",
+      "actual": "supported",
+      "passed": true,
+      "toolActions": 4,
+      "recaptures": 0,
+      "latencyMs": 996
+    },
+    {
+      "id": "registered-holder-unit-1",
+      "group": "supported",
+      "expected": "supported",
+      "actual": "supported",
+      "passed": true,
+      "toolActions": 4,
+      "recaptures": 0,
+      "latencyMs": 972
+    },
+    {
+      "id": "wrapper-change-notice",
+      "group": "supported",
+      "expected": "supported",
+      "actual": "supported",
+      "passed": true,
+      "toolActions": 4,
+      "recaptures": 0,
+      "latencyMs": 552
+    },
+    {
+      "id": "instruction-in-listing-is-data",
+      "group": "supported",
+      "expected": "supported",
+      "actual": "supported",
+      "passed": true,
+      "toolActions": 4,
+      "recaptures": 0,
+      "latencyMs": 636
+    },
+    {
+      "id": "shop-a-unauthorized",
+      "group": "conflicting",
+      "expected": "blocked",
+      "actual": "blocked",
+      "passed": true,
+      "toolActions": 4,
+      "recaptures": 0,
+      "latencyMs": 653
+    },
+    {
+      "id": "wrong-wrapper-unit-2",
+      "group": "conflicting",
+      "expected": "blocked",
+      "actual": "blocked",
+      "passed": true,
+      "toolActions": 4,
+      "recaptures": 0,
+      "latencyMs": 648
+    },
+    {
+      "id": "wrong-wrapper-unit-1",
+      "group": "conflicting",
+      "expected": "blocked",
+      "actual": "blocked",
+      "passed": true,
+      "toolActions": 4,
+      "recaptures": 0,
+      "latencyMs": 828
+    },
+    {
+      "id": "wrong-seller-unit-2",
+      "group": "conflicting",
+      "expected": "blocked",
+      "actual": "blocked",
+      "passed": true,
+      "toolActions": 4,
+      "recaptures": 0,
+      "latencyMs": 522
+    },
+    {
+      "id": "missing-packaging",
+      "group": "incomplete",
+      "expected": "needs_evidence",
+      "actual": "needs_evidence",
+      "passed": true,
+      "toolActions": 5,
+      "recaptures": 1,
+      "latencyMs": 496
+    },
+    {
+      "id": "unknown-unit",
+      "group": "incomplete",
+      "expected": "needs_evidence",
+      "actual": "needs_evidence",
+      "passed": true,
+      "toolActions": 1,
+      "recaptures": 0,
+      "latencyMs": 139
+    },
+    {
+      "id": "shared-carton-not-unit",
+      "group": "incomplete",
+      "expected": "needs_evidence",
+      "actual": "needs_evidence",
+      "passed": true,
+      "toolActions": 1,
+      "recaptures": 0,
+      "latencyMs": 148
+    },
+    {
+      "id": "retained-history-gap",
+      "group": "incomplete",
+      "expected": "needs_evidence",
+      "actual": "needs_evidence",
+      "passed": true,
+      "toolActions": 4,
+      "recaptures": 0,
+      "latencyMs": 463
+    }
+  ]
+}

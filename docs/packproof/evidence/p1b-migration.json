@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "version": "202611020002",
+  "file": "supabase/migrations/202611020002_p1b_investigator.sql",
+  "sha256": "92dcd4ac49b54fe28d19cb414e8f3a412875011cd1aaa87b432b2063e63a5b96",
+  "newlyApplied": true,
+  "checkpointPackage": "@langchain/langgraph-checkpoint-postgres@1.1.2",
+  "checkpointTables": [
+    {
+      "tablename": "checkpoint_blobs"
+    },
+    {
+      "tablename": "checkpoint_migrations"
+    },
+    {
+      "tablename": "checkpoint_writes"
+    },
+    {
+      "tablename": "checkpoints"
+    }
+  ],
+  "rls": "forced; thread owner constrained through investigations",
+  "providerRequests": 0
+}

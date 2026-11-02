@@ -1,0 +1,126 @@
+{
+  "phase": "P1B",
+  "status": "implemented_replay_verified_live_blocked",
+  "p0Status": "partial",
+  "p1Status": "partial",
+  "p2Ready": false,
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "migration": "202611020002",
+  "checkpointSchema": "packproof_graph",
+  "tools": {
+    "lookup_product": "implemented_actual_signed_database",
+    "lookup_seller": "implemented_actual_signed_database",
+    "get_product_notices": "implemented_actual_signed_database",
+    "get_custody_history": "implemented_actual_signed_database",
+    "inspect_product_image": "authorized_capture_interface_and_exact_saved_SAM_Muse_fixture_replay; other images unknown",
+    "request_additional_evidence": "implemented_durable_needs_input_and_instructions"
+  },
+  "langchain": "actual tool binding, invocation and response parsing; intercepted deterministic protocol envelopes",
+  "langgraph": "single StateGraph; official PostgresSaver; separate OS process restart/resume verified",
+  "langsmith": "actual SDK sender integrated; disabled/failure safety verified; remote delivery unobserved",
+  "providerValidation": {
+    "newLiveMuse": "not_run_disabled",
+    "newLiveSam": "not_run_disabled",
+    "protocolFixtures": "reconstructed proven P0 envelope shape with deterministic P1 choices, not untouched real P1 envelopes"
+  },
+  "validation": {
+    "unitTests": 101,
+    "integrationTests": 14,
+    "fixedEvaluationCases": 12,
+    "falseSupported": 0,
+    "unsupportedCitations": 0,
+    "productionBrowser": "passed",
+    "processRestart": "passed",
+    "physicalPhoneUi": "not_run",
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "bundleSecretChecks": "passed: P0 inputs and 26 Next client asset files",
+    "cryptoRegression": "passed desktop Node/browser ES256 and tamper checks",
+    "preservation": "15 P1A files and 16 protected P0 artifacts unchanged",
+    "configuredSecretScan": "passed: no configured secret bytes/private-key blocks in changed files",
+    "unitReport": "docs/packproof/evidence/vitest-p1b-cycle-unit.json",
+    "integrationReport": "docs/packproof/evidence/vitest-p1b-cycle-integration.json",
+    "lostCycleCheckpointRecovery": "passed actual Postgres; completed model/tool operations reused",
+    "previousGraphPauseResume": "passed actual Postgres pause created before graph change",
+    "databaseReservationLimitsAndConcurrency": "passed actual row-lock contention, all four limits, idempotency and RLS",
+    "atomicToolCompletionEvent": "passed rollback on invalid event and duplicate/foreign audit checks"
+  },
+  "providerRequests": 0,
+  "newProviderSpendUsd": 0,
+  "historicalProviderSpendUsd": null,
+  "p0LedgerChanged": false,
+  "sourceFoundationPreserved": true,
+  "acceptance": {
+    "A1": {
+      "status": "partial",
+      "localReplayChecks": "passed",
+      "mandatoryLiveIntegration": "not_run"
+    },
+    "A2": {
+      "status": "partial",
+      "localReplayChecks": "passed",
+      "mandatoryLiveIntegration": "not_run"
+    },
+    "A3": {
+      "status": "partial",
+      "localReplayChecks": "passed",
+      "mandatoryLiveIntegration": "not_run"
+    },
+    "A4": {
+      "status": "partial",
+      "localReplayChecks": "passed",
+      "mandatoryLiveIntegration": "not_run"
+    },
+    "I1": {
+      "status": "partial",
+      "localReplayChecks": "passed",
+      "mandatoryLiveIntegration": "not_run"
+    }
+  },
+  "blockers": [
+    "Separate explicit P1 budget approval and real Muse Investigator validation",
+    "Intended Android P1 journey not tested",
+    "P0 two-phone QR/JSON/transported-tamper checks remain deferred"
+  ],
+  "newDeployment": false,
+  "publicP0UrlUnchanged": "https://packproof-p0.vercel.app",
+  "glimmer": "both directions preserved; not implemented",
+  "performance": {
+    "status": "passed",
+    "beforeMs": 15799,
+    "afterMs": 10349,
+    "improvementPercent": 34.5,
+    "initialBeforeMs": 26936,
+    "overallImprovementPercent": 61.6,
+    "queriesBefore": 219,
+    "queriesAfter": 123,
+    "queryCountMeaning": "client database requests; function-internal SQL statements excluded",
+    "connectionsBefore": 3,
+    "connectionsAfter": 3,
+    "scope": "One cold request per version from this laptop against actual Supabase; recorded model transport; excludes HTTP/dev compilation overhead; not a latency guarantee",
+    "providerRequests": 0,
+    "priorOptimization": {
+      "status": "passed",
+      "beforeMs": 26936,
+      "afterMs": 15579,
+      "improvementPercent": 42.2,
+      "queriesBefore": 240,
+      "queriesAfter": 219,
+      "connectionsBefore": 15,
+      "connectionsAfter": 3,
+      "scope": "One cold request per version from this laptop against actual Supabase; recorded model transport; excludes HTTP/dev compilation overhead; not a latency guarantee",
+      "providerRequests": 0,
+      "evidence": [
+        "docs/packproof/evidence/p1b-latency-before.json",
+        "docs/packproof/evidence/p1b-latency-after.json"
+      ]
+    },
+    "evidence": [
+      "docs/packproof/evidence/p1b-latency-cycle-before.json",
+      "docs/packproof/evidence/p1b-latency-cycle-checkpoints.json",
+      "docs/packproof/evidence/p1b-latency-cycle-after.json",
+      "docs/packproof/evidence/p1b-cycle-legacy-resume.json"
+    ]
+  },
+  "performanceMigration": "202611020003"
+}

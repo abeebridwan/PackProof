@@ -1,0 +1,13 @@
+{
+  "issuerId": "30000000-0000-4000-8000-000000000001",
+  "keyId": "30000000-0000-4000-8000-000000000011",
+  "namespace": "packproof-demo",
+  "publicKey": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "IngAdWimg_CbCJd7v15V9xGaCDR0yBHcpo6pjcV7wcg",
+    "y": "CsH1oF3quF39je8PX1vSoN2YpEgFLd8lws39JsYZnhM"
+  },
+  "demo": true,
+  "label": "Fictional PackProof offline demo root"
+}

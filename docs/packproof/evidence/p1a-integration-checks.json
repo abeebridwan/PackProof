@@ -1,0 +1,13 @@
+{
+  "phase": "P1A",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "startedAt": "2026-11-02T00:55:39.245Z",
+  "providerRequests": 0,
+  "authTestMode": "Actual PostgreSQL anon/authenticated/service_role roles, request.jwt.claims simulated inside rolled-back transactions; not browser sign-in",
+  "signedReadRepository": "passed",
+  "databaseBackedServices": "passed",
+  "duplicateSeedSafety": "passed",
+  "existingOwnerChangeRefused": "passed",
+  "actualRoleRlsAndImmutability": "passed",
+  "anonymousHttpsReadAndWriteDenial": "passed"
+}

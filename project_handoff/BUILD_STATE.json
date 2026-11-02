@@ -3,7 +3,7 @@
   "project": "PackProof",
   "productVersion": "v10",
   "status": "partial",
-  "currentPhase": "P0",
+  "currentPhase": "P1",
   "timezone": "Africa/Lagos",
   "officialDeadline": "2026-11-05T03:00:00+01:00",
   "internalTarget": "2026-11-04T20:00:00+01:00",
@@ -259,11 +259,262 @@
     },
     {
       "id": "P1",
-      "status": "not_started",
-      "evidence": [],
+      "status": "partial",
+      "evidence": [
+        "docs/packproof/evidence/P1A.md",
+        "docs/packproof/evidence/p1a.json",
+        "docs/packproof/evidence/p1a-migration.json",
+        "docs/packproof/evidence/p1a-migration-repeat.json",
+        "docs/packproof/evidence/p1a-seed.json",
+        "docs/packproof/evidence/p1a-read-services.json",
+        "docs/packproof/evidence/p1a-signing-cli.json",
+        "docs/packproof/evidence/p1a-integration-checks.json",
+        "docs/packproof/evidence/vitest-p1a-unit.json",
+        "docs/packproof/evidence/vitest-p1a-integration.json",
+        "docs/packproof/evidence/p1a-bundle-negative.json",
+        "docs/packproof/evidence/P1B.md",
+        "docs/packproof/evidence/p1b.json",
+        "docs/packproof/evidence/p1b-migration.json",
+        "docs/packproof/evidence/p1b-integration-checks.json",
+        "docs/packproof/evidence/p1b-evaluation.json",
+        "docs/packproof/evidence/p1b-process-restart.json",
+        "docs/packproof/evidence/p1b-browser.json",
+        "docs/packproof/evidence/vitest-p1b-unit.json",
+        "docs/packproof/evidence/vitest-p1b-integration.json",
+        "docs/packproof/evidence/p1b-latency-before.json",
+        "docs/packproof/evidence/p1b-latency-after.json",
+        "docs/packproof/evidence/vitest-p1b-performance-unit.json",
+        "docs/packproof/evidence/vitest-p1b-performance-integration.json",
+        "docs/packproof/evidence/p1b-latency-cycle-before.json",
+        "docs/packproof/evidence/p1b-latency-cycle-checkpoints.json",
+        "docs/packproof/evidence/p1b-latency-cycle-after.json",
+        "docs/packproof/evidence/p1b-cycle-legacy-resume.json",
+        "docs/packproof/evidence/vitest-p1b-cycle-unit.json",
+        "docs/packproof/evidence/vitest-p1b-cycle-integration.json",
+        "docs/packproof/evidence/p1b-performance-migration.json",
+        "docs/packproof/evidence/p1b-performance-migration-repeat.json"
+      ],
       "passed": [],
       "failed": [],
-      "blocked": []
+      "blocked": [],
+      "subtasks": {
+        "P1A": "completed_foundation_only",
+        "P1B": "implemented_replay_verified_live_blocked"
+      },
+      "acceptance": {
+        "A1": {
+          "status": "partial",
+          "replayAndLocalChecks": "passed",
+          "liveMuseValidation": "not_run",
+          "evidence": "docs/packproof/evidence/P1B.md"
+        },
+        "A2": {
+          "status": "partial",
+          "replayAndLocalChecks": "passed",
+          "liveMuseValidation": "not_run",
+          "evidence": "docs/packproof/evidence/P1B.md"
+        },
+        "A3": {
+          "status": "partial",
+          "replayAndLocalChecks": "passed",
+          "liveMuseValidation": "not_run",
+          "evidence": "docs/packproof/evidence/P1B.md"
+        },
+        "A4": {
+          "status": "partial",
+          "replayAndLocalChecks": "passed",
+          "liveMuseValidation": "not_run",
+          "evidence": "docs/packproof/evidence/P1B.md"
+        },
+        "I1": {
+          "status": "partial",
+          "replayAndLocalChecks": "passed",
+          "liveMuseValidation": "not_run",
+          "evidence": "docs/packproof/evidence/P1B.md"
+        }
+      },
+      "foundation": {
+        "phase": "P1A",
+        "status": "completed_foundation_only",
+        "p0Status": "partial",
+        "p1Status": "partial",
+        "projectRef": "hvbzxeuedookkwleyjmx",
+        "migration": "202611020001",
+        "tableCount": 13,
+        "signedRecords": 27,
+        "recordTypes": {
+          "issuer_binding": 5,
+          "directory_change": 5,
+          "issuance": 3,
+          "mapping": 3,
+          "custody": 3,
+          "custody_snapshot": 3,
+          "gap": 1,
+          "notice": 2,
+          "correction": 1,
+          "audit": 1
+        },
+        "directoryVersion": 5,
+        "productUnits": 3,
+        "unitTestsPassed": 68,
+        "integrationTestsPassed": 6,
+        "integrationAuthMode": "Actual PostgreSQL anon/authenticated/service_role roles, request.jwt.claims simulated inside rolled-back transactions; not browser sign-in",
+        "publicFindings": "p1a-read-services.json",
+        "negativeCasesAccepted": 0,
+        "providerRequests": 0,
+        "newProviderSpendUsd": 0,
+        "historicalProviderSpendUsd": null,
+        "p0ReservedUsd": 3,
+        "p0ModelRequests": 7,
+        "p0LedgerPreserved": true,
+        "newDependencies": 0,
+        "p1bReadyForImplementation": true,
+        "p1bLiveProviderValidationRequiresNewExplicitBudget": true,
+        "fullAcceptance": {
+          "A1": "partial",
+          "A2": "partial",
+          "A3": "partial",
+          "I1": "partial",
+          "A4": "not_run"
+        },
+        "deferredUnchanged": [
+          "F3 two-phone QR performance",
+          "F4 bidirectional physical JSON transfer and transported-file tamper rejection"
+        ],
+        "limitations": [
+          "No full Investigator, model loop, pause/resume or new UI",
+          "No P2 transfer/enrollment/ownership commit",
+          "No production storage object policies or browser Auth tests",
+          "No OfflineProof/bootstrap/rollback/freshness implementation",
+          "Operator root is demo-only; production trust provisioning remains required"
+        ]
+      },
+      "investigator": {
+        "phase": "P1B",
+        "status": "implemented_replay_verified_live_blocked",
+        "p0Status": "partial",
+        "p1Status": "partial",
+        "p2Ready": false,
+        "projectRef": "hvbzxeuedookkwleyjmx",
+        "migration": "202611020002",
+        "checkpointSchema": "packproof_graph",
+        "tools": {
+          "lookup_product": "implemented_actual_signed_database",
+          "lookup_seller": "implemented_actual_signed_database",
+          "get_product_notices": "implemented_actual_signed_database",
+          "get_custody_history": "implemented_actual_signed_database",
+          "inspect_product_image": "authorized_capture_interface_and_exact_saved_SAM_Muse_fixture_replay; other images unknown",
+          "request_additional_evidence": "implemented_durable_needs_input_and_instructions"
+        },
+        "langchain": "actual tool binding, invocation and response parsing; intercepted deterministic protocol envelopes",
+        "langgraph": "single StateGraph; official PostgresSaver; separate OS process restart/resume verified",
+        "langsmith": "actual SDK sender integrated; disabled/failure safety verified; remote delivery unobserved",
+        "providerValidation": {
+          "newLiveMuse": "not_run_disabled",
+          "newLiveSam": "not_run_disabled",
+          "protocolFixtures": "reconstructed proven P0 envelope shape with deterministic P1 choices, not untouched real P1 envelopes"
+        },
+        "validation": {
+          "unitTests": 101,
+          "integrationTests": 14,
+          "fixedEvaluationCases": 12,
+          "falseSupported": 0,
+          "unsupportedCitations": 0,
+          "productionBrowser": "passed",
+          "processRestart": "passed",
+          "physicalPhoneUi": "not_run",
+          "typecheck": "passed",
+          "productionBuild": "passed",
+          "bundleSecretChecks": "passed: P0 inputs and 26 Next client asset files",
+          "cryptoRegression": "passed desktop Node/browser ES256 and tamper checks",
+          "preservation": "15 P1A files and 16 protected P0 artifacts unchanged",
+          "configuredSecretScan": "passed: no configured secret bytes/private-key blocks in changed files",
+          "unitReport": "docs/packproof/evidence/vitest-p1b-cycle-unit.json",
+          "integrationReport": "docs/packproof/evidence/vitest-p1b-cycle-integration.json",
+          "lostCycleCheckpointRecovery": "passed actual Postgres; completed model/tool operations reused",
+          "previousGraphPauseResume": "passed actual Postgres pause created before graph change",
+          "databaseReservationLimitsAndConcurrency": "passed actual row-lock contention, all four limits, idempotency and RLS",
+          "atomicToolCompletionEvent": "passed rollback on invalid event and duplicate/foreign audit checks"
+        },
+        "providerRequests": 0,
+        "newProviderSpendUsd": 0,
+        "historicalProviderSpendUsd": null,
+        "p0LedgerChanged": false,
+        "sourceFoundationPreserved": true,
+        "acceptance": {
+          "A1": {
+            "status": "partial",
+            "localReplayChecks": "passed",
+            "mandatoryLiveIntegration": "not_run"
+          },
+          "A2": {
+            "status": "partial",
+            "localReplayChecks": "passed",
+            "mandatoryLiveIntegration": "not_run"
+          },
+          "A3": {
+            "status": "partial",
+            "localReplayChecks": "passed",
+            "mandatoryLiveIntegration": "not_run"
+          },
+          "A4": {
+            "status": "partial",
+            "localReplayChecks": "passed",
+            "mandatoryLiveIntegration": "not_run"
+          },
+          "I1": {
+            "status": "partial",
+            "localReplayChecks": "passed",
+            "mandatoryLiveIntegration": "not_run"
+          }
+        },
+        "blockers": [
+          "Separate explicit P1 budget approval and real Muse Investigator validation",
+          "Intended Android P1 journey not tested",
+          "P0 two-phone QR/JSON/transported-tamper checks remain deferred"
+        ],
+        "newDeployment": false,
+        "publicP0UrlUnchanged": "https://packproof-p0.vercel.app",
+        "glimmer": "both directions preserved; not implemented",
+        "performance": {
+          "status": "passed",
+          "beforeMs": 15799,
+          "afterMs": 10349,
+          "improvementPercent": 34.5,
+          "initialBeforeMs": 26936,
+          "overallImprovementPercent": 61.6,
+          "queriesBefore": 219,
+          "queriesAfter": 123,
+          "queryCountMeaning": "client database requests; function-internal SQL statements excluded",
+          "connectionsBefore": 3,
+          "connectionsAfter": 3,
+          "scope": "One cold request per version from this laptop against actual Supabase; recorded model transport; excludes HTTP/dev compilation overhead; not a latency guarantee",
+          "providerRequests": 0,
+          "priorOptimization": {
+            "status": "passed",
+            "beforeMs": 26936,
+            "afterMs": 15579,
+            "improvementPercent": 42.2,
+            "queriesBefore": 240,
+            "queriesAfter": 219,
+            "connectionsBefore": 15,
+            "connectionsAfter": 3,
+            "scope": "One cold request per version from this laptop against actual Supabase; recorded model transport; excludes HTTP/dev compilation overhead; not a latency guarantee",
+            "providerRequests": 0,
+            "evidence": [
+              "docs/packproof/evidence/p1b-latency-before.json",
+              "docs/packproof/evidence/p1b-latency-after.json"
+            ]
+          },
+          "evidence": [
+            "docs/packproof/evidence/p1b-latency-cycle-before.json",
+            "docs/packproof/evidence/p1b-latency-cycle-checkpoints.json",
+            "docs/packproof/evidence/p1b-latency-cycle-after.json",
+            "docs/packproof/evidence/p1b-cycle-legacy-resume.json"
+          ]
+        },
+        "performanceMigration": "202611020003"
+      }
     },
     {
       "id": "P2",
@@ -311,7 +562,9 @@
     "1 November infrastructure continuation: user chose different Supabase account and Vercel. Existing project untouched; creation/deployment pending normal login and confirmed no-cost scopes. Portable/Vercel probe artifacts pass local browser checks; Vercel in-memory catalog is not durable across instances.",
     "Intended accounts resolved: exact PackProof Supabase project healthy, CLI SQL/Auth/Storage API verified, Vercel Hobby public P0 probe deployed and browser-tested. No private bucket exists; direct DB URL needs correction. Physical phone gates remain pending.",
     "Corrected database password accepted: direct PostgreSQL verify-full TLS and read-only permission query passed. No reset, migration, seed or application data write.",
-    "2 November explicit sequencing exception: user confirms single-phone tests, private bucket independently verified, two-phone tests deferred. Independent bounded P1 foundation work authorized; P0 remains partial/F3-F4 blocked and full p1Ready false."
+    "2 November explicit sequencing exception: user confirms single-phone tests, private bucket independently verified, two-phone tests deferred. Independent bounded P1 foundation work authorized; P0 remains partial/F3-F4 blocked and full p1Ready false.",
+    "2 November P1A: additive schema applied to verified empty dedicated PackProof development project; 27 fictional signed records and typed read services verified. P1 remains partial; full A1-A4/I1 and deferred physical gates remain incomplete. No new paid model calls.",
+    "2 November P1B: six-tool LangChain Investigator, scoped APIs/UI and actual Supabase LangGraph checkpoints verified with deterministic protocol fixtures and separate-process restart. New live Muse/SAM disabled; P1 partial/P2 not ready. Physical F3/F4 deferrals unchanged."
   ],
   "p0Budget": {
     "maximumUsd": 3,
@@ -342,13 +595,16 @@
       "coreVersion": "1.3.2",
       "openaiAdapterVersion": "1.8.0",
       "liveMetaRequests": 0,
-      "fixture": "reconstructed saved protocol envelopes + real demo registry"
+      "fixture": "reconstructed saved protocol envelopes + real demo registry",
+      "investigator": "actual six-tool controller verified with deterministic reconstructed P1 protocol fixtures; new live Meta not_run"
     },
     "langgraph": {
-      "status": "design_only",
+      "status": "implemented_postgres_checkpoint_verified",
       "versionCandidate": "1.6.0",
-      "installed": false,
-      "persistentInvestigationsBuilt": false
+      "installed": true,
+      "persistentInvestigationsBuilt": true,
+      "version": "1.6.0",
+      "checkpointVersion": "1.1.2"
     },
     "langsmith": {
       "status": "offline_sdk_tested",
@@ -356,7 +612,8 @@
       "remoteAccess": "unverified",
       "remoteTracesDelivered": false,
       "disabledTracing": "passed",
-      "outageIsolation": "passed"
+      "outageIsolation": "passed",
+      "investigator": "optional metadata-only SDK sender integrated; disabled/outage checked; remote delivery unobserved"
     }
   },
   "infrastructure": {
@@ -396,16 +653,24 @@
   "continuationBaselineCommit": "e0c94a6dbe355196a522f3e078b491db7acdfceb",
   "latestLocalValidation": {
     "status": "passed",
-    "tests": 43,
-    "testFiles": 5,
-    "evidence": "docs/packproof/evidence/vitest-infrastructure.json",
+    "tests": 99,
+    "testFiles": 8,
+    "integrationTests": 9,
+    "integrationEnvironment": "actual dedicated Supabase project",
+    "evaluationCases": 12,
+    "falseSupported": 0,
+    "unsupportedCitations": 0,
+    "browser": "passed production Chromium plus mobile viewport; no physical phone claim",
+    "separateProcessRestart": "passed",
+    "evidence": "docs/packproof/evidence/vitest-p1b-unit.json",
+    "integrationEvidence": "docs/packproof/evidence/vitest-p1b-integration.json",
     "newMetaRequests": 0,
     "actualSpendUsd": null
   },
   "p1IndependentWorkAuthorized": true,
   "nextAuthorizedWork": {
     "phase": "P1",
-    "scope": "One bounded independent foundation task selected by prompt generator; no P1 implementation performed in this handoff update",
+    "scope": "P1B implementation complete at recorded/local validation scope. Stop; next bounded P1 live-validation/repair task needs a separate prompt and explicit budget before paid calls. Do not begin P2.",
     "authorizedOn": "2026-11-02",
     "basis": "Explicit user instruction to defer two-phone tests and continue building",
     "formalP0Verified": false,
@@ -418,6 +683,16 @@
       "No full P1/P2/P3/P4 implementation in one prompt",
       "No claim that deferred tests passed or were waived",
       "No weakening of deterministic verification/authority/RLS/release gates"
-    ]
-  }
+    ],
+    "completedTask": "P1B Evidence Investigator and orchestration (replayed model validation)"
+  },
+  "p1bReadiness": {
+    "foundationReady": true,
+    "implementationStarted": true,
+    "implementationStatus": "implemented_replay_verified_live_blocked",
+    "nextPromptRequired": true,
+    "liveProviderBudgetAuthorized": false,
+    "p0PhysicalDeferralsUnchanged": true
+  },
+  "p2Ready": false
 }

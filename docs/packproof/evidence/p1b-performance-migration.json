@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "version": "202611020003",
+  "file": "supabase/migrations/202611020003_p1b_operation_reservation.sql",
+  "sha256": "56296397eee94cf7bdc2cb5769046f7e8a447c8bc4744622bc17cc8b216d37dd",
+  "newlyApplied": true,
+  "security": {
+    "securityInvoker": true,
+    "volatile": true,
+    "runtimeExecute": true,
+    "anonExecute": false,
+    "authenticatedExecute": false,
+    "serviceRoleExecute": false
+  },
+  "providerRequests": 0
+}

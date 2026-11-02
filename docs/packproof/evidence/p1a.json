@@ -1,0 +1,56 @@
+{
+  "phase": "P1A",
+  "status": "completed_foundation_only",
+  "p0Status": "partial",
+  "p1Status": "partial",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "migration": "202611020001",
+  "tableCount": 13,
+  "signedRecords": 27,
+  "recordTypes": {
+    "issuer_binding": 5,
+    "directory_change": 5,
+    "issuance": 3,
+    "mapping": 3,
+    "custody": 3,
+    "custody_snapshot": 3,
+    "gap": 1,
+    "notice": 2,
+    "correction": 1,
+    "audit": 1
+  },
+  "directoryVersion": 5,
+  "productUnits": 3,
+  "unitTestsPassed": 68,
+  "integrationTestsPassed": 6,
+  "integrationAuthMode": "Actual PostgreSQL anon/authenticated/service_role roles, request.jwt.claims simulated inside rolled-back transactions; not browser sign-in",
+  "publicFindings": "p1a-read-services.json",
+  "negativeCasesAccepted": 0,
+  "providerRequests": 0,
+  "newProviderSpendUsd": 0,
+  "historicalProviderSpendUsd": null,
+  "p0ReservedUsd": 3,
+  "p0ModelRequests": 7,
+  "p0LedgerPreserved": true,
+  "newDependencies": 0,
+  "p1bReadyForImplementation": true,
+  "p1bLiveProviderValidationRequiresNewExplicitBudget": true,
+  "fullAcceptance": {
+    "A1": "partial",
+    "A2": "partial",
+    "A3": "partial",
+    "I1": "partial",
+    "A4": "not_run"
+  },
+  "deferredUnchanged": [
+    "F3 two-phone QR performance",
+    "F4 bidirectional physical JSON transfer and transported-file tamper rejection"
+  ],
+  "limitations": [
+    "No full Investigator, model loop, pause/resume or new UI",
+    "No P2 transfer/enrollment/ownership commit",
+    "No production storage object policies or browser Auth tests",
+    "No OfflineProof/bootstrap/rollback/freshness implementation",
+    "Operator root is demo-only; production trust provisioning remains required"
+  ]
+}

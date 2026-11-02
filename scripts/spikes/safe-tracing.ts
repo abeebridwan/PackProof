@@ -3,9 +3,9 @@ import { z } from 'zod';
 
 // Explicit allowlist; raw prompts, model outputs, identities, errors, media and keys cannot enter.
 export const TraceEvent = z.strictObject({
-  investigationId: z.uuid(), kind: z.enum(['lifecycle', 'model', 'tool', 'gate']),
+  investigationId: z.uuid(), mode: z.enum(['live','recorded-demo','offline-compatibility']).optional(), kind: z.enum(['lifecycle', 'model', 'tool', 'gate', 'retry']),
   status: z.enum(['started', 'completed', 'needs_evidence', 'unavailable', 'rejected']),
-  tool: z.literal('lookup_demo_product').optional(), model: z.literal('muse-spark-1.3').optional(),
+  tool: z.enum(['lookup_demo_product','lookup_product','lookup_seller','get_product_notices','get_custody_history','inspect_product_image','request_additional_evidence']).optional(), model: z.literal('muse-spark-1.3').optional(),
   refs: z.array(z.uuid()).max(8), latencyMs: z.number().int().min(0).max(60_000),
   inputTokens: z.number().int().nonnegative().optional(), outputTokens: z.number().int().nonnegative().optional(),
   errorCode: z.enum(['provider_unavailable', 'invalid_output', 'action_limit']).optional(),
@@ -35,14 +35,14 @@ export function safeTracing(options: { enabled: boolean; send?: TraceSender; tim
 }
 
 // P0 calls this only against an injected offline fetch in tests. No remote account is assumed.
-export function langSmithSender(apiKey: string, transport: typeof fetch): TraceSender {
+export function langSmithSender(apiKey: string, transport: typeof fetch, projectName = 'packproof-p0-compatibility'): TraceSender {
   const client = new Client({ apiKey, apiUrl: 'https://api.smith.langchain.com',
     autoBatchTracing: false, hideInputs: true, hideOutputs: true, omitTracedRuntimeInfo: true,
     timeout_ms: 200, callerOptions: { maxRetries: 0 }, fetchImplementation: transport });
   return async event => {
     const safe = TraceEvent.parse(event);
     await client.createRun({ id: crypto.randomUUID(), name: `packproof.${safe.kind}`, run_type: safe.kind === 'model' ? 'llm' : safe.kind === 'tool' ? 'tool' : 'chain',
-      project_name: 'packproof-p0-compatibility', start_time: Date.now() - safe.latencyMs, end_time: Date.now(),
+      project_name: projectName, start_time: Date.now() - safe.latencyMs, end_time: Date.now(),
       inputs: {}, outputs: {}, extra: { metadata: safe } });
   };
 }

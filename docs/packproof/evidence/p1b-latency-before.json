@@ -1,0 +1,21 @@
+{
+  "label": "before",
+  "at": "2026-11-02T00:36:23.077Z",
+  "mode": "actual Supabase + recorded model transport",
+  "providerRequests": 0,
+  "elapsedMs": 26936,
+  "queryCount": 240,
+  "cumulativeQueryMs": 23324,
+  "connections": 15,
+  "byVerb": {
+    "INSERT": 84,
+    "SELECT": 54,
+    "UPDATE": 20,
+    "BEGIN": 41,
+    "COMMIT": 41
+  },
+  "actions": 4,
+  "finding": "supported",
+  "mandatoryFinalizerEvents": 4,
+  "note": "One cold runtime request from this laptop; cumulative query time includes overlapping work. Not a live model or deployed latency benchmark."
+}

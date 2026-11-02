@@ -1,0 +1,15 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {sql,literal,PROJECT_REF} from '../p1/database.js';
+import {sha256,utf8} from '../../src/domain/verification/p0-crypto.js';
+const version='202611020003';
+const file=`supabase/migrations/${version}_p1b_operation_reservation.sql`;
+const migration=await readFile(file,'utf8');const hash=await sha256(utf8(migration));
+if(sql("SELECT count(*) FROM packproof.schema_migrations WHERE version='202611020002'")!=='1')throw new Error('Verified P1B migration required');
+const existing=sql(`SELECT sha256 FROM packproof.schema_migrations WHERE version=${literal(version)}`);
+if(existing&&existing!==hash)throw new Error('Applied migration hash changed');
+if(!existing)sql(`BEGIN;SELECT pg_advisory_xact_lock(7140913);${migration}\nINSERT INTO packproof.schema_migrations(version,sha256) VALUES(${literal(version)},${literal(hash)});COMMIT;`,true);
+const security=JSON.parse(sql(`SELECT json_build_object('securityInvoker',NOT p.prosecdef,'volatile',p.provolatile='v','runtimeExecute',has_function_privilege('packproof_investigator',p.oid,'EXECUTE'),'anonExecute',has_function_privilege('anon',p.oid,'EXECUTE'),'authenticatedExecute',has_function_privilege('authenticated',p.oid,'EXECUTE'),'serviceRoleExecute',has_function_privilege('service_role',p.oid,'EXECUTE')) FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='packproof' AND p.proname='reserve_investigation_operation'`));
+if(!security.securityInvoker||!security.volatile||!security.runtimeExecute||security.anonExecute||security.authenticatedExecute||security.serviceRoleExecute)throw new Error('Reservation function security mismatch');
+const report={status:'passed',projectRef:PROJECT_REF,version,file,sha256:hash,newlyApplied:!existing,security,providerRequests:0};
+await writeFile(`docs/packproof/evidence/p1b-performance-migration${existing?'-repeat':''}.json`,JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({status:'passed',version,newlyApplied:!existing,security}));

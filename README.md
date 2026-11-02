@@ -14,11 +14,14 @@ The repository currently provides a working development foundation and standalon
 - A demonstrated Muse reading of a visible marking from a grounded synthetic image.
 - ES256 signing and verification between Node and a browser, SHA-256 integrity checks, and rejection of tampered data and untrusted keys.
 - A browser test page for camera capture, manual identifiers, rotating QR handles and small JSON file export/import.
-- An offline LangChain compatibility spike with strict tool execution and optional privacy-filtered LangSmith events. LangGraph persistence is documented for the full Investigator.
+- A Supabase data foundation with immutable signed claims, versioned issuer-directory audit history, scoped key permissions and restricted writes.
+- Signed fictional units, packaging mappings, seller authorization, packaging notices and explicit custody gaps, with typed server read services.
+- A mobile-first Next.js Evidence Investigator with six typed tools, mandatory server finalization, private session-scoped API routes, private image capture storage and durable LangGraph pause/resume.
+- LangChain runs the tool loop against recorded protocol responses; the read tools use real signed Supabase records. Optional LangSmith traces contain only allowed metadata. Live Muse/SAM execution remains disabled.
 
 Open the [live feasibility probe](https://packproof-p0.vercel.app) on a phone or browser. It provides local camera/manual/crypto/QR/file controls; product investigations and customer records are not connected to this page.
 
-The full installable PWA, authenticated seller handovers, Supabase-backed records and offline evidence viewer are planned. The vivo Y03 has passed camera capture, manual leading zeros and crypto checks. The user also confirmed the scanner rerun and camera-permission/manual fallback. Two-phone QR and file-sharing trials remain pending. Supabase Auth, Storage API, direct TLS-verified PostgreSQL access and read-only migration-permission checks are verified; the expected private bucket is verified, while production object/RLS policies remain untested. Current visual results establish feasibility on a synthetic fixture; they do not establish accuracy on real products.
+The Investigator app is available locally through `pnpm dev` at `http://localhost:3000`. Its model steps are explicitly recorded demos; its evidence reads use the signed database. The existing public URL above still serves the separate P0 feasibility probe. Authenticated seller handovers and the offline evidence viewer are planned. The vivo Y03 has passed camera capture, manual leading zeros and crypto checks. The user also confirmed the scanner rerun and camera-permission/manual fallback. Two-phone QR and file-sharing trials remain pending. Supabase Auth, Storage API, direct TLS-verified PostgreSQL access and read-only migration-permission checks are verified; the expected private bucket is verified, while production object/RLS policies remain untested. Current visual results establish feasibility on a synthetic fixture; they do not establish accuracy on real products.
 
 ## Local setup
 
@@ -41,6 +44,7 @@ Local checks and the browser test page can run without model credentials. For pr
 See [TESTING.md](TESTING.md) for feature-by-feature commands, expected results and manual browser steps.
 
 ```bash
+pnpm dev  # Investigator at http://localhost:3000
 pnpm typecheck
 pnpm test
 pnpm build
@@ -53,17 +57,33 @@ pnpm probe:access
 | --- | --- |
 | `pnpm typecheck` | Check strict TypeScript types. |
 | `pnpm test` | Run schema, provider-output, parser, budget, trust and tamper tests. |
-| `pnpm build` | Build the standalone browser test page into `dist/`. |
+| `pnpm build` | Build the Next.js Investigator and preserve the standalone P0 page in `dist/`. |
+| `pnpm dev` / `pnpm start` | Run the Investigator in development / after a production build. |
+| `pnpm db:migrate:p1b` | Apply/verify the additive P1B runtime migration and restricted official Postgres checkpointer. |
+| `pnpm db:migrate:performance` | Apply/verify the additive operation-reservation performance function after P1B migration. |
+| `pnpm evaluate:p1b` | Run the shared 12-case evaluation against a signed database snapshot using recorded responses. |
 | `pnpm probe:bundle` | Check browser inputs and output for server modules and configured secrets. |
 | `pnpm probe:crypto` | Exercise Node/browser signing, verification and local browser checks. |
 | `pnpm probe:access` | Report which access settings are configured, without printing credentials. |
 | `pnpm probe:serve` | Serve the browser test page locally. |
 | `pnpm probe:langchain` | Check LangChain tools and LangSmith serialization with intercepted offline transports; no live model calls. |
+| `pnpm db:inspect` | Inspect only the dedicated PackProof development schema. |
+| `pnpm db:migrate` | Apply or verify the additive versioned P1A migration; rejects an unexpected project/schema. |
+| `pnpm demo:seed` | Validate and idempotently seed the published signed fictional records; refuses ownership changes. |
+| `pnpm demo:read` | Read actual seeded product/seller/notice/history findings under the serving role, with mandatory signature checks. |
+| `pnpm record:sign` | Offline CLI signing using ignored owner-only operator key storage; never a web endpoint. |
+| `PACKPROOF_P1A_INTEGRATION=1 pnpm test:integration` | Explicitly run the dedicated Supabase integration checks; temporary RLS fixtures roll back. |
 | `pnpm probe:phone` | Run desktop browser checks for the phone surface, including permission errors and altered-file rejection; does not qualify real phones. |
 
 The browser crypto check requires Chrome at `/usr/bin/google-chrome`, or a `CHROME_PATH` override, and permission to start a local loopback server. Desktop results are recorded separately from phone results.
 
-## Try the browser test page
+## Open the Investigator
+
+`pnpm dev` opens the local app on port 3000. Choose a fictional scenario, investigate its records, then review the cited product, seller, notice and custody findings. If asked for another view, supply the literal code or a small private image and resume the same investigation. New images remain unknown without authorized live analysis; physical association never follows from a matched code alone.
+
+Use the existing ignored Supabase configuration. For an HTTPS reverse proxy, set `APP_ORIGIN` to its exact public origin. P1B evidence and current limitations are recorded in [P1B.md](docs/packproof/evidence/P1B.md). The app has a PWA manifest and responsive layout; offline installation/verification belongs to P4.
+
+## Try the P0 browser test page
 
 ```bash
 pnpm build

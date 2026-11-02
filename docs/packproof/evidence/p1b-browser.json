@@ -1,0 +1,16 @@
+{
+  "mode": "desktop Chromium production Next app; mobile viewport emulation, not physical phone",
+  "origin": "http://127.0.0.1:4180",
+  "providerRequests": 0,
+  "shopB": "passed",
+  "shopA": "passed",
+  "specificEvidenceRequest": "passed",
+  "manualResume": "passed",
+  "sameSessionReload": "passed",
+  "mobileNoHorizontalOverflow": "passed",
+  "crossSessionApiDenial": "passed",
+  "csrfAndStrictInputs": "passed",
+  "publicLookup": "passed",
+  "foreignCaptureApiDenial": "passed",
+  "status": "passed"
+}

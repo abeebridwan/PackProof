@@ -1,0 +1,41 @@
+{
+  "phase": "P1A",
+  "projectRef": "hvbzxeuedookkwleyjmx",
+  "checkedAt": "2026-11-01T23:13:31.774Z",
+  "status": "passed",
+  "file": "supabase/migrations/202611020001_p1a_evidence.sql",
+  "version": "202611020001",
+  "sha256": "0a9e576f544d864b5b77a5e996d114eae57310e19463a155ffc4b4ce38a3d3cc",
+  "newlyApplied": true,
+  "before": {
+    "database": "postgres",
+    "version": "17.11",
+    "tables": [],
+    "auth": true,
+    "storage": true
+  },
+  "after": {
+    "database": "postgres",
+    "version": "17.11",
+    "tables": [
+      "packproof.actor_accounts",
+      "packproof.actors",
+      "packproof.custody_history",
+      "packproof.directory_changes",
+      "packproof.investigations",
+      "packproof.issuer_bindings",
+      "packproof.items",
+      "packproof.marking_relations",
+      "packproof.notices",
+      "packproof.schema_migrations",
+      "packproof.signed_records",
+      "packproof.tool_events",
+      "public.pp_public_products"
+    ],
+    "auth": true,
+    "storage": true
+  },
+  "tls": "verify-full",
+  "providerRequests": 0,
+  "destructiveStatements": false
+}
