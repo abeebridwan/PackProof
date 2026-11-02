@@ -259,7 +259,7 @@
     },
     {
       "id": "P1",
-      "status": "partial",
+      "status": "passed",
       "evidence": [
         "docs/packproof/evidence/P1A.md",
         "docs/packproof/evidence/p1a.json",
@@ -323,22 +323,29 @@
         "docs/packproof/evidence/p1c-completion-e-pause-attempt-3.json",
         "docs/packproof/evidence/p1c-completion-e-pause-attempt-4.json",
         "docs/packproof/evidence/p1c-completion-e-pause-attempt-5.json",
-        "docs/packproof/evidence/p1c-completion-e-resume-attempt-1.json"
+        "docs/packproof/evidence/p1c-completion-e-resume-attempt-1.json",
+        "docs/packproof/evidence/p1d.json",
+        "docs/packproof/evidence/vitest-p1d-unit.json",
+        "docs/packproof/evidence/vitest-p1d-pooler.json",
+        "docs/packproof/evidence/p1d-ui.png",
+        "docs/packproof/evidence/vitest-p1d-ui.json",
+        "docs/packproof/evidence/p1d-product-mobile.png",
+        "docs/packproof/evidence/p1d-tools-mobile.png"
       ],
       "passed": [
         "A1",
         "A2",
         "A3",
+        "A4",
         "I1"
       ],
       "failed": [],
-      "blocked": [
-        "A4"
-      ],
+      "blocked": [],
       "subtasks": {
         "P1A": "completed_foundation_only",
         "P1B": "implemented_replay_verified_live_blocked",
-        "P1C": "live_workflows_passed_intended_android_pending"
+        "P1C": "live_workflows_and_user_reported_android_passed",
+        "P1D": "completed_same_app_production_published"
       },
       "acceptance": {
         "A1": {
@@ -363,12 +370,14 @@
           "latestContinuationEvidence": "docs/packproof/evidence/P1C.md"
         },
         "A4": {
-          "status": "blocked",
+          "status": "passed",
           "replayAndLocalChecks": "passed",
           "liveMuseValidation": "passed controlled physical-context and absent-code closer-view pause/separate-process resume",
           "evidence": "docs/packproof/evidence/P1B.md",
           "latestContinuationEvidence": "docs/packproof/evidence/P1C.md",
-          "limitation": "Intended vivo Y03 P1 UI observation remains not_run; controlled live mechanism and recorded browser separation are not a phone observation"
+          "android": "passed_user_reported",
+          "phoneConfirmationEvidence": "docs/packproof/evidence/p1d.json",
+          "provenance": "User chat confirms all requested P1 phone tests passed; no new exported report or timings."
         },
         "I1": {
           "status": "passed",
@@ -624,7 +633,27 @@
           "docs/packproof/evidence/p1c-adapter-supabase.json",
           "docs/packproof/evidence/p1c-browser.json"
         ]
-      }
+      },
+      "deployment": {
+        "milestone": "P1D",
+        "status": "production_verified",
+        "previewUrl": "https://packproof-p0-ivn5khfvw-ridwan-abeebs-projects.vercel.app",
+        "projectId": "prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t",
+        "productionPromoted": true,
+        "evidence": "docs/packproof/evidence/p1d.json",
+        "actualAndroid": "passed_user_reported_prior_UI",
+        "runtime": "recorded-demo",
+        "newMetaRequests": 0,
+        "androidConfirmationProvenance": "user_chat_confirmation",
+        "productionUrl": "https://packproof-p0.vercel.app",
+        "toolsUrl": "https://packproof-p0.vercel.app/tools",
+        "deploymentId": "dpl_3EPrix2onG9zoenG6DeswwtUke3W",
+        "sourceSha256": "d8848592bdaf072b030dd86c5f80a0854830528e67b2dd3ce443b5c7dc6d060a",
+        "updatedLayoutVerification": "desktop and mobile browser viewports; no new physical-phone measurement"
+      },
+      "acceptanceStatus": "passed",
+      "statusReason": "All P1 functional gates passed, intended vivo Y03 workflow user-confirmed, same-app public Production deployment verified.",
+      "verified": true
     },
     {
       "id": "P2",
@@ -700,7 +729,7 @@
     "activationCommand": "export PATH=\"$PWD/.local/toolchain/node_modules/.bin:$PATH\"",
     "frozenInstall": "passed"
   },
-  "lastUpdated": "2026-11-02T09:18:32.993816+00:00",
+  "lastUpdated": "2026-11-02T10:56:20.709978Z",
   "architectureAmendment": "project_handoff/Architecture_Amendments.md",
   "compatibility": {
     "langchain": {
@@ -734,7 +763,7 @@
     "packproofProjectSelected": true,
     "postgres": "passed_via_cli_and_direct_psql",
     "auth": "passed",
-    "privateStorage": "passed: packproof-p0-private exists, public=false; object policies not tested",
+    "privateStorage": "passed: existing private bucket, synthetic deployed upload and public-read denial; private-session RLS verified separately",
     "existingSites": 0,
     "publicDeployment": "passed",
     "localHttps": "passed",
@@ -759,47 +788,40 @@
     "postgresRuntimeConnection": "passed: verify-full TLS, corrected password, read-only query",
     "storageApi": "passed",
     "publicUrl": "https://packproof-p0.vercel.app",
-    "deploymentEnvironmentVariableCount": 0,
-    "deploymentNodeVersion": "24.x"
+    "deploymentEnvironmentVariableCount": 12,
+    "deploymentNodeVersion": "24.x",
+    "previewUrl": "https://packproof-p0-ivn5khfvw-ridwan-abeebs-projects.vercel.app",
+    "previewStatus": "verified_recorded_investigator",
+    "previewCredentialTargets": [
+      "preview"
+    ],
+    "previewEncryptedEnvironmentCount": 11,
+    "productionPromotion": "completed_user_authorized",
+    "productionEncryptedEnvironmentCount": 12,
+    "productionCredentialTargets": [
+      "production"
+    ],
+    "toolsUrl": "https://packproof-p0.vercel.app/tools"
   },
   "testingGuide": "TESTING.md",
-  "continuationBaselineCommit": "e0c94a6dbe355196a522f3e078b491db7acdfceb",
+  "continuationBaselineCommit": "6cd7989",
   "latestLocalValidation": {
+    "phase": "P1D UI and Production delivery",
     "typecheck": "passed",
-    "targetedTests": 59,
-    "testFiles": 3,
-    "targetedReport": "docs/packproof/evidence/vitest-p1c-completion-targeted.json",
-    "actualSupabaseEarlyPauseAssessment": "passed: four mandatory reads, no Meta request",
-    "newMetaRequests": 8,
-    "fullUnitSuite": "not_rerun: previous baseline 132 at 7b72f85",
-    "fullIntegrationSuite": "not_rerun: previous baseline 15 at 7b72f85; actual live and deterministic Supabase checks ran",
-    "productionBuild": "passed isolated current source build; existing development server preserved",
-    "bundleSecretChecks": "passed root P0/current assets and all26 isolated production client assets; no private output-trace paths",
-    "browser": {
-      "status": "passed",
-      "evidence": "docs/packproof/evidence/p1c-browser.json",
-      "mode": "production local UI + actual Supabase + recorded AI; not live acceptance",
-      "actualPhone": false,
-      "providerRequests": 0,
-      "isolatedProductionBuild": "passed",
-      "buildCommand": "NEXT_TELEMETRY_DISABLED=1 node node_modules/next/dist/bin/next build .local/p1c-production --webpack",
-      "browserCommand": "node --import tsx scripts/p1c/browser.ts",
-      "developmentCheck": {
-        "status": "blocked",
-        "failedAttempts": 2,
-        "lastFailedStage": "pause",
-        "observed": "Existing port-3000 page did not hydrate in automation; HMR WebSocket handshake ERR_INVALID_HTTP_RESPONSE. No investigation POST was observed. Isolated production hydration and full UI checks passed."
-      },
-      "temporaryServerStopped": true,
-      "existingPort3000ServerPreserved": true
-    },
-    "actualAndroid": "not_run",
-    "twoPhoneChecks": "deferred_not_run",
-    "productionBuildCommand": "NEXT_TELEMETRY_DISABLED=1 node node_modules/next/dist/bin/next build .local/p1c-production --webpack",
-    "idempotentCliReruns": "passed: pause, resume and historical default commands made zero new requests; receipts/old aggregate retained"
+    "unitTestsPassed": 33,
+    "unitFiles": 2,
+    "unitReport": "docs/packproof/evidence/vitest-p1d-ui.json",
+    "productionBuild": "passed clean Vercel frozen-lockfile install + pnpm build",
+    "browser": "passed fresh anonymous public Production browser, actual Supabase, recorded AI and integrated device checks",
+    "bundleAndTraceChecks": "passed 28 local client assets including device bundle; required /tools assets traced; 9 served Production assets scanned",
+    "actualAndroid": "passed_user_reported_prior_UI",
+    "updatedStyles": "verified desktop/mobile browser viewports; no new physical observation",
+    "newMetaRequests": 0,
+    "fullSuites": "not_rerun; only 33 relevant unit checks and necessary browser/deployment checks",
+    "evidence": "docs/packproof/evidence/p1d.json"
   },
   "p1IndependentWorkAuthorized": true,
-  "nextAuthorizedWork": "P1 only: record the intended vivo Y03 UI journey when available. Reuse successful live evidence; no additional inference is needed now. Preserve freshness and settled two-phone deferrals. Stop at P1C; no P2 or deployment authorization.",
+  "nextAuthorizedWork": "P1D complete: one PackProof application is published at the existing permanent URL. Stop; no automatic commit/push, P2/P3/P4 or further Meta probes. Preserve signed-evidence expiry and deferred P0 two-phone gates.",
   "p1bReadiness": {
     "foundationReady": true,
     "implementationStarted": true,
@@ -888,5 +910,6 @@
     "stoppedEarly": true,
     "reason": "Missing-package workflow repaired; no unnecessary further inference",
     "nativeNullableGeneration": "failed observed attempts; no coercion. Request-first routing avoids unsupported generation."
-  }
+  },
+  "previewUrl": "https://packproof-p0-ivn5khfvw-ridwan-abeebs-projects.vercel.app"
 }

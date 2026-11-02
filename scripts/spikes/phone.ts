@@ -7,7 +7,18 @@ import { checkTransport, Fingerprint, FrameBatch, isExpectedScanMiss, scanMetric
 
 const el = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const report: Record<string, unknown> = { kind: 'P0-manual-probe', userAgent: navigator.userAgent, url: location.origin + location.pathname, secureContext: isSecureContext, camera: 'not_run', transport: 'not_run', startedAt: new Date().toISOString() };
-const show = () => { el('output').textContent = JSON.stringify(report, null, 2); };
+const probeUrl = (path: string) => new URL(path, new URL('.', import.meta.url));
+const show = () => {
+  el('output').textContent = JSON.stringify(report, null, 2);
+  const capture = report.capture as {width:number;height:number}|undefined;
+  const captureStatus = el('captureStatus');
+  if(capture && captureStatus) captureStatus.textContent = `Photo captured · ${capture.width} × ${capture.height} pixels · stored only on this device.`;
+  const cryptoStatus = el('cryptoStatus');
+  if(report.crypto && cryptoStatus) cryptoStatus.textContent = 'Signature and tamper checks passed. Your browser’s private test key is nonextractable.';
+  const animation = report.animation as {actualFps:number;frameCount:number}|undefined;
+  const qrStatus = el('qrStatus');
+  if(animation && qrStatus) qrStatus.textContent = `Displayed ${animation.frameCount} frames · ${animation.actualFps.toFixed(1)} frames/s measured. Successful reads must be measured on the receiving phone.`;
+};
 function failed(e: unknown, operation: string) {
   const name = e instanceof Error ? e.name : 'UnknownError';
   const messages: Record<string, string> = {
@@ -29,7 +40,7 @@ function download(value: unknown, filename: string) {
   const a = document.createElement('a'); a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 export async function browserCrypto() {
-  const { token, challenge, publicJwk } = await fetch('/crypto-challenge').then(r => r.json()) as { token: string; challenge: string; publicJwk: JsonWebKey };
+  const { token, challenge, publicJwk } = await fetch(probeUrl('crypto-challenge')).then(r => r.json()) as { token: string; challenge: string; publicJwk: JsonWebKey };
   const trust: TrustedKey[] = [{ kid: 'p0-node', jwk: PublicJwk.parse(publicJwk), role: 'pack', namespace: 'packproof-demo' }];
   const payload = await verifyBytes(token, trust, 'pack', 'packproof-demo');
   if (new TextDecoder().decode(payload) !== challenge) throw new Error('Wrong challenge');
@@ -58,7 +69,7 @@ async function refreshCatalog() {
   if (catalogPending) return catalogPending;
   lastCatalogAttempt = performance.now();
   catalogPending = (async () => {
-    const response = await fetch('/frame-catalog'); if (!response.ok) throw new Error('CatalogUnavailable');
+    const response = await fetch(probeUrl('frame-catalog')); if (!response.ok) throw new Error('CatalogUnavailable');
     catalog = FrameBatch.array().max(20).parse(await response.json());
     report.scan = { ...scanMetrics(scans, catalog, attempts, performance.now() - scanStart), scans };
   })().finally(() => { catalogPending = undefined; });
@@ -98,7 +109,7 @@ let animating = false;
 action('animate', async () => {
   if (animating) return; animating = true;
   try {
-    const response = await fetch('/frames'); if (!response.ok) throw new Error('FrameBatchUnavailable');
+    const response = await fetch(probeUrl('frames')); if (!response.ok) throw new Error('FrameBatchUnavailable');
     const batch = FrameBatch.parse(await response.json()); const { frames } = batch;
     const hz = Number(el<HTMLSelectElement>('rate').value);
     const canvases = await Promise.all(frames.map(async handle => { const c = document.createElement('canvas'); await QRCode.toCanvas(c, handle, { width: 280, margin: 4, errorCorrectionLevel: 'M' }); return c; }));
@@ -135,3 +146,7 @@ el<HTMLInputElement>('import').onchange = () => { void (async () => {
 })().catch(e => failed(e, 'import')); };
 action('crypto', async () => { report.crypto = await browserCrypto(); show(); });
 action('report', () => { report.deviceModel = el<HTMLInputElement>('device').value || 'unknown'; report.androidVersion = el<HTMLInputElement>('android').value || 'unknown'; report.browserVersion = el<HTMLInputElement>('browser').value || 'unknown'; report.transportDescription = el<HTMLInputElement>('transport').value || 'not recorded'; report.finishedAt = new Date().toISOString(); download(report, 'packproof-p0-device-report.json'); });
+
+// Enable controls only after every action has been attached.
+el<HTMLFieldSetElement>('probeControls').disabled = false;
+el('feedback').textContent = '';

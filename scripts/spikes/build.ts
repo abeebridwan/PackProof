@@ -6,4 +6,4 @@ await build({ entryPoints: ['scripts/spikes/phone.ts'], outfile: 'dist/phone.js'
   await writeFile('dist/bundle-inputs.json', JSON.stringify(Object.keys(result.metafile.inputs), null, 2));
 });
 await copyFile('scripts/spikes/phone.html', 'dist/index.html');
-console.log('Built P0 phone probe. No application or offline viewer implemented.');
+console.log('Built PackProof device-check assets. Captures stay local; no offline viewer installed.');

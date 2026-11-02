@@ -1,6 +1,6 @@
 {
   "phase": "P1C",
-  "status": "partial",
+  "status": "passed",
   "preparation": "passed",
   "liveValidation": "main_live_scenarios_and_missing_package_resume_passed_android_pending",
   "approval": {
@@ -192,10 +192,11 @@
       "reason": "Successful receipt bridge cannot accept malformed native output or bypass independent gates"
     },
     "A4": {
-      "status": "blocked",
+      "status": "passed",
       "independentChecks": "passed actual Supabase durable pause/resume and recorded production UI",
       "liveMuse": "passed controlled physical-context and absent-code closer-view pause/separate-process resume",
-      "reason": "Intended vivo Y03 P1 UI observation remains not_run; controlled live mechanism and recorded browser separation are not a phone observation"
+      "reason": "Actual intended vivo Y03 journey passed by user chat confirmation after P1D preview validation; no new measurement report supplied.",
+      "phoneConfirmationEvidence": "docs/packproof/evidence/p1d.json"
     },
     "I1": {
       "status": "passed",
@@ -207,15 +208,12 @@
   "p0Status": "partial",
   "p0LedgerChanged": false,
   "p0TwoPhoneChecks": "deferred_not_run",
-  "p1Status": "partial",
-  "p1Verified": false,
+  "p1Status": "passed",
+  "p1Verified": true,
   "p2Ready": false,
   "deploymentReadiness": "production build and existing recorded browser checks pass; not deployed; full P1 verification incomplete",
   "publicP0UrlUnchanged": "https://packproof-p0.vercel.app",
-  "blockers": [
-    "Intended vivo Y03 P1 UI interaction not_run; no physical observation inferred from desktop or controlled codes",
-    "P0 two-phone QR/JSON/transported-file tamper trials remain explicitly deferred; unchanged"
-  ],
+  "blockers": [],
   "evidence": [
     "docs/packproof/evidence/P1C.md",
     "docs/packproof/evidence/p1c-live.json",
@@ -248,7 +246,7 @@
     "docs/packproof/evidence/p1c-completion-e-pause-attempt-5.json",
     "docs/packproof/evidence/p1c-completion-e-resume-attempt-1.json"
   ],
-  "nextBoundedWork": "P1 only: record the intended vivo Y03 UI journey when available. Reuse successful live evidence; no additional inference is needed now. Preserve freshness and settled two-phone deferrals. Stop at P1C; no P2 or deployment authorization.",
+  "nextBoundedWork": "P1D Production delivery is verified at the permanent URL, with /tools in the same application. Stop; no further live probes or P2 work. See p1d.json release evidence.",
   "usageTotals": {
     "inputTokens": 96073,
     "outputTokens": 14877,
@@ -394,5 +392,7 @@
     "Native Muse lookup arguments repeatedly used string null despite exact schema; scope rejection remains strict. Request-first routing handles absent packaging without coercion.",
     "Original attempt-5 pause finding predates the empty-citation repair; corrected assessment verified separately with actual Supabase and zero Meta calls.",
     "Signed demo custody snapshot freshness ends 2026-11-02T12:00:00Z; no implicit refresh/re-sign/reseed."
-  ]
+  ],
+  "acceptanceStatus": "passed_with_user_reported_android",
+  "deferredP0Checks": "Two-phone QR, physical JSON transport and transported-tamper trials remain explicitly deferred; unchanged."
 }

@@ -10,6 +10,18 @@ import {sameOrigin,session} from '../../src/server/auth/session.js';
 import {executeTool} from '../../src/server/investigator/tools.js';
 import {initialState} from '../../src/server/investigator/graph.js';
 import {readFile} from 'node:fs/promises';
+import {historicalFinding,EVIDENCE_MAX_AGE_MS} from '../../src/domain/verification/freshness.js';
+import {createEvidenceServices} from '../../src/server/evidence/services.js';
+
+async function datedFinding(){
+ const f=await fixture(),at='2026-11-01T13:00:00.000Z';
+ const services=createEvidenceServices({load:async()=>structuredClone(f.dataset)},f.pin,()=>at),i=input();
+ const product=await services.lookupProduct({namespace:i.namespace,productMark:i.productMark,packagingMark:i.packagingMark});
+ const itemId=product.data!.itemId;
+ const selected={lookup_product:product,lookup_seller:await services.lookupSeller({itemId,sellerId:i.sellerId}),get_product_notices:await services.getProductNotices({itemId}),get_custody_history:await services.getCustodyHistory({itemId})};
+ const finding=await finalize({input:i,services,selected,answer:{claimIds:factCatalog(selected).map(c=>c.id)},error:null,at});
+ return {f,finding};
+}
 
 describe('P1B LangChain / LangGraph Investigator',()=>{
  it('reuses committed model and tool operations after losing the cycle checkpoint',async()=>{
@@ -71,6 +83,23 @@ describe('P1B LangChain / LangGraph Investigator',()=>{
   const f=await fixture();const original=f.options.services.getCustodyHistory;
   const services={...f.options.services,getCustodyHistory:async(a:unknown)=>{const r=await original(a);if(r.data?.snapshot)r.data.snapshot.asOf='2020-01-01T00:00:00.000Z';return r;}};
   const result=await startInvestigation({...f.options,services},input());expect(result.finding?.status).toBe('stale');
+ });
+ it('expires a saved supported finding at the signed snapshot boundary without renewing timestamps or authority',async()=>{
+  const {finding}=await datedFinding();expect(finding.status).toBe('supported');
+  const original=JSON.stringify(finding),boundary=Date.parse(finding.history!.data!.snapshot!.asOf)+EVIDENCE_MAX_AGE_MS;
+  expect(historicalFinding(finding,new Date(boundary).toISOString()).status).toBe('supported');
+  const stale=historicalFinding(finding,new Date(boundary+1).toISOString());
+  expect(stale.status).toBe('stale');expect(stale.sellerStatus).toBe('stale');expect(stale.seller?.reason).toContain('Historical');
+  expect(stale.asOf).toBe(finding.asOf);expect(JSON.stringify(finding)).toBe(original);
+  expect(historicalFinding({...finding,status:'blocked'},new Date(boundary+1).toISOString()).status).toBe('blocked');
+  expect(historicalFinding({...finding,status:'unavailable'},new Date(boundary+1).toISOString()).status).toBe('unavailable');
+  expect(historicalFinding(finding,'invalid').status).toBe('stale');
+ });
+ it('reassesses expiry on a private status read without overwriting its historical checkpoint finding',async()=>{
+  const {f,finding}=await datedFinding();finding.history!.data!.snapshot!.asOf='2020-01-01T00:00:00.000Z';
+  const row=await f.store.create(OWNER,input());await f.store.save(OWNER,row.id,{finding,status:'complete'});
+  const view=await publicView(f.store,OWNER,row.id);expect(view.finding?.status).toBe('stale');expect(view.finding?.sellerStatus).toBe('stale');
+  expect((await f.store.get(OWNER,row.id)).finding?.status).toBe('supported');
  });
  it('replays actual SAM bytes only for the exact authorized P0 image and leaves other captures unknown',async()=>{const f=await fixture();const row=await f.store.create(OWNER,input());const source=JSON.parse(await readFile('docs/packproof/evidence/provider.json','utf8'));const c={id:crypto.randomUUID(),investigationId:row.id,revision:1,sha256:source.sam.sourceSha256,mime:'image/png' as const,width:600,height:480,bytes:1000,source:'imported' as const,capturedAt:null,uploadedAt:new Date().toISOString(),objectPath:'private/test.png'};await f.store.addCapture(OWNER,c);const state=initialState(row);state.input.captureId=c.id;const result=await executeTool('inspect_product_image',{investigationId:row.id,captureId:c.id,question:'product_mark'},{state,store:f.store,owner:OWNER,services:f.options.services,inspector:f.options.inspector});expect((result.data as {value:string}).value).toBe('0071842');expect(result.status).toBe('blocked');expect((await f.options.inspector.inspect({...c,sha256:'0'.repeat(64)},'product_mark')).data?.value).toBeNull();});
  it('rejects invalid image types/bytes and cross-origin requests; guest cookie is HttpOnly',async()=>{await expect(validateImage(new Uint8Array(20),'image/svg+xml')).rejects.toThrow('invalid_image');await expect(validateImage(new Uint8Array(20),'image/png')).rejects.toThrow('invalid_image');expect(()=>sameOrigin(new Request('https://packproof.example/api',{headers:{origin:'https://evil.example'}}))).toThrow('cross_origin');const s=await session(new Request('https://packproof.example/api'),true);expect(s.setCookie).toContain('HttpOnly');expect(s.setCookie).toContain('Secure');expect(s.owner.sessionHash).toHaveLength(64);});

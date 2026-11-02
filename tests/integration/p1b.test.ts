@@ -113,6 +113,18 @@ describe.skipIf(!live)('P1B actual Supabase and durable graph integration',()=>{
   const args={expectedRevision:1,idempotencyKey:crypto.randomUUID(),productMark:null,packagingMark:'PK-2002',captureId:null};
   try{const restored=await publicView(r.store,who,id!);expect(restored.status).toBe('needs_input');const final=await resumeInvestigation(r.options,id!,args);expect(final.revision).toBe(2);expect(final.actions).toBe(6);expect(final.finding?.status).toBe('supported');const repeat=await resumeInvestigation(r.options,id!,args);expect(repeat.actions).toBe(final.actions);await expect(resumeInvestigation(r.options,id!,{...args,packagingMark:'PK-2001'})).rejects.toThrow('idempotency_conflict');await record('postgresCheckpointRestartAndResumeIdempotency');}finally{await r.close();}
  },180000);
+ it('initializes every pooled client with its restricted role and private owner before checkout',async()=>{
+  const who=await owner(),r=await runtime(who);
+  const clients:import('pg').PoolClient[]=[];
+  try{
+   for(let n=0;n<3;n++)clients.push(await r.pool.connect());
+   for(const client of clients){
+    const result=await client.query("SELECT current_user AS role,current_setting('packproof.session_hash') AS session,current_setting('packproof.user_id') AS user_id");
+    expect(result.rows[0]).toEqual({role:'packproof_investigator',session:who.sessionHash,user_id:''});
+    expect((await client.query('SELECT id FROM packproof.investigations')).rows).toHaveLength(0);
+   }
+  }finally{for(const client of clients)client.release();await r.close();}
+ },60000);
  it('enforces private-session RLS on investigations, checkpoints, operations and captures',async()=>{
   const a=await owner(),b=await owner();const first=await runtime(a),second=await runtime(b);
   try{const created=await startInvestigation(first.options,input({packagingMark:null}));

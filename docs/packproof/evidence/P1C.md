@@ -1,6 +1,6 @@
 # P1C — current evidence and checkpoint
 
-P1 remains partial. A1–A3/I1 pass in the scopes below; A4's controlled workflow passes, while the intended Android P1 journey remains not_run. P0's deferred two-phone checks remain unchanged. No P2, deployment, commit or push was performed. The public P0 deployment and recorded-provider web runtime are preserved.
+P1 functional acceptance A1–A4/I1 passes in the scopes below; the user confirmed all requested vivo Y03 P1 checks passed after preview deployment. The same application is now published at the permanent URL. Phone results are user-reported without a new exported measurement report. P0's deferred two-phone checks remain unchanged. P1C ended without deployment; the authorized P1D preview continuation is recorded below. The production P0 deployment and recorded-provider web runtime are preserved.
 
 ## Live results
 
@@ -53,10 +53,10 @@ The new ledger binds the exact user approval and policy to its stable ID and unc
 | A1 | passed | Actual signed product/seller/notices/history tools and cited live answers. |
 | A2 | passed | Omitted coverage remains unresolved; actual unauthorized seller blocked, gap visible, physical scope unresolved. |
 | A3 | passed | Controlled injection/malformed/provider/limit negatives plus actual rejected nullable calls; no success from failure. |
-| A4 | blocked at device checkpoint | Controlled live closer-view/persistence/resume and recorded browser separation pass; intended vivo Y03 P1 interaction not_run. |
+| A4 | passed | Controlled live closer-view/persistence/resume and recorded browser separation pass; intended vivo Y03 P1 journey subsequently passed by user chat confirmation. No new exported device measurements. |
 | I1 | passed | Controlled pair/mismatch/product-only/carton/batch/unit tests plus actual seller, notice and custody outcomes. |
 
-[Current structured state](p1c.json), [build state](../../../project_handoff/BUILD_STATE.json). No second-phone test is requested again. One-phone P1 interaction remains manual; this report does not claim an Android observation.
+[Current structured state](p1c.json), [build state](../../../project_handoff/BUILD_STATE.json). No second-phone test is requested again. The subsequent Android confirmation is user-reported; the agent did not independently observe the device.
 
 ## Performance and next boundary
 
@@ -64,4 +64,25 @@ Recorded-provider optimization remains 10,045→9,069 ms and 123→109 client qu
 
 New missing-code live pause took 11,315 ms and resumed investigation 34,649 ms. Resume included 14,071 ms provider inference, 3,549 ms token preflight, 20,287 ms model operations, 5,417 ms tool operations and 2,341 ms final verification. Categories overlap. Actual client SQL count was not instrumented for this run; do not infer it from earlier measurements. These are laptop/network samples, not a deployed SLA.
 
-Stop at P1C. Remaining: intended Android P1 UI observation; direct native nullable generation remains unsupported in observed attempts and is safely avoided by request-first routing. Signed demo custody snapshots expire after **2 November 2026, 12:00 UTC**. Do not silently refresh/re-sign/reseed, waive freshness or use remaining funds for unrelated work. P1 stays partial / P1 verified:false / P2 ready:false. No P1 deployment is authorized by this prompt.
+P1C stopped with intended Android P1 UI observation pending. Direct native nullable generation remains unsupported in observed attempts and is safely avoided by request-first routing. Signed demo custody snapshots expire after **2 November 2026, 12:00 UTC**. Do not silently refresh/re-sign/reseed, waive freshness or use remaining funds for unrelated work. At the historical P1C checkpoint, P1 remained partial; subsequent P1D Production delivery is verified below. P2 remains unstarted.
+
+## P1D — unified preview delivery
+
+The [Investigator preview](https://packproof-p0-rkfcymuit-ridwan-abeebs-projects.vercel.app) reuses the existing Vercel `packproof-p0` project and Supabase database. One application remains; P0 probes are development tools. Production is unchanged. The user explicitly approved encrypted Preview-only database/Storage credentials; Meta, tracing and issuer-signing secrets were excluded. Recorded AI and fictional-data disclosures remain visible. No new inference or provider spend occurred.
+
+Initial preview requests returned 503: Vercel could not resolve the IPv6-only direct database endpoint. The official same-project IPv4 session pooler fixed connectivity. Its discarded startup options also required awaited `pg` connection initialization and verification of the restricted role and owner before checkout. Three selected actual-pooler integration tests passed, including all three clients, foreign-session RLS and durable pause/resume. The working local direct connection was independently preserved. Safe hosted diagnostics contain only fixed stage/error codes. Region `fra1` was requested, but deployment metadata reports `iad1`; no regional latency improvement is claimed.
+
+Typecheck, 66 relevant unit tests, the production build and deployed browser checks passed. The latter cover both sellers, the batch notice, explicit gap, pending-page reload/resume, leading zeros, unresolved physical scope, controlled errors, citations, private synthetic 8×8 capture upload, secure cookies, anonymous/foreign-session denial, cross-origin and malformed-body rejection, stale-result presentation and small-screen layout. A separate HTTPS request returned 429 at the unchanged private-session limit. Client assets and output traces passed secret/private-key checks. Browser viewport emulation is not an Android observation.
+
+Saved findings are reassessed for expiry on every private read; old timestamps and signed records are preserved. Stale seller evidence is labeled historical. The 27 original signed records and all provider ledgers remain unchanged. The original custody gap remains unresolved. No renewal was authorized or performed.
+
+The user subsequently confirmed **all requested vivo Y03 P1 tests passed**. This is recorded as `passed_user_reported`, with no new exported device report or timing measurements. A4’s device checkpoint is cleared. The user subsequently approved Production credentials and publication, recorded in the release evidence below. Stop at P1D; no automatic commit/push or P2 work. [Exact commands, deployment attempts, checks and preservation evidence](p1d.json).
+
+
+## Production publication and simplified screens
+
+[PackProof](https://packproof-p0.vercel.app) now serves the Investigator; [device checks](https://packproof-p0.vercel.app/tools) use the same project and origin. The user explicitly approved encrypted Production Supabase credentials and publication, then requested clearer modern interfaces. Product entry/results are organized into two steps, with context explanations, optional description, touch-friendly controls and automatic mobile result scrolling. Device controls show capture dimensions/signing outcomes; optional device details and technical reports are collapsed. Controls wait until scripts are ready, fixing ignored early taps.
+
+Final verified preview and Production share the same 70-file source hash. Production uses 12 encrypted variables, including the exact public origin; the 11 Preview variables remain intact. No Meta, tracing or issuer-signing secrets were uploaded. Fresh anonymous Production browser checks passed the full Investigator journey, private synthetic upload, same-origin/session boundaries, both layouts and integrated device-camera/manual/crypto/download/tamper/QR controls. Actual phone evidence remains the user's prior vivo Y03 confirmation; the redesigned layout was checked with browser viewports, not a new physical measurement. Typecheck, 33 relevant unit tests and clean Vercel install/build passed. No additional Meta calls, dependency changes, migrations or signing/fixture renewal. Existing P0 two-phone deferrals remain unchanged.
+
+P1/A1–A4/I1 and Production delivery are passed; P0 stays partial and P2 has not started. Temporary automation access was revoked and the isolated server stopped. No commit/push. Exact commands, receipts, source hash, screenshots and scoped limitations are in [P1D release evidence](p1d.json).

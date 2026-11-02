@@ -7,6 +7,7 @@ import {finalize,factCatalog} from './finalizer.js';
 import {ProviderFailure,type MusePlanner} from '../providers/muse.js';
 import {InvestigationError} from './store.js';
 import {P1BudgetError} from '../providers/p1-budget.js';
+import {historicalFinding} from '../../domain/verification/freshness.js';
 import type {RunState,InvestigationStore,Owner,ToolResult,Row} from './types.js';
 import type {EvidenceServices} from '../evidence/services.js';
 import type {ImageInspector} from '../providers/recorded-image.js';
@@ -93,7 +94,8 @@ export function investigatorGraph(o:GraphOptions){
 export function initialState(row:Row):RunState{return {id:row.id,revision:row.revision,input:row.input,messages:[],turn:0,actions:row.actions,recaptures:row.recaptures,retries:row.retries,results:{},pending:null,request:null,answer:null,finding:null,error:null,claims:[],startedAt:Date.parse(row.createdAt)};}
 export async function publicView(store:InvestigationStore,owner:Owner,id:string){
  const {row,events}=store.readView?await store.readView(owner,id):await Promise.all([store.get(owner,id),store.events(owner,id)]).then(([row,events])=>({row,events}));
- return PublicInvestigation.parse({id,revision:row.revision,status:row.status,mode:row.finding?.mode??'recorded-demo',input:row.input,actions:row.actions,recaptures:row.recaptures,retries:row.retries,finding:row.finding,request:row.request,trace:events.map(e=>({tool:e.tool,status:e.result.status,source:e.source??'model_tool',evidence_refs:e.result.evidence_refs,reason:e.result.reason})),errorCode:row.error});
+ const finding=row.finding?historicalFinding(row.finding,new Date().toISOString()):null;
+ return PublicInvestigation.parse({id,revision:row.revision,status:row.status,mode:finding?.mode??'recorded-demo',input:row.input,actions:row.actions,recaptures:row.recaptures,retries:row.retries,finding,request:row.request,trace:events.map(e=>({tool:e.tool,status:e.result.status,source:e.source??'model_tool',evidence_refs:e.result.evidence_refs,reason:e.result.reason})),errorCode:row.error});
 }
 export async function startInvestigation(o:GraphOptions,input:InvestigationInput){
  const row=await o.store.create(o.owner,InvestigationInput.parse(input));

@@ -1,0 +1,1152 @@
+{
+  "phase": "P1D",
+  "status": "passed",
+  "at": "2026-11-02T10:11:48.484900Z",
+  "baselineCommit": "6cd7989",
+  "oneApplication": true,
+  "existingProjectReused": true,
+  "deployment": {
+    "projectId": "prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t",
+    "productionTarget": "dpl_D7pkPvwB485zgggB2GBzkzfib1Mq",
+    "protection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "deployment": {
+      "id": "dpl_3i54mcHn46YjrBDGQVowvEaqa8dx",
+      "url": "packproof-p0-rkfcymuit-ridwan-abeebs-projects.vercel.app",
+      "readyState": "READY",
+      "target": null,
+      "nodeVersion": "24.x",
+      "framework": "nextjs",
+      "regions": [
+        "iad1"
+      ]
+    },
+    "regionNote": "fra1 requested in source config/API settings; deployment metadata reports iad1. No regional latency improvement claimed.",
+    "buildLines": [
+      "> Detected ENABLE_EXPERIMENTAL_COREPACK=1 and \"pnpm@12.16.1\" in package.json",
+      "Running \"install\" command: `pnpm install --frozen-lockfile`...",
+      "Done in 85ms using pnpm v12.16.1",
+      "Running \"pnpm build\"",
+      "$ pnpm probe:build && next build --webpack",
+      "\u2713 Compiled successfully in 5.6s",
+      "Build Completed in /vercel/output [34s]"
+    ],
+    "snapshotContext": "Original P1D preview checkpoint; current Production delivery is recorded under release."
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "id": "dpl_8PU8yXL64YCgfupAwQs6hpdgvAVt",
+      "url": "https://packproof-p0-e5d1t21jk-ridwan-abeebs-projects.vercel.app",
+      "sourceSha256": "e2c8552a184b49eb712cee7b9fe5bddc19805041eac86fa871d5111164515173",
+      "createdAt": "2026-11-02T09:53:42.743Z",
+      "outcome": "Build passed; investigation 503; superseded."
+    },
+    {
+      "attempt": 2,
+      "id": "dpl_GeGpRHDwVR8kqAEiadEXZTPVpyKe",
+      "url": "https://packproof-p0-ilynndryl-ridwan-abeebs-projects.vercel.app",
+      "sourceSha256": "79cf967e364a8fd3258cd414667a41eaf878515eeb5dfa17cf0593c7452dc5b9",
+      "createdAt": "2026-11-02T10:00:11.514Z",
+      "outcome": "Fixed-code diagnostics confirmed limits/ENOTFOUND on IPv6-only direct endpoint; superseded."
+    },
+    {
+      "attempt": 3,
+      "id": "dpl_3kMRXjUKHBRQ9vCJyhqJXDboM36Q",
+      "url": "https://packproof-p0-hg3mk4kqe-ridwan-abeebs-projects.vercel.app",
+      "sourceSha256": "9e1c85e711d4e22d6ff1c8c139138842c03203052b4c80381e95b08b4ab9aca4",
+      "createdAt": "2026-11-02T10:05:25.979Z",
+      "outcome": "IPv4 pooler with verified role/owner initialization; backend malformed request returned 400; superseded by explicit region-setting attempt."
+    },
+    {
+      "attempt": 4,
+      "id": "dpl_3i54mcHn46YjrBDGQVowvEaqa8dx",
+      "url": "https://packproof-p0-rkfcymuit-ridwan-abeebs-projects.vercel.app",
+      "sourceSha256": "9e1c85e711d4e22d6ff1c8c139138842c03203052b4c80381e95b08b4ab9aca4",
+      "createdAt": "2026-11-02T10:06:41.428Z",
+      "outcome": "Current verified preview; browser/security/private capture passed. Region request did not change reported iad1."
+    }
+  ],
+  "sourceManifest": {
+    "sha256": "9e1c85e711d4e22d6ff1c8c139138842c03203052b4c80381e95b08b4ab9aca4",
+    "fileCount": 69,
+    "files": [
+      {
+        "path": "package.json",
+        "sha256": "2d1523d6257eb4ec11a8b5aa459672fd42322b21a51870422d627cc9a5688df5",
+        "bytes": 3426
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "sha256": "1f86f2c9a74b894c4bf72eec59aff6f19499fd46852543764262e4f6754b1596",
+        "bytes": 83380
+      },
+      {
+        "path": "pnpm-workspace.yaml",
+        "sha256": "a3dc0ad29cffab2ae3632b01ad62e1d254133639237b2c808bec5d9b9a921101",
+        "bytes": 62
+      },
+      {
+        "path": ".npmrc",
+        "sha256": "cde76ca04e048c3eba070a2c0dfcf5b723cf6014eab177157096b924f24ec4ca",
+        "bytes": 35
+      },
+      {
+        "path": "next.config.ts",
+        "sha256": "5128892b308d3581fa4d069ae316fd2f23e08bb78e771e7c1c19a13d4f6cecf1",
+        "bytes": 953
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "47ab8739c7a32f35ba82d580ba8b376c6a7ef27d43e39aea527643f49be7436b",
+        "bytes": 481
+      },
+      {
+        "path": "tsconfig.app.json",
+        "sha256": "b902ae791686fc6cf89663d1ec91bf3ddb34357d384ee45800f733e75369d359",
+        "bytes": 394
+      },
+      {
+        "path": "vercel.json",
+        "sha256": "8c6463fe17c74a6d23e90a2fe9242d45110e5de32da5aa51e65b35b715cf574d",
+        "bytes": 191
+      },
+      {
+        "path": "certs/supabase-roots.crt",
+        "sha256": "6ecd239038a7db063a6619b71742372ecfe06c0b0ec12a9993fee4445bf0d4d6",
+        "bytes": 2738
+      },
+      {
+        "path": "docs/packproof/demo/root-public.json",
+        "sha256": "efd83c054b0c62e9ee58408e6eb12051c43f8affd0571882827f4821a6538aaf",
+        "bytes": 379
+      },
+      {
+        "path": "docs/packproof/evidence/provider.json",
+        "sha256": "0e3af8a7c62164d5289d289896af0c1f78d081137b6fb3e141fc295df45a9fa4",
+        "bytes": 5646
+      },
+      {
+        "path": "docs/packproof/evidence/sam/special-token-output.txt",
+        "sha256": "f09ab409e038f2a9b00953159ac015112501cb461be731b4cd3cefe1c88e4e50",
+        "bytes": 188
+      },
+      {
+        "path": "src/app/api/captures/route.ts",
+        "sha256": "836f2aa2fddd08af99b2368f28f4ba8442c3ad79cdeb47e405647422cf331379",
+        "bytes": 153
+      },
+      {
+        "path": "src/app/api/investigations/[id]/resume/route.ts",
+        "sha256": "392e780f1c024ffe644c5a085b61818c106367d1193ae3c0c925dde69013ffbd",
+        "bytes": 266
+      },
+      {
+        "path": "src/app/api/investigations/[id]/route.ts",
+        "sha256": "c7808f1da17f34ef197ea57224cc0afcd7271d3cbd227887da537197a9ec3ea1",
+        "bytes": 268
+      },
+      {
+        "path": "src/app/api/investigations/route.ts",
+        "sha256": "7980a1145ad7db2ad72fa5a78b1e6722d8a3dca773aeb6fecad11d5564a9ef5e",
+        "bytes": 219
+      },
+      {
+        "path": "src/app/api/products/lookup/route.ts",
+        "sha256": "e9d9b02b7a3a6ddc0446f342881df823dae50ae231f98b36ce5ddd29274c4d4f",
+        "bytes": 192
+      },
+      {
+        "path": "src/app/globals.css",
+        "sha256": "5aef21b353e88079722dc118cd7958fdc8e36ae3acc2872d3e51cc4bf2ea3f8b",
+        "bytes": 8614
+      },
+      {
+        "path": "src/app/layout.tsx",
+        "sha256": "dbbfce55ba610fe24a833ac4c7872d9a875ce249fd32ad156e180a3480d4dfdd",
+        "bytes": 536
+      },
+      {
+        "path": "src/app/manifest.ts",
+        "sha256": "301e6e4b58b4f873bc87b776220e994f0bed7edf35379f437640ee218a9c8f8b",
+        "bytes": 389
+      },
+      {
+        "path": "src/app/page.tsx",
+        "sha256": "2b7c8d34e21a01c36452eae5322594ccbd771bf9e912dbb5a3e20fc8e3f24530",
+        "bytes": 13021
+      },
+      {
+        "path": "src/contracts/evidence.ts",
+        "sha256": "961a99626f5d7e18c403238418da1f508b36206684a84a825dca3ad94cbcb666",
+        "bytes": 7531
+      },
+      {
+        "path": "src/contracts/investigation.ts",
+        "sha256": "50c65191321921be897fcd5a58b5237dc247665a974b0ffb4d4e103ca761a00a",
+        "bytes": 3711
+      },
+      {
+        "path": "src/contracts/p0.ts",
+        "sha256": "60b1a3df1752b4879a84ac97172a48236056f5b8e43bcded68f3137a31b7885a",
+        "bytes": 4000
+      },
+      {
+        "path": "src/domain/trust/evidence.ts",
+        "sha256": "1ad45a20e4cd069f3fa31673b1950a8282dbfaf2490e84be7e83b4d0172325d9",
+        "bytes": 9199
+      },
+      {
+        "path": "src/domain/verification/freshness.ts",
+        "sha256": "e50ef841a335192211fbc84552e5a8bd835d7e1fdc7f74911e4d2adaadb9ed3c",
+        "bytes": 1242
+      },
+      {
+        "path": "src/domain/verification/p0-crypto.ts",
+        "sha256": "37c5a6a98ec4b6ec6706aac133e502b894bfea7b54fe6b4856ba81740430765e",
+        "bytes": 2250
+      },
+      {
+        "path": "src/server/auth/session.ts",
+        "sha256": "4a84ac83c035f41dc772b1393384da2573c92773461f6c2b5b6b3e6a9b50a641",
+        "bytes": 2119
+      },
+      {
+        "path": "src/server/data/evidence-reads.ts",
+        "sha256": "1d4bc00f7eac22c4f84d61d8bfe7baceb6e78e24cc26aad8fda341e1c6485ed3",
+        "bytes": 633
+      },
+      {
+        "path": "src/server/data/evidence-repository.ts",
+        "sha256": "56026c88e56182d75956d9012f3f7a9ac3847cc93c45387a8a3edb4d6ce8949d",
+        "bytes": 1407
+      },
+      {
+        "path": "src/server/data/postgres.ts",
+        "sha256": "8840b5f9e3fbc64902a29d871625e203c2c4f69fe89b0a58636d4b6230222d61",
+        "bytes": 2400
+      },
+      {
+        "path": "src/server/evidence/services.ts",
+        "sha256": "f9a5f6bdf55b98843d8ca77c7d098e4b08ec703451ad715f6c1942be6edd9a93",
+        "bytes": 13115
+      },
+      {
+        "path": "src/server/investigator/captures.ts",
+        "sha256": "07a02fa9d18b6258505dbe1451e85e88b42ae848ef9512cada62fe1fb0b3495c",
+        "bytes": 3425
+      },
+      {
+        "path": "src/server/investigator/finalizer.ts",
+        "sha256": "532a50c1c0974d67a9deff15f0a9459acde36bbf55b77520e94d2cfc5fe23da1",
+        "bytes": 5653
+      },
+      {
+        "path": "src/server/investigator/graph.ts",
+        "sha256": "0e9ea66d200a684eba5cd9ae25214345a8f777dd01a44695643090090c02b2b6",
+        "bytes": 11568
+      },
+      {
+        "path": "src/server/investigator/http.ts",
+        "sha256": "2475b64a9590e59893eb553e6d7faf1c8480cf2f440dd57b451ea365f9fcd92e",
+        "bytes": 5063
+      },
+      {
+        "path": "src/server/investigator/runtime.ts",
+        "sha256": "5725c4b7d27455957ac6ac0a541e0bb39eb7308a76baf89f7c2901bc56b3d612",
+        "bytes": 2175
+      },
+      {
+        "path": "src/server/investigator/store.ts",
+        "sha256": "c5484adcece3c1f2efec69557685a391d36ad14ec450daf9533039ee62b5a8e1",
+        "bytes": 9937
+      },
+      {
+        "path": "src/server/investigator/tools.ts",
+        "sha256": "c77ca61fe91059e95f34fec0c02c84809a2ac561021b80949a1b7b2ff01a49ad",
+        "bytes": 5028
+      },
+      {
+        "path": "src/server/investigator/types.ts",
+        "sha256": "12795dfbaf2b9ec468e1d7270f1bcfc7398074d5663804b6b6e623504d8439f4",
+        "bytes": 2045
+      },
+      {
+        "path": "src/server/providers/muse.ts",
+        "sha256": "2037a5b94fcc3d93907e4fe14e492069ef3424827c064e694437398e70cf413c",
+        "bytes": 9325
+      },
+      {
+        "path": "src/server/providers/p1-budget.ts",
+        "sha256": "aa15cc53b1eed29008f1cf31e3d20f8915ab27955dbf9555c93cd4027510271e",
+        "bytes": 11756
+      },
+      {
+        "path": "src/server/providers/p1-live.ts",
+        "sha256": "66c7959d92a3b0e73334b75fc71ac5fe43dbd6a69fee939949640c14f73603eb",
+        "bytes": 12550
+      },
+      {
+        "path": "src/server/providers/recorded-image.ts",
+        "sha256": "a5b81411c72e42a4533a40c9d9694611c687fa271647e104b4864b89bdf8b1f2",
+        "bytes": 2461
+      },
+      {
+        "path": "public/icon.svg",
+        "sha256": "5fc4807ef639a51978c1b49d1e7c74bb7abb93921a6e1e01dfe20c7a76d2a53c",
+        "bytes": 375
+      },
+      {
+        "path": "scripts/spikes/access.ts",
+        "sha256": "b9b62a523aaf99dbb6e717eab9225c977f5d496e30e1cde5ff7b4f3bb03f37ba",
+        "bytes": 2476
+      },
+      {
+        "path": "scripts/spikes/budget.ts",
+        "sha256": "9add2699783fa37821804a37f616352e0d7c937dcdf110c7f9b9e3ac610fec9f",
+        "bytes": 1698
+      },
+      {
+        "path": "scripts/spikes/build.ts",
+        "sha256": "389ea88f0e378fcc69c25c7b072c762073fda710be2bf9109a1259c140b54b09",
+        "bytes": 636
+      },
+      {
+        "path": "scripts/spikes/check-bundle.ts",
+        "sha256": "78be2e5a68a6da65260bdd4759d06d6ee38b2cc1f6f9366d3c32775a01563488",
+        "bytes": 2428
+      },
+      {
+        "path": "scripts/spikes/crypto-browser.ts",
+        "sha256": "daab74f1559a4377bea055617ea773b5f464a34d57c3d4a804f80974bb019011",
+        "bytes": 4429
+      },
+      {
+        "path": "scripts/spikes/deploy-entry.ts",
+        "sha256": "1ced93eda0044c7ba621a0fae91a80e0defec03e3b68ba45a6132c0cae75d0b9",
+        "bytes": 840
+      },
+      {
+        "path": "scripts/spikes/deployment-browser.ts",
+        "sha256": "62a56118cde2dcebec800d580648d4325ce0f263a38d2f913badef5d239901a3",
+        "bytes": 5521
+      },
+      {
+        "path": "scripts/spikes/evidence.ts",
+        "sha256": "2402d836c8fca5f3a68d07e8033f787439a25dd86587a728e0ef6dbff3ba283a",
+        "bytes": 277
+      },
+      {
+        "path": "scripts/spikes/fixture-registry.ts",
+        "sha256": "e51d838c11f704323ecec21e322fd02255203591393a388ff334961ea99ddf99",
+        "bytes": 1339
+      },
+      {
+        "path": "scripts/spikes/infrastructure.ts",
+        "sha256": "28287f5a96cd77633505853ed53e0ba7d59a3a7966bdfd2f353970b7f2403f94",
+        "bytes": 8090
+      },
+      {
+        "path": "scripts/spikes/langchain-compatibility.ts",
+        "sha256": "d7e218b6932fbe4ab03b0b20fb67900d557c7162bacca6269221388660b1edac",
+        "bytes": 7607
+      },
+      {
+        "path": "scripts/spikes/langchain-offline.ts",
+        "sha256": "60970abb0a9aac79d577c52342e86f13ef1d2d57ad2bf7d7279a9f4a04cba1ef",
+        "bytes": 2033
+      },
+      {
+        "path": "scripts/spikes/meta-gateway.ts",
+        "sha256": "7e646fb3b86615ac849bd43ab40b9cccffaa40bac5c71fbd33e4fa7b17724f19",
+        "bytes": 530
+      },
+      {
+        "path": "scripts/spikes/package-probe.ts",
+        "sha256": "8a5e44491b24499b2ce73e1bfc33387d3d54224180c02ce359a26e5e6e9f7e2e",
+        "bytes": 2664
+      },
+      {
+        "path": "scripts/spikes/phone-browser.ts",
+        "sha256": "14db9448fef9a57ca8d24ce6ee81b4223910fecf0389baedd1c36ddbc88e9ea0",
+        "bytes": 5643
+      },
+      {
+        "path": "scripts/spikes/phone-measurements.ts",
+        "sha256": "b72fbd9801914261f602ae73fdde218e76448d5fa25426273f4357b0c441b9f4",
+        "bytes": 3996
+      },
+      {
+        "path": "scripts/spikes/phone.html",
+        "sha256": "27c8324fc2897abba67b62835fa3443ed992909cbafdbaae65c5c84e6edf820f",
+        "bytes": 3068
+      },
+      {
+        "path": "scripts/spikes/phone.ts",
+        "sha256": "607189f68ea928ce8685be20bd4b68bba31ecdcf9c82ea45e22822bd43e28099",
+        "bytes": 11010
+      },
+      {
+        "path": "scripts/spikes/provider-contract.ts",
+        "sha256": "221fe24507f07e4c98208ed1556ce19a68b3b775f1c6a7f64b132a8b10ddcb74",
+        "bytes": 1204
+      },
+      {
+        "path": "scripts/spikes/provider.ts",
+        "sha256": "0c96dbaec86cff521dd9101df26ce8e2ba79bd42b46f09cacde30b56643eef3c",
+        "bytes": 14876
+      },
+      {
+        "path": "scripts/spikes/safe-tracing.ts",
+        "sha256": "f4832615da84138b21e9784f44bc329d1e7b92806e366dc8c5699685e3008928",
+        "bytes": 3263
+      },
+      {
+        "path": "scripts/spikes/sam.ts",
+        "sha256": "f94b11dd167054527ec73944ee27d0f5d3745ac70dc0f53495aaa600f208c26c",
+        "bytes": 1890
+      },
+      {
+        "path": "scripts/spikes/serve.ts",
+        "sha256": "d89487550552399a9629729e72dd909f5562597c8f6d59f6c5e1740289c32b9a",
+        "bytes": 3639
+      },
+      {
+        "path": "scripts/spikes/vercel-entry.ts",
+        "sha256": "6ef85cd0be785578a35135a498ee3026e2c9048ea7e18a291f08b9b3eabbf2a6",
+        "bytes": 635
+      }
+    ],
+    "snapshotContext": "Original 69-file preview. Current 70-file Production source hash is recorded under release."
+  },
+  "credentials": {
+    "userApproval": "Approve encrypted preview-only credentials",
+    "environment": {
+      "projectId": "prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t",
+      "environmentCount": 11,
+      "environments": [
+        {
+          "key": "P1_PROVIDER_MODE",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "P1_TRACING",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "P1_SESSION_CAP_CENTS",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "P1_SESSION_TIMEOUT_MS",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_DB_SSLROOTCERT",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "ENABLE_EXPERIMENTAL_COREPACK",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_PROJECT_REF",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_URL",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_PUBLISHABLE_KEY",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_SECRET_KEY",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_DB_URL",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        }
+      ],
+      "previewOnly": true,
+      "noModelOrSigningKeys": true
+    },
+    "localEnvChanged": false,
+    "connection": {
+      "at": "2026-11-02T10:04:57.275Z",
+      "status": "passed",
+      "projectRef": "hvbzxeuedookkwleyjmx",
+      "host": "aws-1-eu-west-3.pooler.supabase.com",
+      "port": 5432,
+      "mode": "session",
+      "ipv4": true,
+      "tlsVerifyFull": true,
+      "role": "packproof_investigator",
+      "privateOwnerSessionSetting": true,
+      "foreignInvestigationsVisible": 0,
+      "localEnvUnchanged": true,
+      "credentialsLogged": false,
+      "repair": "Awaited pg onConnect initializes and verifies role/owner; session pooler discarded startup options."
+    },
+    "modelOrSigningKeysUploaded": false
+  },
+  "freshness": {
+    "at": "2026-11-02T09:57:32.860Z",
+    "status": "passed",
+    "signedRecords": 27,
+    "registeredUnits": 3,
+    "snapshots": [
+      {
+        "recordId": "30000000-0000-4000-8000-000000000314",
+        "asOf": "2026-11-01T12:00:00.000Z",
+        "expiresAt": "2026-11-02T12:00:00.000Z",
+        "fresh": true
+      },
+      {
+        "recordId": "30000000-0000-4000-8000-000000000324",
+        "asOf": "2026-11-01T12:00:00.000Z",
+        "expiresAt": "2026-11-02T12:00:00.000Z",
+        "fresh": true
+      },
+      {
+        "recordId": "30000000-0000-4000-8000-000000000334",
+        "asOf": "2026-11-01T12:00:00.000Z",
+        "expiresAt": "2026-11-02T12:00:00.000Z",
+        "fresh": true
+      }
+    ],
+    "rateLimitDenied": true,
+    "explicitGapPreserved": true,
+    "sourceRecordsRenewed": false,
+    "providerRequests": 0,
+    "preflightRepair": "Ad hoc check window uses milliseconds; no application rate policy changed."
+  },
+  "repairs": [
+    "Saved private findings are reassessed for expiry without changing historical checkpoint findings or signed timestamps. Stale seller records no longer display current-authority support.",
+    "Vercel direct-endpoint DNS failed; official same-project IPv4 session pooler verified with full TLS. Local direct connection preserved.",
+    "Session pooler discarded startup options. Awaited pg onConnect initializes and verifies restricted role/owner before each new client is available; failure prevents checkout.",
+    "Hosted errors log fixed stage and allowlisted codes only; no raw errors, SQL, paths or credentials.",
+    "Generated next-env.d.ts removed from index and ignored; next typegen runs before typechecking. No P1D commit or push."
+  ],
+  "validation": {
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "status": "passed"
+    },
+    "unit": {
+      "command": "pnpm exec vitest run tests/unit/evidence.test.ts tests/unit/investigator.test.ts tests/unit/investigator-evaluation.test.ts tests/unit/p1-performance.test.ts --reporter=json --outputFile=.local/p1d/unit-results.json",
+      "passed": 66,
+      "failed": 0,
+      "report": "docs/packproof/evidence/vitest-p1d-unit.json"
+    },
+    "poolerIntegration": {
+      "command": "PACKPROOF_P1B_INTEGRATION=1 node --env-file-if-exists=.env.local --import tsx node_modules/vitest/vitest.mjs run tests/integration/p1b.test.ts -t 'runs six-tool controller|enforces private-session RLS|initializes every pooled client' --reporter=json --outputFile=.local/p1d/pooler-integration-results.json",
+      "environmentNote": "Operator wrapper supplied SUPABASE_DB_URL from ignored .local/deploy/preview-db-url in the child environment, preserving .env.local. Historical p1b-integration-checks.json restored byte-for-byte.",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 6,
+      "report": "docs/packproof/evidence/vitest-p1d-pooler.json"
+    },
+    "earlierDirectIntegration": {
+      "passed": 2,
+      "skipped": 6,
+      "scope": "Existing selected durable controller and RLS tests before pooler initialization repair; not a separate full suite."
+    },
+    "localBuild": {
+      "command": "NEXT_TELEMETRY_DISABLED=1 node node_modules/next/dist/bin/next build .local/p1d-build --webpack",
+      "status": "passed",
+      "source": "Clean upload-allowlist source copy; regenerated next-env.d.ts. Earlier local build; final application build verified on Vercel."
+    },
+    "finalVercelBuild": {
+      "installCommand": "pnpm install --frozen-lockfile",
+      "buildCommand": "pnpm build",
+      "status": "passed",
+      "node": "24.x (metadata; cloud patch not independently measured)",
+      "pnpm": "12.16.1 (actual build log)",
+      "dependencies": "Pinned package.json and unchanged pnpm-lock.yaml"
+    },
+    "localProductionBrowser": {
+      "mode": "production UI + actual Supabase + recorded AI; not live acceptance",
+      "origin": "http://localhost:4181",
+      "providerRequests": 0,
+      "actualPhone": false,
+      "inputsProgressSignedResultsAndNotice": "passed",
+      "shopARefusal": "passed",
+      "historyGap": "passed",
+      "pauseResumeReload": "passed",
+      "leadingZerosAndNoPhysicalSuccess": "passed",
+      "controlledErrorState": "passed",
+      "mobileNoOverflow": "passed",
+      "sessionCookiesOwnerIsolationSameOriginAndStrictBody": "passed",
+      "historicalFindingUi": "passed controlled expired-assessment response; no clock or signed record changed",
+      "status": "passed"
+    },
+    "deployedBrowser": {
+      "command": "PACKPROOF_TEST_ORIGIN=https://packproof-p0-rkfcymuit-ridwan-abeebs-projects.vercel.app PACKPROOF_TEST_BYPASS_FILE=.local/p1d/preview-bypass PACKPROOF_BROWSER_EVIDENCE_PREFIX=.local/p1d/preview PACKPROOF_TEST_CAPTURE=1 node --import tsx scripts/p1c/browser.ts",
+      "mode": "production UI + actual Supabase + recorded AI; not live acceptance",
+      "origin": "https://packproof-p0-rkfcymuit-ridwan-abeebs-projects.vercel.app",
+      "providerRequests": 0,
+      "actualPhone": false,
+      "inputsProgressSignedResultsAndNotice": "passed",
+      "shopARefusal": "passed",
+      "historyGap": "passed",
+      "deployedPrivateCapture": {
+        "status": "passed",
+        "synthetic": true,
+        "width": 8,
+        "height": 8,
+        "publicReadStatus": 400,
+        "physicalPhone": false
+      },
+      "pauseResumeReload": "passed",
+      "leadingZerosAndNoPhysicalSuccess": "passed",
+      "controlledErrorState": "passed",
+      "mobileNoOverflow": "passed",
+      "sessionCookiesOwnerIsolationSameOriginAndStrictBody": "passed",
+      "historicalFindingUi": "passed controlled expired-assessment response; no clock or signed record changed",
+      "uncaughtBrowserErrors": 0,
+      "status": "passed"
+    },
+    "bundleAndTraces": {
+      "status": "passed",
+      "clientAssets": 26,
+      "configuredSecretBytesAbsent": true,
+      "privatePemAbsent": true,
+      "traceChecks": [
+        {
+          "route": "captures/route.js.nft.json",
+          "requiredAssets": true
+        },
+        {
+          "route": "investigations/[id]/resume/route.js.nft.json",
+          "requiredAssets": true
+        },
+        {
+          "route": "investigations/[id]/route.js.nft.json",
+          "requiredAssets": true
+        },
+        {
+          "route": "investigations/route.js.nft.json",
+          "requiredAssets": true
+        },
+        {
+          "route": "products/lookup/route.js.nft.json",
+          "requiredAssets": true
+        }
+      ],
+      "tracedReferences": 5285,
+      "generatedNextEnvIgnored": true
+    },
+    "deployedSecurity": {
+      "at": "2026-11-02T10:09:50.731Z",
+      "status": "passed",
+      "httpsStrictTls": true,
+      "homeStatus": 200,
+      "investigatorMainExperience": true,
+      "deployedClientAssets": 8,
+      "configuredSecretsAbsent": true,
+      "privateKeysAbsent": true,
+      "recordedAiDisclosure": true,
+      "securityHeaders": {
+        "noSniff": "nosniff",
+        "frame": "DENY",
+        "permissions": "camera=(self), microphone=(), geolocation=()"
+      },
+      "rateLimit": {
+        "http": 429,
+        "error": "rate_limit",
+        "method": "Pre-filled only a synthetic private session counter at its existing 20/hour limit; one HTTPS request; no global policy change"
+      },
+      "productionTargetUnchanged": true,
+      "productionHttp": 200,
+      "productionP0TextPresent": true,
+      "providerRequests": 0
+    },
+    "fixtureClockTests": "Expiry-boundary and invalid-clock regression inputs were controlled; production clock and signed records were never changed.",
+    "diagnosticFailures": "Initial browser script selected the unknown-code finding for its historical-seller assertion; corrected to the supported seller finding. Sandbox-only Chrome/DNS attempts could not run and were repeated with required access. Initial deployment 503s preserved above. Regional metadata mismatch recorded rather than waived as a claimed optimization.",
+    "fullSuites": "Not rerun. Historical baseline remains 132 unit / 15 integration at 7b72f85."
+  },
+  "cleanup": {
+    "temporaryServerStopped": true,
+    "existingDevelopmentServerPreserved": true,
+    "temporaryBypassRevoked": true,
+    "existingSsoProtectionRetained": true,
+    "unauthenticatedPreviewHttp": 302,
+    "phoneAccess": "Sign in through existing Vercel account when prompted; no bypass secret shared."
+  },
+  "preservation": {
+    "protectedFileSha256": {
+      ".local/provider-budget.json": "3c4c47f073729608625817442e86268223397f16f39bf5b294074322c3450755",
+      ".local/p1c/budget.json": "4e2863d145281a67a7e40e54736c75094113468d8bb0a70397f1790469a4ff5c",
+      ".local/p1c-completion-2026-11-02/budget.json": "f8cdc02dad3a821e563dbf838bbfea671e48145156685fe4470c47337a089cbf",
+      ".local/p1c-repair-2026-11-02/budget.json": "dc889fec7d6cb1aedab3f38c6a2bbde1a62d1007bafd8f0fd750738dfcac8ea0",
+      "docs/packproof/demo/signed-demo.json": "a3ac8150486dbae6a6f3fc607cd7c09b80d00c7d29f01f05af4713989c66e9fb",
+      "docs/packproof/demo/root-public.json": "efd83c054b0c62e9ee58408e6eb12051c43f8affd0571882827f4821a6538aaf"
+    },
+    "allUnchanged": true,
+    "lockfileChanged": false,
+    "migrationsChanged": false,
+    "signedRecordsRenewed": false,
+    "p0PhaseUnchanged": true,
+    "p0BudgetUnchanged": true,
+    "providerReceiptsUnchanged": true,
+    "pendingFileSecretScan": {
+      "files": 26,
+      "configuredSecretMatches": 0,
+      "privatePemMatches": 0
+    },
+    "originalPreviewSourceMatchedAtCheckpoint": true,
+    "currentProductionSourceMatchesWorktree": true
+  },
+  "budget": {
+    "additionalMetaRequests": 0,
+    "additionalMetaSpendUsd": 0,
+    "actualHistoricalBilledUsd": null,
+    "existingLedgersUnchanged": true,
+    "remainingRepairGrantUnreservedUsd": 2,
+    "publicInferenceEnabled": false
+  },
+  "android": {
+    "device": "vivo Y03",
+    "status": "passed_user_reported",
+    "provenance": "user_chat_confirmation",
+    "confirmationRecordedAt": "2026-11-02T10:29:24.636106Z",
+    "userStatement": "alt test passed on the phone",
+    "previewUrl": "https://packproof-p0-rkfcymuit-ridwan-abeebs-projects.vercel.app",
+    "observations": "User confirms all requested P1 phone checks passed: preview loading/input, seller findings, notices/history gap, missing-evidence reload/resume and usable mobile layout; physical association remains separate.",
+    "limitations": "No new device report, measured timings, browser version or test-time freshness state supplied; not independently observed by the agent.",
+    "desktopEmulationIsDeviceEvidence": false,
+    "twoPhoneChecks": "Explicitly deferred; this confirmation does not cover two-phone QR/JSON/tamper trials."
+  },
+  "productionPromotion": {
+    "status": "completed",
+    "productionChanged": true,
+    "permanentUrl": "https://packproof-p0.vercel.app",
+    "deploymentId": "dpl_3EPrix2onG9zoenG6DeswwtUke3W",
+    "sourceSha256": "d8848592bdaf072b030dd86c5f80a0854830528e67b2dd3ce443b5c7dc6d060a",
+    "blockers": [],
+    "userAuthorization": "Explicit yes to encrypted Production credentials and publishing; see release.userAuthorization.",
+    "freshnessBoundary": "Original snapshots expire after 2026-11-02T12:00:00Z. No renewal/re-sign/reseed; stale/historical handling remains mandatory."
+  },
+  "p0Status": "partial",
+  "p1Status": "passed",
+  "p1Verified": true,
+  "p2Ready": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "stop": "P1D",
+  "acceptanceStatus": "A1_A2_A3_A4_I1_passed_with_user_reported_android",
+  "p1VerificationBoundary": "Functional acceptance A1\u2013A4/I1, user-confirmed vivo Y03 journey and public Production delivery passed. P0 two-phone gates remain deferred; no P2 work.",
+  "release": {
+    "status": "passed",
+    "publishedAtRecorded": "2026-11-02T10:56:20.709978Z",
+    "userAuthorization": {
+      "reply": "yes",
+      "scope": "Encrypted Production Supabase credentials and publication at the existing permanent URL; user also requested simpler, modern designs for both screens."
+    },
+    "permanentUrl": "https://packproof-p0.vercel.app",
+    "toolsUrl": "https://packproof-p0.vercel.app/tools",
+    "projectId": "prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t",
+    "deploymentId": "dpl_3EPrix2onG9zoenG6DeswwtUke3W",
+    "sourceSha256": "d8848592bdaf072b030dd86c5f80a0854830528e67b2dd3ce443b5c7dc6d060a",
+    "sourceFiles": 70,
+    "verifiedPreview": {
+      "deploymentId": "dpl_88ZWsbGfWN9WF3Vtux1un4H3Rf1a",
+      "sourceSha256": "d8848592bdaf072b030dd86c5f80a0854830528e67b2dd3ce443b5c7dc6d060a",
+      "smoke": {
+        "status": "passed",
+        "origin": "https://packproof-p0-ivn5khfvw-ridwan-abeebs-projects.vercel.app",
+        "mainAndToolsSameApp": true,
+        "deployedToolsAssetsTraced": true,
+        "browserCrypto": true,
+        "controlsWaitForReadiness": true,
+        "https": true,
+        "providerRequests": 0
+      }
+    },
+    "environment": {
+      "status": "passed",
+      "previewCount": 11,
+      "productionCount": 12,
+      "encrypted": true,
+      "modelSigningTracingKeysUploaded": false,
+      "productionOrigin": "https://packproof-p0.vercel.app",
+      "environments": [
+        {
+          "key": "P1_PROVIDER_MODE",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "P1_TRACING",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "P1_SESSION_CAP_CENTS",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "P1_SESSION_TIMEOUT_MS",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "SUPABASE_DB_SSLROOTCERT",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "ENABLE_EXPERIMENTAL_COREPACK",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "SUPABASE_PROJECT_REF",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "SUPABASE_URL",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "SUPABASE_PUBLISHABLE_KEY",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "SUPABASE_SECRET_KEY",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "SUPABASE_DB_URL",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "APP_ORIGIN",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "P1_PROVIDER_MODE",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "P1_TRACING",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "P1_SESSION_CAP_CENTS",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "P1_SESSION_TIMEOUT_MS",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_DB_SSLROOTCERT",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "ENABLE_EXPERIMENTAL_COREPACK",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_PROJECT_REF",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_URL",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_PUBLISHABLE_KEY",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_SECRET_KEY",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        },
+        {
+          "key": "SUPABASE_DB_URL",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        }
+      ]
+    },
+    "productionBuild": {
+      "status": "passed",
+      "lines": [
+        "> Detected ENABLE_EXPERIMENTAL_COREPACK=1 and \"pnpm@12.16.1\" in package.json",
+        "Running \"install\" command: `pnpm install --frozen-lockfile`...",
+        "Done in 6.4s using pnpm v12.16.1",
+        "Running \"pnpm build\"",
+        "\u2713 Compiled successfully in 19.5s",
+        "Route (app)",
+        "Build Completed in /vercel/output [59s]"
+      ]
+    },
+    "changes": [
+      "Two-step Investigator layout, visible demo examples, clearer listing/physical context, optional description and accessible touch controls.",
+      "Results scroll into view on small screens; stale findings provide a concrete next step without renewing signed evidence.",
+      "Same-app /tools route reuses the existing P0 responder; no separate project, product shell or provider backend.",
+      "Device page groups camera/signing/sharing/report controls; capture dimensions and signing outcomes are visible, with optional device fields/technical report.",
+      "Device controls stay disabled with a loading message until action handlers are attached, preventing ignored early taps."
+    ],
+    "validation": {
+      "typecheck": {
+        "command": "pnpm typecheck",
+        "status": "passed"
+      },
+      "unit": {
+        "command": "pnpm exec vitest run tests/unit/investigator.test.ts tests/unit/phone-measurements.test.ts --reporter=json --outputFile=.local/ui-unit.json",
+        "passed": 33,
+        "failed": 0,
+        "report": "docs/packproof/evidence/vitest-p1d-ui.json"
+      },
+      "localBuild": {
+        "command": "NEXT_TELEMETRY_DISABLED=1 pnpm --dir .local/ui-production build",
+        "status": "passed",
+        "scope": "Isolated source copy; existing development server preserved. A sandbox lock warning occurred during pnpm pre-run verification; existing dependencies were used. Final Vercel frozen-lockfile install/build also passed."
+      },
+      "productionBrowserCommand": "PACKPROOF_TEST_ORIGIN=https://packproof-p0.vercel.app PACKPROOF_BROWSER_EVIDENCE_PREFIX=.local/ui-release/production PACKPROOF_TEST_TOOLS=1 PACKPROOF_TEST_CAPTURE=1 node --import tsx scripts/p1c/browser.ts",
+      "productionBrowser": {
+        "mode": "production UI + actual Supabase + recorded AI; not live acceptance",
+        "origin": "https://packproof-p0.vercel.app",
+        "providerRequests": 0,
+        "actualPhone": false,
+        "expectedRecordedFinding": "Record-supported",
+        "inputsProgressSignedResultsAndNotice": "passed",
+        "shopARefusal": "passed",
+        "historyGap": "passed",
+        "deployedPrivateCapture": {
+          "status": "passed",
+          "synthetic": true,
+          "width": 8,
+          "height": 8,
+          "publicReadStatus": 400,
+          "physicalPhone": false
+        },
+        "pauseResumeReload": "passed",
+        "leadingZerosAndNoPhysicalSuccess": "passed",
+        "controlledErrorState": "passed",
+        "mobileNoOverflow": "passed",
+        "sessionCookiesOwnerIsolationSameOriginAndStrictBody": "passed",
+        "historicalFindingUi": "passed controlled expired-assessment response; no clock or signed record changed",
+        "deviceTools": {
+          "status": "passed",
+          "sameOriginPath": "/tools",
+          "permissionDenialAndLeadingZeros": true,
+          "syntheticCaptureDimensions": true,
+          "nodeVerifiedBrowserSignature": true,
+          "nonextractableKey": true,
+          "downloadImportAndAlteredFileRejection": true,
+          "qrTargetFps": 5,
+          "measuredDisplayFps": 5.00012712187598,
+          "successfulQrReads": 0,
+          "actualPhonesTested": 0,
+          "serverlessCatalogPersistence": "not established; per warm instance only",
+          "noMobileOverflow": true,
+          "uncaughtErrors": 0
+        },
+        "uncaughtBrowserErrors": 0,
+        "status": "passed"
+      },
+      "productionSecurity": {
+        "status": "passed",
+        "origin": "https://packproof-p0.vercel.app",
+        "homeHttp": 200,
+        "toolsHttp": 200,
+        "publicWithoutVercelSignIn": true,
+        "strictHttps": true,
+        "deployedAssetsChecked": 9,
+        "configuredSecretsAbsent": true,
+        "privateKeysAbsent": true,
+        "productionTarget": "dpl_3EPrix2onG9zoenG6DeswwtUke3W",
+        "projectId": "prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t",
+        "protection": {
+          "deploymentType": "all_except_custom_domains"
+        },
+        "recordedAiDisclosure": true,
+        "providerCalls": 0
+      },
+      "bundleAndTracing": {
+        "status": "passed",
+        "clientAssets": 28,
+        "configuredSecretMatches": 0,
+        "privateKeyMatches": 0,
+        "toolsHtmlAndScriptTraced": true,
+        "privateOutputPaths": 0
+      },
+      "localTools": {
+        "mode": "production UI + actual Supabase + recorded AI; not live acceptance",
+        "origin": "http://localhost:4182",
+        "providerRequests": 0,
+        "actualPhone": false,
+        "expectedRecordedFinding": "Record-supported",
+        "deviceTools": {
+          "status": "passed",
+          "sameOriginPath": "/tools",
+          "permissionDenialAndLeadingZeros": true,
+          "syntheticCaptureDimensions": true,
+          "nodeVerifiedBrowserSignature": true,
+          "nonextractableKey": true,
+          "downloadImportAndAlteredFileRejection": true,
+          "qrTargetFps": 5,
+          "measuredDisplayFps": 5.000254250216112,
+          "successfulQrReads": 0,
+          "actualPhonesTested": 0,
+          "serverlessCatalogPersistence": "not established; per warm instance only",
+          "noMobileOverflow": true,
+          "uncaughtErrors": 0
+        },
+        "status": "passed"
+      },
+      "diagnostics": "Initial combined local run completed Investigator assertions, then its test parsed a not-yet-initialized report too early; the wait was guarded and only tools were repeated. Initial preview quick-tap signing check exposed an actual pre-script readiness race; disabled-until-ready controls fixed it and final preview/production checks passed. Earlier artifacts retained; no provider retry.",
+      "productionRateLimit": {
+        "status": "passed",
+        "http": 429,
+        "error": "rate_limit",
+        "scope": "Only a synthetic private-session counter was pre-filled at its unchanged existing 20/hour limit; one real Production request.",
+        "providerCalls": 0
+      },
+      "pendingFileSecretScan": {
+        "status": "passed",
+        "pendingFilesScanned": 35,
+        "secretMatches": 0,
+        "privateKeyMatches": 0,
+        "productionSourceFilesMatch": 70
+      }
+    },
+    "phoneEvidence": "User confirmed the prior P1 preview journey passed on vivo Y03. Updated styling was checked on desktop/mobile browser viewports, not independently re-observed on that physical phone. Existing user confirmation retained.",
+    "preservation": {
+      "baselineSha256": {
+        ".local/provider-budget.json": "3c4c47f073729608625817442e86268223397f16f39bf5b294074322c3450755",
+        ".local/p1c/budget.json": "4e2863d145281a67a7e40e54736c75094113468d8bb0a70397f1790469a4ff5c",
+        ".local/p1c-completion-2026-11-02/budget.json": "f8cdc02dad3a821e563dbf838bbfea671e48145156685fe4470c47337a089cbf",
+        ".local/p1c-repair-2026-11-02/budget.json": "dc889fec7d6cb1aedab3f38c6a2bbde1a62d1007bafd8f0fd750738dfcac8ea0",
+        "docs/packproof/demo/signed-demo.json": "a3ac8150486dbae6a6f3fc607cd7c09b80d00c7d29f01f05af4713989c66e9fb",
+        "docs/packproof/demo/root-public.json": "efd83c054b0c62e9ee58408e6eb12051c43f8affd0571882827f4821a6538aaf",
+        "pnpm-lock.yaml": "1f86f2c9a74b894c4bf72eec59aff6f19499fd46852543764262e4f6754b1596"
+      },
+      "allUnchanged": true,
+      "noProviderCalls": true,
+      "additionalMetaSpendUsd": 0,
+      "noNewDependenciesOrMigrations": true,
+      "noSigningKeysDeployed": true,
+      "sourceMatchesPublishedArtifact": true,
+      "noTwoPhoneGateWaived": true
+    },
+    "cleanup": {
+      "temporaryAutomationSecretRevoked": true,
+      "publicProductionHttp": 200,
+      "existingProtectionPreserved": true,
+      "ownTemporaryServerStopped": true,
+      "existingDevelopmentServerPreserved": true
+    },
+    "screenshots": [
+      "docs/packproof/evidence/p1d-product-mobile.png",
+      "docs/packproof/evidence/p1d-tools-mobile.png"
+    ],
+    "commitCreated": false,
+    "pushPerformed": false,
+    "p2Started": false
+  }
+}

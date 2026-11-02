@@ -1,5 +1,6 @@
 import {Finding,ModelAnswer,type Claim,type InvestigationInput,type ToolName} from '../../contracts/investigation.js';
 import {z} from 'zod';
+import {EVIDENCE_MAX_AGE_MS} from '../../domain/verification/freshness.js';
 import type {EvidenceServices} from '../evidence/services.js';
 import type {ToolResult} from './types.js';
 const REQUIRED=['lookup_product','lookup_seller','get_product_notices','get_custody_history'] as const;
@@ -44,7 +45,7 @@ export async function finalize(options:{input:InvestigationInput;services:Eviden
  const badCitations=!answer.success||new Set(ids).size!==ids.length||ids.some(id=>!facts.some(f=>f.id===id));
  const timestamps=Object.values(checks).flatMap(r=>r?[r.asOf]:[]);
  if(history?.data?.snapshot)timestamps.push(history.data.snapshot.asOf);
- const stale=timestamps.some(time=>Date.parse(at)<Date.parse(time)||Date.parse(at)-Date.parse(time)>(options.maxAgeMs??86400000));
+ const stale=timestamps.some(time=>Date.parse(at)<Date.parse(time)||Date.parse(at)-Date.parse(time)>(options.maxAgeMs??EVIDENCE_MAX_AGE_MS));
  const inspected=options.selected.inspect_product_image;
  const gates=Object.values(checks).filter(v=>v!==null);
  let status:'supported'|'blocked'|'needs_evidence'|'unavailable'|'stale'='supported';

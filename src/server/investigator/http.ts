@@ -11,13 +11,16 @@ const json=(value:unknown,status=200,cookie:string|null=null)=>Response.json(val
 async function jsonBody(r:Request){if(!r.headers.get('content-type')?.startsWith('application/json'))throw new InvestigationError('json_required',415);return JSON.parse(new TextDecoder().decode(await bodyBytes(r,8192)));}
 export async function handle(request:Request,action:'create'|'get'|'resume'|'lookup'|'capture',id?:string){
  let context:Awaited<ReturnType<typeof runtime>>|null=null;
+ let stage:'request'|'runtime'|'limits'|'operation'='request';
  try{
   if(action!=='get'&&action!=='lookup')sameOrigin(request);
   const auth=action==='lookup'?{owner:{sessionHash:'0'.repeat(64),userId:null},setCookie:null}:await session(request,action==='create');
   if(id)z.uuid().parse(id);
-  context=await runtime(auth.owner);
+  stage='runtime';context=await runtime(auth.owner);
+  stage='limits';
   await context.store.limit(`global:${action}`,action==='get'||action==='lookup'?600:60,3600000);
   if(action!=='lookup')await context.store.limit(`session:${auth.owner.sessionHash}:${action}`,action==='get'?240:20,3600000);
+  stage='operation';
   if(action==='create'){
    const args=InvestigationInput.parse(await jsonBody(request));if(args.captureId!==null)throw new InvestigationError('create_capture_after_request',400);
    const result=await startInvestigation(context.options,args);return json(PublicInvestigation.parse(result),201,auth.setCookie);
@@ -39,6 +42,13 @@ export async function handle(request:Request,action:'create'|'get'|'resume'|'loo
  }catch(error){
   const known=error instanceof InvestigationError;
   const status=known?error.status:error instanceof z.ZodError||error instanceof SyntaxError?400:503;
+  if(status===503){
+   // Fixed diagnostic codes only: never log messages, SQL, paths, arguments,
+   // connection strings or provider bodies into hosted runtime logs.
+   const allowed=['ENOENT','ENOTFOUND','ECONNREFUSED','ETIMEDOUT','28P01','28000','42501','42P01','3F000','SELF_SIGNED_CERT_IN_CHAIN','UNABLE_TO_VERIFY_LEAF_SIGNATURE','CERT_HAS_EXPIRED'];
+   const code=error&&typeof error==='object'&&'code'in error&&typeof error.code==='string'&&allowed.includes(error.code)?error.code:'unclassified';
+   console.error(JSON.stringify({event:'investigation_unavailable',stage,code}));
+  }
   return json({error:known?error.code:status===400?'invalid_request':'temporarily_unavailable',message:status===503?'The investigation service is unavailable. Retry safely; no ownership operation occurred.':'Request could not be accepted.'},status);
  }finally{if(context)await context.close();}
 }

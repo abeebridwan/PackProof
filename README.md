@@ -6,7 +6,7 @@ The planned experience combines guided camera inspection, seller authorization c
 
 ## What works today
 
-The repository currently provides a working development foundation and standalone feasibility tools:
+The repository maintains one evolving Next.js/React application, with feasibility probes retained as development tools:
 
 - Strict schemas for markings, verification results, transfer agreements and signed pack manifests.
 - A read-only fictional registry that Muse can query through a typed tool, with independently validated responses.
@@ -17,11 +17,13 @@ The repository currently provides a working development foundation and standalon
 - A Supabase data foundation with immutable signed claims, versioned issuer-directory audit history, scoped key permissions and restricted writes.
 - Signed fictional units, packaging mappings, seller authorization, packaging notices and explicit custody gaps, with typed server read services.
 - A mobile-first Next.js Evidence Investigator with six typed tools, mandatory server finalization, private session-scoped API routes, private image capture storage and durable LangGraph pause/resume.
-- LangChain runs the web tool loop against recorded protocol responses; the read tools use real signed Supabase records. A separate guarded CLI has completed a real Muse investigation for Shop B, including four tools and a cited final answer. Optional LangSmith traces contain only allowed metadata. New live image analysis remains disabled.
+- LangChain runs the web tool loop against recorded protocol responses; the read tools use real signed Supabase records. Guarded CLI validation has passed real Muse seller, notice, custody-gap and evidence-request workflows. Optional LangSmith traces contain only allowed metadata. New live image analysis remains disabled.
 
-Open the [live feasibility probe](https://packproof-p0.vercel.app) on a phone or browser. It provides local camera/manual/crypto/QR/file controls; product investigations and customer records are not connected to this page.
+Open **[PackProof](https://packproof-p0.vercel.app)** for product investigations. The **[device checks](https://packproof-p0.vercel.app/tools)** are part of the same website and linked from its footer. Both use the existing `packproof-p0` Vercel project; product evidence uses the existing Supabase project. The public application does not require a Vercel login.
 
-The Investigator app is available locally through `pnpm dev` at `http://localhost:3000`. Its model steps are explicitly recorded demos; its evidence reads use the signed database. The existing public URL above still serves the separate P0 feasibility probe. Authenticated seller handovers and the offline evidence viewer are planned. The vivo Y03 has passed camera capture, manual leading zeros and crypto checks. The user also confirmed the scanner rerun and camera-permission/manual fallback. Two-phone QR and file-sharing trials remain pending. Supabase Auth, Storage API, direct TLS-verified PostgreSQL access and read-only migration-permission checks are verified; the expected private bucket is verified, while production object/RLS policies remain untested. Current visual results establish feasibility on a synthetic fixture; they do not establish accuracy on real products.
+The same Investigator is available locally through `pnpm dev` at `http://localhost:3000`. Model steps are recorded demos; evidence reads use the signed database. Its deployed browser, session-isolation, database, private-capture and rate-limit checks are recorded in the delivery evidence. The user confirmed all requested vivo Y03 Investigator checks passed; no new device measurement report was supplied. Earlier phone camera, leading-zero, crypto and permission-fallback checks passed; two-phone QR/file trials remain deferred. Authenticated seller handovers and the offline viewer are planned. Synthetic visual results establish feasibility, not accuracy on real products.
+
+Signed demo custody snapshots expire after **2 November 2026, 12:00 UTC**. Expired investigations show stale/historical evidence, including on reload; retrieving them does not renew authority. No records were re-signed or reseeded. The user approved encrypted Supabase credentials for Production as well as Preview. No Meta or issuer-signing keys are deployed. See [deployment evidence](docs/packproof/evidence/p1d.json).
 
 ## Local setup
 
@@ -82,13 +84,15 @@ pnpm probe:access
 
 The browser crypto check requires Chrome at `/usr/bin/google-chrome`, or a `CHROME_PATH` override, and permission to start a local loopback server. Desktop results are recorded separately from phone results.
 
+`next-env.d.ts` is generated and ignored. `pnpm typecheck` runs `next typegen` before TypeScript, so a clean checkout can regenerate it. Deployment tooling is in `scripts/deploy/app.ts`; it targets the existing project only and requires a verified IPv4 session-pooler credential file through `PACKPROOF_PREVIEW_DB_URL_FILE`. It defaults to Preview; an explicit `--production` action uses Production variables and publishes to the existing project.
+
 ## Open the Investigator
 
 `pnpm dev` opens the local app on port 3000. Choose a fictional scenario, investigate its records, then review the cited product, seller, notice and custody findings. If asked for another view, supply the literal code or a small private image and resume the same investigation. New images remain unknown without authorized live analysis; physical association never follows from a matched code alone.
 
 Use the existing ignored Supabase configuration. For an HTTPS reverse proxy, set `APP_ORIGIN` to its exact public origin. P1B evidence and current limitations are recorded in [P1B.md](docs/packproof/evidence/P1B.md). The app has a PWA manifest and responsive layout; offline installation/verification belongs to P4.
 
-Guarded operator validation has passed real Muse investigations for Shop A's authorization refusal, Shop B's signed notice, the custody gap, and controlled closer-view pause/resume across separate processes. Missing packaging now triggers a specific evidence request before lookup; the supplied code can resume the investigation. Muse's direct nullable-argument generation remains an observed limitation and is never coerced into success. The web UI remains recorded AI, and physical association is never inferred from matching records. See [P1C evidence](docs/packproof/evidence/P1C.md) for receipts, budgets and validation. P1 remains partial pending intended Android UI observation; P2 has not started.
+Guarded operator validation has passed real Muse investigations for Shop A's authorization refusal, Shop B's signed notice, the custody gap, and controlled closer-view pause/resume across separate processes. Missing packaging now triggers a specific evidence request before lookup; the supplied code can resume the investigation. Muse's direct nullable-argument generation remains an observed limitation and is never coerced into success. The web UI remains recorded AI, and physical association is never inferred from matching records. See [P1C evidence](docs/packproof/evidence/P1C.md) for receipts, budgets and validation. P1 functional acceptance checks pass, including user-confirmed vivo Y03 use. The same app is published at the permanent URL, with device checks under `/tools`; P2 has not started.
 
 The recorded-AI controller comparison remains **10.05→9.07 seconds** and **123→109 database requests**, with mandatory checks retained. It is one local before/after sample, separate from live-model timings.
 
