@@ -1,0 +1,194 @@
+{
+  "phase": "P3",
+  "status": "verified",
+  "date": "2026-11-03",
+  "scope": "Inspector V1/V2 checkpoint; single physical-image live acceptance plus user-reported vivo reload; public app recorded AI. No P4 work.",
+  "deployment": {
+    "status": "passed",
+    "deploymentId": "dpl_9QAK9b1D5Fpkb7EJJcP9p6f66oTC",
+    "readyState": "READY",
+    "target": "production",
+    "sourceSha256": "4f2f14fe58a0c9289cf15370745887401ecf2aafe1ae22949f8c707e9ed6d94a",
+    "projectId": "prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t",
+    "permanentUrl": "https://packproof-p0.vercel.app",
+    "inspectorUrl": "https://packproof-p0.vercel.app/inspector",
+    "aliases": [
+      "packproof-p0.vercel.app",
+      "packproof-p0-ridwan-abeebs-projects.vercel.app"
+    ],
+    "providerMode": "recorded-demo",
+    "environmentWrites": 0,
+    "credentialUploads": 0,
+    "existingProductionConfigurationReused": true,
+    "modelCredentialsUploaded": false
+  },
+  "checks": {
+    "typecheck": "passed",
+    "productionBuild": "passed isolated exact97file source and Vercel build",
+    "targetedUnitTestsPassed": 38,
+    "integration": "Latest owner-scoped metadata/capture/consent/redaction/revision/immutability case passed; original2 P3 cases retained",
+    "publicBrowser": {
+      "status": "passed",
+      "origin": "https://packproof-p0.vercel.app",
+      "scope": "Actual unified public Production app/Supabase/Auth/private Storage and saved SAM replay; no new model or ownership calls",
+      "checks": {
+        "chainproofEnabled": true,
+        "inspectorSameAppPublicHttpsAndRecorded": true,
+        "actualSyntheticCaptureAndRecordedMismatch": true,
+        "privateSourceAndRegionMedia": true,
+        "anonymousPrivateMediaDenied": true,
+        "inspectionReloadRecovery": true,
+        "p0ToolAvailable": true,
+        "sameExistingReceiptAndBothConsents": true,
+        "browserErrors": []
+      },
+      "providerRequests": 0,
+      "ownershipWrites": 0
+    },
+    "secretIsolation": {
+      "status": "passed",
+      "clientAssetsChecked": 41,
+      "serverTracesChecked": 17,
+      "tracedReferencesChecked": 8791,
+      "changedFilesChecked": 97,
+      "gitTrackedFilesChecked": 311,
+      "secretValuesChecked": 13,
+      "privateKeyBytesFound": 0,
+      "operatorFilesTraced": 0,
+      "providerRequests": 0
+    },
+    "existingStatePreservation": {
+      "status": "passed",
+      "mode": "Read-only post-release database preservation check",
+      "originalSignedRecordsUnchanged": 33,
+      "acceptedTransfers": 1,
+      "ownerVersion": 2,
+      "ownerRecordId": "518246e0-1fc6-42c6-9cb8-25902a92648e",
+      "credentialsAndOfflineReceiptKeysUnchanged": true,
+      "ownershipWrites": 0,
+      "providerRequests": 0
+    }
+  },
+  "budget": {
+    "approval": {
+      "statement": "approve 5 usd for unlimited requests untill done",
+      "at": "2026-11-03T13:17:51.324Z"
+    },
+    "maximumUsd": 5,
+    "providerRequests": 7,
+    "reservedUsd": 1.75,
+    "actualBilledUsd": null,
+    "releaseInferenceRequests": 0,
+    "receipts": [
+      {
+        "id": "ddb5e301-5480-4110-adbf-ea325cb3dac6",
+        "model": "sam-3.1",
+        "reservedCents": 25,
+        "at": "2026-11-03T15:54:59.360Z",
+        "state": "responded",
+        "responseId": "resp_6aea03dbbb255d589f8b4899",
+        "requestId": "5c283425-d73b-4da1-ae16-fe9639cfd149",
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "6c33377c-6f6f-4f05-a163-43ffe2eee37c",
+        "model": "muse-spark-1.3",
+        "reservedCents": 25,
+        "at": "2026-11-03T15:55:21.727Z",
+        "state": "responded",
+        "responseId": "chatcmpl-01a1a21f-74f2-7599-a67f-d1da244c6d5b",
+        "requestId": "bf7cc19a-f75e-4f39-802a-a011e8b7bec1",
+        "usage": {
+          "input_tokens": 4374,
+          "output_tokens": 356
+        }
+      },
+      {
+        "id": "e417e6ab-4a33-458b-9a6e-0da71dc3755f",
+        "model": "sam-3.1",
+        "reservedCents": 25,
+        "at": "2026-11-03T16:05:37.482Z",
+        "state": "responded",
+        "responseId": "resp_6aea0657ade4a40f05084e41",
+        "requestId": "884a433b-76cd-4f67-85e2-6b16ea340104",
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "f4261c24-e27e-460b-bdbe-72cf15fca681",
+        "model": "sam-3.1",
+        "reservedCents": 25,
+        "at": "2026-11-03T16:09:20.189Z",
+        "state": "responded",
+        "responseId": "resp_6aea0736968ec424563e414c",
+        "requestId": "ee7cbaee-eca0-4dfe-9445-dd1b2a395021",
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "8261174e-d2fe-4791-9411-c72f7cf2d2e6",
+        "model": "muse-spark-1.3",
+        "reservedCents": 25,
+        "at": "2026-11-03T16:09:38.538Z",
+        "state": "responded",
+        "responseId": "chatcmpl-01a1a22c-912d-730c-87e3-93d3a2d43de2",
+        "requestId": "d1d27b3f-6878-49ea-9e73-61608ceeb781",
+        "usage": {
+          "input_tokens": 4371,
+          "output_tokens": 664
+        }
+      },
+      {
+        "id": "b0be859c-7dfe-46e3-934d-747f463127fc",
+        "model": "sam-3.1",
+        "reservedCents": 25,
+        "at": "2026-11-03T16:35:20.783Z",
+        "state": "responded",
+        "responseId": "resp_6aea0d4fcd9975829c08425c",
+        "requestId": "08483c55-2ce5-4e90-8013-1855a585bdbb",
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "2b40ef5d-03ef-4b00-917c-bbf1781edcd3",
+        "model": "muse-spark-1.3",
+        "reservedCents": 25,
+        "at": "2026-11-03T16:35:38.684Z",
+        "state": "responded",
+        "responseId": "chatcmpl-01a1a244-5a5c-75fa-9e14-73cf5158d879",
+        "requestId": "38ca3ec1-a356-4c24-a6ca-0c4f47f37226",
+        "usage": {
+          "input_tokens": 4354,
+          "output_tokens": 568
+        }
+      }
+    ]
+  },
+  "limits": [
+    "Physical phone result is user-reported and correlated with stored live provenance, not independently attested.",
+    "One real label does not establish general model accuracy, product safety, regulatory validity, batch expiry or physical association.",
+    "Public web inference remains recorded; hosted live Meta access and spending controls are not enabled by this release.",
+    "The record-only timing samples show no proven end-to-end speedup despite fewer queries.",
+    "Original failed provider/reference/UI attempts remain preserved; corrected date reference is recorded separately."
+  ],
+  "evidence": [
+    "p3-physical-reference.json",
+    "p3-local-live-app.json",
+    "p3-local-live-observation.json",
+    "p3-vivo-live.json",
+    "p3-read-speed-integration.json",
+    "p3-notifications-browser.json",
+    "p3-release-receipt.json",
+    "p3-release-browser.json",
+    "p3-production-config.json"
+  ]
+}

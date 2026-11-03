@@ -47,7 +47,8 @@ export function normalDecision(s:RunState):FixtureDecision{
  if(item&&i.sellerId&&!r.lookup_seller)return choose('lookup_seller',{itemId:item,sellerId:i.sellerId});
  if(item&&!r.get_product_notices)return choose('get_product_notices',{itemId:item});
  if(item&&!r.get_custody_history)return choose('get_custody_history',{itemId:item});
- if(i.captureId&&!r.inspect_product_image)return choose('inspect_product_image',{investigationId:s.id,captureId:i.captureId,question:'product_mark'});
+ if(i.captureId&&!r.inspect_product_image)return choose('inspect_product_image',{investigationId:s.id,captureId:i.captureId,question:s.captureQuestion??'product_mark'});
+ if(i.captureId&&r.inspect_product_image?.status==='needs_evidence'&&s.actions<7&&!r.request_additional_evidence)return choose('request_additional_evidence',{investigationId:s.id,reason:'unreadable',view:'close_mark'});
  if((i.packagingMark===null||i.context==='physical'&&!i.captureId)&&!r.request_additional_evidence)return choose('request_additional_evidence',{investigationId:s.id,reason:i.packagingMark===null?'missing_package':'association_unclear',view:'both_marks'});
  return {call:null,answer:{claimIds:factCatalog(r).map(f=>f.id)}};
 }

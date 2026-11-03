@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "deploymentId": "dpl_9QAK9b1D5Fpkb7EJJcP9p6f66oTC",
+  "readyState": "READY",
+  "target": "production",
+  "sourceSha256": "4f2f14fe58a0c9289cf15370745887401ecf2aafe1ae22949f8c707e9ed6d94a",
+  "projectId": "prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t",
+  "permanentUrl": "https://packproof-p0.vercel.app",
+  "inspectorUrl": "https://packproof-p0.vercel.app/inspector",
+  "aliases": [
+    "packproof-p0.vercel.app",
+    "packproof-p0-ridwan-abeebs-projects.vercel.app"
+  ],
+  "providerMode": "recorded-demo",
+  "environmentWrites": 0,
+  "credentialUploads": 0,
+  "existingProductionConfigurationReused": true,
+  "modelCredentialsUploaded": false
+}

@@ -1,0 +1,20 @@
+{
+  "original": {
+    "sha256": "7ba8cb12c2cdd6b0dc7ef43b48ca98c6ef5f81223634b0787f29e242923a084a",
+    "width": 3120,
+    "height": 4160,
+    "bytes": 3526102
+  },
+  "providerInput": {
+    "sha256": "5e7a796253b3e438681c26f4fa2b173d7bc65149d64d373eb7fab415404d4beb",
+    "width": 1536,
+    "height": 2048,
+    "bytes": 456705
+  },
+  "transform": "EXIF upright; proportional resize inside2048px; JPEG quality88; original unchanged. No source photo committed.",
+  "status": "processed_with_explicit_image_specific_consent",
+  "externalInferenceRequests": 5,
+  "approvalReview": "Initial rejection preserved; exact-photo destination consent subsequently provided before retry.",
+  "actualBilledUsd": null,
+  "authorization": "User explicitly approved sending IMG_20261103_164207.jpg and resized test copy to Meta plus restricted local HTTPS app testing, within existing $5 P3 budget."
+}

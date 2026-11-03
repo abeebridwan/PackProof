@@ -1,0 +1,18 @@
+{
+  "status": "date_matches_user_confirmed_package_reference",
+  "sourceReceipt": "p3-live-7a3b0306-85c6-4e7b-88c3-48df55d13f76.json",
+  "referenceHistory": {
+    "initialAssistantReference": "29/08/28",
+    "initialComparison": "mismatch",
+    "correctionSource": "User inspected actual physical package and replied 19/08/2028",
+    "userConfirmedDate": "19/08/2028",
+    "actualModelLiteral": "19/08/28",
+    "assessment": "Day/month match and printed two-digit year28 corresponds to user-confirmed year2028. Original literal and initial mismatch receipt remain unchanged; no date normalization is used as signed authority."
+  },
+  "newPhysicalSamGrounding": "passed",
+  "blindedMuseReading": "passed_single_sample",
+  "physicalAcceptanceScope": "One physical-label sample only; broader V1/P3 gates and actual phone live-app test remain pending.",
+  "providerRequests": 2,
+  "reservedUsd": 0.5,
+  "actualBilledUsd": null
+}

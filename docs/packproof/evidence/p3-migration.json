@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "version": "202611030006",
+  "sha256": "7f31632fea2730d1fec6af51b295be4bc2959cef46000ed26a09a754406ebfc5",
+  "newlyApplied": true,
+  "security": [
+    {
+      "relname": "capture_details",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true,
+      "mutable": false,
+      "public_read": false
+    },
+    {
+      "relname": "inspection_observations",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true,
+      "mutable": false,
+      "public_read": false
+    }
+  ]
+}

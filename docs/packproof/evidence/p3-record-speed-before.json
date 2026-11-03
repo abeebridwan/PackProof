@@ -1,0 +1,14 @@
+{
+  "label": "before",
+  "elapsedMs": 39606,
+  "clientQueries": 102,
+  "providerRequests": 0,
+  "status": "needs_input",
+  "actions": 4,
+  "mandatoryChecks": [
+    "get_custody_history",
+    "lookup_product",
+    "get_product_notices"
+  ],
+  "physicalStatus": "unresolved"
+}

@@ -1,0 +1,251 @@
+{
+  "status": "mismatch",
+  "scope": "new physical image",
+  "liveGroundingCompleted": true,
+  "physicalAcceptance": false,
+  "physicalAcceptanceScope": "Single source-bound blinded literal sample only; not complete V1/P3 acceptance",
+  "reference": {
+    "value": "29/08/28",
+    "provenance": "operator_supplied_reference_not_sent_to_provider",
+    "matches": false
+  },
+  "investigationId": "41d9cd30-49ee-4fee-88f8-772738f52db6",
+  "captureId": "7a3b0306-85c6-4e7b-88c3-48df55d13f76",
+  "sourceSha256": "5e7a796253b3e438681c26f4fa2b173d7bc65149d64d373eb7fab415404d4beb",
+  "question": "printed_expiry",
+  "observation": {
+    "id": "2d7e8f0f-fef7-4d52-98b2-490fb33c4f90",
+    "investigationId": "41d9cd30-49ee-4fee-88f8-772738f52db6",
+    "captureId": "7a3b0306-85c6-4e7b-88c3-48df55d13f76",
+    "captureRevision": 1,
+    "sourceSha256": "5e7a796253b3e438681c26f4fa2b173d7bc65149d64d373eb7fab415404d4beb",
+    "question": "printed_expiry",
+    "literal": {
+      "value": "19/08/28",
+      "readability": "readable",
+      "qualityBlockers": []
+    },
+    "region": {
+      "id": "2c45ea57-7b71-493b-aa7f-88a9a9322f46",
+      "sourceCaptureId": "7a3b0306-85c6-4e7b-88c3-48df55d13f76",
+      "sourceSha256": "5e7a796253b3e438681c26f4fa2b173d7bc65149d64d373eb7fab415404d4beb",
+      "sourceWidth": 1536,
+      "sourceHeight": 2048,
+      "objectId": "0",
+      "maskEncoding": "one_bit",
+      "promptBox": {
+        "left": 470,
+        "top": 1040,
+        "right": 960,
+        "bottom": 1180
+      },
+      "bounds": {
+        "left": 488,
+        "top": 1068,
+        "right": 965,
+        "bottom": 1178
+      },
+      "box": {
+        "left": 488,
+        "top": 1068,
+        "right": 965,
+        "bottom": 1178
+      },
+      "maskWidth": 477,
+      "maskHeight": 110,
+      "maskSha256": "5559f084ab2c0c2d280e8abc310be4b632e6e48d08767ad1c810b49c97926d5c",
+      "cropSha256": "3425eca2089c2a8bd5ade95ae26391b4546f4b289fb4d36f039213ad7b89cd56",
+      "cropWidth": 477,
+      "cropHeight": 110,
+      "transform": "EXIF-upright original; half-open crop; nearest mask resize to bounds",
+      "frameTimestamp": null,
+      "provider": {
+        "model": "sam-3.1",
+        "responseId": "resp_6aea03dbbb255d589f8b4899",
+        "requestId": "5c283425-d73b-4da1-ae16-fe9639cfd149",
+        "mode": "live"
+      }
+    },
+    "reader": {
+      "model": "muse-spark-1.3",
+      "responseId": "chatcmpl-01a1a21f-74f2-7599-a67f-d1da244c6d5b",
+      "requestId": "bf7cc19a-f75e-4f39-802a-a011e8b7bec1",
+      "mode": "live"
+    },
+    "createdAt": "2026-11-03T15:54:58.883Z",
+    "provenance": "model_reading",
+    "independentObservationId": "7a3b0306-85c6-4e7b-88c3-48df55d13f76"
+  },
+  "finding": {
+    "status": "stale",
+    "recordStatus": "supported",
+    "sellerStatus": "needs_evidence",
+    "physicalStatus": "unresolved",
+    "demo": true,
+    "mode": "recorded-demo",
+    "summary": "Signed evidence is stale or its retrieval time is unreliable. Refresh before relying on current authority.",
+    "claims": [
+      {
+        "id": "product.records",
+        "kind": "issuer",
+        "text": "Signed marks are consistent; physical association remains unresolved",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000321",
+          "30000000-0000-4000-8000-000000000209"
+        ]
+      },
+      {
+        "id": "notice.30000000-0000-4000-8000-000000000402",
+        "kind": "notice",
+        "text": "Fictional packaging revision: the visible wrapper artwork changed for BATCH-02; this explains the demo change, not product safety.",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000402"
+        ]
+      },
+      {
+        "id": "history.coverage",
+        "kind": "history",
+        "text": "Permitted dated demo history; completeness outside this dataset is unknown",
+        "evidence_refs": [
+          "30000000-0000-4000-8000-000000000322",
+          "30000000-0000-4000-8000-000000000324"
+        ]
+      }
+    ],
+    "product": {
+      "status": "supported",
+      "reason": "Signed marks are consistent; physical association remains unresolved",
+      "evidence_refs": [
+        "30000000-0000-4000-8000-000000000320",
+        "30000000-0000-4000-8000-000000000321",
+        "30000000-0000-4000-8000-000000000209"
+      ],
+      "scope": "unit",
+      "asOf": "2026-11-03T15:55:41.181Z",
+      "policyVersion": "p1a-demo-evidence-1",
+      "next_actions": [
+        "Inspect the physical item separately"
+      ],
+      "data": {
+        "demo": true,
+        "label": "Fictional PackProof demonstration data",
+        "itemId": "10000000-0000-4000-8000-000000000002",
+        "scope": "unit",
+        "modelCode": "DEMO-FORMULA",
+        "batchCode": "BATCH-02",
+        "issuer": {
+          "id": "30000000-0000-4000-8000-000000000002",
+          "kind": "issuer",
+          "label": "Fictional Formula Producer",
+          "demo": true
+        },
+        "issuerBindingId": "30000000-0000-4000-8000-000000000209",
+        "mappingStatus": "matched",
+        "physicalBinding": "unresolved",
+        "recordIds": [
+          "30000000-0000-4000-8000-000000000320",
+          "30000000-0000-4000-8000-000000000321",
+          "30000000-0000-4000-8000-000000000209"
+        ]
+      }
+    },
+    "seller": null,
+    "notices": {
+      "status": "supported",
+      "reason": "Applicable fictional notices in this dataset; external source coverage is unknown",
+      "evidence_refs": [
+        "30000000-0000-4000-8000-000000000402"
+      ],
+      "scope": "unit",
+      "asOf": "2026-11-03T15:55:45.673Z",
+      "policyVersion": "p1a-demo-evidence-1",
+      "next_actions": [
+        "Inspect the physical item separately"
+      ],
+      "data": {
+        "demo": true,
+        "notices": [
+          {
+            "recordId": "30000000-0000-4000-8000-000000000402",
+            "kind": "packaging_revision",
+            "explanation": "Fictional packaging revision: the visible wrapper artwork changed for BATCH-02; this explains the demo change, not product safety.",
+            "effectiveFrom": "2026-10-01T00:00:00.000Z",
+            "effectiveUntil": "2027-01-01T00:00:00.000Z"
+          }
+        ],
+        "coverage": "demo_dataset_only",
+        "directoryVersion": 8,
+        "retrievedAt": "2026-11-03T15:55:45.673Z"
+      }
+    },
+    "history": {
+      "status": "supported",
+      "reason": "Permitted dated demo history; completeness outside this dataset is unknown",
+      "evidence_refs": [
+        "30000000-0000-4000-8000-000000000322",
+        "30000000-0000-4000-8000-000000000324"
+      ],
+      "scope": "unit",
+      "asOf": "2026-11-03T15:55:45.673Z",
+      "policyVersion": "p1a-demo-evidence-1",
+      "next_actions": [
+        "Inspect the physical item separately"
+      ],
+      "data": {
+        "demo": true,
+        "events": [
+          {
+            "recordId": "30000000-0000-4000-8000-000000000322",
+            "kind": "receipt",
+            "occurredAt": "2026-11-01T12:00:00.000Z"
+          }
+        ],
+        "gaps": [],
+        "conflicts": [],
+        "snapshot": {
+          "recordId": "30000000-0000-4000-8000-000000000324",
+          "holderReference": "demo-shop-b",
+          "asOf": "2026-11-01T12:00:00.000Z"
+        }
+      }
+    },
+    "missingChecks": [
+      "lookup_seller"
+    ],
+    "asOf": "2026-11-03T15:55:47.884Z",
+    "policyVersion": "p1b-mandatory-finalizer-1"
+  },
+  "providerBudget": {
+    "reservedUsd": 0.5,
+    "requests": [
+      {
+        "id": "ddb5e301-5480-4110-adbf-ea325cb3dac6",
+        "model": "sam-3.1",
+        "reservedCents": 25,
+        "at": "2026-11-03T15:54:59.360Z",
+        "state": "responded",
+        "responseId": "resp_6aea03dbbb255d589f8b4899",
+        "requestId": "5c283425-d73b-4da1-ae16-fe9639cfd149",
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "6c33377c-6f6f-4f05-a163-43ffe2eee37c",
+        "model": "muse-spark-1.3",
+        "reservedCents": 25,
+        "at": "2026-11-03T15:55:21.727Z",
+        "state": "responded",
+        "responseId": "chatcmpl-01a1a21f-74f2-7599-a67f-d1da244c6d5b",
+        "requestId": "bf7cc19a-f75e-4f39-802a-a011e8b7bec1",
+        "usage": {
+          "input_tokens": 4374,
+          "output_tokens": 356
+        }
+      }
+    ],
+    "actualBilledUsd": null
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "scope": "Actual React region component in Chrome390px with mouse and CDP touch events; investigation API explicitly fixture-only, not an Android or backend acceptance test",
+  "checks": {
+    "mouseMovePreservesSize": true,
+    "mouseEdgeWidthResize": true,
+    "bareBorderHeightResize": true,
+    "cornerResize": true,
+    "moveClampedToPhoto": true,
+    "touchMovePreservesSize": true,
+    "touchEdgeHeightResize": true,
+    "touchCornerBothAxes": true,
+    "cancelRestoresSelection": true,
+    "keyboardResize": true,
+    "sliderFallback": true,
+    "wholeImageReset": true,
+    "selectedCropPreviewHasPixels": true,
+    "lockPreventsMovementAndResizing": true,
+    "lockedPhotoAllowsScrolling": true,
+    "editUnlocks": true,
+    "overflow": false,
+    "browserErrors": []
+  },
+  "providerRequests": 0,
+  "databaseWrites": 0
+}

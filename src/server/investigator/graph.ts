@@ -21,8 +21,8 @@ export function investigatorGraph(o:GraphOptions){
   let retries=s.retries;let failure:string|null=null;
   for(let attempt=0;attempt<=2;attempt++){
    try{
-    // startedAt originates from the database row and survives checkpoints and
-    // resumes. The atomic reservation below still checks owner/access/limits.
+    // Bound each active execution. A durable user-input pause starts a new
+    // execution window on resume; it never renews signed evidence or counters.
     if(!Number.isFinite(s.startedAt)||now()-s.startedAt>(o.timeoutMs??600000))throw new InvestigationError('session_expired');
     const start=now();
     const step=await o.store.operation(o.owner,s.id,`model:${s.revision}:${s.turn}:${attempt}`,{messages:s.messages,input:s.input,revision:s.revision},'model',()=>o.planner.invoke(s,langChainTools(context(s)),{retry:attempt>0,attempt}),{reservationCents:o.modelReservationCents??0,sessionCapCents:o.capCents??50});
@@ -68,14 +68,15 @@ export function investigatorGraph(o:GraphOptions){
   await o.store.save(o.owner,s.id,{finding,status:'needs_input'});
   return {value:{...s,finding}};
  })
- .addNode('wait_for_evidence',({value:s})=>{
+ .addNode('wait_for_evidence',async({value:s})=>{
   // No durable effects before interrupt: this node is replayed on resume.
   const resumed=interrupt(s.request) as {input:unknown;revision:number};
   const input=InvestigationInput.parse(resumed.input);
+  const captureQuestion=input.captureId&&o.inspector.question?await o.inspector.question(await o.store.capture(o.owner,s.id,input.captureId)):'product_mark';
   const results={...s.results};delete results.request_additional_evidence;delete results.inspect_product_image;
   if(input.productMark!==s.input.productMark){delete results.lookup_product;delete results.lookup_seller;delete results.get_product_notices;delete results.get_custody_history;}
   else if(input.packagingMark!==s.input.packagingMark)delete results.lookup_product;
-  return {value:{...s,input,revision:resumed.revision,request:null,answer:null,error:null,results,messages:[...s.messages,{role:'human' as const,content:JSON.stringify({humanObservation:true,input,revision:resumed.revision})}]}};
+  return {value:{...s,input,captureQuestion,startedAt:now(),revision:resumed.revision,request:null,answer:null,error:null,results,messages:[...s.messages,{role:'human' as const,content:JSON.stringify({humanObservation:true,input,revision:resumed.revision})}]}};
  })
  .addNode('finalize',async({value:s})=>{
   const checkStart=now();
@@ -98,8 +99,8 @@ export async function publicView(store:InvestigationStore,owner:Owner,id:string)
  return PublicInvestigation.parse({id,revision:row.revision,status:row.status,mode:finding?.mode??'recorded-demo',input:row.input,actions:row.actions,recaptures:row.recaptures,retries:row.retries,finding,request:row.request,trace:events.map(e=>({tool:e.tool,status:e.result.status,source:e.source??'model_tool',evidence_refs:e.result.evidence_refs,reason:e.result.reason})),errorCode:row.error});
 }
 export async function startInvestigation(o:GraphOptions,input:InvestigationInput){
- const row=await o.store.create(o.owner,InvestigationInput.parse(input));
- await o.store.save(o.owner,row.id,{status:'running'});
+ const row=await o.store.create(o.owner,InvestigationInput.parse(input),true);
+ if(row.status!=='running')await o.store.save(o.owner,row.id,{status:'running'});
  o.trace.emit({investigationId:row.id,mode:o.mode??'recorded-demo',kind:'lifecycle',status:'started',refs:[],latencyMs:0});
  const graph=investigatorGraph(o);
  await traceable(()=>graph.invoke({value:initialState(row)},{configurable:{thread_id:row.id},callbacks:[],recursionLimit:64}),{name:'packproof-investigator',tracingEnabled:false})();
@@ -111,7 +112,7 @@ export async function resumeInvestigation(o:GraphOptions,id:string,raw:unknown){
   const row=await o.store.get(o.owner,id);
   if(row.status!=='needs_input'||row.revision!==args.expectedRevision)throw new InvestigationError('revision_conflict');
   if(args.captureId){const c=await o.store.capture(o.owner,id,args.captureId);if(c.revision!==row.revision)throw new InvestigationError('capture_revision_mismatch');}
-  const input=InvestigationInput.parse({...row.input,productMark:args.productMark??row.input.productMark,packagingMark:args.packagingMark??row.input.packagingMark,captureId:args.captureId??row.input.captureId});
+  const input=InvestigationInput.parse({...row.input,productMark:args.productMark??row.input.productMark,packagingMark:args.packagingMark??row.input.packagingMark,captureId:args.captureId});
   const revised=await o.store.revise(o.owner,id,row.revision,input);
   const graph=investigatorGraph(o);
   await traceable(()=>graph.invoke(new Command({resume:{input,revision:revised.revision}}),{configurable:{thread_id:id},callbacks:[],recursionLimit:64}),{name:'packproof-investigator-resume',tracingEnabled:false})();

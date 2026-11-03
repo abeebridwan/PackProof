@@ -113,7 +113,7 @@ export const H2_INPUTS = {
   inspect_product_image: z.strictObject({ investigationId: z.uuid(), captureId: z.uuid(), question: z.enum(['product_mark', 'package_mark', 'printed_expiry']) }),
   request_additional_evidence: z.strictObject({ investigationId: z.uuid(), reason: z.enum(['unreadable', 'missing_package', 'association_unclear']), view: z.enum(['close_mark', 'both_marks', 'full_package']) }),
 };
-export const ImageEvidenceResult = gateResult(z.strictObject({ value: Text.nullable(), cropRecordIds: z.array(Id).max(16), maskRecordIds: z.array(Id).max(16), frameRecordIds: z.array(Id).max(16), provenance: z.enum(['model_reading','human_observation']), qualityBlockers: z.array(Text).max(8) }));
+export const ImageEvidenceResult = gateResult(z.strictObject({ value: Text.nullable(), cropRecordIds: z.array(Id).max(16), maskRecordIds: z.array(Id).max(16), frameRecordIds: z.array(Id).max(16), provenance: z.enum(['model_reading','human_observation']), qualityBlockers: z.array(Text).max(8), question:z.enum(['product_mark','package_mark','printed_expiry']).optional(),observationId:Id.optional() }));
 export const AdditionalEvidenceResult = gateResult(z.strictObject({ state: z.literal('needs_input'), investigationId: Id, evidenceRevision: z.number().int().positive(), instruction: Text }));
 export interface InvestigatorFoundation {
   lookup_product: EvidenceServices['lookupProduct']; lookup_seller: EvidenceServices['lookupSeller'];

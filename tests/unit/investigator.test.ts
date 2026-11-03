@@ -1,4 +1,4 @@
-import {describe,it,expect,vi} from 'vitest';
+import {describe,it,expect,vi,beforeEach,afterEach} from 'vitest';
 import {startInvestigation,resumeInvestigation,publicView,investigatorGraph} from '../../src/server/investigator/graph.js';
 import {failFirstCycle} from '../fixtures/checkpoint-failure.js';
 import {fixture,input,OWNER} from '../fixtures/investigator-memory.js';
@@ -24,6 +24,9 @@ async function datedFinding(){
 }
 
 describe('P1B LangChain / LangGraph Investigator',()=>{
+ // Signed fixture dates are fixed; exercise freshness independently below.
+ beforeEach(()=>{vi.useFakeTimers({toFake:['Date']});vi.setSystemTime(new Date('2026-11-01T13:00:00.000Z'));});
+ afterEach(()=>vi.useRealTimers());
  it('reuses committed model and tool operations after losing the cycle checkpoint',async()=>{
   const f=await fixture();const row=await f.store.create(OWNER,input());let calls=0;
   const delegate=recordedMuse();const planner={invoke:async(...args:Parameters<typeof delegate.invoke>)=>{calls++;return delegate.invoke(...args);}};

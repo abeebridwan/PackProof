@@ -3,7 +3,7 @@
   "project": "PackProof",
   "productVersion": "v10",
   "status": "partial",
-  "currentPhase": "P2",
+  "currentPhase": "P3",
   "timezone": "Africa/Lagos",
   "officialDeadline": "2026-11-05T03:00:00+01:00",
   "internalTarget": "2026-11-04T20:00:00+01:00",
@@ -923,11 +923,181 @@
     },
     {
       "id": "P3",
-      "status": "not_started",
-      "evidence": [],
-      "passed": [],
+      "status": "verified",
+      "evidence": [
+        "docs/packproof/evidence/P3.md",
+        "docs/packproof/evidence/p3-migration.json",
+        "docs/packproof/evidence/p3-unit-final.json",
+        "docs/packproof/evidence/p3-targeted-final.json",
+        "docs/packproof/evidence/p3-record-regression.json",
+        "docs/packproof/evidence/p3-integration-final.json",
+        "docs/packproof/evidence/p3-browser.json",
+        "docs/packproof/evidence/p3-isolation.json",
+        "docs/packproof/evidence/p3-receipt-regression.json",
+        "docs/packproof/evidence/p3-preview.json",
+        "docs/packproof/evidence/p3-preview-alias.json",
+        "docs/packproof/evidence/p3-release.json",
+        "docs/packproof/evidence/p3-vivo-live.json",
+        "docs/packproof/evidence/p3-production-deployment.json",
+        "docs/packproof/evidence/p3-production-browser.json"
+      ],
+      "passed": [
+        "V1",
+        "V2"
+      ],
       "failed": [],
-      "blocked": []
+      "blocked": [],
+      "verified": true,
+      "acceptance": {
+        "V1": {
+          "status": "passed",
+          "recordedRegression": "passed actual saved P0 SAM/Muse bytes only",
+          "deterministicChecks": "passed literal match/mismatch, unreadability, empty/malformed regions, durable recapture and refs",
+          "newPhysicalSamMuse": "passed single physical expiry sample: actual SAM + blinded Muse; user independently confirmed19/08/2028. CLI, local app and user-reported vivo result/reload passed. Recorded negatives remain separately labeled; no general recognition claim.",
+          "limitation": "Passed one actual physical-label sample and real SAM/Muse; negative cases also covered with recorded/deterministic evidence. No generalized visual accuracy, safety, ownership or physical-association claim.",
+          "scope": "Real single-label SAM/Muse acceptance, recorded/deterministic negative cases and user-confirmed vivo result/reload; no generalized recognition claim."
+        },
+        "V2": {
+          "status": "passed",
+          "scope": "Deterministic software, actual Supabase/private Storage and desktop browser checks; physical association stays unresolved",
+          "checks": "source/hash/region/revision/session binding, append-only observations, disconnected/crop limits, separate expiry semantics, scope/notice applicability and mandatory gates"
+        }
+      },
+      "manualChecks": {
+        "androidInspector": "passed_user_reported: vivo Y03 live expiry19/08/2028, three evidence views, same result/images after refresh. See p3-vivo-live.json; not independent device attestation.",
+        "primaryDevice": "vivo Y03",
+        "priorP0P2PhoneChecks": "preserved; no repeat required",
+        "phoneObservation": "Earlier attempt hit session_expired before image inspection; corrected active-run timing. Subsequent user-confirmed vivo Y03 live expiry and image views returned after refresh; matching stored live observation retained."
+      },
+      "productionPromotion": true,
+      "phoneRepair": {
+        "status": "passed_software_preview_and_user_reported_vivo_live_rerun",
+        "cause": "Original 10-minute active execution timer incorrectly included the persisted human-input pause",
+        "resolution": "New bounded active execution window at legitimate resume; preserve action/recapture/retry/budget caps, signed timestamps and all prior captures",
+        "regionSelector": "Whole-image default; tap-to-centre, drag rectangle, width/height sliders; old alternating two-corner interaction removed",
+        "userAction": "Completed user-reported live expiry upload/result/reload. Preserve failed historical observations.",
+        "evidence": [
+          "docs/packproof/evidence/p3-phone-repair-unit.json",
+          "docs/packproof/evidence/p3-phone-repair-isolation.json",
+          "docs/packproof/evidence/p3-phone-repair-alias.json",
+          "docs/packproof/evidence/p3-phone-repair-preview.json",
+          "docs/packproof/evidence/p3-phone-repair-browser.json"
+        ],
+        "hostedPreview": "passed HTTPS/layout, adjustable controls, actual private upload201/exact original200/anonymous401; temporary protection bypass revoked",
+        "browser": "passed actual touchscreen emulation, adjacent taps, width/height adjustments, reverse diagonal drag, whole-image reset, actual expiry upload/resume/unknown/specific retake/reload; no browser errors/overflow"
+      },
+      "regionBoxControls": {
+        "status": "passed_local_and_hosted_preview; physical phone observation pending",
+        "behavior": "Drag inside to move without changing size; drag edges or any of eight handles to resize; clamp to original image; pointer cancel restores prior box; keyboard and width/height sliders retained",
+        "verification": "Actual React UI in Chrome390px with mouse and CDP touch; investigation API explicitly fixture-only. No database or provider writes. Typecheck and isolated build passed.",
+        "evidence": [
+          "docs/packproof/evidence/p3-region-box-browser.json",
+          "docs/packproof/evidence/p3-region-box-isolation.json",
+          "docs/packproof/evidence/p3-region-box-preview.json",
+          "docs/packproof/evidence/p3-region-box-alias.json"
+        ],
+        "deploymentId": "dpl_BYYVWsgxeCLonrAnvWwLrK32kftQ",
+        "sourceSha256": "92a60b81c953568ba646e92b8c7ae7001aadce48de3be07254ce74a5b9e9c88f"
+      },
+      "regionSelectionLock": {
+        "status": "passed_local_and_hosted_preview",
+        "behavior": "Lock/edit selection; locked photo scrolls without moving/resizing; local canvas preview shows chosen area before upload",
+        "unknownCopy": "No model reading available means not assessed; do not label an unprocessed photo unreadable",
+        "evidence": [
+          "docs/packproof/evidence/p3-region-lock-browser.json",
+          "docs/packproof/evidence/p3-region-lock-preview.json",
+          "docs/packproof/evidence/p3-region-lock-alias.json"
+        ],
+        "providerRequests": 0,
+        "deploymentId": "dpl_7JSAkTgLxzBziDrDFnV3ysBG73FA",
+        "sourceSha256": "1526b74ad7dd638cc6da78849b8ce1aa03fbfb3475e839507f2503b72a32aaf7",
+        "previewUrl": "https://packproof-p0-preview.vercel.app/inspector",
+        "hostedScope": "Registered generated deployment verified directly after stable alias protection screen blocked initial automation; stable alias points to the same deployment"
+      },
+      "consentStatus": {
+        "status": "passed_local_and_hosted_preview",
+        "behavior": "Private saving does not require Meta consent; server blocks external processing without it. Each saved photo shows its stored consent; a different photo resets consent. Consent does not enable live image reading.",
+        "questionGapPixels": 24,
+        "tests": "2 targeted unit tests passed / 7 skipped; typecheck and Preview build passed; actual private saves with both consent states and reload plus hosted UI passed.",
+        "evidence": [
+          "docs/packproof/evidence/p3-consent-browser.json",
+          "docs/packproof/evidence/p3-consent-preview.json",
+          "docs/packproof/evidence/p3-consent-alias.json"
+        ],
+        "providerRequests": 0,
+        "deploymentId": "dpl_J5qs6YDDqb4g8krpmBTV9JPgCMv9",
+        "sourceSha256": "1d3689e38533c688b709bf76e4232a60a4ab6b8715f713ddd9fe05707294699d"
+      },
+      "physicalTestSource": {
+        "status": "processed_after_explicit_photo_and_local_web_consent",
+        "evidence": "docs/packproof/evidence/p3-physical-input.json",
+        "sourceSha256": "5e7a796253b3e438681c26f4fa2b173d7bc65149d64d373eb7fab415404d4beb",
+        "providerRequests": 7,
+        "liveApp": "Restricted HTTPS local app enabled only for approved image hash; private cookie,2-hour expiry, single paid run lock, existing shared$5 budget. Shared Vercel Preview/Production remain recorded.",
+        "reservedUsd": 1.75,
+        "actualBilledUsd": null
+      },
+      "localLiveApp": {
+        "status": "passed_desktop_and_user_reported_vivo",
+        "origin": "https://192.168.1.70:4174",
+        "accessLinkFile": ".local/p3/app-access.json",
+        "startCommand": "pnpm p3:app",
+        "approvedPhotoDownload": "Authenticated /p3-approved-photo endpoint; bytes identical to approved resized input",
+        "evidence": [
+          "docs/packproof/evidence/p3-physical-reference.json",
+          "docs/packproof/evidence/p3-local-live-app.json",
+          "docs/packproof/evidence/p3-local-live-observation.json",
+          "docs/packproof/evidence/p3-local-guard-unit.json",
+          "docs/packproof/evidence/p3-local-client-isolation.json"
+        ],
+        "tests": "typecheck passed;3 targeted guards passed/7 skipped; actual live browser upload/region/SAM/Muse/reload passed;43 compiled client assets checked without secrets.",
+        "deployment": "No Vercel change; launcher under scripts/p3 is operator-only; public runtime cannot activate live via env alone.",
+        "accessRepair": {
+          "status": "passed_browser_and_user_reported_phone_access",
+          "behavior": "Temporary8-digit code form on ordinary local URL; explicit access-granted continue link; HttpOnly/Secure/SameSite=Lax cookie; same-origin POST and10 attempts/minute guard. Original access link/expiry retained.",
+          "evidence": "docs/packproof/evidence/p3-access-browser.json",
+          "providerRequests": 0
+        }
+      },
+      "recordReadRefinement": {
+        "status": "passed_targeted_checks",
+        "changes": "Combined owner-scoped capture lookup; metadata list joins details without per-photo queries; create running state in one INSERT; await both independent rate limits in parallel; sticky progress/error notification area.",
+        "metadataQueriesPerOneCapture": {
+          "before": 7,
+          "after": 4
+        },
+        "standaloneCaptureLookupQueries": {
+          "before": 2,
+          "after": 1
+        },
+        "recordOnlyTiming": {
+          "beforeMs": 39606,
+          "afterMs": 40792,
+          "beforeQueries": 102,
+          "afterQueries": 101,
+          "scope": "One local Supabase recorded-planning sample each; after run overlapped integration work. No demonstrated end-to-end latency improvement; network/checkpoint cost remains.",
+          "providerRequests": 0
+        },
+        "evidence": [
+          "docs/packproof/evidence/p3-record-speed-before.json",
+          "docs/packproof/evidence/p3-record-speed-after.json",
+          "docs/packproof/evidence/p3-read-speed-integration.json",
+          "docs/packproof/evidence/p3-notifications-browser.json"
+        ],
+        "verification": "typecheck passed; one targeted real Supabase case passed/one skipped (owner capture, missing capture, foreign denial, metadata consent/redaction, revision/immutability); mobile390px fixture-only sticky progress/error check passed.",
+        "deployment": "Available on existing local app via Next HMR; no Vercel change."
+      },
+      "release": {
+        "status": "verified_and_published",
+        "evidence": "docs/packproof/evidence/p3-release.json",
+        "deploymentId": "dpl_9QAK9b1D5Fpkb7EJJcP9p6f66oTC",
+        "sourceSha256": "4f2f14fe58a0c9289cf15370745887401ecf2aafe1ae22949f8c707e9ed6d94a",
+        "url": "https://packproof-p0.vercel.app/inspector",
+        "publicProviderMode": "recorded-demo",
+        "environmentWrites": 0,
+        "credentialUploads": 0,
+        "recordedReceiptPreserved": "518246e0-1fc6-42c6-9cb8-25902a92648e"
+      }
     },
     {
       "id": "P4",
@@ -964,7 +1134,8 @@
     "2 November P1B: six-tool LangChain Investigator, scoped APIs/UI and actual Supabase LangGraph checkpoints verified with deterministic protocol fixtures and separate-process restart. New live Muse/SAM disabled; P1 partial/P2 not ready. Physical F3/F4 deferrals unchanged.",
     "2 November P1C after explicit $2/eight-request approval: initial SDK parsing failure consumed three Shop A calls and two retries. Native response bridge repaired the demonstrated non-JSON tool-turn incompatibility; Shop B complete live flow passed in five remaining calls. A failed/C not_run retained; P1 partial/P2 false; no further requests authorized. Usage estimate $0.0340083, $2 reserved, actual billing unknown. P0 ledger/deferrals unchanged.",
     "2 November P1 performance continuation: recorded-controller actual Supabase sample 10,045\u21929,069ms, client requests123\u2192109. Identical in-flight SQL reads shared only within one owner runtime, with independent signature checks and no settled cache; private row/ordered trace read together under RLS; redundant model-step reads removed while preserving server checkpoint expiry and atomic DB limits. 132 unit/15 integration and production UI/build/bundle passed. Controlled Shop A adapter repaired-shape passed; no actual live rerun, zero new Meta calls. User requests commit/handoff; no deployment or P2 advancement.",
-    "2 November explicit additional $4/16-request P1C grant used: A3 and C5 passed; absent-package attempts1+1 rejected string null. Exact scope schema plus Standard Schema metadata detachment repaired the wire contract locally. Physical-context known-code pause3/resume3 passed in separate processes with physical association unresolved. All16 used/$4 reserved/$0.09826915 usage estimate, actual bill unknown. Only32 targeted tests plus2 preserved-flow regressions and typecheck run; no broad suite/browser/build repeat. P1 partial/P2 false, phone deferrals and prior ledgers unchanged; no commit/deploy."
+    "2 November explicit additional $4/16-request P1C grant used: A3 and C5 passed; absent-package attempts1+1 rejected string null. Exact scope schema plus Standard Schema metadata detachment repaired the wire contract locally. Physical-context known-code pause3/resume3 passed in separate processes with physical association unresolved. All16 used/$4 reserved/$0.09826915 usage estimate, actual bill unknown. Only32 targeted tests plus2 preserved-flow regressions and typecheck run; no broad suite/browser/build repeat. P1 partial/P2 false, phone deferrals and prior ledgers unchanged; no commit/deploy.",
+    "3 November P3 checkpoint verified: real physical SAM/Muse single sample and user-confirmed vivo reload, mandatory negative/privacy tests and public recorded-mode Inspector release passed. Historical pending entries above describe earlier states. Hosted live inference is not enabled; no P4 implementation."
   ],
   "p0Budget": {
     "maximumUsd": 3,
@@ -978,7 +1149,7 @@
   },
   "p1Ready": true,
   "handoffDirectory": "project_handoff",
-  "repositoryStatus": "P2 checkpoint recorded in Git under explicit user commit request; private credentials and signing keys remain ignored. See Git history for the commit identity. No remote push requested.",
+  "repositoryStatus": "P3 verified and published; implementation, concise current state and essential evidence included in the requested release commit. Private media/credentials/keys remain ignored.",
   "localToolchain": {
     "node": "24.22.2",
     "pnpm": "12.16.1",
@@ -1049,65 +1220,46 @@
     "deploymentEnvironmentVariableCount": 14,
     "deploymentNodeVersion": "24.x",
     "previewUrl": "https://packproof-p0-preview.vercel.app",
-    "previewStatus": "verified_recorded_investigator",
+    "previewStatus": "passed P3 recorded Inspector and preserved P2",
     "previewCredentialTargets": [
       "preview"
     ],
     "previewEncryptedEnvironmentCount": 11,
-    "productionPromotion": "P2 completed under explicit user Production signing-key approval",
+    "productionPromotion": "P3 Inspector published after release checks; existing Production configuration inherited, no credential/environment writes",
     "productionEncryptedEnvironmentCount": 14,
     "productionCredentialTargets": [
       "production"
     ],
     "toolsUrl": "https://packproof-p0.vercel.app/tools",
-    "productionDeploymentId": "dpl_ARMBEgYt4pB76jN4Yh7Z46trgA9H",
+    "productionDeploymentId": "dpl_9QAK9b1D5Fpkb7EJJcP9p6f66oTC",
     "receiptSigningCredentialTargets": [
       "preview",
       "production"
     ],
-    "chainproofUrl": "https://packproof-p0.vercel.app/chainproof"
+    "chainproofUrl": "https://packproof-p0.vercel.app/chainproof",
+    "previewDeploymentId": "dpl_7JSAkTgLxzBziDrDFnV3ysBG73FA",
+    "previewInspectorUrl": "https://packproof-p0-preview.vercel.app/inspector",
+    "productionSourceSha256": "4f2f14fe58a0c9289cf15370745887401ecf2aafe1ae22949f8c707e9ed6d94a",
+    "inspectorUrl": "https://packproof-p0.vercel.app/inspector",
+    "publicProviderMode": "recorded-demo"
   },
   "testingGuide": "TESTING.md",
   "continuationBaselineCommit": "6955ed6",
   "latestLocalValidation": {
-    "phase": "P2",
+    "phase": "P3",
     "typecheck": "passed",
-    "initialUnitTestsPassed": 151,
-    "targetedUnitTestsPassed": 29,
-    "unitCountsOverlap": true,
-    "latestDistinctDatabaseScenariosPassed": 5,
-    "databaseRunHistory": "3 passed/2 failed full run, then 2 passed/3 skipped targeted repair",
-    "privateStorageCasePassed": 1,
-    "browser": "passed guided signed-out/buyer/seller UI, two-way actual ZXing synthetic camera, explicit consents, one isolated commit, receipt/reload recovery and sign-out",
-    "productionBuild": "passed current local isolated build and Vercel build",
-    "bundleAndTraceChecks": "passed; docs/packproof/evidence/p2-isolation.json",
-    "evidence": "docs/packproof/evidence/p2.json",
-    "hostedPreview": "passed stable Preview actual buyer/seller sign-in/sign-out, mobile/desktop layout; no hosted ownership commit",
-    "previewLayout": "passed36px logo at390/1280px, no overflow or uncaught browser error",
-    "browserEvidence": "docs/packproof/evidence/p2-ui-browser.json",
-    "latestPreviewRepair": {
-      "typecheck": "passed",
-      "cloudBuild": "passed",
-      "authorityCheck": "passed",
-      "stickyErrorAndExistingSignIns": "passed",
-      "deviceEnrollmentOrOwnershipWritesInBrowserCheck": false,
-      "evidence": "docs/packproof/evidence/p2-preview-layout.json"
-    },
-    "productionRelease": {
-      "status": "passed",
-      "targetedIntegration": "2 passed / 3 skipped; previous concurrency evidence preserved",
-      "revisedBrowserFlow": "passed actual Auth/isolated SQL/ZXing/lost-response recovery",
-      "finalLayout": "passed explicit UI fixtures with actual audited receipt cryptography",
-      "connectionContextIsolation": "passed concurrent buyer/seller/outsider reads",
-      "localAndCloudBuild": "passed",
-      "secretScan": "passed 36 client assets,14 traces,6548 references",
-      "productionPublicChecks": "passed",
-      "preservedPhysicalTransfer": true,
-      "evidence": "docs/packproof/evidence/p2-production-live.json"
-    }
+    "productionBuild": "passed isolated exact97file source and Vercel Production build",
+    "unit": "38 targeted tests passed",
+    "integration": "Latest focused actual Supabase owner-isolation/metadata/consent/redaction/revision case passed; earlier2 P3 cases retained",
+    "browser": "Final production build and public HTTPS Inspector/recorded source/region/reload/privacy/P0/ChainProof passed",
+    "secretScan": "41 client assets /17 traces /8791 references /13 secret values, no leaks or operator files",
+    "existingReceiptRegression": "Existing buyer receipt and both device consents verified on final local build and public Production; no transfer/enrollment",
+    "preservation": "Exactly1 accepted transfer, buyer owner/version2,33 original signed records and private files unchanged",
+    "manual": "User-confirmed vivo Y03 real SAM/Muse expiry and same result/images after refresh",
+    "evidence": "docs/packproof/evidence/p3-release.json"
   },
   "p1IndependentWorkAuthorized": true,
-  "nextAuthorizedWork": "P2 Production release completed and verified; user requested checkpoint commit and generator handoff. Stop after P2. Await a separately scoped next phase; no remote Git push, P3/P4 or new inference budget authorized.",
+  "nextAuthorizedWork": "P3 checkpoint complete. No P4 work started; await a separately scoped instruction.",
   "p1bReadiness": {
     "foundationReady": true,
     "implementationStarted": true,
@@ -1199,29 +1351,33 @@
   },
   "previewUrl": "https://packproof-p0-preview.vercel.app",
   "latestManualValidation": {
-    "phase": "P2",
+    "phase": "P3",
     "date": "2026-11-03",
-    "status": "passed",
-    "userConfirmation": {
-      "date": "2026-11-03",
-      "provenance": "user_chat_confirmation",
-      "devices": {
-        "buyer": "vivo Y03",
-        "seller": "Redmi 10A"
-      },
-      "receiptStatement": "i got the recept on both and both passed",
-      "recoveryStatement": "Yes, the same handover and receipt returned.",
-      "scope": "User performed physical handover and both browser receipt checks, then explicitly confirmed same-handover page-refresh recovery. No raw browser timing/scan-attempt report supplied."
-    },
-    "receiptAudit": "docs/packproof/evidence/p2-receipt-verification.json",
-    "acceptedTransfers": 1,
-    "ownerVersion": 2,
-    "newProviderRequests": 0,
-    "limitations": [
-      "Physical execution and browser receipt/reload outcomes confirmed by user; not independently observed by assistant.",
-      "No actual P2 display-FPS or camera scan-attempt telemetry supplied; scheduled 5 updates/s is not a measurement.",
-      "Deliberate physical network-interruption trial not reported; lost-response and duplicate-confirm recovery retain prior software evidence."
-    ]
+    "status": "passed_user_reported",
+    "device": "vivo Y03",
+    "scope": "Actual local HTTPS approved-photo SAM/Muse expiry result and refresh recovery",
+    "evidence": "docs/packproof/evidence/p3-vivo-live.json",
+    "priorP0P2PhoneEvidence": "Preserved in the existing phase records and evidence; no repetition required"
   },
-  "p3Ready": true
+  "p3Ready": true,
+  "p3Budget": {
+    "grantId": "p3-2026-11-03",
+    "approval": {
+      "statement": "approve 5 usd for unlimited requests untill done",
+      "at": "2026-11-03T13:17:51.324Z"
+    },
+    "maximumUsd": 5,
+    "maximumInferenceRequests": null,
+    "reservationCentsPerRequest": 25,
+    "providerRequests": 7,
+    "reservedUsd": 1.75,
+    "actualBilledUsd": null,
+    "newInferenceSpendUsd": null,
+    "ledger": ".local/p3/budget.json",
+    "registration": ".local/p3-registration.json",
+    "priorP0P1AllowancesReused": false,
+    "publicLiveInferenceEnabled": false,
+    "localLivePhysicalValidation": "passed approved CLI/local app and user-confirmed vivo result/reload"
+  },
+  "p4Ready": true
 }

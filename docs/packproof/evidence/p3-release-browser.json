@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "scope": "Checked local production build, actual Investigator/Supabase with recorded planning; Inspector and P0 surfaces, mobile390px",
+  "checks": {
+    "existingSellerRefusal": true,
+    "inspectorLinkedInSameApp": true,
+    "publicModeRecorded": true,
+    "localLiveFactoryInactive": true,
+    "p0ToolAvailable": true,
+    "browserErrors": []
+  },
+  "providerRequests": 0,
+  "ownershipWrites": 0
+}

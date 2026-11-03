@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "mode": "Chrome touchscreen emulation at390px plus actual local app/Supabase/Storage; not a physical-phone rerun",
+  "checks": {
+    "wholeImageDefault": true,
+    "touchCentersUsefulBox": true,
+    "adjacentTapsNeverTiny": true,
+    "widthHeightControls": true,
+    "reverseDiagonalDrag": true,
+    "wholeImageReset": true,
+    "printedExpiryUploadAndUnknown": true,
+    "specificRetake": true,
+    "noExplanationFailure": true,
+    "refreshRecovery": true,
+    "overflow": false,
+    "browserErrors": []
+  },
+  "providerRequests": 0,
+  "ownershipWrites": 0
+}

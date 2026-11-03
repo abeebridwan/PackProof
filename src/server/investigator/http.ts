@@ -1,4 +1,5 @@
 import {z} from 'zod';
+import {CaptureDetails} from '../../contracts/inspection.js';
 import {InvestigationInput,ResumeInput,PublicInvestigation} from '../../contracts/investigation.js';
 import {ProductInput,ProductResult} from '../../contracts/evidence.js';
 import {session,sameOrigin} from '../auth/session.js';
@@ -19,8 +20,8 @@ export async function handle(request:Request,action:'create'|'get'|'resume'|'loo
   if(id)z.uuid().parse(id);
   stage='runtime';context=await runtime(auth.owner);
   stage='limits';
-  await context.store.limit(`global:${action}`,action==='get'||action==='lookup'?600:60,3600000);
-  if(action!=='lookup')await context.store.limit(`session:${auth.owner.sessionHash}:${action}`,action==='get'?240:20,3600000);
+  const limits=await Promise.allSettled([context.store.limit(`global:${action}`,action==='get'||action==='lookup'?600:60,3600000),...(action!=='lookup'?[context.store.limit(`session:${auth.owner.sessionHash}:${action}`,action==='get'?240:20,3600000)]:[])]);
+  for(const result of limits)if(result.status==='rejected')throw result.reason;
   stage='operation';
   if(action==='create'){
    const args=InvestigationInput.parse(await jsonBody(request));if(args.captureId!==null)throw new InvestigationError('create_capture_after_request',400);
@@ -35,10 +36,11 @@ export async function handle(request:Request,action:'create'|'get'|'resume'|'loo
   }
   const bytes=await bodyBytes(request,CAPTURE_LIMIT+8192);
   const form=await new Response(bytes,{headers:{'content-type':request.headers.get('content-type')??''}}).formData();
-  if([...form.keys()].some(k=>!['file','investigationId','revision','source','capturedAt'].includes(k)))throw new InvestigationError('invalid_upload_fields',400);
+  if([...form.keys()].some(k=>!['file','investigationId','revision','source','capturedAt','inspection'].includes(k)))throw new InvestigationError('invalid_upload_fields',400);
   const file=form.get('file');if(!(file instanceof File))throw new InvestigationError('image_required',400);
   const meta=z.strictObject({investigationId:z.uuid(),revision:z.coerce.number().int().positive(),source:z.enum(['live-camera','imported']),capturedAt:z.iso.datetime().nullable()}).parse({investigationId:form.get('investigationId'),revision:form.get('revision'),source:form.get('source'),capturedAt:form.get('capturedAt')||null});
-  const capture=await saveCapture(context.store,auth.owner,new SupabaseCaptureStorage(),{...meta,mime:file.type,bytes:new Uint8Array(await file.arrayBuffer())});
+  const inspection=form.get('inspection');const details=inspection?CaptureDetails.parse(JSON.parse(String(inspection))):undefined;
+  const capture=await saveCapture(context.store,auth.owner,new SupabaseCaptureStorage(),{...meta,...(details?{inspection:details}:{}),mime:file.type,bytes:new Uint8Array(await file.arrayBuffer())});
   return json(capture,201);
  }catch(error){
   const known=error instanceof InvestigationError;

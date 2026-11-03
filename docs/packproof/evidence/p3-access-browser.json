@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "scope": "Local HTTPS Chrome390px access flow only; not the physical phone and no inference",
+  "checks": {
+    "anonymousApiDenied": true,
+    "crossOriginUnlockDenied": true,
+    "wrongCodeRejected": true,
+    "codeUnlock": true,
+    "explicitContinue": true,
+    "cookieSecureHttpOnlyLax": true,
+    "reloadAccess": true,
+    "existingPrivateLinkStillWorks": true
+  },
+  "providerRequests": 0
+}

@@ -1,0 +1,11 @@
+{
+  "status": "failed",
+  "scope": "Actual local HTTPS app/SQL/Storage/SAM/Muse, desktop Chrome390px; physical-phone test pending",
+  "tls": "Browser ignores locally issued certificate for automation; phone must trust existing CA",
+  "checks": {
+    "anonymousDenied": true,
+    "privateLiveModeVisible": true
+  },
+  "ownershipWrites": 0,
+  "failure": "expect(received).toBe(expected) // Object.is equality\n\nExpected: \"live\"\nReceived: undefined"
+}

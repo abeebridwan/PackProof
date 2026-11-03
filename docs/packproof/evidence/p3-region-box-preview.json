@@ -1,0 +1,18 @@
+{
+  "deploymentId": "dpl_BYYVWsgxeCLonrAnvWwLrK32kftQ",
+  "url": "https://packproof-p0-preview.vercel.app/inspector",
+  "sourceSha256": "92a60b81c953568ba646e92b8c7ae7001aadce48de3be07254ce74a5b9e9c88f",
+  "mode": "actual protected HTTPS Preview region UI; no upload/model/ownership writes, browser only",
+  "providerRequests": 0,
+  "ownershipWrites": 0,
+  "adjustableSelectorVisible": true,
+  "moveAndResizeHandlesVisible": true,
+  "status": "passed",
+  "secureContext": true,
+  "mobile390": true,
+  "desktop1280": true,
+  "actualDatabaseInvestigation201": true,
+  "productionP2StillEnabled": true,
+  "browserErrors": [],
+  "temporaryBypassRevoked": true
+}

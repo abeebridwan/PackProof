@@ -2,7 +2,7 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import {homedir} from 'node:os';
 const attempt=process.argv[2];
-if(!/^(?:[1-9]|10)$/.test(attempt??''))throw new Error('Pass the registered Preview attempt number');
+if(!/^[1-9][0-9]?$/.test(attempt??''))throw new Error('Pass the registered Preview attempt number');
 const project='prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t',team='team_JGBEC35F2KTZM2qjdNzdMLZv',alias='packproof-p0-preview.vercel.app';
 const receipt=JSON.parse(await readFile(`.local/deploy/preview-attempt-${attempt}.json`,'utf8'));
 if(receipt.projectId!==project||receipt.teamId!==team||!receipt.id)throw new Error('Registered existing-project Preview required');
@@ -25,4 +25,4 @@ if(![401,403,302,307,308].includes(anonymous.status)){
 }
 const result={status:'passed',projectId:project,deploymentId:receipt.id,url:`https://${alias}`,aliasId,anonymousHttp:anonymous.status,productionAliasesChanged:false};
 await writeFile(intent,JSON.stringify(result,null,2)+'\n',{mode:0o600});
-await writeFile('docs/packproof/evidence/p2-preview-alias.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
+await writeFile(process.env.PACKPROOF_ALIAS_EVIDENCE??'docs/packproof/evidence/p2-preview-alias.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

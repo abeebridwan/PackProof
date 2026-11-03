@@ -37,7 +37,10 @@
     "evaluate:p1b": "node --env-file-if-exists=.env.local --import tsx scripts/p1b/evaluate.ts",
     "p1c:budget": "node --import tsx scripts/p1c/budget.ts",
     "p1c:live": "node --env-file-if-exists=.env.local --import tsx scripts/p1c/live.ts",
-    "p1c:complete": "node --env-file-if-exists=.env.local --import tsx scripts/p1c/complete.ts"
+    "p1c:complete": "node --env-file-if-exists=.env.local --import tsx scripts/p1c/complete.ts",
+    "p3:live": "node --env-file-if-exists=.env.local --import tsx scripts/p3/live.ts",
+    "db:migrate:p3": "node --env-file-if-exists=.env.local --import tsx scripts/p3/migrate.ts",
+    "p3:app": "node --env-file-if-exists=.env.local --import tsx scripts/p3/serve-local.ts"
   },
   "dependencies": {
     "@langchain/core": "1.3.2",

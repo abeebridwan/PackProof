@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "scope": "Actual390px UI; investigation API explicitly held/failed as a fixture, no DB writes or models",
+  "checks": {
+    "progressRemainsVisibleWhenScrolled": true,
+    "errorRemainsVisibleWhenScrolled": true,
+    "overflow": false
+  },
+  "providerRequests": 0
+}

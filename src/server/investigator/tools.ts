@@ -29,13 +29,14 @@ export async function executeTool(name:ToolName,raw:unknown,c:ToolContext):Promi
   const capture=await c.store.capture(c.owner,c.state.id,String(args.captureId));
   if(capture.revision<c.state.revision-1||capture.revision>c.state.revision)throw new InvestigationError('capture_revision_mismatch');
   const result=ImageEvidenceResult.parse(await c.inspector.inspect(capture,args.question as 'product_mark'|'package_mark'|'printed_expiry'));
-  if(result.data?.value!==null && result.data?.value!==undefined && args.question==='product_mark' && result.data.value!==c.state.input.productMark){
-   result.status='blocked';result.reason='Saved fixture literal marking differs from the supplied product code; physical association remains unresolved.';result.next_actions=['Confirm the literal code from a clear view; do not infer authenticity'];
+  const question=result.data?.question??args.question;const expectedMark=question==='product_mark'?c.state.input.productMark:question==='package_mark'?c.state.input.packagingMark:null;
+  if(result.data?.value!==null && result.data?.value!==undefined && expectedMark!==null && result.data.value!==expectedMark){
+   result.status='blocked';result.reason='Literal marking differs from the supplied code; physical association remains unresolved.';result.next_actions=['Confirm the literal code from a clear view; do not infer authenticity'];
   }
   return result;
  }
  const view=args.view as keyof typeof instructions;
- const request={reason:args.reason as 'unreadable'|'missing_package'|'association_unclear',view,instruction:instructions[view],revision:c.state.revision};
+ const request={reason:args.reason as 'unreadable'|'missing_package'|'association_unclear',view,instruction:view==='close_mark'&&c.state.captureQuestion==='printed_expiry'?'Take a sharp close photo of the printed expiry, with the whole date visible. Keep registration and batch dates separate.':view==='close_mark'&&c.state.captureQuestion==='package_mark'?'Take a sharp close photo of the whole printed packaging code, without glare.':instructions[view],revision:c.state.revision};
  await c.store.save(c.owner,c.state.id,{status:'needs_input',request});
  return AdditionalEvidenceResult.parse({status:'needs_evidence',reason:request.instruction,evidence_refs:[],scope:'unit',asOf:new Date().toISOString(),policyVersion:'p1b-evidence-request-1',next_actions:[request.instruction],data:{state:'needs_input',investigationId:c.state.id,evidenceRevision:c.state.revision,instruction:request.instruction}});
 }

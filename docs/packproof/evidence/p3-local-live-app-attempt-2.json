@@ -1,0 +1,11 @@
+{
+  "status": "failed",
+  "scope": "Actual local HTTPS app/SQL/Storage/SAM/Muse, desktop Chrome390px; physical-phone test pending",
+  "tls": "Browser ignores locally issued certificate for automation; phone must trust existing CA",
+  "checks": {
+    "anonymousDenied": true,
+    "privateLiveModeVisible": true
+  },
+  "ownershipWrites": 0,
+  "failure": "expect(received).not.toContain(expected) // indexOf\n\nExpected substring: not \"1536 × 2048\"\nReceived string:        \"Selected region: 520 × 170 pixels. Original: 1536 × 2048. This guides SAM; it is not a model mask.\""
+}

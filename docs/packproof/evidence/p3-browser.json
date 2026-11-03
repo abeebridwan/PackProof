@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "checks": {
+    "mode": "actual local HTTP / Supabase / Storage + recorded real P0 evidence; camera permission denial simulated; not an Android observation",
+    "providerRequests": 0,
+    "permissionDenialFallback": "passed simulated denial with usable upload/manual controls",
+    "privateOriginalAndGroundedMedia": "passed actual bytes/hash-bound recorded SAM",
+    "literalSignedComparison": "passed literal 0071842 conflicts with supplied FP-1002; unknown registered unit; physical unresolved",
+    "refreshRecovery": "passed",
+    "privateMediaSessionIsolation": "passed anonymous 401 / foreign session 404",
+    "mobile390": "passed no horizontal overflow",
+    "desktop1280": "passed no horizontal overflow",
+    "investigator": "passed actual post-transfer Shop B refusal",
+    "chainproof": "passed existing sign-in surface; actual receipt preservation checked separately",
+    "uncaughtErrors": []
+  }
+}

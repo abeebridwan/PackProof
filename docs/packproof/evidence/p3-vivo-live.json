@@ -1,0 +1,33 @@
+{
+  "status": "passed_user_reported",
+  "device": "vivo Y03",
+  "manualEvidence": "User reported Current capture / Live, correct printed expiry19/08/2028 and original/overlay/crop; explicitly confirmed same result and images returned after refresh.",
+  "independentDeviceAttestation": false,
+  "matchingStoredObservation": {
+    "id": "b6bf3ea0-ef9b-4912-ad6d-e9e3e570ecb8",
+    "investigationId": "5ea320a1-5567-41e3-9e7a-f7d9d23166a3",
+    "captureId": "b410ead4-2beb-4d3e-a7a2-e802ccaee317",
+    "sourceSha256": "5e7a796253b3e438681c26f4fa2b173d7bc65149d64d373eb7fab415404d4beb",
+    "createdAt": "2026-11-03T16:35:20.275Z",
+    "literal": {
+      "value": "19/08/28",
+      "readability": "readable",
+      "qualityBlockers": []
+    },
+    "grounding": {
+      "mode": "live",
+      "model": "sam-3.1",
+      "requestId": "08483c55-2ce5-4e90-8013-1855a585bdbb",
+      "responseId": "resp_6aea0d4fcd9975829c08425c"
+    },
+    "reader": {
+      "mode": "live",
+      "model": "muse-spark-1.3",
+      "requestId": "38ca3ec1-a356-4c24-a6ca-0c4f47f37226",
+      "responseId": "chatcmpl-01a1a244-5a5c-75fa-9e14-73cf5158d879"
+    }
+  },
+  "limits": "Single approved physical-label sample; no regulatory, batch, safety, authenticity, physical-association or ownership inference.",
+  "providerRequestsByAudit": 0,
+  "ownershipWrites": 0
+}

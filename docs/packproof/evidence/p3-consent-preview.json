@@ -1,0 +1,19 @@
+{
+  "deploymentId": "dpl_J5qs6YDDqb4g8krpmBTV9JPgCMv9",
+  "url": "https://packproof-p0-lcpuzuvif-ridwan-abeebs-projects.vercel.app/inspector",
+  "sourceSha256": "1d3689e38533c688b709bf76e4232a60a4ab6b8715f713ddd9fe05707294699d",
+  "mode": "actual protected HTTPS Preview consent/spacing UI; explicitly fixture-backed investigation, no upload/database/model/ownership writes",
+  "providerRequests": 0,
+  "ownershipWrites": 0,
+  "consentStateMessages": true,
+  "questionGapPixels": 24,
+  "status": "passed",
+  "secureContext": true,
+  "mobile390": true,
+  "desktop1280": true,
+  "fixtureBackedInvestigation": true,
+  "databaseWrites": 0,
+  "productionP2StillEnabled": true,
+  "browserErrors": [],
+  "temporaryBypassRevoked": true
+}

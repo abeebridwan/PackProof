@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "scope": "Currently compiled local app client assets only; not a new deployment audit",
+  "clientAssetsChecked": 43,
+  "secretValuesChecked": 3,
+  "privateValuesFound": 0,
+  "providerRequests": 0
+}

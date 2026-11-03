@@ -1,0 +1,12 @@
+{
+  "deploymentId": "dpl_7JSAkTgLxzBziDrDFnV3ysBG73FA",
+  "url": "https://packproof-p0-preview.vercel.app/inspector",
+  "sourceSha256": "1526b74ad7dd638cc6da78849b8ce1aa03fbfb3475e839507f2503b72a32aaf7",
+  "mode": "actual protected HTTPS Preview selection lock/crop UI; no upload/model/ownership writes, browser only",
+  "providerRequests": 0,
+  "ownershipWrites": 0,
+  "status": "failed",
+  "errorType": "Error",
+  "failure": "expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: '1. Identify the product' })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: '1. Identify the product' }) with timeout 30000ms\n  - waiting for getByRole('heading', { name: '1. Identify the product' })\n",
+  "temporaryBypassRevoked": true
+}

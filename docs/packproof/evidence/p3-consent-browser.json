@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "scope": "Focused Chrome390px check with actual local app/private Supabase capture consent metadata; not a phone or live model acceptance",
+  "providerRequests": 0,
+  "ownershipWrites": 0,
+  "checks": {
+    "newPhotoResetsConsent": true,
+    "questionGapPixels": 24,
+    "noConsentSavedPrivatelyAndBlocked": true,
+    "consentPersistedButNoLiveReading": true,
+    "reloadPreservesConsent": true,
+    "browserErrors": []
+  }
+}

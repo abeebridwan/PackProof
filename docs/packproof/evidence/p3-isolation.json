@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "clientAssetsChecked": 41,
+  "serverTracesChecked": 17,
+  "tracedReferencesChecked": 8791,
+  "changedFilesChecked": 52,
+  "gitTrackedFilesChecked": 311,
+  "secretValuesChecked": 13,
+  "privateKeyBytesFound": 0,
+  "operatorFilesTraced": 0,
+  "providerRequests": 0
+}

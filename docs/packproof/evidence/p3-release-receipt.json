@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "scope": "Checked P3 production build running locally, existing Supabase buyer sign-in, same accepted handover/receipt recovery and browser verification of receipt/both consents",
+  "receiptId": "518246e0-1fc6-42c6-9cb8-25902a92648e",
+  "receiptSha256": "abddefabbf8781d4c77455ac930823732696f1392c3eee798a33ca57b803339d",
+  "ownershipWrites": 0,
+  "enrollments": 0,
+  "providerRequests": 0
+}

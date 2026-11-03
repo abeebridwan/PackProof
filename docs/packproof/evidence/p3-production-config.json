@@ -1,0 +1,107 @@
+{
+  "status": "passed",
+  "mode": "Read-only names/types only; encrypted values not decrypted or logged",
+  "projectId": "prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t",
+  "existingProductionVariables": [
+    {
+      "key": "TRANSFER_SIGNING_JWK",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "P2_ENABLED",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "P1_PROVIDER_MODE",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "P1_TRACING",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "P1_SESSION_CAP_CENTS",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "P1_SESSION_TIMEOUT_MS",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "SUPABASE_DB_SSLROOTCERT",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "ENABLE_EXPERIMENTAL_COREPACK",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "SUPABASE_PROJECT_REF",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "SUPABASE_URL",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "SUPABASE_PUBLISHABLE_KEY",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "SUPABASE_SECRET_KEY",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "SUPABASE_DB_URL",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    },
+    {
+      "key": "APP_ORIGIN",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ]
+    }
+  ],
+  "credentialUploads": 0,
+  "privateValuesLogged": 0
+}

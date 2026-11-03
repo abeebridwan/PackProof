@@ -8,8 +8,12 @@ import {coalesceEvidenceReads} from '../data/evidence-reads.js';
 import {createEvidenceServices} from '../evidence/services.js';
 import {PostgresInvestigationStore} from './store.js';
 import {recordedMuse,liveMuseDisabled} from '../providers/muse.js';
-import {RecordedImageInspector} from '../providers/recorded-image.js';
+import {RecordedGroundingProvider} from '../providers/recorded-grounding.js';
+import {GroundedImageInspector} from '../inspector/inspector.js';
+import {PostgresInspectionRepository} from '../inspector/repository.js';
+import {SupabaseCaptureStorage} from './captures.js';
 import {safeTracing,langSmithSender} from '../../../scripts/spikes/safe-tracing.js';
+import {localValidation} from '../inspector/local-validation.js';
 import type {Owner} from './types.js';
 export async function runtime(owner:Owner){
  if(process.env.P1_PROVIDER_MODE && process.env.P1_PROVIDER_MODE!=='recorded-demo')liveMuseDisabled();
@@ -21,6 +25,6 @@ export async function runtime(owner:Owner){
  const pin=RootPin.parse(JSON.parse(await readFile('docs/packproof/demo/root-public.json','utf8')));
  const enabled=process.env.P1_TRACING==='true'&&Boolean(process.env.LANGSMITH_API_KEY);
  const trace=safeTracing({enabled,...(enabled?{send:langSmithSender(process.env.LANGSMITH_API_KEY!,fetch,'packproof-p1b')}:{})});
- const options={owner,store,services:createEvidenceServices(repository,pin),planner:recordedMuse(),inspector:new RecordedImageInspector(),checkpointer:new PostgresSaver(pool,undefined,{schema:'packproof_graph'}),trace,timeoutMs:settings.timeout,capCents:settings.cap};
+ const options={owner,store,services:createEvidenceServices(repository,pin),planner:recordedMuse(),inspector:localValidation()?.inspector(pool)??new GroundedImageInspector(new PostgresInspectionRepository(pool),c=>new SupabaseCaptureStorage().read(c.objectPath),new RecordedGroundingProvider()),checkpointer:new PostgresSaver(pool,undefined,{schema:'packproof_graph'}),trace,timeoutMs:settings.timeout,capCents:settings.cap};
  return {pool,store,options,close:()=>pool.end()};
 }

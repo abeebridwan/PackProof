@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "scope": "Actual local HTTPS app/SQL/Storage/SAM/Muse, desktop Chrome390px; physical-phone test pending",
+  "tls": "Browser ignores locally issued certificate for automation; phone must trust existing CA",
+  "checks": {
+    "anonymousDenied": true,
+    "privateLiveModeVisible": true,
+    "liveSamMuseReading": true,
+    "confirmedPackageDate": "19/08/2028",
+    "literalRetainsPrintedTwoDigitYear": true,
+    "physicalAssociationUnresolved": true,
+    "reloadRecovery": true,
+    "browserErrors": []
+  },
+  "ownershipWrites": 0,
+  "selectedRegion": "Selected region: 520 × 170 pixels. Original: 1536 × 2048. This guides SAM; it is not a model mask.",
+  "investigationId": "08fa37c8-0a3a-4924-82a9-9bd80d6c45df",
+  "captureId": "deb2810e-f81d-42f1-b364-68bba766002a",
+  "observationId": "a82de298-efe9-42cb-9f4c-a417a245236a",
+  "reading": {
+    "value": "19/08/28",
+    "readability": "readable",
+    "qualityBlockers": []
+  },
+  "reservedUsd": 1.25,
+  "actualBilledUsd": null
+}

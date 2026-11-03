@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "origin": "https://packproof-p0.vercel.app",
+  "scope": "Actual unified public Production app/Supabase/Auth/private Storage and saved SAM replay; no new model or ownership calls",
+  "checks": {
+    "chainproofEnabled": true,
+    "inspectorSameAppPublicHttpsAndRecorded": true,
+    "actualSyntheticCaptureAndRecordedMismatch": true,
+    "privateSourceAndRegionMedia": true,
+    "anonymousPrivateMediaDenied": true,
+    "inspectionReloadRecovery": true,
+    "p0ToolAvailable": true,
+    "sameExistingReceiptAndBothConsents": true,
+    "browserErrors": []
+  },
+  "providerRequests": 0,
+  "ownershipWrites": 0
+}

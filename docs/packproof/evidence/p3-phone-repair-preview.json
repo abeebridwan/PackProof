@@ -1,0 +1,20 @@
+{
+  "deploymentId": "dpl_7eHmYVVXCEtoHgfJzFLLcogmDe8N",
+  "url": "https://packproof-p0-preview.vercel.app/inspector",
+  "sourceSha256": "f241899c34133b21ef9b882052cedae214aed89002aae90111f807820c67e3e7",
+  "mode": "actual protected HTTPS Preview and private Storage; browser only, not Android",
+  "providerRequests": 0,
+  "ownershipWrites": 0,
+  "adjustableSelectorVisible": true,
+  "status": "passed",
+  "secureContext": true,
+  "mobile390": true,
+  "desktop1280": true,
+  "actualDatabaseInvestigation201": true,
+  "actualPrivateUpload201": true,
+  "hashExactOriginal200": true,
+  "anonymousMedia401": true,
+  "productionP2StillEnabled": true,
+  "browserErrors": [],
+  "temporaryBypassRevoked": true
+}
