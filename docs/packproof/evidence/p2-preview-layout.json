@@ -1,0 +1,71 @@
+{
+  "deploymentId": "dpl_uA5XYvVnLRJfNzGJdRueCfa67QRh",
+  "url": "https://packproof-p0-preview.vercel.app",
+  "generatedDeploymentUrl": "https://packproof-p0-6oqj9xhkv-ridwan-abeebs-projects.vercel.app",
+  "sourceSha256": "33327ca81d83a96f7ccfcaa7c3caf965803a3fb3b861df9ad464120175be9df9",
+  "scope": "actual protected Preview responses fetched through Playwright route.fetch for reliable automation headers; mobile/desktop and existing buyer/seller sign-in; explicitly simulated session error checks sticky positioning; no device enrollment or ownership writes",
+  "checks": [
+    {
+      "screen": "signed-out",
+      "viewportWidth": 390,
+      "logoWidth": 36,
+      "logoHeight": 36,
+      "overflow": false
+    },
+    {
+      "screen": "signed-out",
+      "viewportWidth": 1280,
+      "logoWidth": 36,
+      "logoHeight": 36,
+      "overflow": false
+    },
+    {
+      "screen": "simulated-session-error-after-scroll",
+      "position": "sticky",
+      "top": 10,
+      "bottom": 70,
+      "width": 354,
+      "scrollY": 833,
+      "viewportHeight": 844,
+      "viewportWidth": 390,
+      "visible": true
+    },
+    {
+      "screen": "buyer",
+      "signIn": "passed",
+      "roleControls": "passed",
+      "logoWidth": 36,
+      "overflow": false
+    },
+    {
+      "screen": "buyer",
+      "signOut": "passed"
+    },
+    {
+      "screen": "seller-b",
+      "signIn": "passed",
+      "roleControls": "passed",
+      "logoWidth": 36,
+      "overflow": false
+    },
+    {
+      "screen": "seller-b",
+      "signOut": "passed"
+    }
+  ],
+  "providerRequests": 0,
+  "actualPhones": 0,
+  "initialCheck": {
+    "status": "failed",
+    "reason": "Ambiguous test selector also matched the Next.js route announcer; scoped to the ChainProof error banner before rerunning. No application change needed."
+  },
+  "productionTransferDisabled": true,
+  "browserErrors": 0,
+  "status": "passed",
+  "temporaryBypassRevoked": true,
+  "accessDiagnostics": {
+    "earlierAttempts": "Temporary-header requests intermittently received Vercel SSO redirects, including static assets; these were verification-access failures, not passing app checks.",
+    "resolution": "Actual hosted responses fetched through Playwright route.fetch, GET-only cache-busting and documented bypass cookie; explicit error response remains the sole simulated app API response.",
+    "publicOrPhoneProtectionChanged": false
+  }
+}

@@ -5,11 +5,16 @@ import {createHash} from 'node:crypto';
 import {parseEnv} from 'node:util';
 
 // One existing application/project. Production requires an explicit --production action.
-// The user approved Production credentials and publication after phone validation.
+// The user approved P2 Production publication after physical-phone acceptance.
+// The same receipt-only signing key may now be encrypted for Production; root/issuer keys stay offline.
 const projectId='prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t',teamId='team_JGBEC35F2KTZM2qjdNzdMLZv';
 const args=process.argv.slice(2),attempt=Number(args.find(a=>a.startsWith('--attempt='))?.split('=')[1]??1);
+const p2Preview=args.includes('--p2-preview');
+const p2Production=args.includes('--p2-production'),p2Enabled=p2Preview||p2Production;
 const prepare=args.includes('--prepare'),production=args.includes('--production'),target=production?'production':'preview';
-if(!Number.isSafeInteger(attempt)||attempt<1||attempt>10||args.some(a=>a!=='--status'&&a!=='--prepare'&&a!=='--production'&&!/^--attempt=\d+$/.test(a)))throw new Error('Use --prepare, --status, --production or an explicit --attempt=N');
+if(!Number.isSafeInteger(attempt)||attempt<1||attempt>99||args.some(a=>a!=='--status'&&a!=='--prepare'&&a!=='--production'&&a!=='--p2-preview'&&a!=='--p2-production'&&!/^--attempt=\d+$/.test(a)))throw new Error('Use --prepare, --status, --production or an explicit --attempt=N');
+if(p2Preview&&production)throw new Error('P2 cannot be promoted by the preview validation command');
+if(p2Production&&!production)throw new Error('--p2-production requires the explicit --production action');
 const directory='.local/deploy';await mkdir(directory,{recursive:true,mode:0o700});
 const receiptPath=`${directory}/${target}-attempt-${attempt}.json`;
 type Receipt={projectId:string;teamId:string;attempt:number;sourceSha256:string;files:{path:string;sha256:string;bytes:number}[];createdAt:string;id?:string;url?:string;readyState?:string};
@@ -49,7 +54,7 @@ if(prior){
  for(const folder of ['src','public','scripts/spikes'])await tree(folder);
  const sourceSha256=createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
  const receipt:Receipt={projectId,teamId,attempt,sourceSha256,files:manifest,createdAt:new Date().toISOString()};
- const settings:Record<string,string>={P1_PROVIDER_MODE:'recorded-demo',P1_TRACING:'false',P1_SESSION_CAP_CENTS:'50',P1_SESSION_TIMEOUT_MS:'600000',SUPABASE_DB_SSLROOTCERT:'certs/supabase-roots.crt',ENABLE_EXPERIMENTAL_COREPACK:'1'};
+ const settings:Record<string,string>={P1_PROVIDER_MODE:'recorded-demo',P1_TRACING:'false',P1_SESSION_CAP_CENTS:'50',P1_SESSION_TIMEOUT_MS:'600000',SUPABASE_DB_SSLROOTCERT:'certs/supabase-roots.crt',ENABLE_EXPERIMENTAL_COREPACK:'1',P2_ENABLED:'0'};
  for(const key of ['SUPABASE_PROJECT_REF','SUPABASE_URL','SUPABASE_PUBLISHABLE_KEY','SUPABASE_SECRET_KEY','SUPABASE_DB_URL']){if(!env[key])throw new Error(`Missing ${key}`);settings[key]=env[key];}
  if(production)settings.APP_ORIGIN='https://packproof-p0.vercel.app';
  if(settings.SUPABASE_PROJECT_REF!=='hvbzxeuedookkwleyjmx')throw new Error('Existing Supabase project required');
@@ -57,18 +62,24 @@ if(prior){
  // is an ignored credential file, obtained and checked against the official
  // project pooler; never change the working local database configuration.
  if(process.env.PACKPROOF_PREVIEW_DB_URL_FILE)settings.SUPABASE_DB_URL=(await readFile(process.env.PACKPROOF_PREVIEW_DB_URL_FILE,'utf8')).trim();
+ if(p2Enabled){
+  const key=JSON.parse(await readFile('.local/p2/transfer-key.json','utf8'));
+  const {rootPin}=await import('../../src/server/transfers/authority.js');const {databasePool}=await import('../../src/server/data/postgres.js');const {loadSources}=await import('../../src/server/transfers/authority.js');const {verifyRecordSet}=await import('../../src/domain/trust/evidence.js');
+  const original=process.env.SUPABASE_DB_URL;process.env.SUPABASE_DB_URL=settings.SUPABASE_DB_URL;const pool=databasePool();try{const sources=await loadSources(pool,'packproof'),verified=await verifyRecordSet(sources.records,await rootPin(),new Date().toISOString());const grant=verified.directory.grants.get(key.kid);if(files.some(f=>Buffer.from(f.data,'base64').toString('utf8').includes(key.d)))throw new Error('Private receipt key bytes in upload');if(!grant||grant.data.publicKey.x!==key.x||grant.data.publicKey.y!==key.y||grant.data.revokedAt||grant.data.issuerId!==key.issuerId||JSON.stringify(grant.data.recordTypes)!==JSON.stringify(['transfer_receipt']))throw new Error('Separate receipt-only signer grant required');}finally{await pool.end();if(original===undefined)delete process.env.SUPABASE_DB_URL;else process.env.SUPABASE_DB_URL=original;}
+  settings.P2_ENABLED='1';settings.TRANSFER_SIGNING_JWK=JSON.stringify(key);
+ }
  const database=new URL(settings.SUPABASE_DB_URL!);
  if(!['postgres:','postgresql:'].includes(database.protocol)||!database.hostname.endsWith('.pooler.supabase.com')||decodeURIComponent(database.username)!==`postgres.${settings.SUPABASE_PROJECT_REF}`||database.port!=='5432'||database.pathname!=='/postgres'||!database.password||database.hash)throw new Error('Verified project IPv4 session-pooler URL on port 5432 required for Vercel preview');
  if(prepare){
   await writeFile(`${directory}/${target}-upload-manifest.json`,JSON.stringify({...receipt,environmentNames:Object.keys(settings),credentialDestination:`existing Vercel project, encrypted ${target} environment`,productionChanged:false,target},null,2)+'\n',{mode:0o600});
-  console.log(JSON.stringify({status:'prepared',projectId,sourceSha256,uploadedFiles:0,preparedFiles:files.length,environmentNames:Object.keys(settings),modelCredentialsIncluded:false,networkRequests:0}));
+  console.log(JSON.stringify({status:'prepared',projectId,sourceSha256,uploadedFiles:0,preparedFiles:files.length,environmentNames:Object.keys(settings),modelCredentialsIncluded:false,networkRequests:p2Enabled?'database grant validation only':0}));
  }else{
  // Persist intent before any mutation; an uncertain outcome is never replayed.
  await writeFile(receiptPath,JSON.stringify(receipt,null,2)+'\n',{flag:'wx',mode:0o600});
  await api(`/v10/projects/${projectId}/env?${query}&upsert=true`,'POST',Object.entries(settings).map(([key,value])=>({key,value,type:'encrypted',target:[target]})));
- const d=await api(`/v13/deployments?${query}`,'POST',{name:project!.name,project:projectId,files,...(production?{target:'production'}:{}),projectSettings:{framework:'nextjs',nodeVersion:'24.x',buildCommand:'pnpm build',installCommand:'pnpm install --frozen-lockfile',outputDirectory:null,rootDirectory:null,serverlessFunctionRegion:'fra1'},meta:{packproofPhase:'P1D',sourceSha256,providerMode:'recorded-demo',environment:target}});
+ const d=await api(`/v13/deployments?${query}`,'POST',{name:project!.name,project:projectId,files,...(production?{target:'production'}:{}),projectSettings:{framework:'nextjs',nodeVersion:'24.x',buildCommand:'pnpm build',installCommand:'pnpm install --frozen-lockfile',outputDirectory:null,rootDirectory:null,serverlessFunctionRegion:'fra1'},meta:{packproofPhase:p2Enabled?'P2':'P1D',sourceSha256,providerMode:'recorded-demo',environment:target}});
  if(!d.id||!d.url)throw new Error('Deployment registration incomplete; inspect existing attempt');
  Object.assign(receipt,{id:d.id,url:`https://${d.url}`,readyState:d.readyState});await writeFile(receiptPath,JSON.stringify(receipt,null,2)+'\n',{mode:0o600});
- console.log(JSON.stringify({id:d.id,url:`https://${d.url}`,readyState:d.readyState,projectId,sourceSha256,uploadedFiles:files.length,created:true,target,productionDeploymentRequested:production,modelCredentialsUploaded:false}));
+ console.log(JSON.stringify({id:d.id,url:`https://${d.url}`,readyState:d.readyState,projectId,sourceSha256,uploadedFiles:files.length,created:true,target,productionDeploymentRequested:production,modelCredentialsUploaded:false,receiptOnlySigningKeyUploaded:p2Enabled}));
  }
 }

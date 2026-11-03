@@ -23,8 +23,8 @@ export async function validateDataset(input: unknown, pin: RootPin, at: string) 
   for (const p of data.products) {
     const issued = get(p.issuanceRecordId, 'issuance');
     const mapping = get(p.mappingRecordId, 'mapping');
-    // P1A supports initial registered ownership only. P2 must add a separately verified commit source.
-    if (issued.visibility !== 'public' || mapping.visibility !== 'public' || p.namespace !== pin.namespace || issued.namespace !== p.namespace || mapping.namespace !== p.namespace || issued.data.itemId !== p.itemId || issued.data.unitMark.value !== p.unitMark || issued.data.modelCode !== p.modelCode || issued.data.batchCode !== p.batchCode || mapping.data.itemId !== p.itemId || mapping.data.issuanceRecordId !== issued.id || !mapping.previousIds.includes(issued.id) || mapping.data.productMark.value !== p.unitMark || mapping.issuerId !== issued.issuerId || p.ownerRecordId !== issued.id || p.registeredOwnerId !== issued.data.registeredHolderId || p.ownerVersion !== issued.data.ownerVersion || !actors.has(p.registeredOwnerId) || actors.get(issued.issuerId)?.kind !== 'issuer') throw new Error('Untrusted product/owner projection');
+    // Initial issuance stays immutable; later ownership is verified from jointly signed P2 receipts.
+    if (issued.visibility !== 'public' || mapping.visibility !== 'public' || p.namespace !== pin.namespace || issued.namespace !== p.namespace || mapping.namespace !== p.namespace || issued.data.itemId !== p.itemId || issued.data.unitMark.value !== p.unitMark || issued.data.modelCode !== p.modelCode || issued.data.batchCode !== p.batchCode || mapping.data.itemId !== p.itemId || mapping.data.issuanceRecordId !== issued.id || !mapping.previousIds.includes(issued.id) || mapping.data.productMark.value !== p.unitMark || mapping.issuerId !== issued.issuerId || (p.ownerVersion===1 && (p.ownerRecordId !== issued.id || p.registeredOwnerId !== issued.data.registeredHolderId)) || !actors.has(p.registeredOwnerId) || actors.get(issued.issuerId)?.kind !== 'issuer') throw new Error('Untrusted product/owner projection');
     if (records.filter(r => r.type === 'issuance' && r.data.itemId === p.itemId).length !== 1 || records.filter(r => r.type === 'mapping' && r.data.itemId === p.itemId).length !== 1) throw new Error('Conflicting allocation or mapping');
     for (const snapshot of records.filter(r => r.type === 'custody_snapshot' && r.data.itemId === p.itemId)) {
       if (snapshot.type !== 'custody_snapshot') continue;
@@ -66,7 +66,12 @@ export function createEvidenceServices(repository: EvidenceRepository, pin: Root
       try {
         const s = await loadSnapshot(); const p = s.data.products.find(p => p.itemId === args.itemId);
         if (!p) return SellerResult.parse({ ...base(s.at, 'Unknown registered unit', [], 'needs_evidence'), data: null });
-        const registeredSeller = s.actors.get(args.sellerId)?.kind === 'shop';
+        if(p.ownerVersion>1){
+          const receipt=s.verified.get(p.ownerRecordId)?.record;
+          if(receipt?.type!=='transfer_receipt'||receipt.data.itemId!==p.itemId||receipt.data.toVersion!==p.ownerVersion||JSON.parse(receipt.data.agreementPayload).buyerActorId!==p.registeredOwnerId)throw new Error('Current ownership receipt preparing or invalid');
+        }
+        const sellerKind=s.actors.get(args.sellerId)?.kind;
+        const registeredSeller = sellerKind === 'shop'||sellerKind === 'consumer';
         const authorized = registeredSeller && p.registeredOwnerId === args.sellerId;
         const source = s.verified.get(p.ownerRecordId)!.record;
         const refs = [source.id, s.directory.grants.get(source.keyId)!.bindingId];

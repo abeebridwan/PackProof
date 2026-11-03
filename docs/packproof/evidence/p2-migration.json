@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "schema": "packproof",
+  "applied": [
+    {
+      "version": "202611020004",
+      "sha256": "f98731acbcfb15df67fb713a2db30d54f8613288d9aa8fb7bc23298daea4439c",
+      "newlyApplied": false
+    },
+    {
+      "version": "202611020005",
+      "sha256": "3bbe3f4d886f1effb6073d224c079c43df4b166e701bf00516369f4fdea7b84e",
+      "newlyApplied": true
+    }
+  ],
+  "providerRequests": 0
+}

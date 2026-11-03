@@ -18,7 +18,7 @@ try {
   const files = await readdir('.next/static', { recursive: true });
   for (const file of files.filter(p => /\.(js|css|map)$/.test(p))) {
     const client = await readFile(`.next/static/${file}`, 'utf8');
-    if (/MODEL_API_KEY|SUPABASE_SECRET_KEY|SUPABASE_DB_URL|BEGIN PRIVATE KEY|offline-keys\.json/.test(client) || secrets.some(([,v]) => client.includes(v))) throw new Error('Server secret/module marker in Next client assets');
+    if (/MODEL_API_KEY|TRANSFER_SIGNING_JWK|PACK_SIGNING_JWK|SUPABASE_SECRET_KEY|SUPABASE_DB_URL|BEGIN PRIVATE KEY|offline-keys\.json/.test(client) || secrets.some(([,v]) => client.includes(v))) throw new Error('Server secret/module marker in Next client assets');
     nextStaticFilesChecked++;
   }
 } catch (e) { if (!(e instanceof Error && 'code' in e && e.code === 'ENOENT')) throw e; }

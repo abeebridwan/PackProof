@@ -1,7 +1,8 @@
 import { z } from 'zod';
+import {ReceiptData} from './transfer.js';
 import { Id, Utc, Hash, Scope, Mark, PublicJwk, Text, SignedPackManifest, gateResult } from './p0.js';
 
-export const RECORD_TYPES = ['issuer_binding', 'directory_change', 'issuance', 'mapping', 'notice', 'custody', 'custody_snapshot', 'gap', 'correction', 'audit'] as const;
+export const RECORD_TYPES = ['issuer_binding', 'directory_change', 'issuance', 'mapping', 'notice', 'custody', 'custody_snapshot', 'gap', 'correction', 'audit', 'delegation', 'transfer_receipt'] as const;
 export const RecordType = z.enum(RECORD_TYPES);
 export const Namespace = z.string().regex(/^[a-z][a-z0-9-]{0,63}$/);
 const common = {
@@ -12,7 +13,7 @@ const common = {
 };
 export const BindingData = z.strictObject({
   issuerId: Id, keyId: Id, publicKey: PublicJwk, role: z.enum(['issuer', 'reviewer']),
-  namespaces: z.array(Namespace).min(1).max(16), recordTypes: z.array(RecordType).min(1).max(10),
+  namespaces: z.array(Namespace).min(1).max(16), recordTypes: z.array(RecordType).min(1).max(12),
   validFrom: Utc, validUntil: Utc, revokedAt: Utc.nullable(), label: Text,
 });
 const record = <K extends typeof RECORD_TYPES[number], D extends z.ZodType>(type: K, data: D) => z.strictObject({ ...common, type: z.literal(type), data });
@@ -26,6 +27,8 @@ export const EvidenceRecord = z.discriminatedUnion('type', [
   record('custody_snapshot', z.strictObject({ itemId: Id, holderReference: Text, sourceRecordIds: z.array(Id).min(1).max(32), gapRecordIds: z.array(Id).max(32), asOf: Utc })),
   record('gap', z.strictObject({ itemId: Id, from: Utc, until: Utc, reason: Text, resolved: z.literal(false) })),
   record('correction', z.strictObject({ targetRecordId: Id, targetSha256: Hash, replacementRecordId: Id, reason: Text })),
+  record('delegation', z.strictObject({itemId:Id,ownerActorId:Id,delegateActorId:Id,ownerVersion:z.number().int().positive(),expiresAt:Utc,revokedAt:Utc.nullable()})),
+  record('transfer_receipt',ReceiptData),
   record('audit', z.strictObject({ targetRecordId: Id, action: z.enum(['review', 'correction_proposed']), reason: Text })),
 ]).superRefine((r, ctx) => {
   const invalid = (message: string) => ctx.addIssue({ code: 'custom', message });
@@ -35,7 +38,8 @@ export const EvidenceRecord = z.discriminatedUnion('type', [
   if (r.type === 'issuer_binding' && Date.parse(r.data.validUntil) <= Date.parse(r.data.validFrom)) invalid('Invalid binding interval');
   if (r.type === 'notice' && Date.parse(r.data.effectiveUntil) <= Date.parse(r.data.effectiveFrom)) invalid('Invalid notice interval');
   if (r.type === 'gap' && Date.parse(r.data.until) <= Date.parse(r.data.from)) invalid('Invalid gap interval');
-  if (['issuance', 'mapping', 'custody', 'custody_snapshot', 'gap'].includes(r.type) && r.scope !== 'unit') invalid('Unit evidence requires unit scope');
+  if (['issuance', 'mapping', 'custody', 'custody_snapshot', 'gap', 'delegation', 'transfer_receipt'].includes(r.type) && r.scope !== 'unit') invalid('Unit evidence requires unit scope');
+  if ((r.type==='delegation'||r.type==='transfer_receipt')&&!r.subjectIds.includes(r.data.itemId)) invalid('Wrong transfer subject');
   if (r.type === 'issuance' && (r.data.unitMark.scope !== 'unit' || r.data.unitMark.namespace !== r.namespace || !r.subjectIds.includes(r.data.itemId))) invalid('Inconsistent unit issuance');
   if (r.type === 'mapping' && (r.data.productMark.scope !== 'unit' || r.data.packagingMark.scope !== 'unit' || r.data.productMark.namespace !== r.namespace || r.data.packagingMark.namespace !== r.namespace || r.data.productMark.value === r.data.packagingMark.value || !r.subjectIds.includes(r.data.itemId) || (r.data.containerMark !== null && (r.data.containerMark.scope !== 'container' || r.data.containerMark.namespace !== r.namespace)))) invalid('Inconsistent marking relationship');
 });
@@ -45,7 +49,7 @@ export const StoredRecord = z.strictObject({ id: Id, jws: SignedPackManifest, sh
 export type StoredRecord = z.infer<typeof StoredRecord>;
 export const RootPin = z.strictObject({ issuerId: Id, keyId: Id, namespace: Namespace, publicKey: PublicJwk, demo: z.literal(true), label: Text });
 export type RootPin = z.infer<typeof RootPin>;
-export const Actor = z.strictObject({ id: Id, kind: z.enum(['issuer', 'shop', 'reviewer']), label: Text, demo: z.literal(true) });
+export const Actor = z.strictObject({ id: Id, kind: z.enum(['issuer', 'shop', 'reviewer', 'consumer']), label: Text, demo: z.literal(true) });
 export const ProductProjection = z.strictObject({ itemId: Id, namespace: Namespace, unitMark: Text, modelCode: Text, batchCode: Text, issuanceRecordId: Id, mappingRecordId: Id, ownerRecordId: Id, ownerVersion: z.number().int().positive(), registeredOwnerId: Id });
 export const Dataset = z.strictObject({ schemaVersion: z.literal(1), demo: z.literal(true), label: z.literal('Fictional PackProof demonstration data'), actors: z.array(Actor).max(32), records: z.array(StoredRecord).max(256), products: z.array(ProductProjection).max(32) });
 export type Dataset = z.infer<typeof Dataset>;

@@ -1,0 +1,34 @@
+{
+  "kind": "P0-manual-probe",
+  "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Mobile Safari/537.36",
+  "url": "https://192.168.1.70:4173/",
+  "secureContext": true,
+  "camera": "not_run",
+  "transport": {
+    "status": "rejected",
+    "code": "ZodError"
+  },
+  "startedAt": "2026-11-03T11:05:19.419Z",
+  "lastAcceptedImport": {
+    "status": "matched-export-fingerprint",
+    "fingerprint": {
+      "bytes": 165,
+      "sha256": "5e19bc707e3e7c52a11acb44057572810435f6beeba5a455214eba53e40c2f55",
+      "nonce": "31c9fd8acbdc6bee304437a4c100d3c6"
+    },
+    "note": "Transport integrity comparison only; not an OfflineProof pack or trusted issuer record",
+    "internetOnlineSignal": true,
+    "at": "2026-11-03T11:05:38.097Z"
+  },
+  "deviceModel": "unknown",
+  "androidVersion": "unknown",
+  "browserVersion": "unknown",
+  "transportDescription": "vivo Y03 -> Redmi10A; Bluethooth; 4secs; internet off",
+  "finishedAt": "2026-11-03T11:17:59.756Z",
+  "error": "ZodError",
+  "lastError": {
+    "operation": "import",
+    "code": "ZodError",
+    "at": "2026-11-03T11:17:38.077Z"
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "phase": "P2",
+  "mode": "actual Supabase Auth + isolated SQL schema + real browser UI and ZXing decoding of relayed synthetic camera frames",
+  "actualPhones": 0,
+  "providerRequests": 0,
+  "authenticatedEnrollment": "passed",
+  "roleSpecificScreens": "passed",
+  "indexedDbNonextractableAfterReload": true,
+  "shopARefusal": "passed",
+  "forwardZxingScan": "passed",
+  "forwardDisplayRate": [
+    "5 updates/s target \u00b7 5.0 updates/s measured. Keep this QR in view of the other phone."
+  ],
+  "reverseZxingScan": "passed",
+  "reverseDisplayRate": [
+    "5 updates/s target \u00b7 5.0 updates/s measured. Keep this QR in view of the other phone."
+  ],
+  "lostConfirmationResponseRecovered": "passed",
+  "browserReceiptVerification": "passed",
+  "anonymousForeignAccountAndCsrf": "passed",
+  "atomicCommitOnce": "passed",
+  "isolatedItemId": "3ca03e7d-82d3-4135-8e57-069365564183",
+  "mainDemoUnitUntouched": true,
+  "browserErrors": 0,
+  "signOut": "passed",
+  "status": "passed",
+  "endpointTimings": [
+    {
+      "operation": "auth:session",
+      "status": 401,
+      "elapsedMs": 3
+    },
+    {
+      "operation": "auth:session",
+      "status": 401,
+      "elapsedMs": 1
+    },
+    {
+      "operation": "auth:login",
+      "status": 200,
+      "elapsedMs": 1016
+    },
+    {
+      "operation": "auth:session",
+      "status": 200,
+      "elapsedMs": 2323
+    },
+    {
+      "operation": "device:challenge",
+      "status": 201,
+      "elapsedMs": 3727
+    },
+    {
+      "operation": "device:enroll",
+      "status": 201,
+      "elapsedMs": 6263
+    },
+    {
+      "operation": "auth:session",
+      "status": 200,
+      "elapsedMs": 2227
+    },
+    {
+      "operation": "auth:session",
+      "status": 401,
+      "elapsedMs": 0
+    },
+    {
+      "operation": "auth:login",
+      "status": 200,
+      "elapsedMs": 805
+    },
+    {
+      "operation": "auth:session",
+      "status": 200,
+      "elapsedMs": 1716
+    },
+    {
+      "operation": "device:challenge",
+      "status": 201,
+      "elapsedMs": 2871
+    },
+    {
+      "operation": "device:enroll",
+      "status": 201,
+      "elapsedMs": 4378
+    },
+    {
+      "operation": "auth:session",
+      "status": 200,
+      "elapsedMs": 1989
+    },
+    {
+      "operation": "auth:session",
+      "status": 200,
+      "elapsedMs": 2843
+    },
+    {
+      "operation": "transfer:transfers",
+      "status": 409,
+      "elapsedMs": 5954
+    },
+    {
+      "operation": "transfer:transfers",
+      "status": 201,
+      "elapsedMs": 10193
+    },
+    {
+      "operation": "transfer:status",
+      "status": 200,
+      "elapsedMs": 2729
+    },
+    {
+      "operation": "transfer:offer",
+      "status": 200,
+      "elapsedMs": 3301
+    },
+    {
+      "operation": "transfer:prepare",
+      "status": 200,
+      "elapsedMs": 6319
+    },
+    {
+      "operation": "transfer:frames",
+      "status": 200,
+      "elapsedMs": 8139
+    },
+    {
+      "operation": "transfer:resolve",
+      "status": 200,
+      "elapsedMs": 1874
+    },
+    {
+      "operation": "transfer:status",
+      "status": 200,
+      "elapsedMs": 2688
+    },
+    {
+      "operation": "transfer:scan",
+      "status": 200,
+      "elapsedMs": 4864
+    },
+    {
+      "operation": "transfer:seller-approve",
+      "status": 200,
+      "elapsedMs": 8425
+    },
+    {
+      "operation": "transfer:status",
+      "status": 200,
+      "elapsedMs": 4278
+    },
+    {
+      "operation": "transfer:prepare",
+      "status": 200,
+      "elapsedMs": 5375
+    },
+    {
+      "operation": "transfer:frames",
+      "status": 200,
+      "elapsedMs": 6746
+    },
+    {
+      "operation": "transfer:scan",
+      "status": 200,
+      "elapsedMs": 4958
+    },
+    {
+      "operation": "transfer:confirm",
+      "status": 200,
+      "elapsedMs": 14228
+    },
+    {
+      "operation": "transfer:status",
+      "status": 200,
+      "elapsedMs": 2175
+    },
+    {
+      "operation": "auth:session",
+      "status": 200,
+      "elapsedMs": 3542
+    },
+    {
+      "operation": "transfer:status",
+      "status": 200,
+      "elapsedMs": 2399
+    },
+    {
+      "operation": "transfer:receipt-proof",
+      "status": 200,
+      "elapsedMs": 5734
+    },
+    {
+      "operation": "transfer:transfers",
+      "status": 401,
+      "elapsedMs": 0
+    },
+    {
+      "operation": "auth:login",
+      "status": 200,
+      "elapsedMs": 647
+    },
+    {
+      "operation": "transfer:status",
+      "status": 404,
+      "elapsedMs": 1457
+    },
+    {
+      "operation": "transfer:confirm",
+      "status": 403,
+      "elapsedMs": 0
+    },
+    {
+      "operation": "auth:logout",
+      "status": 200,
+      "elapsedMs": 285
+    }
+  ],
+  "sourceSha256": "776e0a37b08c74b19e0b0a2f25c8dbac1dbc0205369ca02644c78a74049bf756",
+  "initialUiCheck": "Failed at the seller selection label before creating a valid transfer. Added explicit accessible selector names; affected full UI check rerun passed."
+}

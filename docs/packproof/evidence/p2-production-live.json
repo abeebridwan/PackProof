@@ -1,0 +1,58 @@
+{
+  "deploymentId": "dpl_ARMBEgYt4pB76jN4Yh7Z46trgA9H",
+  "sourceSha256": "225f90f7a2365e0dcb5c4c35e679ea8b30485801f7323ac8d69f170c8598d3f8",
+  "url": "https://packproof-p0.vercel.app",
+  "scope": "Actual public Production Auth, recent accepted transfer and receipt reads; no device enrollment or ownership writes",
+  "checks": [
+    {
+      "role": "buyer",
+      "signIn": true,
+      "automaticSameReceiptRecovery": true,
+      "noEnrollmentOrDeviceReplacement": true,
+      "actualReceiptSignatureAndConsentsVerified": true,
+      "downloadMatchesAuditedReceipt": true,
+      "overflow": false
+    },
+    {
+      "role": "seller-b",
+      "signIn": true,
+      "automaticSameReceiptRecovery": true,
+      "noEnrollmentOrDeviceReplacement": true,
+      "actualReceiptSignatureAndConsentsVerified": true,
+      "downloadMatchesAuditedReceipt": true,
+      "overflow": false
+    },
+    {
+      "role": "seller-a",
+      "ownSignIn": true,
+      "foreignReceiptDenied404": true
+    }
+  ],
+  "providerRequests": 0,
+  "actualPhones": 0,
+  "transfersEnabled": true,
+  "anonymousReceiptDenied": true,
+  "csrfDenied": true,
+  "sameAppHandoverLink": true,
+  "investigator": [
+    {
+      "scenario": "Shop A · unauthorized seller",
+      "http": 201,
+      "status": "complete",
+      "finding": "blocked",
+      "sellerAuthorized": false,
+      "mandatoryChecks": 4
+    },
+    {
+      "scenario": "Shop B · matching records",
+      "http": 201,
+      "status": "complete",
+      "finding": "blocked",
+      "sellerAuthorized": false,
+      "mandatoryChecks": 4
+    }
+  ],
+  "deviceChecksAvailable": true,
+  "browserErrors": 0,
+  "status": "passed"
+}

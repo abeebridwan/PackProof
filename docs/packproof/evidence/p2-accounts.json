@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "accounts": [
+    {
+      "role": "seller-b",
+      "actorId": "30000000-0000-4000-8000-000000000005"
+    },
+    {
+      "role": "seller-a",
+      "actorId": "30000000-0000-4000-8000-000000000004"
+    },
+    {
+      "role": "buyer",
+      "actorId": "3dbeda89-d5df-47fb-8bfe-70651878b30a"
+    }
+  ],
+  "credentialFile": ".local/p2/demo-accounts.json",
+  "synthetic": true,
+  "emailSent": false,
+  "ownershipChanged": false
+}

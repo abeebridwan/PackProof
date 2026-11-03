@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "namespace": "packproof-demo",
+  "itemId": "10000000-0000-4000-8000-000000000002",
+  "ownerVersion": 1,
+  "sourceState": "Signed issuance/mapping, registered owner/version, lifecycle, history, revocations and absence of accepted transfers independently checked under locks",
+  "directoryAppend": false,
+  "retiredTestReceiptKeyId": null,
+  "snapshotId": "1a765c3d-dbf1-4c00-bca6-5095a246dd4d",
+  "originalClaimsChanged": false,
+  "receiptKeyId": "b24ec1b5-595b-4f2a-a77d-8d5549a64af1",
+  "privateKeyDestination": ".local/p2/transfer-key.json; never root/issuer keys in serving app",
+  "providerRequests": 0,
+  "initialPreparation": {
+    "status": "passed",
+    "namespace": "packproof-demo",
+    "itemId": "10000000-0000-4000-8000-000000000002",
+    "ownerVersion": 1,
+    "sourceState": "Signed issuance/mapping, registered owner/version, lifecycle, history, revocations and absence of accepted transfers independently checked under locks",
+    "directoryAppend": true,
+    "retiredTestReceiptKeyId": "dc2341f4-5461-4f9d-bb1d-eae3e9cf8a38",
+    "snapshotId": "5536c464-6f5c-4c5d-a265-aed49d7836b0",
+    "originalClaimsChanged": false,
+    "receiptKeyId": "b24ec1b5-595b-4f2a-a77d-8d5549a64af1",
+    "privateKeyDestination": ".local/p2/transfer-key.json; never root/issuer keys in serving app",
+    "providerRequests": 0
+  },
+  "refresh": {
+    "checkedAt": "2026-11-03T12:01:41.175Z",
+    "snapshotAsOf": "2026-11-03T12:00:42.925Z",
+    "snapshotExpiresAt": "2026-11-04T12:00:42.925Z",
+    "snapshotHistory": [
+      {
+        "id": "5536c464-6f5c-4c5d-a265-aed49d7836b0",
+        "owner_version": 1,
+        "sha256": "fcec984e5c36cffc0cb30397b9a6fc8a8128b8859d59b10d11de4b1d54b05c85",
+        "as_of": "2026-11-02T11:35:29.955Z",
+        "created_at": "2026-11-02T11:35:29.554Z"
+      },
+      {
+        "id": "1a765c3d-dbf1-4c00-bca6-5095a246dd4d",
+        "owner_version": 1,
+        "sha256": "a248e08b0d4fd6d31743ec1094d2d500a00aacd7d524ffb57d7668dc022058e8",
+        "as_of": "2026-11-03T12:00:42.925Z",
+        "created_at": "2026-11-03T12:00:42.598Z"
+      }
+    ],
+    "originalSignedRecordsPreserved": 33,
+    "ownershipPreserved": true,
+    "enrolledDeviceKeysPreserved": true,
+    "demoCredentialsUnchanged": true,
+    "receiptAndOfflineKeyFilesUnchanged": true,
+    "registeredOwner": "Shop B",
+    "ownerVersion": 1,
+    "acceptedTransfers": 0,
+    "authorityCheck": "passed",
+    "scope": "Explicitly requested issuer-signed initial-state refresh; no freshness bypass or transfer commit"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "origin": "https://packproof-p0.vercel.app",
+  "mode": "actual production Supabase, recorded AI; no model requests",
+  "results": [
+    {
+      "name": "Shop B",
+      "http": 201,
+      "status": "complete",
+      "finding": "stale",
+      "sellerAuthorized": true,
+      "mandatoryChecks": 4,
+      "error": null
+    },
+    {
+      "name": "Shop A",
+      "http": 201,
+      "status": "complete",
+      "finding": "blocked",
+      "sellerAuthorized": false,
+      "mandatoryChecks": 4,
+      "error": null
+    }
+  ],
+  "transfersEnabled": false,
+  "providerRequests": 0,
+  "compatibilityDeployment": "dpl_C1K7C3Rw11uhLdtJmcjsVGobLEBd",
+  "afterSignerRetirement": {
+    "http": 200,
+    "status": "supported",
+    "mapping": "matched"
+  }
+}

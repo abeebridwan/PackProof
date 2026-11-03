@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "mainShopBReadOnlyAuthorization": {
+    "status": "passed",
+    "mode": "operator database source verification; not a completed transfer or phone test",
+    "ownerVersion": 1,
+    "snapshotId": "5536c464-6f5c-4c5d-a265-aed49d7836b0",
+    "evidenceRefs": [
+      "30000000-0000-4000-8000-000000000320",
+      "30000000-0000-4000-8000-000000000321",
+      "30000000-0000-4000-8000-000000000320",
+      "5536c464-6f5c-4c5d-a265-aed49d7836b0"
+    ]
+  },
+  "originalSignedRecordsUnchanged": 27,
+  "originalUnitProjectionsUnchanged": 3,
+  "appendedSignedRecords": 6,
+  "realAcceptedTransfers": 0,
+  "shopBOwnerVersion": 1,
+  "protectedHashes": {
+    ".local/provider-budget.json": "3c4c47f073729608625817442e86268223397f16f39bf5b294074322c3450755",
+    ".local/p1c/budget.json": "4e2863d145281a67a7e40e54736c75094113468d8bb0a70397f1790469a4ff5c",
+    ".local/p1c-completion-2026-11-02/budget.json": "f8cdc02dad3a821e563dbf838bbfea671e48145156685fe4470c47337a089cbf",
+    ".local/p1c-repair-2026-11-02/budget.json": "dc889fec7d6cb1aedab3f38c6a2bbde1a62d1007bafd8f0fd750738dfcac8ea0",
+    "pnpm-lock.yaml": "1f86f2c9a74b894c4bf72eec59aff6f19499fd46852543764262e4f6754b1596",
+    "docs/packproof/demo/signed-demo.json": "a3ac8150486dbae6a6f3fc607cd7c09b80d00c7d29f01f05af4713989c66e9fb",
+    "docs/packproof/demo/root-public.json": "efd83c054b0c62e9ee58408e6eb12051c43f8affd0571882827f4821a6538aaf"
+  },
+  "p0AndP1AcceptancePreserved": true,
+  "p0AvailabilityMetadataUpdatedByUser": true,
+  "providerRequests": 0
+}

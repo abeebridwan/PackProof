@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "testOnly": true,
+  "itemId": "58678f74-7598-42da-87eb-8e13b379064e",
+  "receiptId": "cb3fd31c-e2a9-4cec-92db-a00c5aec9d8e",
+  "keyId": "b24ec1b5-595b-4f2a-a77d-8d5549a64af1",
+  "directoryVersion": 8,
+  "recordsAndDependenciesVerified": 20,
+  "bothDeviceConsents": true,
+  "mainDemoUnitTransferred": false,
+  "uiRegressionReceipt": {
+    "status": "passed",
+    "itemId": "3ca03e7d-82d3-4135-8e57-069365564183",
+    "receiptId": "9484a49e-16c5-45a0-ac6d-0643baf964d6",
+    "keyId": "b24ec1b5-595b-4f2a-a77d-8d5549a64af1",
+    "directoryVersion": 8,
+    "recordsAndDependenciesVerified": 20,
+    "bothDeviceConsents": true,
+    "mainDemoUnitTransferred": false
+  },
+  "physicalPhoneTransfer": {
+    "status": "passed",
+    "checkedAt": "2026-11-03T12:24:49.640Z",
+    "command": "node --env-file-if-exists=.env.local --import tsx .local/p2/verify-phone-commit.ts",
+    "mode": "Read-only PostgreSQL snapshot and local cryptographic verification; no HTTP recovery side effects or transfer writes",
+    "transferId": "a112d815-d451-46bd-a614-8ad79d85398e",
+    "itemId": "10000000-0000-4000-8000-000000000002",
+    "marks": "FP-1002 / PK-2002",
+    "receiptId": "518246e0-1fc6-42c6-9cb8-25902a92648e",
+    "receiptSha256": "abddefabbf8781d4c77455ac930823732696f1392c3eee798a33ca57b803339d",
+    "receiptKeyId": "b24ec1b5-595b-4f2a-a77d-8d5549a64af1",
+    "committedAt": "2026-11-03T12:20:02.671Z",
+    "acceptedTransfersForItem": 1,
+    "fromVersion": 1,
+    "toVersion": 2,
+    "currentOwner": "buyer demo account",
+    "seller": "Shop B demo account",
+    "state": "committed",
+    "receiptStatus": "ready",
+    "bothDeviceConsentsVerified": true,
+    "trustedReceiptSignatureVerified": true,
+    "scans": [
+      {
+        "direction": "buyer-to-seller",
+        "sequences": [
+          36,
+          37,
+          38
+        ],
+        "distinctSignedFrames": 3,
+        "scannedAt": "2026-11-03T12:18:54.112Z",
+        "signaturesAndHistoricValidity": "passed"
+      },
+      {
+        "direction": "seller-to-buyer",
+        "sequences": [
+          18,
+          19,
+          20
+        ],
+        "distinctSignedFrames": 3,
+        "scannedAt": "2026-11-03T12:19:32.924Z",
+        "signaturesAndHistoricValidity": "passed"
+      }
+    ],
+    "events": [
+      {
+        "event": "offered",
+        "created_at": "2026-11-03T12:18:18.747Z"
+      },
+      {
+        "event": "seller_approved",
+        "created_at": "2026-11-03T12:19:05.046Z"
+      },
+      {
+        "event": "buyer_confirmed",
+        "created_at": "2026-11-03T12:20:00.356Z"
+      },
+      {
+        "event": "committed",
+        "created_at": "2026-11-03T12:20:00.356Z"
+      }
+    ],
+    "agreementToCommitSeconds": 102.702,
+    "originalSignedRecordsPreserved": 33,
+    "credentialsAndSigningFilesUnchanged": true,
+    "proofPath": "docs/packproof/evidence/phones/2026-11-03/chainproof-receipt.json",
+    "userConfirmed": {
+      "twoPhysicalPhones": true,
+      "bothReceiptsVerified": true,
+      "pageRefreshRecoveredSameHandoverAndReceipt": true
+    },
+    "limitations": [
+      "Physical execution and browser receipt/reload outcomes confirmed by user; not independently observed by assistant.",
+      "No actual P2 display-FPS or camera scan-attempt telemetry supplied; scheduled 5 updates/s is not a measurement.",
+      "Deliberate physical network-interruption trial not reported; lost-response and duplicate-confirm recovery retain prior software evidence."
+    ],
+    "providerRequests": 0
+  }
+}

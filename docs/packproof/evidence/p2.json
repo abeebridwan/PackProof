@@ -1,0 +1,756 @@
+{
+  "phase": "P2",
+  "status": "passed",
+  "verified": true,
+  "baselineCommit": "6955ed6",
+  "automaticCommit": false,
+  "push": false,
+  "p3Ready": true,
+  "filesChanged": [
+    ".env.example",
+    "README.md",
+    "docs/packproof/evidence/P2.md",
+    "docs/packproof/evidence/p2-accounts.json",
+    "docs/packproof/evidence/p2-authority.json",
+    "docs/packproof/evidence/p2-browser-mobile.png",
+    "docs/packproof/evidence/p2-browser-receipt.json",
+    "docs/packproof/evidence/p2-browser.json",
+    "docs/packproof/evidence/p2-isolation.json",
+    "docs/packproof/evidence/p2-media-isolation.json",
+    "docs/packproof/evidence/p2-migration.json",
+    "docs/packproof/evidence/p2-preservation.json",
+    "docs/packproof/evidence/p2-preview-alias.json",
+    "docs/packproof/evidence/p2-preview-layout.json",
+    "docs/packproof/evidence/p2-preview-ui.png",
+    "docs/packproof/evidence/p2-preview.json",
+    "docs/packproof/evidence/p2-production-preservation.json",
+    "docs/packproof/evidence/p2-receipt-verification.json",
+    "docs/packproof/evidence/p2-ui-browser-buyer.png",
+    "docs/packproof/evidence/p2-ui-browser-mobile.png",
+    "docs/packproof/evidence/p2-ui-browser-receipt.json",
+    "docs/packproof/evidence/p2-ui-browser-seller.png",
+    "docs/packproof/evidence/p2-ui-browser-signed-out.png",
+    "docs/packproof/evidence/p2-ui-browser.json",
+    "docs/packproof/evidence/p2.json",
+    "docs/packproof/evidence/vitest-p2-additional.json",
+    "docs/packproof/evidence/vitest-p2-concurrency.json",
+    "docs/packproof/evidence/vitest-p2-final-unit.json",
+    "docs/packproof/evidence/vitest-p2-integration-final.json",
+    "docs/packproof/evidence/vitest-p2-integration.json",
+    "docs/packproof/evidence/vitest-p2-media.json",
+    "docs/packproof/evidence/vitest-p2-targeted-repair.json",
+    "docs/packproof/evidence/vitest-p2-unit.json",
+    "next.config.ts",
+    "project_handoff/BUILD_LOG.md",
+    "project_handoff/BUILD_STATE.json",
+    "scripts/deploy/app.ts",
+    "scripts/deploy/preview-alias.ts",
+    "scripts/p2/accounts.ts",
+    "scripts/p2/browser.ts",
+    "scripts/p2/check-existing.ts",
+    "scripts/p2/check-isolation.ts",
+    "scripts/p2/migrate.ts",
+    "scripts/p2/prepare-authority.ts",
+    "scripts/p2/verify.ts",
+    "scripts/spikes/check-bundle.ts",
+    "src/app/api/chainproof-auth/[action]/route.ts",
+    "src/app/api/device-keys/[action]/route.ts",
+    "src/app/api/transfers/[[...path]]/route.ts",
+    "src/app/chainproof/page.tsx",
+    "src/app/chainproof/transfer.css",
+    "src/app/page.tsx",
+    "src/client/device-store.ts",
+    "src/contracts/evidence.ts",
+    "src/contracts/transfer.ts",
+    "src/domain/identity/transfer-crypto.ts",
+    "src/domain/trust/evidence.ts",
+    "src/server/auth/body.ts",
+    "src/server/evidence/services.ts",
+    "src/server/investigator/http.ts",
+    "src/server/transfers/authority.ts",
+    "src/server/transfers/database.ts",
+    "src/server/transfers/http.ts",
+    "src/server/transfers/service.ts",
+    "supabase/migrations/202611020004_p2_chainproof.sql",
+    "supabase/migrations/202611020005_p2_binding_guards.sql",
+    "tests/fixtures/transfers.ts",
+    "tests/integration/p1b.test.ts",
+    "tests/integration/p2.test.ts",
+    "tests/unit/transfer.test.ts",
+    "docs/packproof/evidence/p2-preview-error.png",
+    "docs/packproof/evidence/phones/2026-11-03/chainproof-receipt.json",
+    "docs/packproof/evidence/vitest-p2-production-targeted.json",
+    "docs/packproof/evidence/p2-production-ui.json",
+    "docs/packproof/evidence/p2-production-ui-receipt.json",
+    "docs/packproof/evidence/p2-production-readonly-mobile.png",
+    "docs/packproof/evidence/p2-production-live.json",
+    "docs/packproof/evidence/p2-production-live-mobile.png"
+  ],
+  "implementation": {
+    "enrollment": "Supabase Auth validated by Node; nonce proof of possession, nonextractable IndexedDB P-256 keys, actor/account binding, one active device, revoke/replace invalidates pending sessions; no hardware attestation claim",
+    "agreement": "strict existing H4 fields; exact serialized payload SHA-256; immutable unit/participants/keys/owner-version/mapping/policy/times",
+    "api": "authenticated same-origin create/offer/frames/scan/seller-approve/confirm/cancel/status/recovery/receipt-proof with body bounds, exact-body idempotency and committed rate accounting",
+    "database": "two applied checksummed migrations; restricted NOLOGIN role, forced RLS, nonpublic privileged functions, independent locked source checks, unique ownership/version commit and immutable audit",
+    "qr": "both signed directions, 128-bit opaque handles/nonces, three consecutive distinct frames, approximately 120-second session/30-second consent, 5 updates/s local animation, scan-time validation, no network polling loop; no proximity claim",
+    "receipt": "dedicated receipt-only authority; durable outbox, independent browser signature/device-approval verification, retry only signing after commit, same accepted transfer recovered",
+    "ui": "One /chainproof page with signed-out account help, local browser readiness, guided buyer/seller views, seller names, current-step guidance, agreement review, both QR directions, explicit consents, folded record/device details, receipt/recovery and sign-out. No public signup in this demo."
+  },
+  "acceptance": {
+    "T1": {
+      "status": "passed",
+      "software": "passed Shop A refusal and complete Shop B transfer on isolated issued test units; main Shop B read-only authorization passed",
+      "actualTwoPhones": "passed_user_confirmed_and_database_receipt_verified",
+      "evidence": [
+        "docs/packproof/evidence/vitest-p2-integration-final.json",
+        "docs/packproof/evidence/p2-browser.json",
+        "docs/packproof/evidence/p2-preservation.json",
+        "docs/packproof/evidence/p2-receipt-verification.json",
+        "docs/packproof/evidence/phones/2026-11-03/chainproof-receipt.json"
+      ],
+      "physicalResult": {
+        "transferId": "a112d815-d451-46bd-a614-8ad79d85398e",
+        "itemId": "10000000-0000-4000-8000-000000000002",
+        "receiptId": "518246e0-1fc6-42c6-9cb8-25902a92648e",
+        "ownerVersion": "1 -> 2",
+        "acceptedTransfers": 1,
+        "signatures": "trusted receipt, buyer offer, both consents and six QR frames independently verified",
+        "provenance": {
+          "date": "2026-11-03",
+          "provenance": "user_chat_confirmation",
+          "devices": {
+            "buyer": "vivo Y03",
+            "seller": "Redmi 10A"
+          },
+          "receiptStatement": "i got the recept on both and both passed",
+          "recoveryStatement": "Yes, the same handover and receipt returned.",
+          "scope": "User performed physical handover and both browser receipt checks, then explicitly confirmed same-handover page-refresh recovery. No raw browser timing/scan-attempt report supplied."
+        }
+      }
+    },
+    "T2": {
+      "status": "passed",
+      "scope": "software protocol/security checks",
+      "evidence": [
+        "docs/packproof/evidence/vitest-p2-integration-final.json",
+        "docs/packproof/evidence/vitest-p2-targeted-repair.json",
+        "docs/packproof/evidence/vitest-p2-final-unit.json"
+      ]
+    },
+    "T3": {
+      "status": "passed",
+      "result": "two valid buyers: exactly one commit, one ownership conflict, version increments once",
+      "evidence": [
+        "docs/packproof/evidence/vitest-p2-targeted-repair.json"
+      ]
+    },
+    "T4": {
+      "status": "passed",
+      "result": "idempotent retry, changed-body refusal, signing-failure outbox recovery, dropped-response/reload recovery, no repeated ownership change",
+      "evidence": [
+        "docs/packproof/evidence/vitest-p2-integration-final.json",
+        "docs/packproof/evidence/p2-browser.json"
+      ],
+      "physicalRefreshRecovery": {
+        "status": "passed",
+        "provenance": "user_chat_confirmation",
+        "detail": "Refreshing returned the same handover ID and verified receipt. Read-only database audit found exactly one accepted ownership transition.",
+        "evidence": "docs/packproof/evidence/p2-receipt-verification.json",
+        "limitation": "Deliberate physical network interruption not separately reported; lost-response/idempotency/signing-failure checks retain existing software evidence."
+      }
+    },
+    "S1": {
+      "status": "passed",
+      "scope": "software/API/database/Storage/private-key isolation",
+      "evidence": [
+        "docs/packproof/evidence/vitest-p2-targeted-repair.json",
+        "docs/packproof/evidence/p2-browser.json",
+        "docs/packproof/evidence/p2-media-isolation.json",
+        "docs/packproof/evidence/p2-isolation.json"
+      ]
+    }
+  },
+  "verification": {
+    "commands": [
+      {
+        "command": "pnpm typecheck",
+        "result": "passed"
+      },
+      {
+        "command": "pnpm test --reporter=json --outputFile=docs/packproof/evidence/vitest-p2-unit.json",
+        "result": "151 passed; initial broad unit run"
+      },
+      {
+        "command": "pnpm exec vitest run tests/unit/transfer.test.ts tests/unit/evidence.test.ts --reporter=json --outputFile=docs/packproof/evidence/vitest-p2-final-unit.json",
+        "result": "29 passed; targeted checks overlap the initial suite"
+      },
+      {
+        "command": "node --env-file-if-exists=.env.local --import tsx scripts/p2/verify.ts integration",
+        "result": "3 passed, 2 failed; raw report retained. The failures exposed a stale test-item reference and a shared rate-limit row held through the long operation."
+      },
+      {
+        "command": "node --env-file-if-exists=.env.local .local/p2/run-tests.mjs",
+        "result": "2 passed, 3 skipped; repaired protocol-abuse and concurrency cases. Reproducible maintained equivalent: node --env-file-if-exists=.env.local --import tsx scripts/p2/verify.ts integration 'T2/S1|T3'"
+      },
+      {
+        "command": "node --env-file-if-exists=.env.local .local/p2/media-test.mjs",
+        "result": "1 passed, 8 skipped; actual private Storage/foreign-media check. Maintained equivalent: node --env-file-if-exists=.env.local --import tsx scripts/p2/verify.ts media"
+      },
+      {
+        "command": "NEXT_TELEMETRY_DISABLED=1 pnpm --dir .local/p2/production build",
+        "result": "passed isolated production build of the 83-file prepared source; uses existing pinned dependencies. Existing user development build/server preserved."
+      },
+      {
+        "command": "node --env-file-if-exists=.env.local --import tsx scripts/p2/verify.ts browser",
+        "result": "passed actual Auth/Postgres and two browser identities, real ZXing decoding of synthetic camera pixels; not a physical phone test"
+      },
+      {
+        "command": "node --env-file-if-exists=.env.local --import tsx scripts/p2/verify.ts preservation",
+        "result": "passed original signed records, ownership, provider budgets, lockfile, root/demo hashes and main Shop B read-only authority"
+      },
+      {
+        "command": "node --import tsx scripts/p2/check-isolation.ts",
+        "result": "passed; see p2-isolation.json for final asset/trace/Git/secret counts"
+      },
+      {
+        "command": "node --env-file-if-exists=.env.local .local/p2/hosted-check.mjs",
+        "result": "passed actual Preview runtime check without ownership commit; temporary automation bypass and enrolled test devices revoked"
+      },
+      {
+        "command": "PACKPROOF_PREVIEW_DB_URL_FILE=.local/deploy/preview-db-url node --env-file-if-exists=.env.local --import tsx scripts/deploy/app.ts --p2-preview --attempt=7",
+        "result": "READY deployment dpl_BdT4w2gQmHGFkcQere3UaB2bzTVR; 83 files, unchanged prepared source SHA; receipt-only signing key encrypted Preview-only, no root/product-issuer/Meta keys"
+      },
+      {
+        "command": "node .local/p2/preview-layout.mjs",
+        "result": "passed targeted hosted mobile/desktop layout and login-copy check; temporary automation bypass revoked; no ownership writes"
+      },
+      {
+        "command": "PACKPROOF_P2_BROWSER_EVIDENCE=p2-ui-browser node --env-file-if-exists=.env.local --import tsx scripts/p2/verify.ts browser",
+        "result": "passed actual Auth/Postgres, isolated test unit, both guided role views/QR directions, dropped confirmation recovery, receipt verification and sign-out. Initial seller-label accessibility failure repaired before this passing rerun."
+      },
+      {
+        "command": "node --import tsx scripts/deploy/preview-alias.ts 9",
+        "result": "passed protected stable Preview assignment; anonymous302; production aliases unchanged"
+      },
+      {
+        "command": "node .local/p2/hosted-layout-v2.mjs",
+        "result": "passed actual stable Preview signed-out/mobile/desktop and buyer/seller sign-in/sign-out; no device or ownership writes; temporary bypass revoked"
+      }
+    ],
+    "databaseLatestDistinctCases": {
+      "P2 isolated actual Supabase transactions and protocol T1/T4: Shop A blocked; Shop B commits once, recovers a receipt-signing failure and lost response, and preserves P1 reads": "passed",
+      "P2 isolated actual Supabase transactions and protocol T2/S1: wrong-direction, duplicate/nonconsecutive, replayed frames, foreign actions, wrong device signatures and revoked keys fail": "passed",
+      "P2 isolated actual Supabase transactions and protocol T3: two concurrent buyers cannot both acquire the same registered unit": "passed",
+      "P2 isolated actual Supabase transactions and protocol T2: expiry, mismatched enrollment account and stale evidence fail; browser/database clients cannot execute privileged commits": "passed",
+      "P2 isolated actual Supabase transactions and protocol requires a configured receipt signer, rejects expired consent and authenticates signed cancellation": "passed"
+    },
+    "countingNote": "Five distinct database scenarios passed across the full run (3 pass/2 fail) and targeted repair (2 pass/3 skipped). No claim of a later all-green full-suite rerun. Unit counts overlap.",
+    "browser": {
+      "status": "passed",
+      "mode": "actual Supabase Auth + isolated SQL schema + real browser UI and ZXing decoding of relayed synthetic camera frames",
+      "actualPhones": 0,
+      "roleSpecificScreens": "passed",
+      "authenticatedEnrollment": "passed",
+      "indexedDbNonextractableAfterReload": true,
+      "shopARefusal": "passed",
+      "forwardZxingScan": "passed",
+      "reverseZxingScan": "passed",
+      "lostConfirmationResponseRecovered": "passed",
+      "browserReceiptVerification": "passed",
+      "anonymousForeignAccountAndCsrf": "passed",
+      "atomicCommitOnce": "passed",
+      "mainDemoUnitUntouched": true,
+      "browserErrors": 0,
+      "signOut": "passed",
+      "sourceSha256": "776e0a37b08c74b19e0b0a2f25c8dbac1dbc0205369ca02644c78a74049bf756",
+      "evidence": "docs/packproof/evidence/p2-ui-browser.json"
+    },
+    "receiptVerification": "docs/packproof/evidence/p2-receipt-verification.json",
+    "sourceSha256": "776e0a37b08c74b19e0b0a2f25c8dbac1dbc0205369ca02644c78a74049bf756",
+    "sourceFiles": 83,
+    "hostedPreview": "docs/packproof/evidence/p2-preview.json",
+    "previewLayout": "passed actual stable Preview signed-out at390/1280px and signed-in buyer/seller at390px;36px logo/no overflow, secure cookies, both sign-outs and revoked temporary automation bypass"
+  },
+  "authority": {
+    "status": "passed",
+    "namespace": "packproof-demo",
+    "itemId": "10000000-0000-4000-8000-000000000002",
+    "ownerVersion": 1,
+    "sourceState": "Signed issuance/mapping, registered owner/version, lifecycle, history, revocations and absence of accepted transfers independently checked under locks",
+    "directoryAppend": false,
+    "retiredTestReceiptKeyId": null,
+    "snapshotId": "1a765c3d-dbf1-4c00-bca6-5095a246dd4d",
+    "originalClaimsChanged": false,
+    "receiptKeyId": "b24ec1b5-595b-4f2a-a77d-8d5549a64af1",
+    "privateKeyDestination": ".local/p2/transfer-key.json; never root/issuer keys in serving app",
+    "providerRequests": 0,
+    "initialPreparation": {
+      "status": "passed",
+      "namespace": "packproof-demo",
+      "itemId": "10000000-0000-4000-8000-000000000002",
+      "ownerVersion": 1,
+      "sourceState": "Signed issuance/mapping, registered owner/version, lifecycle, history, revocations and absence of accepted transfers independently checked under locks",
+      "directoryAppend": true,
+      "retiredTestReceiptKeyId": "dc2341f4-5461-4f9d-bb1d-eae3e9cf8a38",
+      "snapshotId": "5536c464-6f5c-4c5d-a265-aed49d7836b0",
+      "originalClaimsChanged": false,
+      "receiptKeyId": "b24ec1b5-595b-4f2a-a77d-8d5549a64af1",
+      "privateKeyDestination": ".local/p2/transfer-key.json; never root/issuer keys in serving app",
+      "providerRequests": 0
+    },
+    "refresh": {
+      "checkedAt": "2026-11-03T12:01:41.175Z",
+      "snapshotAsOf": "2026-11-03T12:00:42.925Z",
+      "snapshotExpiresAt": "2026-11-04T12:00:42.925Z",
+      "snapshotHistory": [
+        {
+          "id": "5536c464-6f5c-4c5d-a265-aed49d7836b0",
+          "owner_version": 1,
+          "sha256": "fcec984e5c36cffc0cb30397b9a6fc8a8128b8859d59b10d11de4b1d54b05c85",
+          "as_of": "2026-11-02T11:35:29.955Z",
+          "created_at": "2026-11-02T11:35:29.554Z"
+        },
+        {
+          "id": "1a765c3d-dbf1-4c00-bca6-5095a246dd4d",
+          "owner_version": 1,
+          "sha256": "a248e08b0d4fd6d31743ec1094d2d500a00aacd7d524ffb57d7668dc022058e8",
+          "as_of": "2026-11-03T12:00:42.925Z",
+          "created_at": "2026-11-03T12:00:42.598Z"
+        }
+      ],
+      "originalSignedRecordsPreserved": 33,
+      "ownershipPreserved": true,
+      "enrolledDeviceKeysPreserved": true,
+      "demoCredentialsUnchanged": true,
+      "receiptAndOfflineKeyFilesUnchanged": true,
+      "registeredOwner": "Shop B",
+      "ownerVersion": 1,
+      "acceptedTransfers": 0,
+      "authorityCheck": "passed",
+      "scope": "Explicitly requested issuer-signed initial-state refresh; no freshness bypass or transfer commit"
+    }
+  },
+  "preservation": {
+    "status": "passed",
+    "mainShopBReadOnlyAuthorization": {
+      "status": "passed",
+      "mode": "operator database source verification; not a completed transfer or phone test",
+      "ownerVersion": 1,
+      "snapshotId": "5536c464-6f5c-4c5d-a265-aed49d7836b0",
+      "evidenceRefs": [
+        "30000000-0000-4000-8000-000000000320",
+        "30000000-0000-4000-8000-000000000321",
+        "30000000-0000-4000-8000-000000000320",
+        "5536c464-6f5c-4c5d-a265-aed49d7836b0"
+      ]
+    },
+    "originalSignedRecordsUnchanged": 27,
+    "originalUnitProjectionsUnchanged": 3,
+    "appendedSignedRecords": 6,
+    "realAcceptedTransfers": 0,
+    "shopBOwnerVersion": 1,
+    "protectedHashes": {
+      ".local/provider-budget.json": "3c4c47f073729608625817442e86268223397f16f39bf5b294074322c3450755",
+      ".local/p1c/budget.json": "4e2863d145281a67a7e40e54736c75094113468d8bb0a70397f1790469a4ff5c",
+      ".local/p1c-completion-2026-11-02/budget.json": "f8cdc02dad3a821e563dbf838bbfea671e48145156685fe4470c47337a089cbf",
+      ".local/p1c-repair-2026-11-02/budget.json": "dc889fec7d6cb1aedab3f38c6a2bbde1a62d1007bafd8f0fd750738dfcac8ea0",
+      "pnpm-lock.yaml": "1f86f2c9a74b894c4bf72eec59aff6f19499fd46852543764262e4f6754b1596",
+      "docs/packproof/demo/signed-demo.json": "a3ac8150486dbae6a6f3fc607cd7c09b80d00c7d29f01f05af4713989c66e9fb",
+      "docs/packproof/demo/root-public.json": "efd83c054b0c62e9ee58408e6eb12051c43f8affd0571882827f4821a6538aaf"
+    },
+    "p0AndP1AcceptancePreserved": true,
+    "p0AvailabilityMetadataUpdatedByUser": true,
+    "providerRequests": 0,
+    "scope": "Historical pre-physical-transfer baseline; initial owner/version and zero-transfer counts are retained as baseline observations. The intentional real demo transfer is documented in latestOwnership below.",
+    "latestOwnership": {
+      "registeredOwner": "buyer demo account",
+      "ownerVersion": 2,
+      "acceptedTransfers": 1,
+      "intentionalTransition": "User-completed physical P2 handover, not a reset or test reseed",
+      "priorSignedRecordsPreserved": 33,
+      "evidence": "docs/packproof/evidence/p2-receipt-verification.json"
+    }
+  },
+  "securityCorrections": [
+    "Rate limit actor counter commits before the effect transaction, counts failed attempts, and does not serialize all seller crypto/ownership work.",
+    "Isolated test units now have new issued UUIDs and unique markings. Early same-ID test artifacts are quarantined in ignored local storage. The initial pre-release receipt-only key was retired through signed directory events before external enablement; current directory version 8/current key b24ec1b5-595b-4f2a-a77d-8d5549a64af1.",
+    "New directory record kinds initially broke the old deployed P1 reader. Compatible production code was deployed with P2 disabled; actual Shop A/Shop B investigations and product lookup were rechecked successfully."
+  ],
+  "deployment": {
+    "project": "packproof-p0",
+    "scope": "ridwan-abeebs-projects",
+    "supabaseProject": "hvbzxeuedookkwleyjmx",
+    "permanentUrl": "https://packproof-p0.vercel.app",
+    "productionCompatibilityDeployment": "dpl_C1K7C3Rw11uhLdtJmcjsVGobLEBd",
+    "productionTransferEnabled": true,
+    "productionAi": "recorded",
+    "previewStatus": "passed_hosted_physical_transfer_and_receipts",
+    "previewCreated": true,
+    "newSigningKeyUploaded": true,
+    "reason": "Signing-key upload explicitly approved by user; Preview built and noncommitting hosted Auth/enrollment/authority/signature/frame/cancel checks passed.",
+    "runtime": "Real two-phone Preview handover user-confirmed; exact single database commit, ready signed receipt, both consents and both frame sequences independently verified; page-refresh recovery user-confirmed.",
+    "previewUrl": "https://packproof-p0-preview.vercel.app",
+    "previewDeployment": "dpl_uA5XYvVnLRJfNzGJdRueCfa67QRh",
+    "previewSignerStorage": "encrypted, Preview-only TRANSFER_SIGNING_JWK; explicit user chat approval",
+    "currentPreviewSourceSha256": "33327ca81d83a96f7ccfcaa7c3caf965803a3fb3b861df9ad464120175be9df9",
+    "layoutEvidence": "docs/packproof/evidence/p2-preview-layout.json",
+    "generatedPreviewUrl": "https://packproof-p0-6oqj9xhkv-ridwan-abeebs-projects.vercel.app",
+    "stablePreviewAlias": "docs/packproof/evidence/p2-preview-alias.json",
+    "previewAccess": "Vercel-protected; use the same stable address on both phones. PackProof buyer/seller accounts are separate from Vercel/Google.",
+    "hostedCommitAndReceiptSigning": "passed",
+    "productionStatus": "published_and_verified",
+    "productionDeployment": "dpl_ARMBEgYt4pB76jN4Yh7Z46trgA9H",
+    "productionSourceSha256": "225f90f7a2365e0dcb5c4c35e679ea8b30485801f7323ac8d69f170c8598d3f8",
+    "productionHandoverUrl": "https://packproof-p0.vercel.app/chainproof",
+    "receiptSignerStorage": "Existing receipt-only key encrypted in Preview and explicitly approved Production; metadata independently verified",
+    "productionVerification": "docs/packproof/evidence/p2-production-live.json"
+  },
+  "actualPhones": {
+    "status": "passed_user_confirmed_and_database_receipt_verified",
+    "devicesTested": 2,
+    "devices": {
+      "buyer": "vivo Y03",
+      "seller": "Redmi 10A"
+    },
+    "userConfirmation": {
+      "date": "2026-11-03",
+      "provenance": "user_chat_confirmation",
+      "devices": {
+        "buyer": "vivo Y03",
+        "seller": "Redmi 10A"
+      },
+      "receiptStatement": "i got the recept on both and both passed",
+      "recoveryStatement": "Yes, the same handover and receipt returned.",
+      "scope": "User performed physical handover and both browser receipt checks, then explicitly confirmed same-handover page-refresh recovery. No raw browser timing/scan-attempt report supplied."
+    },
+    "transferId": "a112d815-d451-46bd-a614-8ad79d85398e",
+    "receiptId": "518246e0-1fc6-42c6-9cb8-25902a92648e",
+    "scans": [
+      {
+        "direction": "buyer-to-seller",
+        "sequences": [
+          36,
+          37,
+          38
+        ],
+        "distinctSignedFrames": 3,
+        "scannedAt": "2026-11-03T12:18:54.112Z",
+        "signaturesAndHistoricValidity": "passed"
+      },
+      {
+        "direction": "seller-to-buyer",
+        "sequences": [
+          18,
+          19,
+          20
+        ],
+        "distinctSignedFrames": 3,
+        "scannedAt": "2026-11-03T12:19:32.924Z",
+        "signaturesAndHistoricValidity": "passed"
+      }
+    ],
+    "agreementToCommitSeconds": 102.702,
+    "timingScope": "Server timestamps; includes preparation, scanning, network and human approval, not isolated camera scan duration.",
+    "displayUpdateRate": "not supplied; do not substitute software-test or scheduled FPS",
+    "cameraScanAttemptsAndReliability": "not supplied; two successful three-frame reservations independently verified",
+    "receiptRefreshRecovery": "passed_user_reported",
+    "deliberateNetworkInterruption": "not_run on physical phones; software tests already passed",
+    "evidence": "docs/packproof/evidence/p2-receipt-verification.json"
+  },
+  "demoCredentials": {
+    "roles": [
+      "seller-a",
+      "seller-b",
+      "buyer"
+    ],
+    "location": ".local/p2/demo-accounts.json",
+    "ignored": true,
+    "permissions": "owner-only; never included in deployment or Git"
+  },
+  "provider": {
+    "newMetaRequests": 0,
+    "additionalMetaSpendUsd": 0,
+    "historicalActualBilledUsd": "unknown",
+    "existingLedgersAndReceipts": "unchanged",
+    "publicPaidMuse": "disabled"
+  },
+  "dependencies": {
+    "@langchain/core": "1.3.2",
+    "@langchain/langgraph": "1.6.0",
+    "@langchain/langgraph-checkpoint-postgres": "1.1.2",
+    "@langchain/openai": "1.8.0",
+    "@meta-sam/parser": "0.1.0",
+    "@zxing/browser": "0.2.1",
+    "@zxing/library": "0.23.0",
+    "jose": "6.2.14",
+    "langsmith": "0.11.6",
+    "next": "16.4.3",
+    "openai": "7.45.1",
+    "pg": "8.23.1",
+    "qrcode": "1.5.4",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sharp": "0.35.5",
+    "zod": "4.6.7"
+  },
+  "toolchain": {
+    "node": "24.22.2",
+    "pnpm": "12.16.1",
+    "lockfile": "unchanged"
+  },
+  "checkpoint": "P2 passed/verified and published to the existing public Production app under explicit key-destination approval. Same accounts and signed records; one physical accepted transfer preserved. P3 ready for separate scope; no P3/P4 started. Demo onboarding/issuer-renewal limitations retained.",
+  "latestManualRepair": {
+    "latestUserObservation": "vivo reported stale ownership snapshot during manual setup",
+    "repair": "Fresh signed snapshot appended after current-state verification; user must retry Prepare agreement",
+    "authorityEvidence": "docs/packproof/evidence/p2-authority.json",
+    "snapshotExpiresAt": "2026-11-04T12:00:42.925Z",
+    "twoPhoneCompletion": "passed after snapshot repair; actual accepted transfer and signed receipt verified",
+    "credentials": "unchanged same buyer/seller accounts",
+    "enrolledKeys": "preserved",
+    "errorBanner": "sticky at 10px from viewport top; hosted simulated-error positioning passed",
+    "verification": "pnpm typecheck; actual signed authority check; Vercel cloud build; focused hosted layout and existing sign-in checks",
+    "providerRequests": 0,
+    "initialCheckIssues": [
+      "Restricted authority check initially lacked participant transaction context; corrected operator verification, no policy changes.",
+      "Initial error selector also matched Next route announcer; scoped test locator.",
+      "Hosted attempts encountered Vercel SSO redirects; bounded access preflight, actual route.fetch responses and GET-only cache-busting resolved automation access."
+    ],
+    "productionChanged": false
+  },
+  "productionRelease": {
+    "status": "published_verified",
+    "productionChanged": true,
+    "request": "User requested simpler/faster P2 and Production publication if checks pass",
+    "sourceSha256": "225f90f7a2365e0dcb5c4c35e679ea8b30485801f7323ac8d69f170c8598d3f8",
+    "preparedFiles": 83,
+    "targetUrl": "https://packproof-p0.vercel.app/chainproof",
+    "authorizationBlock": {
+      "source": "automatic approval review",
+      "action": "Upload existing receipt-only TRANSFER_SIGNING_JWK to encrypted Production environment of existing Vercel project packproof-p0",
+      "reason": "Earlier explicit receipt-key approval covered Preview-only storage; deploying app does not itself authorize the new secret destination",
+      "approvalQuestionPending": false,
+      "resolved": true,
+      "resolution": "User explicitly approved the exact Production key destination; subsequent publication succeeded."
+    },
+    "interface": [
+      "Role taken from registered actor kind; current-step guidance remains visible while scrolling",
+      "Reviewed buyer offer and QR display combined; seller approval and return-QR display combined",
+      "Buyer scan refreshes status automatically; no manual refresh step needed before reverse scan",
+      "Account-scoped most recent handover automatically recovered",
+      "Completed receipt verification needs no signing-device enrollment; technical IDs folded into details",
+      "Compact signed-in mobile header and hidden inapplicable scan controls"
+    ],
+    "performance": {
+      "before": {
+        "stage": "before",
+        "mode": "Sequential actual Supabase Auth + existing-project PostgreSQL HTTP-handler reads; local client, small sample, not end-user latency prediction",
+        "samples": [
+          {
+            "operation": "session",
+            "milliseconds": 3262,
+            "status": 200
+          },
+          {
+            "operation": "session",
+            "milliseconds": 2454,
+            "status": 200
+          },
+          {
+            "operation": "receipt-proof",
+            "milliseconds": 3601,
+            "status": 200
+          },
+          {
+            "operation": "receipt-proof",
+            "milliseconds": 3538,
+            "status": 200
+          }
+        ],
+        "totalMilliseconds": 12855,
+        "ownershipWrites": 0,
+        "providerRequests": 0
+      },
+      "after": {
+        "stage": "after",
+        "mode": "Sequential actual Supabase Auth + existing-project PostgreSQL HTTP-handler reads; local client, small sample, not end-user latency prediction",
+        "samples": [
+          {
+            "operation": "session",
+            "milliseconds": 2077,
+            "status": 200
+          },
+          {
+            "operation": "session",
+            "milliseconds": 1243,
+            "status": 200
+          },
+          {
+            "operation": "receipt-proof",
+            "milliseconds": 1860,
+            "status": 200
+          },
+          {
+            "operation": "receipt-proof",
+            "milliseconds": 1684,
+            "status": 200
+          }
+        ],
+        "totalMilliseconds": 6864,
+        "ownershipWrites": 0,
+        "providerRequests": 0
+      },
+      "reductionPercent": 46.6,
+      "scope": "Four sequential actual Auth/PostgreSQL reads per run; connection reuse only, no authority or identity caching; small local sample, not a phone latency guarantee",
+      "parallelContextIsolation": {
+        "status": "passed",
+        "mode": "Actual Auth and shared production HTTP connection pool, parallel role transactions; read-only receipt/session endpoints",
+        "checks": [
+          {
+            "round": 0,
+            "role": "buyer",
+            "session": "own identity",
+            "recentTransfer": "matching accepted transfer"
+          },
+          {
+            "round": 0,
+            "role": "seller-b",
+            "session": "own identity",
+            "recentTransfer": "matching accepted transfer"
+          },
+          {
+            "round": 0,
+            "role": "seller-a",
+            "session": "own identity",
+            "recentTransfer": "scoped to own account"
+          },
+          {
+            "round": 1,
+            "role": "seller-a",
+            "session": "own identity",
+            "recentTransfer": "scoped to own account"
+          },
+          {
+            "round": 1,
+            "role": "buyer",
+            "session": "own identity",
+            "recentTransfer": "matching accepted transfer"
+          },
+          {
+            "round": 1,
+            "role": "seller-b",
+            "session": "own identity",
+            "recentTransfer": "matching accepted transfer"
+          },
+          {
+            "role": "seller-a",
+            "receipt": "foreign denied404"
+          },
+          {
+            "role": "buyer",
+            "receipt": "participant receipt allowed200"
+          },
+          {
+            "role": "seller-b",
+            "receipt": "participant receipt allowed200"
+          }
+        ],
+        "ownershipWrites": 0,
+        "deviceChanges": 0,
+        "providerRequests": 0
+      }
+    },
+    "validation": {
+      "typecheck": "passed",
+      "targetedIntegration": {
+        "report": "docs/packproof/evidence/vitest-p2-production-targeted.json",
+        "passed": 2,
+        "skipped": 3,
+        "priorConcurrencyEvidencePreserved": true
+      },
+      "revisedFlowBrowser": "docs/packproof/evidence/p2-production-ui.json",
+      "finalLayout": {
+        "status": "passed",
+        "scope": "Final built UI, explicitly mocked participant/session/status responses, real audited receipt cryptographically verified in browser; no database/network ownership execution",
+        "checks": [
+          {
+            "role": "buyer",
+            "viewportWidth": 390,
+            "automaticRecentReceipt": true,
+            "noEnrollmentRequired": true,
+            "actualAuditedSignatureVerified": true,
+            "overflow": false,
+            "stickyNextStepVisible": true
+          },
+          {
+            "role": "seller",
+            "viewportWidth": 390,
+            "automaticRecentReceipt": true,
+            "noEnrollmentRequired": true,
+            "actualAuditedSignatureVerified": true,
+            "overflow": false,
+            "stickyNextStepVisible": true
+          }
+        ],
+        "browserErrors": 0,
+        "providerRequests": 0
+      },
+      "currentLocalProductionBuild": "passed isolated build",
+      "secretScan": "docs/packproof/evidence/p2-isolation.json",
+      "meaningfulInitialIssues": [
+        "TypeScript caught unreachable previous UI conditions after simplifying the flow; corrected before passing build",
+        "Local sandbox blocked git subprocess in secret scan; same local read-only scan passed outside sandbox",
+        "Production upload rejected before execution; no credential or deployment mutation occurred"
+      ]
+    },
+    "snapshotPolicy": "Existing 24-hour freshness rule retained. Snapshots may expire; registered ownership and signed receipt history do not. Automated issuer revalidation/renewal and self-service user/shop onboarding are not implemented by this change.",
+    "gps": "Feasible future opt-in signal with coordinate accuracy/time; not independent proof of proximity. Not implemented; current geolocation permission policy remains disabled.",
+    "providerRequests": 0,
+    "additionalMetaSpendUsd": 0,
+    "rootOrProductIssuerPrivateKeysUploaded": false,
+    "gitCommitOrPush": false,
+    "approval": {
+      "date": "2026-11-03",
+      "statement": "Approve the existing receipt key for encrypted Production storage and deploy.",
+      "scope": "Existing receipt-only TRANSFER_SIGNING_JWK, encrypted/server-only Production variable in existing Vercel packproof-p0 / ridwan-abeebs-projects; root/product-issuer/Meta keys excluded",
+      "provenance": "explicit user response to destination-specific approval question"
+    },
+    "deploymentId": "dpl_ARMBEgYt4pB76jN4Yh7Z46trgA9H",
+    "generatedUrl": "https://packproof-p0-eaxhypve0-ridwan-abeebs-projects.vercel.app",
+    "stableUrl": "https://packproof-p0.vercel.app/chainproof",
+    "cloudBuild": "passed READY",
+    "publicVerification": "docs/packproof/evidence/p2-production-live.json",
+    "receiptKeyMetadata": {
+      "status": "passed",
+      "receiptKeyMetadata": [
+        {
+          "key": "TRANSFER_SIGNING_JWK",
+          "type": "encrypted",
+          "target": [
+            "production"
+          ]
+        },
+        {
+          "key": "TRANSFER_SIGNING_JWK",
+          "type": "encrypted",
+          "target": [
+            "preview"
+          ]
+        }
+      ],
+      "privateValuesPrinted": false,
+      "environmentMutations": 0
+    },
+    "preservation": {
+      "status": "passed",
+      "mode": "Read-only post-release database preservation check",
+      "originalSignedRecordsUnchanged": 33,
+      "acceptedTransfers": 1,
+      "ownerVersion": 2,
+      "ownerRecordId": "518246e0-1fc6-42c6-9cb8-25902a92648e",
+      "credentialsAndOfflineReceiptKeysUnchanged": true,
+      "ownershipWrites": 0,
+      "providerRequests": 0
+    },
+    "newProductionOwnershipCommit": "not_run; existing physical accepted receipt verified without repeating a sale"
+  },
+  "commitAuthorization": "Explicit user request: commit completed P2 and provide generator handoff"
+}

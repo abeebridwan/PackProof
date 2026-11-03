@@ -1,0 +1,988 @@
+{
+  "kind": "P0-manual-probe",
+  "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Mobile Safari/537.36",
+  "url": "https://192.168.1.70:4173/",
+  "secureContext": true,
+  "camera": {
+    "status": "capturing",
+    "width": 480,
+    "height": 640
+  },
+  "transport": "not_run",
+  "startedAt": "2026-11-03T08:30:22.266Z",
+  "animation": {
+    "batchId": "6270e07c-803e-436d-92be-6746b713d629",
+    "expiresAt": "2026-11-03T09:23:05.066Z",
+    "targetFps": 10,
+    "actualFps": 9.497155055764232,
+    "frameCount": 114,
+    "frameTimesMs": [
+      1.7000000004190952,
+      101.60000000032596,
+      801.9000000003725,
+      901.2000000004191,
+      1001.100000000326,
+      1102.8000000002794,
+      1204.0000000004657,
+      1317.9000000003725,
+      1401.100000000326,
+      1501.3000000002794,
+      1601.100000000326,
+      1701.0000000004657,
+      1801.100000000326,
+      1901.0000000004657,
+      2001.200000000419,
+      2101.0000000004657,
+      2201.100000000326,
+      2301.3000000002794,
+      2401.100000000326,
+      2501.0000000004657,
+      2601.0000000004657,
+      2701.0000000004657,
+      2801.0000000004657,
+      2901.0000000004657,
+      3001.0000000004657,
+      3101.0000000004657,
+      3200.9000000003725,
+      3300.9000000003725,
+      3400.9000000003725,
+      3501.100000000326,
+      3600.9000000003725,
+      3701.0000000004657,
+      3800.9000000003725,
+      3901.0000000004657,
+      4000.600000000326,
+      4117.600000000326,
+      4201.9000000003725,
+      4300.200000000419,
+      4400.000000000466,
+      4500.100000000326,
+      4600.100000000326,
+      4700.000000000466,
+      4803.000000000466,
+      4901.4000000003725,
+      5001.700000000419,
+      5101.200000000419,
+      5200.700000000419,
+      5300.700000000419,
+      5401.200000000419,
+      5500.9000000003725,
+      5600.9000000003725,
+      5700.800000000279,
+      5800.700000000419,
+      5900.700000000419,
+      6000.600000000326,
+      6100.600000000326,
+      6200.600000000326,
+      6300.600000000326,
+      6400.500000000466,
+      6500.600000000326,
+      6600.500000000466,
+      6700.600000000326,
+      6800.800000000279,
+      6900.800000000279,
+      7000.9000000003725,
+      7100.700000000419,
+      7200.500000000466,
+      7300.500000000466,
+      7400.500000000466,
+      7500.4000000003725,
+      7600.300000000279,
+      7700.300000000279,
+      7800.4000000003725,
+      7900.4000000003725,
+      8000.4000000003725,
+      8100.4000000003725,
+      8200.500000000466,
+      8300.400000000373,
+      8417.100000000326,
+      8504.000000000466,
+      8600.20000000042,
+      8700.100000000326,
+      8800.30000000028,
+      8900.20000000042,
+      9000.900000000373,
+      9100.70000000042,
+      9200.400000000373,
+      9300.400000000373,
+      9400.400000000373,
+      9500.30000000028,
+      9600.30000000028,
+      9700.20000000042,
+      9800.20000000042,
+      9900.20000000042,
+      10000.100000000326,
+      10100.30000000028,
+      10200.20000000042,
+      10300.20000000042,
+      10400.20000000042,
+      10500.30000000028,
+      10600.30000000028,
+      10700.30000000028,
+      10800.20000000042,
+      10900.20000000042,
+      11000.100000000326,
+      11100.100000000326,
+      11200.000000000466,
+      11300.000000000466,
+      11400.000000000466,
+      11500.100000000326,
+      11600.000000000466,
+      11700.000000000466,
+      11800.000000000466,
+      11900.000000000466
+    ],
+    "handles": [
+      "pp0_a19FT-8UalwPkt2_sFVvqw",
+      "pp0_-ExOe2_pmTXJqmLRyrRpsQ",
+      "pp0_GmEVD_2W7MDup17_Bh06jg",
+      "pp0_LuHw-lYFSe6g3WucvBhLxA",
+      "pp0_ZlM_4p2ZXuy86AojEr5iYw",
+      "pp0_gKyX9HnEmzBknCZiSt9Jsw",
+      "pp0_U4kLSd38wXaZJ2s-PU6OtA",
+      "pp0_cX0kiuN0vhret8I41XMQRw",
+      "pp0_BM3PKInL4dftEdjQ_ax3MA",
+      "pp0__AAooF3BnYC89EUvE8j6kQ",
+      "pp0_HWm0vE6dY7JcCyvHdCH8yQ",
+      "pp0_77_22_2CciApSgNLvEPsvw",
+      "pp0_owD5z9SaBkz5R_or6IWh7A",
+      "pp0_LJAB9zZYkZkmCJ3hbwl0cg",
+      "pp0_6Tqqho4VlrkfBbHy3htudw",
+      "pp0_UEk5LsT4TEQ3n4VhfQc3yQ",
+      "pp0_y33IIKfEye2a2k9wRntGPQ",
+      "pp0_xquzYgTfZwaazwZ26L7HxQ",
+      "pp0_Mr1b29E_3zYTZAFvTIioZQ",
+      "pp0_th3CWbNFgR5-BWSproHXkQ",
+      "pp0_PYTNP0cUyebLSg4W6Q9vhw",
+      "pp0_xjVHqkeYPgAjQMbSpOSf_g",
+      "pp0_vS1_PHv35uS8UB14lomUpg",
+      "pp0_rf6VP11rzDKStVEwQPxJXA",
+      "pp0_whOHdnntSexPqE6hwHfzOw",
+      "pp0_FUqovjIIkQc81bvz-4Zp1w",
+      "pp0_52e_MP1MFIB-KeJobj9wQQ",
+      "pp0_7_xbgfuDnjQxRdWu7n7S3g",
+      "pp0_RB0yUVIDPIzBq5cDG_MwMw",
+      "pp0_VQhw0OggxOA4uqGwqw7Zlw",
+      "pp0_N0O9YJ4FJ3rktRbYKU48qA",
+      "pp0__n-N12x5Xf8Yrw0WUw9H9w",
+      "pp0_QZRYlXkT6Cn_-EmyIJ_35g",
+      "pp0_sgyIePJdGP_-fvfT6ZoKOw",
+      "pp0_qDcjAaGRuJe0y-qhUNPolA",
+      "pp0_MAW75u7YAN7HT2o99Vqsvg",
+      "pp0_eU7MRznttrQx44MxJKpt6Q",
+      "pp0_jcHersFMVVdgOQ0FXhFj2Q",
+      "pp0_Ruwcmreg_JTENfQOuqtHdg",
+      "pp0_zfdI1IlA6kgqssF6Xs9fNg",
+      "pp0_byFCaeINvUZtEYD1unZlHg",
+      "pp0_M31cjVQ700YueBJZdKjpXQ",
+      "pp0_nVnKp0cyVgs5oUhMVUHajw",
+      "pp0_bIQyJMgcH8WbAW81qgg3lQ",
+      "pp0_PKQNfCA1VTKVQsMYyW8aCQ",
+      "pp0_gl5DHcsCw7toRqQyPeAsPg",
+      "pp0_b50NT57JFXXOzKKc3rCIEg",
+      "pp0_dqceM4IMbPXl3k5bVVU41Q",
+      "pp0_cVfERHyRG7sWyp2a8X9w9w",
+      "pp0_QusuOfhJZVa0xTgam_5Z2A",
+      "pp0_nJRYMdBgOQ_GxiJP41naGA",
+      "pp0_-Kqy0XjEnPhoBzb_-PSEpQ",
+      "pp0_HsLmZtNZOiPF6QpMRVy08Q",
+      "pp0_tdVK5Lf7YdGCLevO58uY5Q",
+      "pp0_-avvAXSdx6CBTvdPmYzHUw",
+      "pp0_CVuFgSEK4HWZch163zFLPQ",
+      "pp0_dTf00SShh0RAy78YJgVxJg",
+      "pp0_GuW8HKDkffEsZOluLhMpdg",
+      "pp0_FG0BuMcuBUlIBHolsKjNmQ",
+      "pp0_R8Lq5CsINxZIVt1le0B9GQ",
+      "pp0_nl5EF_aG2CETORnGhv0JUQ",
+      "pp0_qMu-_b-LA6tDGV-gvXKTXQ",
+      "pp0_l-VbH1CmqNMD-XByDRJsQw",
+      "pp0_B0clL_X5wHMr4iCc47wO5w",
+      "pp0_jL-6ga7wXp0vhRU8yE5XSw",
+      "pp0_VEGE0gEhgZ9yGIXfFgKpQQ",
+      "pp0_odUC4zCc-0qnUZzB2CLOqA",
+      "pp0_52k4vnlFKeGDb7KjunQX4Q",
+      "pp0_OYeQdprFThRg4XN1F3SSCA",
+      "pp0_oRgLpWbi54nfy8G1VTuirg",
+      "pp0_tGHZ5BpAQhGX4oo7UBRK2Q",
+      "pp0_Nj8UVjiT_ABjatXdje3u5g",
+      "pp0_Bo4WyC4EdeXOMR5nccqQ4g",
+      "pp0_VF_zEnD83d5-DQjqDLP3XQ",
+      "pp0_8kh2uHC2fmtLGNZqj9OOvA",
+      "pp0_O6YGLkasD2SObmD1Y4evuA",
+      "pp0_CcZ-IEGutauR3fVKBcIpeA",
+      "pp0_hluZeXwJtXcYPNzeybHu9w",
+      "pp0_ytJAaexAv7FeQhNv9Et5sg",
+      "pp0_9LxWWA-awA06WJbrGHZ3rQ",
+      "pp0_BcQwzlep0onTSPn0QuEdpw",
+      "pp0_4m7lSmjd0e4QJCLXaa_v6g",
+      "pp0_9Ra7TTbqfJBn1-wGzGeS3g",
+      "pp0_SVKrIqB76VwWTodO3-wc2w",
+      "pp0_AGS1T5QzgtW1s8NRDVNwgw",
+      "pp0_dk8vOlpcQpJ-ZrFXa0dQ5g",
+      "pp0__m1Juh1NVA8n9oLJAzZasQ",
+      "pp0_9Hy19CX59OMlCYGGX7S0Ug",
+      "pp0_zG0B84JUv1cx4PeZzD6R_w",
+      "pp0_VmF3kpileubT2kNchl5sLw",
+      "pp0_BaQ96hcK2XuKlTvQY3Mnng",
+      "pp0_4Nj-sCD53oi1P_f68wftiA",
+      "pp0_SESToqscAxqePrc30vWkbA",
+      "pp0_CnGgnihOkTl93sqwAtpr4w",
+      "pp0_o2Sbfc8ROvWcqZNbh-Vjsg",
+      "pp0_slxwiKLs8UFrBBzFVJqGpg",
+      "pp0_EcRfkMnDM6v7iqXxu1oB4A",
+      "pp0_GLXDk_yRPAMhfxUe1phRIg",
+      "pp0_TIPpr5kr_F2xt7NlIdv9TQ",
+      "pp0_VaAH-F5NBJCKogeS-AD_tg",
+      "pp0_mJUJJVVa7CAuzrUuV96XIA",
+      "pp0_ffDq7hez-qjUlc9eDmV6pg",
+      "pp0_6iV2qic8-DTVZIcGdQkMBg",
+      "pp0_K6fhexcGyjFud2wcVazoLg",
+      "pp0_VPraxv_vvw5g1B7B5YqGQA",
+      "pp0_6IVw4QrQzugf1Zq1_yc8ww",
+      "pp0_pKuaxG21ofQUaOHurkY0Ig",
+      "pp0_Ns7MTvuXgIJThfcLfwErVw",
+      "pp0_Ed3UVfpEUtvyP8yj8rsM0g",
+      "pp0_lr_HNo7r68DhButKCJ9p2g",
+      "pp0_c2g_G4FoUM96vhih5oQ-Xw",
+      "pp0_2n1qwYKOr2XR--3wodA9hA",
+      "pp0_Kg5Mi1H0kfOkQI_xhuGy_g",
+      "pp0_mIt_1wtCzfm6eaYd3PZMJg"
+    ],
+    "durationMs": 12003.400000000373
+  },
+  "scan": {
+    "attempts": 260,
+    "successes": 142,
+    "distinct": 97,
+    "duplicates": 45,
+    "matched": 97,
+    "unknown": 0,
+    "expired": 0,
+    "outOfOrder": 0,
+    "longestConsecutiveDistinctFrames": 37,
+    "threeConsecutiveObserved": true,
+    "elapsedMs": 17272.5,
+    "attemptsPerSecond": 15.052829642495295,
+    "successfulReadsPerSecond": 8.22116080474743,
+    "distinctFramesPerSecond": 5.615863366623245,
+    "note": "Device clock and local probe catalog only; not authenticated P2 validation",
+    "scans": [
+      {
+        "handle": "pp0_YQnRhynQVf6wxTxgZ-0trQ",
+        "atMs": 5339,
+        "observedAt": "2026-11-03T09:22:35.099Z"
+      },
+      {
+        "handle": "pp0_L5zjnjVQZC30a3M5lIhSaA",
+        "atMs": 5531,
+        "observedAt": "2026-11-03T09:22:35.291Z"
+      },
+      {
+        "handle": "pp0_PwurBCzt2NTnn5YNkIdFlg",
+        "atMs": 5591,
+        "observedAt": "2026-11-03T09:22:35.351Z"
+      },
+      {
+        "handle": "pp0_PwurBCzt2NTnn5YNkIdFlg",
+        "atMs": 5663,
+        "observedAt": "2026-11-03T09:22:35.423Z"
+      },
+      {
+        "handle": "pp0_IqXiZx7Y7R7HEatne4mphQ",
+        "atMs": 5726,
+        "observedAt": "2026-11-03T09:22:35.486Z"
+      },
+      {
+        "handle": "pp0_IqXiZx7Y7R7HEatne4mphQ",
+        "atMs": 5787,
+        "observedAt": "2026-11-03T09:22:35.547Z"
+      },
+      {
+        "handle": "pp0_HP4JqlWoewPMaKt7cFjGfg",
+        "atMs": 5849,
+        "observedAt": "2026-11-03T09:22:35.609Z"
+      },
+      {
+        "handle": "pp0_rISNS0JNZGQC9j754Otb6Q",
+        "atMs": 5920,
+        "observedAt": "2026-11-03T09:22:35.679Z"
+      },
+      {
+        "handle": "pp0_rISNS0JNZGQC9j754Otb6Q",
+        "atMs": 5980,
+        "observedAt": "2026-11-03T09:22:35.740Z"
+      },
+      {
+        "handle": "pp0_dufpr0nKKIU0OIgQRqYv2Q",
+        "atMs": 6040,
+        "observedAt": "2026-11-03T09:22:35.800Z"
+      },
+      {
+        "handle": "pp0_3Api6rS6KuUmW-1pu-XOmg",
+        "atMs": 6172,
+        "observedAt": "2026-11-03T09:22:35.931Z"
+      },
+      {
+        "handle": "pp0_MkzcGQs6IbCGbvrriET5QA",
+        "atMs": 6231,
+        "observedAt": "2026-11-03T09:22:35.991Z"
+      },
+      {
+        "handle": "pp0_MkzcGQs6IbCGbvrriET5QA",
+        "atMs": 6300,
+        "observedAt": "2026-11-03T09:22:36.060Z"
+      },
+      {
+        "handle": "pp0_NBHiSx5Gk8NwZzMfvzuFVA",
+        "atMs": 6367,
+        "observedAt": "2026-11-03T09:22:36.127Z"
+      },
+      {
+        "handle": "pp0_V2eP9oGP8PFTw0nU7qhCEQ",
+        "atMs": 6495,
+        "observedAt": "2026-11-03T09:22:36.255Z"
+      },
+      {
+        "handle": "pp0_EbIJlEK2bEF2CXEu-4B6DQ",
+        "atMs": 6555,
+        "observedAt": "2026-11-03T09:22:36.315Z"
+      },
+      {
+        "handle": "pp0_6V47g9KODQ9FuCnFzQYghQ",
+        "atMs": 6682,
+        "observedAt": "2026-11-03T09:22:36.442Z"
+      },
+      {
+        "handle": "pp0_7GVFA1U-jcq3VqvpkvF-OQ",
+        "atMs": 6745,
+        "observedAt": "2026-11-03T09:22:36.505Z"
+      },
+      {
+        "handle": "pp0_BcXGqRH6PNyWyDzs8pdBrw",
+        "atMs": 6806,
+        "observedAt": "2026-11-03T09:22:36.566Z"
+      },
+      {
+        "handle": "pp0_BcXGqRH6PNyWyDzs8pdBrw",
+        "atMs": 6867,
+        "observedAt": "2026-11-03T09:22:36.627Z"
+      },
+      {
+        "handle": "pp0_kma9KI9NpLRZQyFY9gEgMg",
+        "atMs": 6936,
+        "observedAt": "2026-11-03T09:22:36.695Z"
+      },
+      {
+        "handle": "pp0_5mNTDC0p7esZSjc-oXH9Qg",
+        "atMs": 7124,
+        "observedAt": "2026-11-03T09:22:36.884Z"
+      },
+      {
+        "handle": "pp0_iItS3XdWJtlbHx1miSKAZA",
+        "atMs": 7247,
+        "observedAt": "2026-11-03T09:22:37.007Z"
+      },
+      {
+        "handle": "pp0_0jnTICSj-CPxrMLYAJFPGw",
+        "atMs": 7377,
+        "observedAt": "2026-11-03T09:22:37.137Z"
+      },
+      {
+        "handle": "pp0_nMGjTa0UB8I7kdWSQ0RjRA",
+        "atMs": 7438,
+        "observedAt": "2026-11-03T09:22:37.198Z"
+      },
+      {
+        "handle": "pp0_vGtS5qK_ZtVlwx72jpqAwQ",
+        "atMs": 7564,
+        "observedAt": "2026-11-03T09:22:37.324Z"
+      },
+      {
+        "handle": "pp0_FxbNdWokdjF2F0wESTTqSQ",
+        "atMs": 7624,
+        "observedAt": "2026-11-03T09:22:37.384Z"
+      },
+      {
+        "handle": "pp0_FxbNdWokdjF2F0wESTTqSQ",
+        "atMs": 7695,
+        "observedAt": "2026-11-03T09:22:37.455Z"
+      },
+      {
+        "handle": "pp0_GpglQWLqzXdbaDPLsEMFog",
+        "atMs": 7767,
+        "observedAt": "2026-11-03T09:22:37.526Z"
+      },
+      {
+        "handle": "pp0_KCCL0vW8dL0UqmOt0tpwBw",
+        "atMs": 7827,
+        "observedAt": "2026-11-03T09:22:37.587Z"
+      },
+      {
+        "handle": "pp0_EpogALfyRPhc0AQg_DX4EA",
+        "atMs": 7957,
+        "observedAt": "2026-11-03T09:22:37.717Z"
+      },
+      {
+        "handle": "pp0_TIAxPu2SH88DZeQeizg17w",
+        "atMs": 8018,
+        "observedAt": "2026-11-03T09:22:37.777Z"
+      },
+      {
+        "handle": "pp0_TIAxPu2SH88DZeQeizg17w",
+        "atMs": 8078,
+        "observedAt": "2026-11-03T09:22:37.838Z"
+      },
+      {
+        "handle": "pp0_ChlaOBzd9zZ_vzFKtVdQoA",
+        "atMs": 8147,
+        "observedAt": "2026-11-03T09:22:37.907Z"
+      },
+      {
+        "handle": "pp0_IilOPKRkvhyt0wbDziNMag",
+        "atMs": 8209,
+        "observedAt": "2026-11-03T09:22:37.969Z"
+      },
+      {
+        "handle": "pp0_IilOPKRkvhyt0wbDziNMag",
+        "atMs": 8272,
+        "observedAt": "2026-11-03T09:22:38.032Z"
+      },
+      {
+        "handle": "pp0_SvPrscyJSMWxvRPHXXg83Q",
+        "atMs": 8340,
+        "observedAt": "2026-11-03T09:22:38.100Z"
+      },
+      {
+        "handle": "pp0_ea-sG4i4wNv2cqmTKJywdQ",
+        "atMs": 8462,
+        "observedAt": "2026-11-03T09:22:38.222Z"
+      },
+      {
+        "handle": "pp0_pOyPU4dcSG-H26eBMGZh5g",
+        "atMs": 8530,
+        "observedAt": "2026-11-03T09:22:38.289Z"
+      },
+      {
+        "handle": "pp0_pOyPU4dcSG-H26eBMGZh5g",
+        "atMs": 8591,
+        "observedAt": "2026-11-03T09:22:38.351Z"
+      },
+      {
+        "handle": "pp0_Z8E00jp5jKqfgyOIkNyDSw",
+        "atMs": 8652,
+        "observedAt": "2026-11-03T09:22:38.412Z"
+      },
+      {
+        "handle": "pp0_rWuOQ_YC-WByw8kX2NcGGg",
+        "atMs": 8789,
+        "observedAt": "2026-11-03T09:22:38.548Z"
+      },
+      {
+        "handle": "pp0_Y76qJTfJ0S8zTn5hsRo7MA",
+        "atMs": 8849,
+        "observedAt": "2026-11-03T09:22:38.609Z"
+      },
+      {
+        "handle": "pp0_OzeYpSATgvObjrxVa5YdAw",
+        "atMs": 8976,
+        "observedAt": "2026-11-03T09:22:38.736Z"
+      },
+      {
+        "handle": "pp0_Tm2hdaqlf__fQ7NsaqBrDQ",
+        "atMs": 9036,
+        "observedAt": "2026-11-03T09:22:38.796Z"
+      },
+      {
+        "handle": "pp0_Tm2hdaqlf__fQ7NsaqBrDQ",
+        "atMs": 9096,
+        "observedAt": "2026-11-03T09:22:38.856Z"
+      },
+      {
+        "handle": "pp0_QkZNAWAJP6hUf8iUZ6mA-Q",
+        "atMs": 9161,
+        "observedAt": "2026-11-03T09:22:38.921Z"
+      },
+      {
+        "handle": "pp0_9Dl-ff5nd_KqBLM8As-X-w",
+        "atMs": 9287,
+        "observedAt": "2026-11-03T09:22:39.047Z"
+      },
+      {
+        "handle": "pp0_SYP6CAqwvPYkDCg71wdrUw",
+        "atMs": 9355,
+        "observedAt": "2026-11-03T09:22:39.115Z"
+      },
+      {
+        "handle": "pp0_2q-etA1XMA1VNJ_7bvRkMg",
+        "atMs": 9418,
+        "observedAt": "2026-11-03T09:22:39.178Z"
+      },
+      {
+        "handle": "pp0_2q-etA1XMA1VNJ_7bvRkMg",
+        "atMs": 9480,
+        "observedAt": "2026-11-03T09:22:39.240Z"
+      },
+      {
+        "handle": "pp0_VPid1CxLncatvgM_PMmuAA",
+        "atMs": 9551,
+        "observedAt": "2026-11-03T09:22:39.311Z"
+      },
+      {
+        "handle": "pp0_ZVss7fbfeWJPIQDVDXZO2A",
+        "atMs": 9611,
+        "observedAt": "2026-11-03T09:22:39.371Z"
+      },
+      {
+        "handle": "pp0_ZVss7fbfeWJPIQDVDXZO2A",
+        "atMs": 9672,
+        "observedAt": "2026-11-03T09:22:39.432Z"
+      },
+      {
+        "handle": "pp0_9Udziu_-E_lkLJw3x7mUYg",
+        "atMs": 9746,
+        "observedAt": "2026-11-03T09:22:39.506Z"
+      },
+      {
+        "handle": "pp0_PObODBYI0gL7n4ULCcTX1A",
+        "atMs": 9935,
+        "observedAt": "2026-11-03T09:22:39.695Z"
+      },
+      {
+        "handle": "pp0_L6pZU0fWU18UxQpvfcf9uA",
+        "atMs": 10066,
+        "observedAt": "2026-11-03T09:22:39.826Z"
+      },
+      {
+        "handle": "pp0_2QvbNxgsGIg-tRBfu0oHoQ",
+        "atMs": 10127,
+        "observedAt": "2026-11-03T09:22:39.886Z"
+      },
+      {
+        "handle": "pp0_LYrXkFE712seO7PKsFBWHw",
+        "atMs": 10252,
+        "observedAt": "2026-11-03T09:22:40.012Z"
+      },
+      {
+        "handle": "pp0_58oaXoV3-bYN2arJ_b_k8g",
+        "atMs": 10382,
+        "observedAt": "2026-11-03T09:22:40.142Z"
+      },
+      {
+        "handle": "pp0_GZg_3PSNFl5zTmLqNUvUjQ",
+        "atMs": 10443,
+        "observedAt": "2026-11-03T09:22:40.202Z"
+      },
+      {
+        "handle": "pp0_sf7lgJ9B7z8bR4W2iP82eg",
+        "atMs": 10575,
+        "observedAt": "2026-11-03T09:22:40.335Z"
+      },
+      {
+        "handle": "pp0_v_tZvb78Q1d3cfnaVSRhgg",
+        "atMs": 10639,
+        "observedAt": "2026-11-03T09:22:40.399Z"
+      },
+      {
+        "handle": "pp0_gyQNLfRGqv0b5KU-AoDvVA",
+        "atMs": 10779,
+        "observedAt": "2026-11-03T09:22:40.539Z"
+      },
+      {
+        "handle": "pp0_D9U7jyVU3YqGhBY_DDRDrQ",
+        "atMs": 10844,
+        "observedAt": "2026-11-03T09:22:40.604Z"
+      },
+      {
+        "handle": "pp0_39xWqbeylqREm23Hm-0lCA",
+        "atMs": 11045,
+        "observedAt": "2026-11-03T09:22:40.805Z"
+      },
+      {
+        "handle": "pp0_mm6ZneIvQ8zjnij1czApWQ",
+        "atMs": 11168,
+        "observedAt": "2026-11-03T09:22:40.927Z"
+      },
+      {
+        "handle": "pp0_CziKOUUNMJOUssGrZv-Ltg",
+        "atMs": 11296,
+        "observedAt": "2026-11-03T09:22:41.056Z"
+      },
+      {
+        "handle": "pp0_CziKOUUNMJOUssGrZv-Ltg",
+        "atMs": 11359,
+        "observedAt": "2026-11-03T09:22:41.119Z"
+      },
+      {
+        "handle": "pp0_IED5fRl_jTUe3RqZcvtbbA",
+        "atMs": 11428,
+        "observedAt": "2026-11-03T09:22:41.188Z"
+      },
+      {
+        "handle": "pp0_On0A0azscPvZOfoW8MhhDw",
+        "atMs": 11549,
+        "observedAt": "2026-11-03T09:22:41.309Z"
+      },
+      {
+        "handle": "pp0_ZSxCIxXeV5cEJcBbHwqLFg",
+        "atMs": 11616,
+        "observedAt": "2026-11-03T09:22:41.376Z"
+      },
+      {
+        "handle": "pp0_ZSxCIxXeV5cEJcBbHwqLFg",
+        "atMs": 11677,
+        "observedAt": "2026-11-03T09:22:41.437Z"
+      },
+      {
+        "handle": "pp0_UFn0eUjhPb99l-TqDV4ypA",
+        "atMs": 11804,
+        "observedAt": "2026-11-03T09:22:41.564Z"
+      },
+      {
+        "handle": "pp0_J4L645Z-_aok2ePZC3S82g",
+        "atMs": 11868,
+        "observedAt": "2026-11-03T09:22:41.628Z"
+      },
+      {
+        "handle": "pp0_OqggqlmuTb1KpRYyaSXpzg",
+        "atMs": 11928,
+        "observedAt": "2026-11-03T09:22:41.688Z"
+      },
+      {
+        "handle": "pp0_OqggqlmuTb1KpRYyaSXpzg",
+        "atMs": 11991,
+        "observedAt": "2026-11-03T09:22:41.751Z"
+      },
+      {
+        "handle": "pp0_-mIHb1ArMtix5OMVR75GkQ",
+        "atMs": 12059,
+        "observedAt": "2026-11-03T09:22:41.819Z"
+      },
+      {
+        "handle": "pp0_ggxSNyvJjIXQwkHwE5w2_w",
+        "atMs": 12119,
+        "observedAt": "2026-11-03T09:22:41.879Z"
+      },
+      {
+        "handle": "pp0_nL2vnHzF6KG9ZdOmoR6mUw",
+        "atMs": 12254,
+        "observedAt": "2026-11-03T09:22:42.014Z"
+      },
+      {
+        "handle": "pp0_fK14kOYN0karhAVaT08r9Q",
+        "atMs": 12314,
+        "observedAt": "2026-11-03T09:22:42.074Z"
+      },
+      {
+        "handle": "pp0_fK14kOYN0karhAVaT08r9Q",
+        "atMs": 12376,
+        "observedAt": "2026-11-03T09:22:42.135Z"
+      },
+      {
+        "handle": "pp0_wUM-sWACnXE5eO8xyR9Hsw",
+        "atMs": 12446,
+        "observedAt": "2026-11-03T09:22:42.206Z"
+      },
+      {
+        "handle": "pp0_wUM-sWACnXE5eO8xyR9Hsw",
+        "atMs": 12507,
+        "observedAt": "2026-11-03T09:22:42.267Z"
+      },
+      {
+        "handle": "pp0_22jJyD3oRkTVFrPZLMlABA",
+        "atMs": 12570,
+        "observedAt": "2026-11-03T09:22:42.330Z"
+      },
+      {
+        "handle": "pp0_o6UMCKKkGJv9avGf9YzhBw",
+        "atMs": 12635,
+        "observedAt": "2026-11-03T09:22:42.395Z"
+      },
+      {
+        "handle": "pp0_GABtE3KCKSYjaxeBAcWxmA",
+        "atMs": 12756,
+        "observedAt": "2026-11-03T09:22:42.516Z"
+      },
+      {
+        "handle": "pp0_IgnmXr_pKudpfBAqe3LccQ",
+        "atMs": 12819,
+        "observedAt": "2026-11-03T09:22:42.579Z"
+      },
+      {
+        "handle": "pp0_IgnmXr_pKudpfBAqe3LccQ",
+        "atMs": 12882,
+        "observedAt": "2026-11-03T09:22:42.642Z"
+      },
+      {
+        "handle": "pp0_wd5PVd6n4wRw1mM5obmdNw",
+        "atMs": 12944,
+        "observedAt": "2026-11-03T09:22:42.704Z"
+      },
+      {
+        "handle": "pp0_sBGKogmHfN5oIIRzBRtJlQ",
+        "atMs": 13076,
+        "observedAt": "2026-11-03T09:22:42.836Z"
+      },
+      {
+        "handle": "pp0_IH4bBLRxyPJJul-eKHbdiA",
+        "atMs": 13137,
+        "observedAt": "2026-11-03T09:22:42.896Z"
+      },
+      {
+        "handle": "pp0_yu4oxrYjqBuppSUmivPrPg",
+        "atMs": 13267,
+        "observedAt": "2026-11-03T09:22:43.026Z"
+      },
+      {
+        "handle": "pp0_gRDv2NzV3zcHJ4VDLf3IUw",
+        "atMs": 13327,
+        "observedAt": "2026-11-03T09:22:43.087Z"
+      },
+      {
+        "handle": "pp0_gRDv2NzV3zcHJ4VDLf3IUw",
+        "atMs": 13389,
+        "observedAt": "2026-11-03T09:22:43.149Z"
+      },
+      {
+        "handle": "pp0_7ZkiAY_oD0_92k-fDTYb_g",
+        "atMs": 13456,
+        "observedAt": "2026-11-03T09:22:43.216Z"
+      },
+      {
+        "handle": "pp0_eH_gsREnKxRS3lB5ObJ4xg",
+        "atMs": 13580,
+        "observedAt": "2026-11-03T09:22:43.340Z"
+      },
+      {
+        "handle": "pp0_uuUfPsYoBeiXZ6eXMkrqbA",
+        "atMs": 13645,
+        "observedAt": "2026-11-03T09:22:43.405Z"
+      },
+      {
+        "handle": "pp0_nxzbP3dFTzSQTbgWu8GN2w",
+        "atMs": 13766,
+        "observedAt": "2026-11-03T09:22:43.525Z"
+      },
+      {
+        "handle": "pp0_zTihnFBs-AxPhK2hJJZekQ",
+        "atMs": 13834,
+        "observedAt": "2026-11-03T09:22:43.594Z"
+      },
+      {
+        "handle": "pp0_EpV_wh-uxKdbqppz_mchTg",
+        "atMs": 13899,
+        "observedAt": "2026-11-03T09:22:43.659Z"
+      },
+      {
+        "handle": "pp0_EpV_wh-uxKdbqppz_mchTg",
+        "atMs": 13959,
+        "observedAt": "2026-11-03T09:22:43.719Z"
+      },
+      {
+        "handle": "pp0_kgmbXVHjIaeq5fP0Y7hyiQ",
+        "atMs": 14022,
+        "observedAt": "2026-11-03T09:22:43.782Z"
+      },
+      {
+        "handle": "pp0_i3gtaUht7Ek69I7KrShzWg",
+        "atMs": 14159,
+        "observedAt": "2026-11-03T09:22:43.919Z"
+      },
+      {
+        "handle": "pp0_iGi5_qKWiOs79qBwvY6Dkg",
+        "atMs": 14292,
+        "observedAt": "2026-11-03T09:22:44.052Z"
+      },
+      {
+        "handle": "pp0_mFpdmQGa2ZN5FkiRA54DeQ",
+        "atMs": 14356,
+        "observedAt": "2026-11-03T09:22:44.116Z"
+      },
+      {
+        "handle": "pp0_B-8_ZMaal9sP85UpeQBJSw",
+        "atMs": 14421,
+        "observedAt": "2026-11-03T09:22:44.181Z"
+      },
+      {
+        "handle": "pp0__QLx83EK6qWz06_Qr9HwHQ",
+        "atMs": 14552,
+        "observedAt": "2026-11-03T09:22:44.312Z"
+      },
+      {
+        "handle": "pp0_fxefLSd9uH4VjQP8LECTZw",
+        "atMs": 14613,
+        "observedAt": "2026-11-03T09:22:44.372Z"
+      },
+      {
+        "handle": "pp0_NYhgfYj-oEue_1lg-F7hwA",
+        "atMs": 14741,
+        "observedAt": "2026-11-03T09:22:44.500Z"
+      },
+      {
+        "handle": "pp0_NYhgfYj-oEue_1lg-F7hwA",
+        "atMs": 14801,
+        "observedAt": "2026-11-03T09:22:44.561Z"
+      },
+      {
+        "handle": "pp0_T5c2TVjP5YVd1sweTMH30w",
+        "atMs": 14870,
+        "observedAt": "2026-11-03T09:22:44.629Z"
+      },
+      {
+        "handle": "pp0_keBCTeANWQ7BjWV7N9UPjQ",
+        "atMs": 14937,
+        "observedAt": "2026-11-03T09:22:44.697Z"
+      },
+      {
+        "handle": "pp0_RCDzIM_BauWZfq3JRp1mTQ",
+        "atMs": 15130,
+        "observedAt": "2026-11-03T09:22:44.890Z"
+      },
+      {
+        "handle": "pp0_9nvI56zO7GOw9U-4SjSMkg",
+        "atMs": 15277,
+        "observedAt": "2026-11-03T09:22:45.037Z"
+      },
+      {
+        "handle": "pp0_6hrAeMB1P1lslsy5J00Y6A",
+        "atMs": 15344,
+        "observedAt": "2026-11-03T09:22:45.104Z"
+      },
+      {
+        "handle": "pp0_iGVNVxEmDFA6DvaprwPdsg",
+        "atMs": 15470,
+        "observedAt": "2026-11-03T09:22:45.230Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 15537,
+        "observedAt": "2026-11-03T09:22:45.297Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 15598,
+        "observedAt": "2026-11-03T09:22:45.358Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 15658,
+        "observedAt": "2026-11-03T09:22:45.417Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 15724,
+        "observedAt": "2026-11-03T09:22:45.484Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 15785,
+        "observedAt": "2026-11-03T09:22:45.545Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 15846,
+        "observedAt": "2026-11-03T09:22:45.606Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 15917,
+        "observedAt": "2026-11-03T09:22:45.677Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 15983,
+        "observedAt": "2026-11-03T09:22:45.743Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16049,
+        "observedAt": "2026-11-03T09:22:45.809Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16114,
+        "observedAt": "2026-11-03T09:22:45.874Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16181,
+        "observedAt": "2026-11-03T09:22:45.940Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16245,
+        "observedAt": "2026-11-03T09:22:46.005Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16371,
+        "observedAt": "2026-11-03T09:22:46.131Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16433,
+        "observedAt": "2026-11-03T09:22:46.193Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16566,
+        "observedAt": "2026-11-03T09:22:46.326Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16627,
+        "observedAt": "2026-11-03T09:22:46.387Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16687,
+        "observedAt": "2026-11-03T09:22:46.447Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16762,
+        "observedAt": "2026-11-03T09:22:46.522Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16827,
+        "observedAt": "2026-11-03T09:22:46.587Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16892,
+        "observedAt": "2026-11-03T09:22:46.652Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 16964,
+        "observedAt": "2026-11-03T09:22:46.724Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 17032,
+        "observedAt": "2026-11-03T09:22:46.792Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 17097,
+        "observedAt": "2026-11-03T09:22:46.856Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 17160,
+        "observedAt": "2026-11-03T09:22:46.919Z"
+      },
+      {
+        "handle": "pp0_v3uAKwyqiPWoJpJy9hPMaQ",
+        "atMs": 17231,
+        "observedAt": "2026-11-03T09:22:46.991Z"
+      }
+    ]
+  },
+  "cameraStopped": true,
+  "deviceModel": "vivo Y03",
+  "androidVersion": "Android 16; V2332 Build/BP2A.250605.031.",
+  "browserVersion": "Chrome 156.0.8078.73",
+  "transportDescription": "not recorded",
+  "finishedAt": "2026-11-03T09:22:53.159Z"
+}

@@ -3,14 +3,14 @@
   "project": "PackProof",
   "productVersion": "v10",
   "status": "partial",
-  "currentPhase": "P1",
+  "currentPhase": "P2",
   "timezone": "Africa/Lagos",
   "officialDeadline": "2026-11-05T03:00:00+01:00",
   "internalTarget": "2026-11-04T20:00:00+01:00",
   "phases": [
     {
       "id": "P0",
-      "status": "partial",
+      "status": "passed",
       "evidence": [
         "docs/packproof/evidence/P0.md",
         "docs/packproof/evidence/provider.json",
@@ -42,17 +42,23 @@
         "docs/packproof/evidence/postgres-direct.json",
         "docs/packproof/evidence/bundle-negative-checks.json",
         "docs/packproof/evidence/phones/vivo-y03-user-confirmation-2026-11-02.json",
-        "docs/packproof/evidence/private-bucket-2026-11-02.json"
+        "docs/packproof/evidence/private-bucket-2026-11-02.json",
+        "docs/packproof/evidence/phones/2026-11-03/packproof-p0-device-report-sRemi-5frames.json",
+        "docs/packproof/evidence/phones/2026-11-03/packproof-p0-device-report-sRemi-10frames.json",
+        "docs/packproof/evidence/phones/2026-11-03/packproof-p0-device-report-vivo-5frames.json",
+        "docs/packproof/evidence/phones/2026-11-03/packproof-p0-device-report-vivo-10frames.json",
+        "docs/packproof/evidence/phones/2026-11-03/redmi-10a-display-2026-11-02.json",
+        "docs/packproof/evidence/phones/qr-assessment-2026-11-03.json",
+        "docs/packproof/evidence/phones/2026-11-03/redmi-10a-transport-report.json"
       ],
       "passed": [
         "F1",
-        "F2"
-      ],
-      "failed": [],
-      "blocked": [
+        "F2",
         "F3",
         "F4"
       ],
+      "failed": [],
+      "blocked": [],
       "acceptance": {
         "F1": {
           "status": "passed",
@@ -63,24 +69,60 @@
           "limitation": "Desktop Node/browser checks plus user-submitted vivo Y03 crypto report and Node verification of its browser signature; phone key proves signature consistency, not authenticated enrollment."
         },
         "F3": {
-          "status": "blocked",
-          "reason": "Primary phone camera/crypto evidence preserved; scanner-fix rerun, permission error and manual fallback passed by user confirmation on 2 November (no new device report). Two-phone 5/10 fps QR performance explicitly deferred, not_run."
+          "status": "passed",
+          "evidence": "docs/packproof/evidence/phones/qr-assessment-2026-11-03.json",
+          "scope": "Core H8 F3 feasibility: prior intended-Android capture/manual fallback plus two physical phones decoding changing QR, achieved display rates within the 5\u201310 target and actual scan reliability recorded. Not a complete four-case 5/10-fps benchmark.",
+          "limitation": "Filename speed labels are not accepted as proof. Exact four-case benchmark attribution is incomplete; core two-phone feasibility is evidenced."
         },
         "F4": {
-          "status": "blocked",
-          "reason": "Private bucket and all existing infrastructure checks passed. Bidirectional physical JSON transport/alteration trials explicitly deferred by user; not_run, not waived."
+          "status": "passed",
+          "evidence": "docs/packproof/evidence/P0.md",
+          "detail": "Existing host/account/database/private-bucket checks passed. Bluetooth JSON matching confirmed both directions; nonce-tamper and truncated-JSON rejection now explicitly user-confirmed.",
+          "limitation": "Reverse-direction match and the two specific rejection outcomes rely on user confirmation, not independent execution or additional instrument reports. Transport feasibility only; not completed OfflineProof."
         }
       },
       "manualChecks": {
         "devicePrimary": "vivo Y03 (user-reported)",
-        "deviceSecondary": null,
+        "deviceSecondary": "Redmi 10A",
         "androidCamera": "passed",
         "androidManualFallback": "passed_user_reported",
-        "twoPhoneQr": "not_run",
-        "achievedFramesPerSecond": null,
-        "scanReliability": null,
-        "phoneFileExportImport": "not_run",
-        "transport": null,
+        "twoPhoneQr": "passed",
+        "achievedFramesPerSecond": {
+          "vivo Y03": {
+            "targetDisplayFps": 10,
+            "measuredDisplayFps": 9.497155055764232,
+            "recordedDate": "2026-11-03"
+          },
+          "Redmi 10A": {
+            "targetDisplayFps": 10,
+            "measuredDisplayFps": 9.736771420897146,
+            "recordedDate": "2026-11-02"
+          }
+        },
+        "scanReliability": {
+          "evidence": "docs/packproof/evidence/phones/qr-assessment-2026-11-03.json",
+          "fourSuccessfulRuns": true,
+          "minimumReportedConsecutiveDistinctFrames": 12,
+          "minimumIndependentlyMatchedRun": 12,
+          "wholeSessionThroughputIncludesWaiting": true
+        },
+        "phoneFileExportImport": "passed_user_reported_both_directions",
+        "transport": {
+          "method": "Bluetooth (user-reported)",
+          "directions": "both matched (user confirmation)",
+          "instrumentedDirection": "vivo Y03 -> Redmi 10A (user-entered report description)",
+          "elapsedSecondsUserReported": 4,
+          "offline": "user reports internet off; browser online signal true does not establish internet reachability",
+          "evidence": "docs/packproof/evidence/phones/2026-11-03/redmi-10a-transport-report.json",
+          "scope": "Small demo JSON transport integrity only; not OfflineProof",
+          "rejectionConfirmation": {
+            "date": "2026-11-03",
+            "provenance": "user_chat_confirmation",
+            "statement": "both passed as well",
+            "scope": "In direct response to the two listed checks: one valid character changed in nonce rejected with TransportFingerprintMismatch; final closing brace removed rejected with SyntaxError.",
+            "limitation": "Physical checks performed by user; no separate raw report or modified inputs supplied for these two outcomes."
+          }
+        },
         "httpsHost": "passed",
         "supabaseAccess": "passed",
         "supabaseAccountList": "passed",
@@ -99,7 +141,16 @@
         "publicHttpsUrl": "https://packproof-p0.vercel.app",
         "publicPhoneRerun": "not_run",
         "phoneConfirmation": "docs/packproof/evidence/phones/vivo-y03-user-confirmation-2026-11-02.json",
-        "twoPhoneTestingDeferredByUser": true
+        "twoPhoneTestingDeferredByUser": false,
+        "secondPhoneAvailableUserReported": true,
+        "qrAssessment": "docs/packproof/evidence/phones/qr-assessment-2026-11-03.json",
+        "secondaryDeviceDetails": {
+          "model": "Redmi 10A",
+          "android": "Android 11; 220233L2G Build/RP1A.200720.",
+          "browser": "Chrome 143.0.7499.192",
+          "miui": "12.5.16 Stable (user chat)",
+          "provenance": "User-entered metadata and user chat; reduced user-agent does not independently identify OS"
+        }
       },
       "subchecks": {
         "F3": {
@@ -139,29 +190,55 @@
             "detail": "Camera-permission error displayed; manual leading zeros retained"
           },
           "secondPhone": {
-            "status": "blocked",
-            "reason": "Two-phone testing explicitly deferred by user; no results submitted"
+            "status": "passed",
+            "device": "Redmi 10A",
+            "provenance": "user-supplied physical-phone report",
+            "evidence": "docs/packproof/evidence/phones/2026-11-03/packproof-p0-device-report-sRemi-5frames.json"
           },
           "qrAtoB5": {
-            "status": "not_run",
-            "deferredByUser": true
+            "status": "blocked",
+            "scanStatus": "passed",
+            "rateAttribution": "unconfirmed",
+            "evidence": "docs/packproof/evidence/phones/2026-11-03/packproof-p0-device-report-vivo-5frames.json",
+            "consecutiveDistinctFrames": 29,
+            "scope": "Per-speed benchmark attribution; not an additional mandatory H8 F3 gate",
+            "reason": "Unconfirmed: filename is not trusted and no same-trial display log was supplied. Reported catalogue match/consecutive counters preserved."
           },
           "qrAtoB10": {
-            "status": "not_run",
-            "deferredByUser": true
+            "status": "blocked",
+            "scanStatus": "passed",
+            "rateAttribution": "unconfirmed",
+            "evidence": "docs/packproof/evidence/phones/2026-11-03/packproof-p0-device-report-vivo-10frames.json",
+            "consecutiveDistinctFrames": 37,
+            "scope": "Per-speed benchmark attribution; not an additional mandatory H8 F3 gate",
+            "reason": "Unconfirmed: filename is not trusted and no same-trial display log was supplied. Reported catalogue match/consecutive counters preserved."
           },
           "qrBtoA5": {
-            "status": "not_run",
-            "deferredByUser": true
+            "status": "blocked",
+            "scanStatus": "passed",
+            "rateAttribution": "unconfirmed",
+            "evidence": "docs/packproof/evidence/phones/2026-11-03/packproof-p0-device-report-sRemi-5frames.json",
+            "consecutiveDistinctFrames": 24,
+            "scope": "Per-speed benchmark attribution; not an additional mandatory H8 F3 gate",
+            "reason": "Unconfirmed: filename is not trusted and no same-trial display log was supplied. Reported catalogue match/consecutive counters preserved."
           },
           "qrBtoA10": {
-            "status": "not_run",
-            "deferredByUser": true
+            "status": "passed",
+            "scanStatus": "passed",
+            "rateAttribution": "verified",
+            "evidence": "docs/packproof/evidence/phones/2026-11-03/packproof-p0-device-report-sRemi-10frames.json",
+            "consecutiveDistinctFrames": 12,
+            "scope": "Per-speed benchmark attribution; not an additional mandatory H8 F3 gate",
+            "reason": "verified by matching all distinct handles to the recorded vivo 10-fps batch"
           },
           "successfulQrThroughput": {
-            "status": "not_run",
-            "note": "Original phone report has zero successful reads. Attempts/s is not successful throughput.",
-            "deferredByUser": true
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/phones/qr-assessment-2026-11-03.json",
+            "note": "Actual successful/distinct reads recorded for both phones; whole-camera-session rates include waiting. Display FPS recorded separately."
+          },
+          "bidirectionalQrFeasibility": {
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/phones/qr-assessment-2026-11-03.json"
           }
         },
         "F4": {
@@ -230,16 +307,27 @@
             "evidence": "docs/packproof/evidence/deployment-browser.json"
           },
           "jsonAtoB": {
-            "status": "not_run",
-            "deferredByUser": true
+            "status": "passed",
+            "direction": "Redmi 10A -> vivo Y03",
+            "provenance": "user_chat_confirmation",
+            "limitation": "User confirms match; separate receiver report not supplied",
+            "deferredByUser": false
           },
           "jsonBtoA": {
-            "status": "not_run",
-            "deferredByUser": true
+            "status": "passed",
+            "direction": "vivo Y03 -> Redmi 10A",
+            "provenance": "user-submitted report and user chat",
+            "evidence": "docs/packproof/evidence/phones/2026-11-03/redmi-10a-transport-report.json",
+            "detail": "lastAcceptedImport matched-export-fingerprint at 2026-11-03T11:05:38.097Z; device identity/transport/offline details user-reported",
+            "deferredByUser": false
           },
           "physicallyTransportedAlterationRejection": {
-            "status": "not_run",
-            "deferredByUser": true
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/P0.md",
+            "provenance": "user_chat_confirmation",
+            "code": "TransportFingerprintMismatch",
+            "detail": "User confirms rejection after changing one valid nonce character.",
+            "deferredByUser": false
           },
           "postgresRuntime": {
             "status": "passed",
@@ -253,9 +341,23 @@
           "databaseTls": {
             "status": "passed",
             "detail": "Official CA/hostname verification passed on successful direct PostgreSQL connection"
+          },
+          "importSchemaRejection": {
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/phones/2026-11-03/redmi-10a-transport-report.json",
+            "code": "ZodError",
+            "limitation": "Observed rejection only; report does not identify whether file or expected fingerprint failed schema validation"
+          },
+          "truncatedJsonRejection": {
+            "status": "passed",
+            "evidence": "docs/packproof/evidence/P0.md",
+            "provenance": "user_chat_confirmation",
+            "code": "SyntaxError",
+            "detail": "User confirms rejection after removing the final closing brace."
           }
         }
-      }
+      },
+      "verified": true
     },
     {
       "id": "P1",
@@ -657,11 +759,167 @@
     },
     {
       "id": "P2",
-      "status": "not_started",
-      "evidence": [],
-      "passed": [],
+      "status": "passed",
+      "evidence": [
+        "docs/packproof/evidence/P2.md",
+        "docs/packproof/evidence/p2-authority.json",
+        "docs/packproof/evidence/p2-browser.json",
+        "docs/packproof/evidence/p2-isolation.json",
+        "docs/packproof/evidence/p2-migration.json",
+        "docs/packproof/evidence/p2-preservation.json",
+        "docs/packproof/evidence/p2-preview-alias.json",
+        "docs/packproof/evidence/p2-preview-layout.json",
+        "docs/packproof/evidence/p2-preview-ui.png",
+        "docs/packproof/evidence/p2-preview.json",
+        "docs/packproof/evidence/p2-production-preservation.json",
+        "docs/packproof/evidence/p2-ui-browser-buyer.png",
+        "docs/packproof/evidence/p2-ui-browser-receipt.json",
+        "docs/packproof/evidence/p2-ui-browser-seller.png",
+        "docs/packproof/evidence/p2-ui-browser-signed-out.png",
+        "docs/packproof/evidence/p2-ui-browser.json",
+        "docs/packproof/evidence/p2.json",
+        "docs/packproof/evidence/vitest-p2-integration-final.json",
+        "docs/packproof/evidence/p2-preview-error.png",
+        "docs/packproof/evidence/p2-receipt-verification.json",
+        "docs/packproof/evidence/phones/2026-11-03/chainproof-receipt.json",
+        "docs/packproof/evidence/vitest-p2-production-targeted.json",
+        "docs/packproof/evidence/p2-production-ui.json",
+        "docs/packproof/evidence/p2-production-ui-receipt.json",
+        "docs/packproof/evidence/p2-production-readonly-mobile.png",
+        "docs/packproof/evidence/p2-production-live.json",
+        "docs/packproof/evidence/p2-production-live-mobile.png"
+      ],
+      "passed": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "S1"
+      ],
       "failed": [],
-      "blocked": []
+      "blocked": [],
+      "verified": true,
+      "acceptance": {
+        "T1": {
+          "status": "passed",
+          "software": "passed Shop A refusal and complete Shop B transfer on isolated issued test units; main Shop B read-only authorization passed",
+          "actualTwoPhones": "passed_user_confirmed_and_database_receipt_verified",
+          "evidence": [
+            "docs/packproof/evidence/vitest-p2-integration-final.json",
+            "docs/packproof/evidence/p2-browser.json",
+            "docs/packproof/evidence/p2-preservation.json",
+            "docs/packproof/evidence/p2-receipt-verification.json",
+            "docs/packproof/evidence/phones/2026-11-03/chainproof-receipt.json"
+          ],
+          "physicalResult": {
+            "transferId": "a112d815-d451-46bd-a614-8ad79d85398e",
+            "itemId": "10000000-0000-4000-8000-000000000002",
+            "receiptId": "518246e0-1fc6-42c6-9cb8-25902a92648e",
+            "ownerVersion": "1 -> 2",
+            "acceptedTransfers": 1,
+            "signatures": "trusted receipt, buyer offer, both consents and six QR frames independently verified",
+            "provenance": {
+              "date": "2026-11-03",
+              "provenance": "user_chat_confirmation",
+              "devices": {
+                "buyer": "vivo Y03",
+                "seller": "Redmi 10A"
+              },
+              "receiptStatement": "i got the recept on both and both passed",
+              "recoveryStatement": "Yes, the same handover and receipt returned.",
+              "scope": "User performed physical handover and both browser receipt checks, then explicitly confirmed same-handover page-refresh recovery. No raw browser timing/scan-attempt report supplied."
+            }
+          }
+        },
+        "T2": {
+          "status": "passed",
+          "scope": "software protocol/security checks",
+          "evidence": [
+            "docs/packproof/evidence/vitest-p2-integration-final.json",
+            "docs/packproof/evidence/vitest-p2-targeted-repair.json",
+            "docs/packproof/evidence/vitest-p2-final-unit.json"
+          ]
+        },
+        "T3": {
+          "status": "passed",
+          "result": "two valid buyers: exactly one commit, one ownership conflict, version increments once",
+          "evidence": [
+            "docs/packproof/evidence/vitest-p2-targeted-repair.json"
+          ]
+        },
+        "T4": {
+          "status": "passed",
+          "result": "idempotent retry, changed-body refusal, signing-failure outbox recovery, dropped-response/reload recovery, no repeated ownership change",
+          "evidence": [
+            "docs/packproof/evidence/vitest-p2-integration-final.json",
+            "docs/packproof/evidence/p2-browser.json"
+          ],
+          "physicalRefreshRecovery": {
+            "status": "passed",
+            "provenance": "user_chat_confirmation",
+            "detail": "Refreshing returned the same handover ID and verified receipt. Read-only database audit found exactly one accepted ownership transition.",
+            "evidence": "docs/packproof/evidence/p2-receipt-verification.json",
+            "limitation": "Deliberate physical network interruption not separately reported; lost-response/idempotency/signing-failure checks retain existing software evidence."
+          }
+        },
+        "S1": {
+          "status": "passed",
+          "scope": "software/API/database/Storage/private-key isolation",
+          "evidence": [
+            "docs/packproof/evidence/vitest-p2-targeted-repair.json",
+            "docs/packproof/evidence/p2-browser.json",
+            "docs/packproof/evidence/p2-media-isolation.json",
+            "docs/packproof/evidence/p2-isolation.json"
+          ]
+        }
+      },
+      "p3Ready": true,
+      "deployment": {
+        "status": "passed_public_production_verification",
+        "reason": "Explicit receipt-key Production approval received; public buyer/seller receipt recovery, actual signatures, anonymous/foreign/CSRF refusal and P1 checks passed without another sale.",
+        "project": "packproof-p0",
+        "productionTransferEnabled": true,
+        "productionCompatibilityDeployment": "dpl_C1K7C3Rw11uhLdtJmcjsVGobLEBd",
+        "receiptKeyId": "b24ec1b5-595b-4f2a-a77d-8d5549a64af1",
+        "previewUrl": "https://packproof-p0-preview.vercel.app",
+        "previewDeployment": "dpl_uA5XYvVnLRJfNzGJdRueCfa67QRh",
+        "receiptKeyEncryptedPreviewOnly": false,
+        "cloudCommitAndReceiptSigning": "passed; exactly one accepted transfer and ready receipt",
+        "currentPreviewSourceSha256": "33327ca81d83a96f7ccfcaa7c3caf965803a3fb3b861df9ad464120175be9df9",
+        "previewAliasProtection": "anonymous302/Vercel authentication retained",
+        "errorBanner": "passed hosted mobile sticky positioning with explicitly simulated session error",
+        "productionRelease": {
+          "status": "published_verified",
+          "sourceSha256": "225f90f7a2365e0dcb5c4c35e679ea8b30485801f7323ac8d69f170c8598d3f8",
+          "approval": {
+            "date": "2026-11-03",
+            "statement": "Approve the existing receipt key for encrypted Production storage and deploy.",
+            "scope": "Existing receipt-only TRANSFER_SIGNING_JWK, encrypted/server-only Production variable in existing Vercel packproof-p0 / ridwan-abeebs-projects; root/product-issuer/Meta keys excluded",
+            "provenance": "explicit user response to destination-specific approval question"
+          },
+          "blockingAction": null,
+          "productionChanged": true,
+          "evidence": "docs/packproof/evidence/p2-production-live.json"
+        },
+        "productionDeployment": "dpl_ARMBEgYt4pB76jN4Yh7Z46trgA9H",
+        "productionSourceSha256": "225f90f7a2365e0dcb5c4c35e679ea8b30485801f7323ac8d69f170c8598d3f8",
+        "productionUrl": "https://packproof-p0.vercel.app/chainproof",
+        "receiptKeyEncryptedTargets": [
+          "preview",
+          "production"
+        ]
+      },
+      "manualChecks": {
+        "latestUserObservation": "Receipt verified on both phones; same handover and receipt recovered after page refresh",
+        "repair": "Fresh signed snapshot appended after current-state verification; user must retry Prepare agreement",
+        "authorityEvidence": "docs/packproof/evidence/p2-authority.json",
+        "snapshotExpiresAt": "2026-11-04T12:00:42.925Z",
+        "twoPhoneCompletion": "passed_user_confirmed_and_database_receipt_verified",
+        "currentOwnership": "Buyer demo account; version2; exactly one accepted transfer",
+        "receiptVerification": "docs/packproof/evidence/p2-receipt-verification.json",
+        "physicalFpsTelemetry": "not supplied; no measured rate claimed",
+        "physicalNetworkInterruption": "not_run; software recovery checks retained"
+      }
     },
     {
       "id": "P3",
@@ -718,9 +976,9 @@
     "partialKnownUsageEstimateUsd": 0.014813,
     "actualBillingKnown": false
   },
-  "p1Ready": false,
+  "p1Ready": true,
   "handoffDirectory": "project_handoff",
-  "repositoryStatus": "Git initialized; P0 source/evidence tracked; local credentials/TLS keys ignored; see Git for current revision",
+  "repositoryStatus": "P2 checkpoint recorded in Git under explicit user commit request; private credentials and signing keys remain ignored. See Git history for the commit identity. No remote push requested.",
   "localToolchain": {
     "node": "24.22.2",
     "pnpm": "12.16.1",
@@ -729,7 +987,7 @@
     "activationCommand": "export PATH=\"$PWD/.local/toolchain/node_modules/.bin:$PATH\"",
     "frozenInstall": "passed"
   },
-  "lastUpdated": "2026-11-02T10:56:20.709978Z",
+  "lastUpdated": "2026-11-03",
   "architectureAmendment": "project_handoff/Architecture_Amendments.md",
   "compatibility": {
     "langchain": {
@@ -768,7 +1026,7 @@
     "publicDeployment": "passed",
     "localHttps": "passed",
     "phoneTlsTrust": "passed_user_submitted_report",
-    "phoneTransport": "not_run: explicitly deferred by user",
+    "phoneTransport": "passed: bidirectional Bluetooth small-JSON match; nonce-tamper and truncated-JSON rejection user-confirmed",
     "targetSupabaseAccount": "passed",
     "supabaseCliVersion": "2.105.0",
     "supabaseProjectCreation": "user-created exact project verified; no duplicate created",
@@ -788,40 +1046,68 @@
     "postgresRuntimeConnection": "passed: verify-full TLS, corrected password, read-only query",
     "storageApi": "passed",
     "publicUrl": "https://packproof-p0.vercel.app",
-    "deploymentEnvironmentVariableCount": 12,
+    "deploymentEnvironmentVariableCount": 14,
     "deploymentNodeVersion": "24.x",
-    "previewUrl": "https://packproof-p0-ivn5khfvw-ridwan-abeebs-projects.vercel.app",
+    "previewUrl": "https://packproof-p0-preview.vercel.app",
     "previewStatus": "verified_recorded_investigator",
     "previewCredentialTargets": [
       "preview"
     ],
     "previewEncryptedEnvironmentCount": 11,
-    "productionPromotion": "completed_user_authorized",
-    "productionEncryptedEnvironmentCount": 12,
+    "productionPromotion": "P2 completed under explicit user Production signing-key approval",
+    "productionEncryptedEnvironmentCount": 14,
     "productionCredentialTargets": [
       "production"
     ],
-    "toolsUrl": "https://packproof-p0.vercel.app/tools"
+    "toolsUrl": "https://packproof-p0.vercel.app/tools",
+    "productionDeploymentId": "dpl_ARMBEgYt4pB76jN4Yh7Z46trgA9H",
+    "receiptSigningCredentialTargets": [
+      "preview",
+      "production"
+    ],
+    "chainproofUrl": "https://packproof-p0.vercel.app/chainproof"
   },
   "testingGuide": "TESTING.md",
-  "continuationBaselineCommit": "6cd7989",
+  "continuationBaselineCommit": "6955ed6",
   "latestLocalValidation": {
-    "phase": "P1D UI and Production delivery",
+    "phase": "P2",
     "typecheck": "passed",
-    "unitTestsPassed": 33,
-    "unitFiles": 2,
-    "unitReport": "docs/packproof/evidence/vitest-p1d-ui.json",
-    "productionBuild": "passed clean Vercel frozen-lockfile install + pnpm build",
-    "browser": "passed fresh anonymous public Production browser, actual Supabase, recorded AI and integrated device checks",
-    "bundleAndTraceChecks": "passed 28 local client assets including device bundle; required /tools assets traced; 9 served Production assets scanned",
-    "actualAndroid": "passed_user_reported_prior_UI",
-    "updatedStyles": "verified desktop/mobile browser viewports; no new physical observation",
-    "newMetaRequests": 0,
-    "fullSuites": "not_rerun; only 33 relevant unit checks and necessary browser/deployment checks",
-    "evidence": "docs/packproof/evidence/p1d.json"
+    "initialUnitTestsPassed": 151,
+    "targetedUnitTestsPassed": 29,
+    "unitCountsOverlap": true,
+    "latestDistinctDatabaseScenariosPassed": 5,
+    "databaseRunHistory": "3 passed/2 failed full run, then 2 passed/3 skipped targeted repair",
+    "privateStorageCasePassed": 1,
+    "browser": "passed guided signed-out/buyer/seller UI, two-way actual ZXing synthetic camera, explicit consents, one isolated commit, receipt/reload recovery and sign-out",
+    "productionBuild": "passed current local isolated build and Vercel build",
+    "bundleAndTraceChecks": "passed; docs/packproof/evidence/p2-isolation.json",
+    "evidence": "docs/packproof/evidence/p2.json",
+    "hostedPreview": "passed stable Preview actual buyer/seller sign-in/sign-out, mobile/desktop layout; no hosted ownership commit",
+    "previewLayout": "passed36px logo at390/1280px, no overflow or uncaught browser error",
+    "browserEvidence": "docs/packproof/evidence/p2-ui-browser.json",
+    "latestPreviewRepair": {
+      "typecheck": "passed",
+      "cloudBuild": "passed",
+      "authorityCheck": "passed",
+      "stickyErrorAndExistingSignIns": "passed",
+      "deviceEnrollmentOrOwnershipWritesInBrowserCheck": false,
+      "evidence": "docs/packproof/evidence/p2-preview-layout.json"
+    },
+    "productionRelease": {
+      "status": "passed",
+      "targetedIntegration": "2 passed / 3 skipped; previous concurrency evidence preserved",
+      "revisedBrowserFlow": "passed actual Auth/isolated SQL/ZXing/lost-response recovery",
+      "finalLayout": "passed explicit UI fixtures with actual audited receipt cryptography",
+      "connectionContextIsolation": "passed concurrent buyer/seller/outsider reads",
+      "localAndCloudBuild": "passed",
+      "secretScan": "passed 36 client assets,14 traces,6548 references",
+      "productionPublicChecks": "passed",
+      "preservedPhysicalTransfer": true,
+      "evidence": "docs/packproof/evidence/p2-production-live.json"
+    }
   },
   "p1IndependentWorkAuthorized": true,
-  "nextAuthorizedWork": "P1D complete: one PackProof application is published at the existing permanent URL. Stop; no automatic commit/push, P2/P3/P4 or further Meta probes. Preserve signed-evidence expiry and deferred P0 two-phone gates.",
+  "nextAuthorizedWork": "P2 Production release completed and verified; user requested checkpoint commit and generator handoff. Stop after P2. Await a separately scoped next phase; no remote Git push, P3/P4 or new inference budget authorized.",
   "p1bReadiness": {
     "foundationReady": true,
     "implementationStarted": true,
@@ -831,7 +1117,7 @@
     "p0PhysicalDeferralsUnchanged": true,
     "liveProviderRequestsRemaining": 0
   },
-  "p2Ready": false,
+  "p2Ready": true,
   "p1Budget": {
     "approval": "explicitly_approved",
     "approvedAt": "2026-11-02T01:33:24.882Z",
@@ -911,5 +1197,31 @@
     "reason": "Missing-package workflow repaired; no unnecessary further inference",
     "nativeNullableGeneration": "failed observed attempts; no coercion. Request-first routing avoids unsupported generation."
   },
-  "previewUrl": "https://packproof-p0-ivn5khfvw-ridwan-abeebs-projects.vercel.app"
+  "previewUrl": "https://packproof-p0-preview.vercel.app",
+  "latestManualValidation": {
+    "phase": "P2",
+    "date": "2026-11-03",
+    "status": "passed",
+    "userConfirmation": {
+      "date": "2026-11-03",
+      "provenance": "user_chat_confirmation",
+      "devices": {
+        "buyer": "vivo Y03",
+        "seller": "Redmi 10A"
+      },
+      "receiptStatement": "i got the recept on both and both passed",
+      "recoveryStatement": "Yes, the same handover and receipt returned.",
+      "scope": "User performed physical handover and both browser receipt checks, then explicitly confirmed same-handover page-refresh recovery. No raw browser timing/scan-attempt report supplied."
+    },
+    "receiptAudit": "docs/packproof/evidence/p2-receipt-verification.json",
+    "acceptedTransfers": 1,
+    "ownerVersion": 2,
+    "newProviderRequests": 0,
+    "limitations": [
+      "Physical execution and browser receipt/reload outcomes confirmed by user; not independently observed by assistant.",
+      "No actual P2 display-FPS or camera scan-attempt telemetry supplied; scheduled 5 updates/s is not a measurement.",
+      "Deliberate physical network-interruption trial not reported; lost-response and duplicate-confirm recovery retain prior software evidence."
+    ]
+  },
+  "p3Ready": true
 }

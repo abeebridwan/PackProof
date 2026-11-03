@@ -6,7 +6,8 @@ import {runtime} from './runtime.js';
 import {startInvestigation,resumeInvestigation,publicView} from './graph.js';
 import {InvestigationError} from './store.js';
 import {saveCapture,SupabaseCaptureStorage,CAPTURE_LIMIT} from './captures.js';
-export async function bodyBytes(request:Request,limit:number){const reader=request.body?.getReader();if(!reader)throw new InvestigationError('body_required',400);let length=0;const chunks:Uint8Array[]=[];while(true){const{done,value}=await reader.read();if(done)break;length+=value.length;if(length>limit){await reader.cancel();throw new InvestigationError('body_too_large',413);}chunks.push(value);}const bytes=new Uint8Array(length);let offset=0;for(const c of chunks){bytes.set(c,offset);offset+=c.length;}return bytes;}
+import {bodyBytes} from '../auth/body.js';
+export {bodyBytes} from '../auth/body.js';
 const json=(value:unknown,status=200,cookie:string|null=null)=>Response.json(value,{status,headers:{'cache-control':'private, no-store','x-content-type-options':'nosniff',...(cookie?{'set-cookie':cookie}:{})}});
 async function jsonBody(r:Request){if(!r.headers.get('content-type')?.startsWith('application/json'))throw new InvestigationError('json_required',415);return JSON.parse(new TextDecoder().decode(await bodyBytes(r,8192)));}
 export async function handle(request:Request,action:'create'|'get'|'resume'|'lookup'|'capture',id?:string){

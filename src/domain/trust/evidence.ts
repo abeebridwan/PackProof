@@ -1,5 +1,6 @@
 import { CompactSign, compactVerify, decodeProtectedHeader, importJWK } from 'jose';
 import { BindingData, EvidenceRecord, StoredRecord, RootPin, type RecordKind } from '../../contracts/evidence.js';
+import {verifyReceiptApprovals} from '../identity/transfer-crypto.js';
 import { sha256, utf8 } from '../verification/p0-crypto.js';
 
 export const EVIDENCE_JWS_TYPE = 'packproof-evidence+jws';
@@ -94,6 +95,7 @@ export async function verifyRecordSet(records: readonly StoredRecord[], pin: Roo
     const r = value.record;
     if (r.previousIds.length !== r.evidenceHashes.length) throw new Error('Dependency hash count mismatch');
     r.previousIds.forEach((id, i) => { if (verified.get(id)?.stored.sha256 !== r.evidenceHashes[i]) throw new Error('Missing or altered signed dependency'); });
+    if (r.type === 'transfer_receipt') await verifyReceiptApprovals(r.data);
     if (r.type === 'audit' && (!verified.has(r.data.targetRecordId) || !r.previousIds.includes(r.data.targetRecordId))) throw new Error('Missing audit source');
     if (r.type === 'correction') {
       const target = verified.get(r.data.targetRecordId);

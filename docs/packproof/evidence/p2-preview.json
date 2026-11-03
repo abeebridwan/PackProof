@@ -1,0 +1,132 @@
+{
+  "deploymentId": "dpl_BdT4w2gQmHGFkcQere3UaB2bzTVR",
+  "url": "https://packproof-p0-24oam6d77-ridwan-abeebs-projects.vercel.app",
+  "sourceSha256": "068536855fc1f67ffa847875baa5eee908c3a220521f82ed04f145007cf74374",
+  "mode": "actual Vercel Preview/Supabase, noncommitting runtime check",
+  "providerRequests": 0,
+  "actualPhones": 0,
+  "ownershipCommitAttempted": false,
+  "encryptedPreviewOnlySigner": true,
+  "enabledStatus": "passed",
+  "anonymousWriteDenied": true,
+  "productionTransfersDisabled": true,
+  "authEnrollmentSecureCookies": "passed",
+  "shopARefusal": "passed",
+  "noncommittingHandoverId": "a6cdfd8b-a90f-47fa-a42a-1e4fed80b132",
+  "offerAndSignedFrameBatch": "passed",
+  "participantStatusRead": "passed",
+  "signedCancellation": "passed",
+  "mobileOverflow": false,
+  "uncaughtBrowserErrors": 0,
+  "status": "passed",
+  "temporaryDevicesRevoked": true,
+  "automationBypassRevoked": true,
+  "endpointStatuses": [
+    {
+      "path": "/api/chainproof-auth/session",
+      "status": 401
+    },
+    {
+      "path": "/api/chainproof-auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/chainproof-auth/session",
+      "status": 200
+    },
+    {
+      "path": "/api/device-keys/challenge",
+      "status": 201
+    },
+    {
+      "path": "/api/device-keys/enroll",
+      "status": 201
+    },
+    {
+      "path": "/api/chainproof-auth/session",
+      "status": 200
+    },
+    {
+      "path": "/api/chainproof-auth/session",
+      "status": 401
+    },
+    {
+      "path": "/api/chainproof-auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/chainproof-auth/session",
+      "status": 200
+    },
+    {
+      "path": "/api/device-keys/challenge",
+      "status": 201
+    },
+    {
+      "path": "/api/device-keys/enroll",
+      "status": 201
+    },
+    {
+      "path": "/api/chainproof-auth/session",
+      "status": 200
+    },
+    {
+      "path": "/api/transfers",
+      "status": 409
+    },
+    {
+      "path": "/api/transfers",
+      "status": 201
+    },
+    {
+      "path": "/api/transfers/a6cdfd8b-a90f-47fa-a42a-1e4fed80b132",
+      "status": 200
+    },
+    {
+      "path": "/api/transfers/a6cdfd8b-a90f-47fa-a42a-1e4fed80b132/offer",
+      "status": 200
+    },
+    {
+      "path": "/api/transfers/a6cdfd8b-a90f-47fa-a42a-1e4fed80b132/frames/prepare",
+      "status": 200
+    },
+    {
+      "path": "/api/transfers/a6cdfd8b-a90f-47fa-a42a-1e4fed80b132/frames",
+      "status": 200
+    },
+    {
+      "path": "/api/transfers/a6cdfd8b-a90f-47fa-a42a-1e4fed80b132",
+      "status": 200
+    },
+    {
+      "path": "/api/transfers/a6cdfd8b-a90f-47fa-a42a-1e4fed80b132/cancel",
+      "status": 200
+    },
+    {
+      "path": "/api/transfers/a6cdfd8b-a90f-47fa-a42a-1e4fed80b132",
+      "status": 200
+    },
+    {
+      "path": "/api/device-keys/revoke",
+      "status": 200
+    },
+    {
+      "path": "/api/chainproof-auth/session",
+      "status": 200
+    },
+    {
+      "path": "/api/transfers/a6cdfd8b-a90f-47fa-a42a-1e4fed80b132",
+      "status": 200
+    },
+    {
+      "path": "/api/device-keys/revoke",
+      "status": 200
+    },
+    {
+      "path": "/api/chainproof-auth/session",
+      "status": 200
+    }
+  ],
+  "cloudCommitAndReceiptSigning": "not_run; no main demo ownership changed",
+  "physicalAcceptance": "not_run"
+}

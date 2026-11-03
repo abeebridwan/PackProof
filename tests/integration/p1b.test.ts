@@ -12,7 +12,7 @@ import {input} from '../fixtures/investigator-memory.js';
 const live=process.env.PACKPROOF_P1B_INTEGRATION==='1';
 const owner=async()=>({sessionHash:await sha256(utf8(crypto.randomUUID())),userId:null});
 const checks:Record<string,unknown>={phase:'P1B',projectRef:'hvbzxeuedookkwleyjmx',mode:'actual Supabase + deterministic recorded model transport',providerRequests:0};
-const record=async(key:string)=>{checks[key]='passed';await writeFile('docs/packproof/evidence/p1b-integration-checks.json',JSON.stringify(checks,null,2)+'\n');};
+const record=async(key:string)=>{checks[key]='passed';await writeFile(process.env.PACKPROOF_INTEGRATION_EVIDENCE??'docs/packproof/evidence/p1b-integration-checks.json',JSON.stringify(checks,null,2)+'\n');};
 describe.skipIf(!live)('P1B actual Supabase and durable graph integration',()=>{
  it('keeps all action, recapture, retry and model limits in the one-call database reservation',async()=>{
   const who=await owner();const r=await runtime(who);

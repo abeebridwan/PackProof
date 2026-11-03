@@ -1,0 +1,313 @@
+{
+  "kind": "P0-manual-probe",
+  "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Mobile Safari/537.36",
+  "url": "https://192.168.1.70:4173/",
+  "secureContext": true,
+  "camera": {
+    "status": "capturing",
+    "width": 480,
+    "height": 640
+  },
+  "transport": "not_run",
+  "startedAt": "2026-11-03T08:30:23.538Z",
+  "scan": {
+    "attempts": 212,
+    "successes": 55,
+    "distinct": 28,
+    "duplicates": 27,
+    "matched": 28,
+    "unknown": 0,
+    "expired": 0,
+    "outOfOrder": 0,
+    "longestConsecutiveDistinctFrames": 12,
+    "threeConsecutiveObserved": true,
+    "elapsedMs": 18711,
+    "attemptsPerSecond": 11.330233552455775,
+    "successfulReadsPerSecond": 2.9394473838918285,
+    "distinctFramesPerSecond": 1.4964459408903854,
+    "note": "Device clock and local probe catalog only; not authenticated P2 validation",
+    "scans": [
+      {
+        "handle": "pp0_whOHdnntSexPqE6hwHfzOw",
+        "atMs": 7647,
+        "observedAt": "2026-11-03T09:21:07.086Z"
+      },
+      {
+        "handle": "pp0_52e_MP1MFIB-KeJobj9wQQ",
+        "atMs": 7884,
+        "observedAt": "2026-11-03T09:21:07.322Z"
+      },
+      {
+        "handle": "pp0_VQhw0OggxOA4uqGwqw7Zlw",
+        "atMs": 8218,
+        "observedAt": "2026-11-03T09:21:07.656Z"
+      },
+      {
+        "handle": "pp0_Ruwcmreg_JTENfQOuqtHdg",
+        "atMs": 9094,
+        "observedAt": "2026-11-03T09:21:08.532Z"
+      },
+      {
+        "handle": "pp0_QusuOfhJZVa0xTgam_5Z2A",
+        "atMs": 10186,
+        "observedAt": "2026-11-03T09:21:09.624Z"
+      },
+      {
+        "handle": "pp0_ytJAaexAv7FeQhNv9Et5sg",
+        "atMs": 13089,
+        "observedAt": "2026-11-03T09:21:12.527Z"
+      },
+      {
+        "handle": "pp0_9Ra7TTbqfJBn1-wGzGeS3g",
+        "atMs": 13469,
+        "observedAt": "2026-11-03T09:21:12.907Z"
+      },
+      {
+        "handle": "pp0_AGS1T5QzgtW1s8NRDVNwgw",
+        "atMs": 13616,
+        "observedAt": "2026-11-03T09:21:13.054Z"
+      },
+      {
+        "handle": "pp0_AGS1T5QzgtW1s8NRDVNwgw",
+        "atMs": 13690,
+        "observedAt": "2026-11-03T09:21:13.128Z"
+      },
+      {
+        "handle": "pp0_dk8vOlpcQpJ-ZrFXa0dQ5g",
+        "atMs": 13768,
+        "observedAt": "2026-11-03T09:21:13.206Z"
+      },
+      {
+        "handle": "pp0_CnGgnihOkTl93sqwAtpr4w",
+        "atMs": 14523,
+        "observedAt": "2026-11-03T09:21:13.961Z"
+      },
+      {
+        "handle": "pp0_CnGgnihOkTl93sqwAtpr4w",
+        "atMs": 14595,
+        "observedAt": "2026-11-03T09:21:14.034Z"
+      },
+      {
+        "handle": "pp0_o2Sbfc8ROvWcqZNbh-Vjsg",
+        "atMs": 14666,
+        "observedAt": "2026-11-03T09:21:14.105Z"
+      },
+      {
+        "handle": "pp0_slxwiKLs8UFrBBzFVJqGpg",
+        "atMs": 14740,
+        "observedAt": "2026-11-03T09:21:14.178Z"
+      },
+      {
+        "handle": "pp0_EcRfkMnDM6v7iqXxu1oB4A",
+        "atMs": 14812,
+        "observedAt": "2026-11-03T09:21:14.250Z"
+      },
+      {
+        "handle": "pp0_EcRfkMnDM6v7iqXxu1oB4A",
+        "atMs": 14884,
+        "observedAt": "2026-11-03T09:21:14.322Z"
+      },
+      {
+        "handle": "pp0_GLXDk_yRPAMhfxUe1phRIg",
+        "atMs": 14959,
+        "observedAt": "2026-11-03T09:21:14.397Z"
+      },
+      {
+        "handle": "pp0_TIPpr5kr_F2xt7NlIdv9TQ",
+        "atMs": 15030,
+        "observedAt": "2026-11-03T09:21:14.468Z"
+      },
+      {
+        "handle": "pp0_VaAH-F5NBJCKogeS-AD_tg",
+        "atMs": 15183,
+        "observedAt": "2026-11-03T09:21:14.621Z"
+      },
+      {
+        "handle": "pp0_mJUJJVVa7CAuzrUuV96XIA",
+        "atMs": 15253,
+        "observedAt": "2026-11-03T09:21:14.691Z"
+      },
+      {
+        "handle": "pp0_ffDq7hez-qjUlc9eDmV6pg",
+        "atMs": 15324,
+        "observedAt": "2026-11-03T09:21:14.762Z"
+      },
+      {
+        "handle": "pp0_ffDq7hez-qjUlc9eDmV6pg",
+        "atMs": 15400,
+        "observedAt": "2026-11-03T09:21:14.838Z"
+      },
+      {
+        "handle": "pp0_6iV2qic8-DTVZIcGdQkMBg",
+        "atMs": 15470,
+        "observedAt": "2026-11-03T09:21:14.908Z"
+      },
+      {
+        "handle": "pp0_K6fhexcGyjFud2wcVazoLg",
+        "atMs": 15543,
+        "observedAt": "2026-11-03T09:21:14.981Z"
+      },
+      {
+        "handle": "pp0_VPraxv_vvw5g1B7B5YqGQA",
+        "atMs": 15616,
+        "observedAt": "2026-11-03T09:21:15.054Z"
+      },
+      {
+        "handle": "pp0_VPraxv_vvw5g1B7B5YqGQA",
+        "atMs": 15686,
+        "observedAt": "2026-11-03T09:21:15.124Z"
+      },
+      {
+        "handle": "pp0_pKuaxG21ofQUaOHurkY0Ig",
+        "atMs": 15836,
+        "observedAt": "2026-11-03T09:21:15.274Z"
+      },
+      {
+        "handle": "pp0_Ns7MTvuXgIJThfcLfwErVw",
+        "atMs": 15982,
+        "observedAt": "2026-11-03T09:21:15.420Z"
+      },
+      {
+        "handle": "pp0_Ed3UVfpEUtvyP8yj8rsM0g",
+        "atMs": 16057,
+        "observedAt": "2026-11-03T09:21:15.495Z"
+      },
+      {
+        "handle": "pp0_c2g_G4FoUM96vhih5oQ-Xw",
+        "atMs": 16211,
+        "observedAt": "2026-11-03T09:21:15.650Z"
+      },
+      {
+        "handle": "pp0_c2g_G4FoUM96vhih5oQ-Xw",
+        "atMs": 16285,
+        "observedAt": "2026-11-03T09:21:15.723Z"
+      },
+      {
+        "handle": "pp0_2n1qwYKOr2XR--3wodA9hA",
+        "atMs": 16358,
+        "observedAt": "2026-11-03T09:21:15.796Z"
+      },
+      {
+        "handle": "pp0_Kg5Mi1H0kfOkQI_xhuGy_g",
+        "atMs": 16428,
+        "observedAt": "2026-11-03T09:21:15.866Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 16971,
+        "observedAt": "2026-11-03T09:21:16.409Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17051,
+        "observedAt": "2026-11-03T09:21:16.490Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17124,
+        "observedAt": "2026-11-03T09:21:16.562Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17200,
+        "observedAt": "2026-11-03T09:21:16.638Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17272,
+        "observedAt": "2026-11-03T09:21:16.710Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17347,
+        "observedAt": "2026-11-03T09:21:16.785Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17421,
+        "observedAt": "2026-11-03T09:21:16.859Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17493,
+        "observedAt": "2026-11-03T09:21:16.932Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17570,
+        "observedAt": "2026-11-03T09:21:17.008Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17642,
+        "observedAt": "2026-11-03T09:21:17.080Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17717,
+        "observedAt": "2026-11-03T09:21:17.155Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17793,
+        "observedAt": "2026-11-03T09:21:17.231Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17866,
+        "observedAt": "2026-11-03T09:21:17.304Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 17937,
+        "observedAt": "2026-11-03T09:21:17.375Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 18015,
+        "observedAt": "2026-11-03T09:21:17.453Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 18087,
+        "observedAt": "2026-11-03T09:21:17.525Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 18161,
+        "observedAt": "2026-11-03T09:21:17.599Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 18387,
+        "observedAt": "2026-11-03T09:21:17.825Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 18465,
+        "observedAt": "2026-11-03T09:21:17.903Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 18537,
+        "observedAt": "2026-11-03T09:21:17.976Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 18605,
+        "observedAt": "2026-11-03T09:21:18.043Z"
+      },
+      {
+        "handle": "pp0_mIt_1wtCzfm6eaYd3PZMJg",
+        "atMs": 18674,
+        "observedAt": "2026-11-03T09:21:18.112Z"
+      }
+    ]
+  },
+  "cameraStopped": true,
+  "deviceModel": "sRedmi 10A",
+  "androidVersion": "Android 11; 220233L2G Build/RP1A.200720.",
+  "browserVersion": "Chrome 143.0.7499.192",
+  "transportDescription": "not recorded",
+  "finishedAt": "2026-11-03T09:21:22.685Z"
+}
