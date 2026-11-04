@@ -5,6 +5,8 @@ import {readState,installBootstrap,installPack,observeClock} from './store.js';
 import type {OfflineState} from './verify.js';
 declare const PACKPROOF_ROOT:unknown;
 import {displayText} from '../client/platform.js';
+import {bindAccountHeader} from '../client/navigation.js';
+bindAccountHeader();
 const pin=RootPin.parse(PACKPROOF_ROOT),loaded=performance.now();
 const $=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
 const requested=new URLSearchParams(location.hash.slice(1)),requestedItem=requested.get('item');if(requestedItem&&/^[a-f0-9-]{36}$/.test(requestedItem)){const option=new Option((requested.get('label')??'Selected reviewer unit').slice(0,120),requestedItem);$<HTMLSelectElement>('item').add(option);$<HTMLSelectElement>('item').value=requestedItem;}

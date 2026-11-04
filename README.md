@@ -1,6 +1,6 @@
 # PackProof
 
-**[Open PackProof](https://packproof-p0.vercel.app/) · [Developer tools](https://packproof-p0.vercel.app/developers) · [TypeScript SDK on npm](https://www.npmjs.com/package/@packproof/sdk)**
+**[Open PackProof](https://packproof-p0.vercel.app/) · [GitHub](https://github.com/abeebridwan/PackProof) · [Developer tools](https://packproof-p0.vercel.app/developers) · [TypeScript SDK on npm](https://www.npmjs.com/package/@packproof/sdk)**
 
 PackProof helps people check product evidence, inspect visible markings, record a buyer–seller handover and verify saved evidence without internet. Everything starts at one homepage and uses the same accounts, backend and verification contracts.
 
@@ -96,6 +96,29 @@ The published package is **`@packproof/sdk@0.1.0`**, with typed inputs/results, 
 - **MCP:** connect a Streamable HTTP client to `https://packproof-p0.vercel.app/api/mcp`. Tool names use underscores, such as `products_lookup`. Private tools use the same scoped Bearer credential. Official MCP server/client packages are pinned at `2.4.0`.
 - **WebMCP:** compatible browsers expose native `document.modelContext` tools. Writes require confirmation; unsupported browsers retain the normal interface.
 
+
+Connect from an MCP client that supports Streamable HTTP using the server URL **`https://packproof-p0.vercel.app/api/mcp`**. Public product lookups need no credential. For private tools, create a scoped key on [Developers](https://packproof-p0.vercel.app/developers) and configure the client’s HTTP `Authorization: Bearer <key>` header. This endpoint uses PackProof credentials, not automatic OAuth sign-in.
+
+For the official TypeScript client, install `@modelcontextprotocol/client@2.4.0` and run:
+
+```ts
+import {Client, StreamableHTTPClientTransport} from '@modelcontextprotocol/client';
+
+const client = new Client({name: 'packproof-reader', version: '1.0.0'});
+await client.connect(new StreamableHTTPClientTransport(
+  new URL('https://packproof-p0.vercel.app/api/mcp'),
+));
+try {
+  const result = await client.callTool({
+    name: 'products_lookup',
+    arguments: {namespace: 'packproof-demo', productMark: 'FP-1001', packagingMark: 'PK-2001'},
+  });
+  console.log(result.structuredContent);
+} finally {
+  await client.close();
+}
+```
+
 Inputs and outputs are defined in [api-v1.ts](src/contracts/api-v1.ts). Integrations cannot bypass ownership checks, sign participant consent or autonomously commit a handover. Notice events retain verified scope, effective dates and stable idempotency; a history gap is never a danger alert.
 
 ## Architecture and local development
@@ -131,4 +154,4 @@ Migrations under `supabase/migrations/` are additive; applied hashes are immutab
 
 Recorded validation includes live Muse/SAM, schema and malformed-provider checks, signature/tamper rejection, database authorization, API/SDK/MCP/WebMCP execution, bounded video decoding and multi-leg ownership handovers. Physical vivo Y03 and Redmi 10A checks cover camera/QR feasibility, signed handover recovery and Bluetooth offline pack verification, reopening and tamper rejection. Newer interface checks use desktop Chrome at mobile widths; they do not replace a new Android walkthrough.
 
-Public signup email delivery remains unverified after provider rate limits. Trusted issuance for new drafts awaits separately authorized signing. The public source repository and final film are not yet supplied. Radio/voice workflows, Glimmer distillation and native radio/mesh integration are future work. Conditional distillation may support offline guidance on compatible POS/Android devices; hosted Glimmer is not a model running directly on ordinary POS hardware.
+Public signup email delivery remains unverified after provider rate limits. Trusted issuance for new drafts awaits separately authorized signing. Source is public at [abeebridwan/PackProof](https://github.com/abeebridwan/PackProof). The final three-minute video has not been supplied. Radio/voice workflows, Glimmer distillation and native radio/mesh integration are future work. Conditional distillation may support offline guidance on compatible POS/Android devices; hosted Glimmer is not a model running directly on ordinary POS hardware.

@@ -1,6 +1,7 @@
 'use client';
 import {displayText} from '../../client/platform';
 import {AppHeader,useReview} from '../../client/journey';
+import {notifyAuthChanged} from '../../client/navigation';
 import {useEffect,useRef,useState} from 'react';
 import QRCode from 'qrcode';
 import {BrowserQRCodeReader,type IScannerControls} from '@zxing/browser';
@@ -29,7 +30,7 @@ export default function ChainProof(){
  useEffect(()=>{let active=true;setLocalReady(false);if(account?.device)void stored<LocalDevice>(`device:${account.actorId}`).then(d=>{if(active)setLocalReady(!!d&&d.id===account.device?.id&&d.actorId===account.actorId&&!d.privateKey.extractable);}).catch(()=>{});return()=>{active=false;};},[account?.actorId,account?.device?.id]);
  async function read(r:Response){const v=await r.json();if(!r.ok)throw new Error(v.message??(v.error==='chainproof_not_enabled'?'ChainProof is not enabled on this deployment.':'Request could not be accepted.'));return v;}
  async function post(path:string,payload:unknown){
-  if(path.startsWith('/api/chainproof-auth/'))return read(await fetch(path,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)}));
+  if(path.startsWith('/api/chainproof-auth/')){const value=await read(await fetch(path,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)}));notifyAuthChanged();return value;}
   const namespace=currentAccount.current?.actorId??'sign-in',storeKey=`request:${namespace}:${path}`,body=JSON.stringify(payload);
   let pending=await stored<{key:string;body:string}>(storeKey);
   // Once sent, a retry always sends exactly those same bytes and idempotency key.

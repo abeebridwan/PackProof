@@ -1,4 +1,6 @@
 import { BrowserQRCodeReader, type IScannerControls } from '@zxing/browser';
+import {bindAccountHeader} from '../../src/client/navigation.js';
+bindAccountHeader();
 import QRCode from 'qrcode';
 import { exportJWK } from 'jose';
 import { TransportFixture, PublicJwk } from '../../src/contracts/p0.js';

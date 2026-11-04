@@ -213,5 +213,115 @@
     "New trusted issuance still needs a separately authorized issuer-signing workflow. Saved manufacturer products and original evidence are private drafts.",
     "Public signup email delivery and a new Android walkthrough remain unverified.",
     "Live reviewer access remains within the existing shared $10 allowance and finite 18 November review window. No new inference was run for this release."
-  ]
+  ],
+  "currentDeploymentId": "dpl_DuuNMANJ2g9JEPbC53qS9jNMKDVM",
+  "currentSourceSha256": "237d483542535a7ec1b8c3735271e8e582e67902af7063be5763c69504ae83d6",
+  "headerAndMcpRelease": {
+    "status": "passed_deployed",
+    "readyState": "READY",
+    "origin": "https://packproof-p0.vercel.app",
+    "deploymentId": "dpl_DuuNMANJ2g9JEPbC53qS9jNMKDVM",
+    "sourceSha256": "237d483542535a7ec1b8c3735271e8e582e67902af7063be5763c69504ae83d6",
+    "uploadedSourceMatchesWorkspace": true,
+    "typecheck": "passed",
+    "build": "passed_on_vercel",
+    "previousPassedChecks": [
+      {
+        "name": "permanent_alias_matches_release",
+        "status": "passed"
+      },
+      {
+        "name": "anonymous_header",
+        "status": "passed"
+      },
+      {
+        "name": "account_login_updates_header_without_reload",
+        "status": "passed"
+      },
+      {
+        "name": "signed_in_static_header_/offline/index.html",
+        "status": "passed"
+      },
+      {
+        "name": "signed_in_static_header_/tools",
+        "status": "passed"
+      },
+      {
+        "name": "chainproof_logout_updates_header_without_reload",
+        "status": "passed"
+      },
+      {
+        "name": "chainproof_login_updates_header_without_reload",
+        "status": "passed"
+      }
+    ],
+    "focusedCompletionChecks": [
+      {
+        "name": "permanent_alias_matches_release",
+        "status": "passed"
+      },
+      {
+        "name": "account_signin",
+        "status": "passed"
+      },
+      {
+        "name": "account_logout_updates_header_without_reload",
+        "status": "passed"
+      },
+      {
+        "name": "mcp_endpoint_example_and_mobile_layout",
+        "status": "passed"
+      }
+    ],
+    "initialObservation": "One account sign-out header assertion timed out on the first run. The focused follow-up on the unchanged deployment observed logout HTTP 200/authenticated false, status HTTP 200/authenticated false and the header update without reload. No broad suite was repeated.",
+    "authResponses": [
+      {
+        "path": "/api/review/status",
+        "status": 200,
+        "authenticated": false
+      },
+      {
+        "path": "/api/review/status",
+        "status": 200,
+        "authenticated": true
+      },
+      {
+        "path": "/api/chainproof-auth/logout",
+        "status": 200,
+        "authenticated": false
+      },
+      {
+        "path": "/api/review/status",
+        "status": 200,
+        "authenticated": false
+      },
+      {
+        "path": "/api/review/status",
+        "status": 200,
+        "authenticated": false
+      }
+    ],
+    "newProviderRequests": 0,
+    "ownershipCommits": 0,
+    "actualPhones": 0,
+    "checkedAt": "2026-11-04T19:19:20.811Z"
+  },
+  "github": {
+    "url": "https://github.com/abeebridwan/PackProof",
+    "public": true,
+    "branch": "master",
+    "firstPublishedCommit": "e202571d654d17d3dcddad2ec79e520452a13454",
+    "firstPush": "passed",
+    "historyAudit": {
+      "status": "passed",
+      "commits": 20,
+      "historicalBlobs": 863,
+      "knownSecretsChecked": 63,
+      "reviewedSyntheticTestBlob": "a057e993313f9422b4664c101351020c81ff7fce",
+      "privateBytesFound": 0,
+      "privateTrackedPaths": 0,
+      "checkedAt": "2026-11-04T19:10:24.476Z"
+    },
+    "privateAccessSheetPublished": false
+  }
 }
