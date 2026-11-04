@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "checks": {
+    "origin": "https://packproof-p0.vercel.app",
+    "providerRequests": 0,
+    "unifiedRoutesAndInspectorControls": "passed",
+    "productionPack": {
+      "bytes": 52752,
+      "sequence": 10,
+      "registeredOwnerVersion": 2,
+      "privateMediaCount": 0,
+      "serverTiming": "pack;dur=1243"
+    },
+    "existingP2Receipt": "signature and both consents passed; no enrollment/transfer performed",
+    "restrictedReceiptDeniedAnonymously": true,
+    "publicHTTPSOfflineReloadAndMobile390": "passed desktop Chrome network disabled, local matching/mismatched code comparison; physical Android pending",
+    "publicInvestigatorShopA": {
+      "status": "blocked",
+      "mode": "recorded-demo",
+      "noNewPaidInference": true
+    },
+    "repository": {
+      "status": "not_configured"
+    }
+  },
+  "film": "not_recorded_or_submitted",
+  "physicalAndroidP4": "pending"
+}

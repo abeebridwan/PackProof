@@ -1,0 +1,12 @@
+import type {RootPin} from '../contracts/evidence.js';
+import type {Bootstrap} from '../contracts/offline.js';
+import {bootstrapTrust,stagePack,type OfflineState} from './verify.js';
+const DB='packproof-offline-v1',STORE='state';
+export type FailureStage='after-validation'|'before-put'|'after-put';
+function open(){return new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore(STORE);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
+export async function readState():Promise<OfflineState|null>{const db=await open();try{return await new Promise((resolve,reject)=>{const t=db.transaction(STORE,'readonly'),r=t.objectStore(STORE).get('current');r.onsuccess=()=>resolve(r.result??null);r.onerror=()=>reject(r.error);});}finally{db.close();}}
+export async function commitState(next:OfflineState,expectedEpoch:number|null,fail?:FailureStage){const db=await open();try{await new Promise<void>((resolve,reject)=>{const t=db.transaction(STORE,'readwrite',{durability:'strict'}),s=t.objectStore(STORE),r=s.get('current');let reason:Error|undefined;t.oncomplete=()=>resolve();t.onerror=()=>reject(reason??t.error??new Error('offline_install_failed'));t.onabort=()=>reject(reason??new Error('offline_install_interrupted'));r.onsuccess=()=>{if((r.result?.epoch??null)!==expectedEpoch){reason=new Error('offline_concurrent_change');t.abort();return;}if(fail==='before-put'){t.abort();return;}s.put(next,'current');if(fail==='after-put')t.abort();};});}finally{db.close();}}
+export async function installPack(bytes:Uint8Array,pin:RootPin,fail?:FailureStage){const prior=await readState(),staged=await stagePack(bytes,pin,prior);if(fail==='after-validation')throw new Error('offline_install_interrupted');await commitState(staged.state,prior?.epoch??null,fail);return staged;}
+export async function installBootstrap(value:Bootstrap,pin:RootPin){const prior=await readState(),next=await bootstrapTrust(value,pin,prior,Date.now());await commitState(next,prior?.epoch??null);return next;}
+// A backwards-clock observation is sticky until fresh trusted online setup.
+export async function observeClock(wall=Date.now()){const s=await readState();if(!s)return null;const next={...s,epoch:s.epoch+1,trust:{...s.trust,maxWall:Math.max(wall,s.trust.maxWall),clockReliable:s.trust.clockReliable&&wall>=s.trust.maxWall&&wall>=Date.parse(s.trust.lastServerTime)}};await commitState(next,s.epoch);return next;}

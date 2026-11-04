@@ -11,7 +11,7 @@
   "scripts": {
     "typecheck": "next typegen && tsc --noEmit && tsc --noEmit -p tsconfig.app.json",
     "test": "vitest run tests/unit",
-    "build": "pnpm probe:build && next build --webpack",
+    "build": "pnpm probe:build && pnpm offline:build && next build --webpack",
     "probe:serve": "node --env-file-if-exists=.env.local --import tsx scripts/spikes/serve.ts",
     "probe:crypto": "node --import tsx scripts/spikes/crypto-browser.ts",
     "probe:provider": "node --env-file-if-exists=.env.local --import tsx scripts/spikes/provider.ts",
@@ -40,7 +40,10 @@
     "p1c:complete": "node --env-file-if-exists=.env.local --import tsx scripts/p1c/complete.ts",
     "p3:live": "node --env-file-if-exists=.env.local --import tsx scripts/p3/live.ts",
     "db:migrate:p3": "node --env-file-if-exists=.env.local --import tsx scripts/p3/migrate.ts",
-    "p3:app": "node --env-file-if-exists=.env.local --import tsx scripts/p3/serve-local.ts"
+    "p3:app": "node --env-file-if-exists=.env.local --import tsx scripts/p3/serve-local.ts",
+    "offline:build": "node --import tsx scripts/p4/build.ts",
+    "db:migrate:p4": "node --env-file-if-exists=.env.local --import tsx scripts/p4/migrate.ts",
+    "offline:authority": "node --env-file-if-exists=.env.local --import tsx scripts/p4/prepare-authority.ts"
   },
   "dependencies": {
     "@langchain/core": "1.3.2",

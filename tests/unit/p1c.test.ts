@@ -1,3 +1,4 @@
+import '../fixtures/clock.js';
 import {afterEach,describe,it,expect,vi} from 'vitest';
 import {mkdtempSync,readFileSync,writeFileSync,rmSync,mkdirSync} from 'node:fs';
 import {tmpdir} from 'node:os';

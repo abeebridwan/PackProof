@@ -1,3 +1,4 @@
+import '../fixtures/clock.js';
 import {it,expect,vi} from 'vitest';
 import {coalesceEvidenceReads} from '../../src/server/data/evidence-reads.js';
 import {PostgresEvidenceRepository} from '../../src/server/data/evidence-repository.js';
@@ -49,10 +50,10 @@ it('rechecks changed signed-source and ownership projections on later service ca
  expect((await services.lookupSeller(args)).status).toBe('blocked');expect(reader).toHaveBeenCalledTimes(2);
 });
 
-it('retains the original session expiry across pause/resume without invoking the planner again',async()=>{
+it('starts a new active execution window after user input while preserving signed evidence dates',async()=>{
  const f=await fixture();const first=await startInvestigation(f.options,input({packagingMark:null}));
  expect(first.status).toBe('needs_input');
- const invoke=vi.fn(f.options.planner.invoke);
- const resumed=await resumeInvestigation({...f.options,planner:{invoke},timeoutMs:10000,now:()=>Date.now()+20000},first.id,{expectedRevision:1,idempotencyKey:crypto.randomUUID(),productMark:null,packagingMark:'PK-2002',captureId:null});
- expect(resumed.errorCode).toBe('session_expired');expect(resumed.finding?.status).toBe('unavailable');expect(invoke).not.toHaveBeenCalled();
+ const invoke=vi.fn(f.options.planner.invoke);vi.setSystemTime(new Date(Date.now()+20000));
+ const resumed=await resumeInvestigation({...f.options,planner:{invoke},timeoutMs:10000},first.id,{expectedRevision:1,idempotencyKey:crypto.randomUUID(),productMark:null,packagingMark:'PK-2002',captureId:null});
+ expect(resumed.errorCode).toBeNull();expect(resumed.finding?.status).toBe('supported');expect(invoke).toHaveBeenCalled();expect(resumed.finding?.history?.data?.snapshot?.asOf).toBe('2026-11-01T12:00:00.000Z');
 });

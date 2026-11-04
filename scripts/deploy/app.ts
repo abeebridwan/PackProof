@@ -52,7 +52,7 @@ if(prior){
   files.push({file:path,data:data.toString('base64'),encoding:'base64'});manifest.push({path,sha256:createHash('sha256').update(data).digest('hex'),bytes:data.length});
  }
  async function tree(path:string){for(const e of (await readdir(path,{withFileTypes:true})).sort((a,b)=>a.name.localeCompare(b.name))){if(e.isSymbolicLink())throw new Error('Upload symlink refused');if(e.isDirectory())await tree(`${path}/${e.name}`);else if(e.isFile())await add(`${path}/${e.name}`);}}
- for(const file of ['package.json','pnpm-lock.yaml','pnpm-workspace.yaml','.npmrc','next.config.ts','tsconfig.json','tsconfig.app.json','vercel.json','certs/supabase-roots.crt','docs/packproof/demo/root-public.json','docs/packproof/evidence/provider.json','docs/packproof/evidence/sam/special-token-output.txt'])await add(file);
+ for(const file of ['package.json','pnpm-lock.yaml','pnpm-workspace.yaml','.npmrc','next.config.ts','tsconfig.json','tsconfig.app.json','vercel.json','certs/supabase-roots.crt','docs/packproof/demo/root-public.json','docs/packproof/evidence/provider.json','docs/packproof/evidence/sam/special-token-output.txt','scripts/p4/build.ts'])await add(file);
  for(const folder of ['src','public','scripts/spikes'])await tree(folder);
  const sourceSha256=createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
  const receipt:Receipt={projectId,teamId,attempt,sourceSha256,files:manifest,createdAt:new Date().toISOString()};
@@ -77,7 +77,7 @@ if(prior){
  }else{
   const existing=await api(`/v9/projects/${projectId}/env?${query}&decrypt=false`);
   existingProductionNames=existing.envs.filter((v:{target?:string[]})=>v.target?.includes('production')).map((v:{key:string})=>v.key);
-  for(const key of ['P1_PROVIDER_MODE','P2_ENABLED','SUPABASE_PROJECT_REF','SUPABASE_URL','SUPABASE_PUBLISHABLE_KEY','SUPABASE_SECRET_KEY','SUPABASE_DB_URL','SUPABASE_DB_SSLROOTCERT','TRANSFER_SIGNING_JWK','APP_ORIGIN'])if(!existingProductionNames.includes(key))throw new Error('Required existing Production configuration missing');
+  for(const key of ['P1_PROVIDER_MODE','P2_ENABLED','SUPABASE_PROJECT_REF','SUPABASE_URL','SUPABASE_PUBLISHABLE_KEY','SUPABASE_SECRET_KEY','SUPABASE_DB_URL','SUPABASE_DB_SSLROOTCERT','TRANSFER_SIGNING_JWK','APP_ORIGIN',...(manifest.some(f=>f.path==='src/offline/viewer.ts')?['PACK_SIGNING_JWK']:[])])if(!existingProductionNames.includes(key))throw new Error('Required existing Production configuration missing');
  }
  if(prepare){
   await writeFile(`${directory}/${target}-upload-manifest.json`,JSON.stringify({...receipt,environmentNames:reuseProduction?existingProductionNames:Object.keys(settings),credentialDestination:reuseProduction?'Existing Production variables inherited without writes':`existing Vercel project, encrypted ${target} environment`,productionChanged:false,target},null,2)+'\n',{mode:0o600});
@@ -86,7 +86,7 @@ if(prior){
  // Persist intent before any mutation; an uncertain outcome is never replayed.
  await writeFile(receiptPath,JSON.stringify(receipt,null,2)+'\n',{flag:'wx',mode:0o600});
  if(!reuseProduction)await api(`/v10/projects/${projectId}/env?${query}&upsert=true`,'POST',Object.entries(settings).map(([key,value])=>({key,value,type:'encrypted',target:[target]})));
- const d=await api(`/v13/deployments?${query}`,'POST',{name:project!.name,project:projectId,files,...(production?{target:'production'}:{}),projectSettings:{framework:'nextjs',nodeVersion:'24.x',buildCommand:'pnpm build',installCommand:'pnpm install --frozen-lockfile',outputDirectory:null,rootDirectory:null,serverlessFunctionRegion:'fra1'},meta:{packproofPhase:manifest.some(f=>f.path==='src/app/inspector/page.tsx')?'P3':p2Enabled?'P2':'P1D',sourceSha256,providerMode:'recorded-demo',environment:target}});
+ const d=await api(`/v13/deployments?${query}`,'POST',{name:project!.name,project:projectId,files,...(production?{target:'production'}:{}),projectSettings:{framework:'nextjs',nodeVersion:'24.x',buildCommand:'pnpm build',installCommand:'pnpm install --frozen-lockfile',outputDirectory:null,rootDirectory:null,serverlessFunctionRegion:'fra1'},meta:{packproofPhase:manifest.some(f=>f.path==='src/offline/viewer.ts')?'P4':manifest.some(f=>f.path==='src/app/inspector/page.tsx')?'P3':p2Enabled?'P2':'P1D',sourceSha256,providerMode:'recorded-demo',environment:target}});
  if(!d.id||!d.url)throw new Error('Deployment registration incomplete; inspect existing attempt');
  Object.assign(receipt,{id:d.id,url:`https://${d.url}`,readyState:d.readyState});await writeFile(receiptPath,JSON.stringify(receipt,null,2)+'\n',{mode:0o600});
  console.log(JSON.stringify({id:d.id,url:`https://${d.url}`,readyState:d.readyState,projectId,sourceSha256,uploadedFiles:files.length,created:true,target,productionDeploymentRequested:production,modelCredentialsUploaded:false,receiptOnlySigningKeyUploaded:p2Enabled&&!reuseProduction,reusedExistingProductionEnvironment:reuseProduction}));

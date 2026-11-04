@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "version": "202611030007",
+  "sha256": "4882bc5268608506cacba53d38db2b6b8b5fb83ae37e16d0fd1a7564a85d25d8",
+  "newlyApplied": true,
+  "security": [
+    {
+      "relname": "offline_directories",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true,
+      "public_read": false,
+      "client_write": false
+    },
+    {
+      "relname": "pack_sequences",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true,
+      "public_read": false,
+      "client_write": false
+    },
+    {
+      "relname": "offline_exports",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true,
+      "public_read": false,
+      "client_write": false
+    },
+    {
+      "relname": "public_offline_snapshots",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true,
+      "public_read": false,
+      "client_write": false
+    },
+    {
+      "relname": "pack_export_limits",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true,
+      "public_read": false,
+      "client_write": false
+    }
+  ]
+}

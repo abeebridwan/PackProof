@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "checks": {
+    "conditions": "Desktop installed Chrome, persistent profile, production Next build, actual Supabase; software offline mode and request interception, not physical Android/Bluetooth",
+    "providerRequests": 0,
+    "anonymousExportDenied": true,
+    "authenticatedExportAndAcceptedPack": {
+      "bytes": 52750,
+      "packs": 1
+    },
+    "atomicInterruptionPreservesState": [
+      "after-validation",
+      "before-put",
+      "after-put"
+    ],
+    "tamperAndRollbackPreserveState": true,
+    "actualP2ReceiptBothConsents": "passed without transfer/enrollment",
+    "cacheContainsOnlyPublicViewerAssets": [
+      "/offline/icon192.png",
+      "/offline/icon512.png",
+      "/offline/index.html",
+      "/offline/manifest.webmanifest",
+      "/offline/style.css",
+      "/offline/viewer.js"
+    ],
+    "mobile390NoOverflow": true,
+    "closedBrowserReopenedOffline": {
+      "loadMs": 339,
+      "networkRequestsObserved": 6,
+      "note": "Navigation and assets are service-worker responses; no API/auth requests required"
+    },
+    "secondPackImportedOffline": true,
+    "offlineLiteralPairMatchMismatchAndUnknown": true,
+    "offlineReloadRecovery": true,
+    "rollbackAfterColdReopenAndReload": true,
+    "offlineMalformedPreservesState": true,
+    "clearedTrustFailsClosed": true,
+    "storageObservation": {
+      "usage": 1440654,
+      "quota": 10738858894,
+      "usageDetails": {
+        "caches": 924928,
+        "indexedDB": 514580,
+        "serviceWorkerRegistrations": 1146
+      },
+      "conditions": "Desktop origin estimate after the completed test cleared local trust and accepted packs; includes browser storage/backing-file overhead, not a phone or per-pack footprint."
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "phase": "P4",
+  "status": "partial",
+  "date": "2026-11-03T18:55:55.566Z",
+  "baselineCommit": "e3e4688",
+  "deployment": {
+    "id": "dpl_8tfTkovpRrMrvodZVM6KMAFDvTyZ",
+    "permanentUrl": "https://packproof-p0.vercel.app",
+    "offlineUrl": "https://packproof-p0.vercel.app/offline/index.html",
+    "readyState": "READY",
+    "sourceSha256": "a8078bc01708916eacb0197ac55f62d90a3753392cf9e423a9ab5d0f64c71c90",
+    "files": 107,
+    "workspaceAndIsolatedArtifactMatch": true,
+    "rootIssuerOrMetaKeysUploaded": false,
+    "packSigner": "Explicit user-approved encrypted server-only Production; distinct root-authorized pack-manifest/public-custody-snapshot grant"
+  },
+  "gates": {
+    "O1": "passed desktop cold reopen plus user-confirmed vivo offline Chrome force-stop/reopen and second valid gap-pack import",
+    "O2": "passed",
+    "O3": "passed including contradictory allocation rejection and actual rollback after cold reopen/reload",
+    "O4": "passed_user_reported; actual Redmi \u2192 vivo Bluetooth with Wi-Fi/mobile data off on both phones; valid import, cold reopen, second gap pack and tamper rejection preserving prior records",
+    "R1": "partial; integrated app and P4 phone checks passed, demo-film evidence not supplied and user confirms no public repository exists yet"
+  },
+  "checks": {
+    "broadUnit": {
+      "command": "pnpm exec vitest run tests/unit --reporter=json --outputFile=docs/packproof/evidence/p4-regression-unit.json",
+      "passed": 178
+    },
+    "finalTargeted": {
+      "command": "pnpm exec vitest run tests/unit/offline.test.ts tests/unit/p1-performance.test.ts",
+      "exitCode": 0,
+      "passed": 24,
+      "offlineCases": 18,
+      "performanceCases": 6,
+      "provenance": "Observed final Vitest CLI output; meaningful source changes covered without another broad suite"
+    },
+    "realSupabaseP4": 1,
+    "preservedP3Integrations": 2,
+    "typecheck": "passed",
+    "build": "Workspace and isolated107file source passed; final equivalent3-step build and Vercel READY",
+    "isolation": {
+      "status": "passed",
+      "clientAssetsChecked": 43,
+      "serverTracesChecked": 19,
+      "tracedReferencesChecked": 9110,
+      "changedFilesChecked": 48,
+      "gitTrackedFilesChecked": 395,
+      "secretValuesChecked": 14,
+      "privateKeyBytesFound": 0,
+      "operatorFilesTraced": 0,
+      "providerRequests": 0
+    },
+    "softwareColdReopenMs": 339,
+    "productionPack": {
+      "bytes": 52752,
+      "sequence": 10,
+      "registeredOwnerVersion": 2,
+      "privateMediaCount": 0,
+      "serverTiming": "pack;dur=1243"
+    },
+    "preservation": {
+      "status": "passed",
+      "mode": "Read-only post-release database preservation check",
+      "originalSignedRecordsUnchanged": 33,
+      "acceptedTransfers": 1,
+      "ownerVersion": 2,
+      "ownerRecordId": "518246e0-1fc6-42c6-9cb8-25902a92648e",
+      "credentialsAndOfflineReceiptKeysUnchanged": true,
+      "ownershipWrites": 0,
+      "providerRequests": 0
+    },
+    "storageObservation": {
+      "usage": 1440654,
+      "quota": 10738858894,
+      "usageDetails": {
+        "caches": 924928,
+        "indexedDB": 514580,
+        "serviceWorkerRegistrations": 1146
+      },
+      "conditions": "Desktop origin estimate after the completed test cleared local trust and accepted packs; includes browser storage/backing-file overhead, not a phone or per-pack footprint."
+    }
+  },
+  "budget": {
+    "newPaidInferenceRequests": 0,
+    "newInferenceSpendUsd": 0,
+    "p3Requests": 7,
+    "p3ReservedUsd": 1.75,
+    "p3AllowanceUsd": 5,
+    "actualP3BillingUsd": null,
+    "priorAllowancesReused": false,
+    "publicMode": "recorded-demo"
+  },
+  "limits": [
+    "Physical P4 outcomes are user-confirmed; raw device report, measured phone file sizes and transfer/verification timings were not supplied",
+    "No new ownership transfer or offline commit",
+    "24-hour demo directory/status policy; current directory expires2026-11-04T18:30:04.173Z",
+    "Offline current ownership, later notices/revocations, physical association, legal title, safety and genuineness remain unknown",
+    "User requested a local P4 commit on 2026-11-04; no Git push, repository publication, film recording or submission performed by the agent"
+  ],
+  "evidence": [
+    "P4.md",
+    "p4-migration.json",
+    "p4-authority.json",
+    "p4-integration.json",
+    "p4-regression-unit.json",
+    "p4-p3-integration.json",
+    "p4-browser.json",
+    "p4-isolation.json",
+    "p4-production-smoke.json"
+  ],
+  "manualProgress": {
+    "provenance": "user_chat",
+    "date": "2026-11-04",
+    "devices": {
+      "sender": "Redmi 10A",
+      "receiver": "vivo Y03"
+    },
+    "trustedSetupBoth": "passed_user_reported",
+    "redmiPackDownload": "passed_user_reported",
+    "vivoReceivedPackImport": {
+      "status": "passed_user_reported",
+      "statement": "pack accepted. signature and depencies verifed locally"
+    },
+    "transportAndInternet": {
+      "status": "confirmed_user_reported",
+      "statement": "Yes \u2014 Bluetooth, both phones offline",
+      "method": "Bluetooth sharing",
+      "direction": "Redmi 10A \u2192 vivo Y03; prepared tampered copy delivered laptop \u2192 Redmi \u2192 vivo",
+      "wifiOnDuringTransferAndImport": false,
+      "mobileDataOnDuringTransferAndImport": false,
+      "scope": "Both valid and tampered signed-pack transfers/imports, explicitly reconfirmed in chat"
+    },
+    "coldReopen": {
+      "status": "passed_user_reported",
+      "statement": "yes - all returned while offline",
+      "reloadMethod": "Chrome pull-to-refresh; no in-app reload button required",
+      "scope": "User confirms product/packaging pair, packaging notice and dated owner returned offline after the requested Chrome force-stop/reopen procedure"
+    },
+    "gapPackImport": {
+      "status": "passed_user_reported",
+      "statement": "Yes \u2014 pack accepted and history gap shown",
+      "scope": "Second signed gap pack imported on vivo while it remained offline, after the requested Redmi download/transfer procedure"
+    },
+    "tamperedPackPreservesState": {
+      "status": "passed_user_reported",
+      "statement": "Rejected; existing records remain",
+      "scope": "In response to the prepared tampered signed-pack test, laptop to Redmi to vivo, with internet-off instructions. User confirms rejection and accepted product/gap evidence retained."
+    },
+    "transferDurationSeconds": null,
+    "fileBytes": null,
+    "evidenceLimitations": "User-performed physical checks confirmed in chat; no raw P4 device report supplied. Phone file sizes, transfer durations and verification/storage timings were not measured or supplied. Earlier P0 OS/browser metadata is retained as prior evidence, not remeasured for P4."
+  },
+  "manualUpdatedAt": "2026-11-04",
+  "offlineFunctionalGatesPassed": true,
+  "repositoryConfirmation": {
+    "provenance": "user_chat",
+    "date": "2026-11-04",
+    "statement": "none yet",
+    "status": "not_created"
+  },
+  "gitAction": {
+    "date": "2026-11-04",
+    "authorization": "User requested: committ it and give handoff",
+    "scope": "Local commit only; no Git push or repository publication"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "purpose": "Dedicated pack-manifest and public-custody-snapshot only; never transfer authority",
+  "rootKeyId": "30000000-0000-4000-8000-000000000011",
+  "packKeyId": "5cfb7e97-52cc-47c1-9228-294665cd9fca",
+  "packIssuerId": "83df1870-a08f-4218-8833-e83a8a5276e8",
+  "directoryVersion": 1,
+  "issuedAt": "2026-11-03T18:30:04.173Z",
+  "expiresAt": "2026-11-04T18:30:04.173Z",
+  "rootAndProductIssuerKeysDeployed": false,
+  "receiptKeyReused": false,
+  "appendOnly": true
+}

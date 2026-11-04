@@ -102,7 +102,7 @@ export default function ChainProof(){
  function closeView(){controls.current?.stop();stopAnimation.current?.();setScanning(false);setFrames([]);setConsent(null);setView(null);setReceiptVerified(false);currentView.current=null;localStorage.removeItem('packproof-transfer-id');setNotice('Ready for another handover.');}
  return <div className={`app-shell chainproof${account?' is-signed-in':''}`}>
   <a className="skip-link" href="#chainproof-main">Skip to handover</a>
-  <header className="topbar"><a className="brand" href="/"><img src="/icon.svg" alt="" width={36} height={36}/>PackProof</a><nav aria-label="Main navigation"><a href="/">Investigator</a><a href="/tools">Device checks</a></nav></header>
+  <header className="topbar"><a className="brand" href="/"><img src="/icon.svg" alt="" width={36} height={36}/>PackProof</a><nav aria-label="Main navigation"><a href="/">Investigator</a><a href="/offline/index.html">OfflineProof</a><a href="/tools">Device checks</a></nav></header>
   <main id="chainproof-main">
    <div className="page-heading"><div><span className="eyebrow">CHAINPROOF · REGISTERED HANDOVER</span><h1>{account?'Handover':'One item. Both approvals.'}</h1>{!account&&<p>The buyer and seller review the same item, scan each other’s QR and approve. The server checks ownership before recording a transfer.</p>}</div>{account?<span className="chain-demo-badge">Fictional demo · Registered ownership</span>:<aside className="demo-note"><div><b>Fictional demonstration</b><p>Registered ownership only. Physical authenticity, legal title and proximity are not proven.</p></div></aside>}</div>
    {error&&<div className="error-box" role="alert">{error}</div>}{notice&&<p className="chain-notice" role="status">{notice}</p>}

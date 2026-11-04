@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "conditions": "Actual Supabase TLS; public export role; full restricted owner chain verified internally; no ownership writes",
+  "packs": [
+    {
+      "kind": "FP-1002 first",
+      "bytes": 52750,
+      "creationMs": 2521
+    },
+    {
+      "kind": "FP-1002 next",
+      "bytes": 52750,
+      "creationMs": 2486
+    },
+    {
+      "kind": "history gap",
+      "bytes": 48031,
+      "creationMs": 2232
+    }
+  ],
+  "verifyMs": 93.77393099999972,
+  "registeredOwnerVersion": 2,
+  "privateReceiptOrCurrentAccountIdentifiersExported": false,
+  "anonymousReadDenied": true,
+  "sourceOwnershipWritesDenied": true,
+  "sourceOwnerAndReceiptUnchanged": true,
+  "providerRequests": 0
+}

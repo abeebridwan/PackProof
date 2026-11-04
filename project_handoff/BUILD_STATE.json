@@ -3,7 +3,7 @@
   "project": "PackProof",
   "productVersion": "v10",
   "status": "partial",
-  "currentPhase": "P3",
+  "currentPhase": "P4",
   "timezone": "Africa/Lagos",
   "officialDeadline": "2026-11-05T03:00:00+01:00",
   "internalTarget": "2026-11-04T20:00:00+01:00",
@@ -1101,11 +1101,137 @@
     },
     {
       "id": "P4",
-      "status": "not_started",
-      "evidence": [],
-      "passed": [],
+      "status": "partial",
+      "evidence": [
+        "docs/packproof/evidence/P4.md",
+        "docs/packproof/evidence/p4-migration.json",
+        "docs/packproof/evidence/p4-authority.json",
+        "docs/packproof/evidence/p4-integration.json",
+        "docs/packproof/evidence/p4-regression-unit.json",
+        "docs/packproof/evidence/p4-p3-integration.json",
+        "docs/packproof/evidence/p4-browser.json",
+        "docs/packproof/evidence/p4-isolation.json",
+        "docs/packproof/evidence/p4-production-smoke.json",
+        "docs/packproof/evidence/p4-release.json"
+      ],
+      "passed": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
       "failed": [],
-      "blocked": []
+      "blocked": [
+        "R1 film and public repository evidence pending"
+      ],
+      "implementation": "implemented and deployed; O1\u2013O4 functional gates passed with user-confirmed physical Android/Bluetooth checks; R1 film/public-repository evidence pending",
+      "acceptance": {
+        "O1": {
+          "status": "passed",
+          "scope": "Actual desktop Chrome persistent-profile cold offline reopen and second valid pack import passed. On vivo Y03, the user also confirms offline Chrome force-stop/reopen/pull-to-refresh restored the signed pair, notice and dated owner; a second history-gap pack was imported while vivo remained offline. Local literal matching/mismatch/unknown checks remain independently covered in desktop software tests.",
+          "evidence": [
+            "docs/packproof/evidence/p4-browser.json",
+            "docs/packproof/evidence/p4-release.json"
+          ]
+        },
+        "O2": {
+          "status": "passed",
+          "scope": "Bounded schema, exact bytes/hash, pinned root, scoped signer, revoked issuer, media, dependency, scope and signature negatives; atomic aborts retain prior state.",
+          "evidence": [
+            "docs/packproof/evidence/p4-regression-unit.json",
+            "docs/packproof/evidence/p4-browser.json"
+          ]
+        },
+        "O3": {
+          "status": "passed",
+          "scope": "Scope/sequence rollback including after actual cold reopen/reload; retained warnings/revocations; partial coverage, expired evidence, ownership conflicts and unreliable clock. A separately signed second allocation or mapping for a known unit is rejected.",
+          "evidence": [
+            "docs/packproof/evidence/p4-regression-unit.json",
+            "docs/packproof/evidence/p4-browser.json"
+          ]
+        },
+        "O4": {
+          "status": "passed",
+          "scope": "User-confirmed real Redmi 10A \u2192 vivo Y03 Bluetooth transfers with Wi-Fi and mobile data off on both phones during transfer/import. Valid pack signatures/dependencies verified locally; offline Chrome restart restored evidence; second signed pack exposed its history gap; deliberately tampered pack rejected and prior records retained.",
+          "priorP0P2AcceptanceReused": false,
+          "provenance": "user_chat_confirmation",
+          "date": "2026-11-04",
+          "evidence": "docs/packproof/evidence/p4-release.json",
+          "limitation": "User-performed physical checks confirmed in chat; no raw P4 device report supplied. Phone file sizes, transfer durations and verification/storage timings were not measured or supplied. Earlier P0 OS/browser metadata is retained as prior evidence, not remeasured for P4."
+        },
+        "R1": {
+          "status": "partial",
+          "scope": "Permanent HTTPS routes, Shop A refusal in recorded mode, existing real receipt and both approvals, Inspector regression, public offline pack and offline reload passed.",
+          "film": "not_recorded_or_submitted",
+          "repository": "User confirmed \u201cnone yet\u201d on 2026-11-04: no public repository created. No publication or push performed.",
+          "evidence": "docs/packproof/evidence/p4-production-smoke.json",
+          "repositoryConfirmation": {
+            "provenance": "user_chat",
+            "date": "2026-11-04",
+            "statement": "none yet",
+            "status": "not_created"
+          }
+        }
+      },
+      "signing": {
+        "role": "Separate root-authorized pack signer, purposes pack-manifest/public-custody-snapshot only",
+        "receiptKeyReused": false,
+        "rootAndIssuerPrivateKeysDeployed": false,
+        "publicOwnershipProjection": "Dated server projection, item-scoped limited holder reference, revision follows actual owner version; not current/offline transfer authority",
+        "productionSecret": "Encrypted server-only PACK_SIGNING_JWK; explicit user approval"
+      },
+      "freshness": {
+        "policyHours": 24,
+        "directoryExpiresAt": "2026-11-04T18:30:04.173Z",
+        "renewal": "Explicit append-only offline root operator; no automatic renewal of original signed snapshots"
+      },
+      "newPaidInferenceRequests": 0,
+      "newInferenceSpendUsd": 0,
+      "hardwareTestStatus": "passed_user_reported",
+      "verified": false,
+      "manualConfirmation": {
+        "provenance": "user_chat",
+        "date": "2026-11-04",
+        "devices": {
+          "sender": "Redmi 10A",
+          "receiver": "vivo Y03"
+        },
+        "trustedSetupBoth": "passed_user_reported",
+        "redmiPackDownload": "passed_user_reported",
+        "vivoReceivedPackImport": {
+          "status": "passed_user_reported",
+          "statement": "pack accepted. signature and depencies verifed locally"
+        },
+        "transportAndInternet": {
+          "status": "confirmed_user_reported",
+          "statement": "Yes \u2014 Bluetooth, both phones offline",
+          "method": "Bluetooth sharing",
+          "direction": "Redmi 10A \u2192 vivo Y03; prepared tampered copy delivered laptop \u2192 Redmi \u2192 vivo",
+          "wifiOnDuringTransferAndImport": false,
+          "mobileDataOnDuringTransferAndImport": false,
+          "scope": "Both valid and tampered signed-pack transfers/imports, explicitly reconfirmed in chat"
+        },
+        "coldReopen": {
+          "status": "passed_user_reported",
+          "statement": "yes - all returned while offline",
+          "reloadMethod": "Chrome pull-to-refresh; no in-app reload button required",
+          "scope": "User confirms product/packaging pair, packaging notice and dated owner returned offline after the requested Chrome force-stop/reopen procedure"
+        },
+        "gapPackImport": {
+          "status": "passed_user_reported",
+          "statement": "Yes \u2014 pack accepted and history gap shown",
+          "scope": "Second signed gap pack imported on vivo while it remained offline, after the requested Redmi download/transfer procedure"
+        },
+        "tamperedPackPreservesState": {
+          "status": "passed_user_reported",
+          "statement": "Rejected; existing records remain",
+          "scope": "In response to the prepared tampered signed-pack test, laptop to Redmi to vivo, with internet-off instructions. User confirms rejection and accepted product/gap evidence retained."
+        },
+        "transferDurationSeconds": null,
+        "fileBytes": null,
+        "evidenceLimitations": "User-performed physical checks confirmed in chat; no raw P4 device report supplied. Phone file sizes, transfer durations and verification/storage timings were not measured or supplied. Earlier P0 OS/browser metadata is retained as prior evidence, not remeasured for P4."
+      },
+      "offlineFunctionalGatesPassed": true
     }
   ],
   "providerLiveResults": {
@@ -1149,7 +1275,7 @@
   },
   "p1Ready": true,
   "handoffDirectory": "project_handoff",
-  "repositoryStatus": "P3 verified and published; implementation, concise current state and essential evidence included in the requested release commit. Private media/credentials/keys remain ignored.",
+  "repositoryStatus": "P4 implementation deployed; O1\u2013O4 passed including user-confirmed real phone testing. User requested a local commit after acceptance on 2026-11-04. No Git push or public repository publication performed. P4 remains partial only for R1 film/public-repository evidence.",
   "localToolchain": {
     "node": "24.22.2",
     "pnpm": "12.16.1",
@@ -1158,7 +1284,7 @@
     "activationCommand": "export PATH=\"$PWD/.local/toolchain/node_modules/.bin:$PATH\"",
     "frozenInstall": "passed"
   },
-  "lastUpdated": "2026-11-03",
+  "lastUpdated": "2026-11-04",
   "architectureAmendment": "project_handoff/Architecture_Amendments.md",
   "compatibility": {
     "langchain": {
@@ -1225,13 +1351,13 @@
       "preview"
     ],
     "previewEncryptedEnvironmentCount": 11,
-    "productionPromotion": "P3 Inspector published after release checks; existing Production configuration inherited, no credential/environment writes",
-    "productionEncryptedEnvironmentCount": 14,
+    "productionPromotion": "P4 published after privacy, crypto, rollback, PWA and isolated-build security checks; existing approved configuration inherited; distinct pack key explicitly approved for encrypted Production.",
+    "productionEncryptedEnvironmentCount": 15,
     "productionCredentialTargets": [
       "production"
     ],
     "toolsUrl": "https://packproof-p0.vercel.app/tools",
-    "productionDeploymentId": "dpl_9QAK9b1D5Fpkb7EJJcP9p6f66oTC",
+    "productionDeploymentId": "dpl_8tfTkovpRrMrvodZVM6KMAFDvTyZ",
     "receiptSigningCredentialTargets": [
       "preview",
       "production"
@@ -1239,27 +1365,30 @@
     "chainproofUrl": "https://packproof-p0.vercel.app/chainproof",
     "previewDeploymentId": "dpl_7JSAkTgLxzBziDrDFnV3ysBG73FA",
     "previewInspectorUrl": "https://packproof-p0-preview.vercel.app/inspector",
-    "productionSourceSha256": "4f2f14fe58a0c9289cf15370745887401ecf2aafe1ae22949f8c707e9ed6d94a",
+    "productionSourceSha256": "a8078bc01708916eacb0197ac55f62d90a3753392cf9e423a9ab5d0f64c71c90",
     "inspectorUrl": "https://packproof-p0.vercel.app/inspector",
-    "publicProviderMode": "recorded-demo"
+    "publicProviderMode": "recorded-demo",
+    "offlineUrl": "https://packproof-p0.vercel.app/offline/index.html",
+    "packSigningCredentialTargets": [
+      "production"
+    ]
   },
   "testingGuide": "TESTING.md",
-  "continuationBaselineCommit": "6955ed6",
+  "continuationBaselineCommit": "e3e4688",
   "latestLocalValidation": {
-    "phase": "P3",
+    "phase": "P4",
     "typecheck": "passed",
-    "productionBuild": "passed isolated exact97file source and Vercel Production build",
-    "unit": "38 targeted tests passed",
-    "integration": "Latest focused actual Supabase owner-isolation/metadata/consent/redaction/revision case passed; earlier2 P3 cases retained",
-    "browser": "Final production build and public HTTPS Inspector/recorded source/region/reload/privacy/P0/ChainProof passed",
-    "secretScan": "41 client assets /17 traces /8791 references /13 secret values, no leaks or operator files",
-    "existingReceiptRegression": "Existing buyer receipt and both device consents verified on final local build and public Production; no transfer/enrollment",
-    "preservation": "Exactly1 accepted transfer, buyer owner/version2,33 original signed records and private files unchanged",
-    "manual": "User-confirmed vivo Y03 real SAM/Muse expiry and same result/images after refresh",
-    "evidence": "docs/packproof/evidence/p3-release.json"
+    "productionBuild": "passed workspace and isolated exact107file source; Vercel Production ready",
+    "unit": "178 broad regression passes plus24 final targeted passes, including18 OfflineProof cases",
+    "integration": "Actual Supabase P4 export/privacy/sequence/preservation case passed;2 existing P3 Storage/RLS/grounded-recorded regression cases passed",
+    "browser": "Actual Chrome persisted DB, three atomic interruption stages, closed-browser offline reopen, another offline pack, rollback after cold reopen/reload, tamper/malformed rejection and trust-clear failure passed",
+    "secretScan": "43 client assets plus offline HTML/JS/CSS;19 traces/9110 references/14 secrets; no leak/operator files",
+    "existingReceiptRegression": "Original receipt and both approvals verified locally and on Production; one accepted transfer/owner2/33 original signed records and existing private files unchanged",
+    "manual": "P4 Redmi/vivo Bluetooth transfers, offline verification/reopen, gap import and tamper-preservation passed by user report; no physical timing/file-size measurements supplied",
+    "evidence": "docs/packproof/evidence/p4-release.json"
   },
   "p1IndependentWorkAuthorized": true,
-  "nextAuthorizedWork": "P3 checkpoint complete. No P4 work started; await a separately scoped instruction.",
+  "nextAuthorizedWork": "Record the user-requested local P4 commit. R1 still needs demo-film evidence and explicitly authorized public-repository publication/accessibility. No Git push, publication, submission or later phase authorized.",
   "p1bReadiness": {
     "foundationReady": true,
     "implementationStarted": true,
@@ -1351,13 +1480,16 @@
   },
   "previewUrl": "https://packproof-p0-preview.vercel.app",
   "latestManualValidation": {
-    "phase": "P3",
-    "date": "2026-11-03",
+    "phase": "P4",
+    "date": "2026-11-04",
     "status": "passed_user_reported",
-    "device": "vivo Y03",
-    "scope": "Actual local HTTPS approved-photo SAM/Muse expiry result and refresh recovery",
-    "evidence": "docs/packproof/evidence/p3-vivo-live.json",
-    "priorP0P2PhoneEvidence": "Preserved in the existing phase records and evidence; no repetition required"
+    "devices": [
+      "Redmi 10A",
+      "vivo Y03"
+    ],
+    "scope": "Real Bluetooth signed-pack transfer/import with both phones offline, vivo Chrome cold-reopen recovery, second gap pack and tampered-copy rejection preserving accepted records",
+    "evidence": "docs/packproof/evidence/p4-release.json",
+    "priorManualEvidence": "P0\u2013P3 phase records and evidence preserved, including P3 live photo/reload validation"
   },
   "p3Ready": true,
   "p3Budget": {

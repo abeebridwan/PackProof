@@ -1,3 +1,4 @@
+import '../fixtures/clock.js';
 import {it,expect} from 'vitest';
 import {EVIDENCE_CASES} from '../fixtures/evidence-cases.js';
 import {fixture,input} from '../fixtures/investigator-memory.js';
