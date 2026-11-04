@@ -7,8 +7,8 @@
   "organization": "packproof",
   "publisher": "olumide100",
   "organizationRole": "owner",
-  "status": "awaiting_npm_browser_authentication",
-  "checkedAt": "2026-11-04T18:19:48.116407+00:00",
+  "status": "published_verified",
+  "checkedAt": "2026-11-04T18:24:05.863553+00:00",
   "archive": {
     "bytes": 24399,
     "unpackedBytes": 211083,
@@ -24,7 +24,11 @@
     "packagedRuntimeChecksPassed": 4,
     "packagedDeclarations": "passed",
     "privateAccessSheet": "passed_390px",
-    "changedFileSecretAudit": "passed"
+    "changedFileSecretAudit": "passed",
+    "publicRegistryInstallAndImport": "passed",
+    "uploadedSourceMatchesWorkspace": true,
+    "previewBuild": "passed",
+    "hostedMobileChecksPassed": 3
   },
   "accessSheet": {
     "path": ".local/review/access.html",
@@ -36,5 +40,32 @@
   },
   "providerRequests": 0,
   "ownershipCommits": 0,
-  "actualPublishConfirmed": false
+  "actualPublishConfirmed": true,
+  "publication": {
+    "npmPublishExitCode": 0,
+    "registryWriteHttp": 202,
+    "registryRead": "passed_after_processing",
+    "tarballUrl": "https://registry.npmjs.org/@packproof/sdk/-/sdk-0.1.0.tgz",
+    "publishedArchiveMatchesInspectedArchive": true
+  },
+  "preview": {
+    "status": "passed",
+    "origin": "https://packproof-p0-preview.vercel.app",
+    "deploymentId": "dpl_4Jtzrb4MKYUetcwznDixS4zJzTt4",
+    "sourceSha256": "baa1467b10404f37b462bcc559b2c11a72410836dccfb64f5e571f0a71c4d667",
+    "viewport": 390,
+    "checks": [
+      "published_npm_link_visible",
+      "install_command_visible",
+      "mobile_width_fits"
+    ],
+    "newProviderRequests": 0,
+    "ownershipCommits": 0,
+    "actualPhones": 0,
+    "startedAt": "2026-11-04T18:24:48.880Z",
+    "productionDeploymentId": "dpl_5YbVpaWLKf221xvakREHZrCt5s9X",
+    "productionUnchanged": true,
+    "temporaryBypassRevoked": true,
+    "finishedAt": "2026-11-04T18:25:03.305Z"
+  }
 }

@@ -1602,7 +1602,7 @@
       "contract": "src/contracts/api-v1.ts",
       "mcp": "POST /api/mcp, official stateless Streamable HTTP v2",
       "mcpVersion": "2.4.0",
-      "sdk": "@packproof/sdk 0.1.0, MIT; clean release archive verified; npm browser authentication pending",
+      "sdk": "Published @packproof/sdk 0.1.0 on npm under MIT; exact public archive integrity verified",
       "webMCP": "Native document.modelContext registration and actual execution passed in desktop Chrome 156.0.8078.47 with feature flag",
       "privateAuth": "Current session, Supabase Bearer token or hashed/scoped/expiring developer key",
       "autonomousCommit": false
@@ -1784,8 +1784,8 @@
     "preview": {
       "status": "passed_deployed",
       "url": "https://packproof-p0-preview.vercel.app/",
-      "deploymentId": "dpl_D1TDK3kqFF9sq9jqhBYhacKD2h9x",
-      "sourceSha256": "88725e66f785000dd83194a9d40a30aeb1f8986a1ce552953adf5c1ebe7b65fd",
+      "deploymentId": "dpl_4Jtzrb4MKYUetcwznDixS4zJzTt4",
+      "sourceSha256": "baa1467b10404f37b462bcc559b2c11a72410836dccfb64f5e571f0a71c4d667",
       "protected": true,
       "productionDeploymentChanged": false,
       "newEncryptedPreviewVariables": [
@@ -1813,11 +1813,14 @@
       "hostedHomepageChecksPassed": 7,
       "productionChangeScope": "No change for mobile alignment; prior budget-only Production update retained.",
       "reviewerBudgetChecksPassed": 4,
-      "mobileAlignmentChecksPassed": 6
+      "mobileAlignmentChecksPassed": 6,
+      "sdkPublicationEvidence": "docs/packproof/evidence/sdk-release.json"
     },
     "sdkRelease": {
-      "status": "awaiting_npm_browser_authentication",
-      "evidence": "docs/packproof/evidence/sdk-release.json"
+      "status": "published_verified",
+      "evidence": "docs/packproof/evidence/sdk-release.json",
+      "url": "https://www.npmjs.com/package/@packproof/sdk",
+      "previewUrl": "https://packproof-p0-preview.vercel.app/developers"
     },
     "privateAccessSheet": {
       "roles": "First sender / First receiver per pair; separate Manufacturer / Producer sign-in",
