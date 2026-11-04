@@ -1,2 +1,2 @@
 export async function platformRead<T=any>(path:string,input?:unknown):Promise<T>{const r=await fetch(path,{cache:'no-store',...(input!==undefined?{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(input)}:{})});const value=await r.json();if(!r.ok)throw new Error(r.status===401?'Sign in to your PackProof account to continue.':value.message??value.error?.replaceAll('_',' ')??'Please try again.');return value;}
-export function displayText(text:string){return text.replace(/\bfictional\b/gi,'demo').replace(/\bfiction\b/gi,'demo');}
+export function displayText(text:string){return text.replace(/\b(?:fictional|fiction|demonstration|demo)\b/gi,'sample');}

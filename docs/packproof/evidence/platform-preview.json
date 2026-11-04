@@ -126,5 +126,15 @@
     "physicalPhoneRetest": "pending",
     "newProviderRequests": 0,
     "ownershipCommits": 0
+  },
+  "headerFollowup": {
+    "status": "passed",
+    "deploymentId": "dpl_47Air3nKDVYbKyQ5YCuyo6riwh62",
+    "sourceSha256": "71c70b0596daefd2f377360cdc79fc49e710508ab8a011d1fd78574d11fe506c",
+    "pagesChecked": 10,
+    "evidence": "docs/packproof/evidence/platform-browser.json#headerConsistency",
+    "temporaryBypassRevoked": true,
+    "newProviderRequests": 0,
+    "ownershipCommits": 0
   }
 }

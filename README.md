@@ -6,6 +6,8 @@ The permanent application is [packproof-p0.vercel.app](https://packproof-p0.verc
 
 ## Accounts and the connected flow
 
+Every feature uses the same header and Account / Sign in link. OfflineProof keeps saved evidence and file import available without internet, hides online-only actions offline and collapses completed setup.
+
 There are exactly two account types:
 
 - **Manufacturer / Producer** creates private product drafts and original evidence. Selecting it does not grant trusted issuer authority.

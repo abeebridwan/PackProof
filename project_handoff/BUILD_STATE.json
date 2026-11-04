@@ -1624,6 +1624,19 @@
         "build": "passed",
         "evidence": "docs/packproof/evidence/platform-browser.json#uiFollowup",
         "newProviderRequests": 0
+      },
+      "headerConsistency": {
+        "status": "passed",
+        "viewports": [
+          320,
+          390,
+          1280
+        ],
+        "pagesChecked": 10,
+        "realSignedPackAndOfflineReload": "passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "evidence": "docs/packproof/evidence/platform-browser.json#headerConsistency"
       }
     },
     "acceptance": {
@@ -1725,8 +1738,8 @@
     "preview": {
       "status": "passed_deployed",
       "url": "https://packproof-p0-preview.vercel.app/review",
-      "deploymentId": "dpl_E1MSYn5jniJgXji9SuincPWzLKJB",
-      "sourceSha256": "7653633221055936122f67452126905c1c0803a5aeee143435a4d0ead31989c9",
+      "deploymentId": "dpl_47Air3nKDVYbKyQ5YCuyo6riwh62",
+      "sourceSha256": "71c70b0596daefd2f377360cdc79fc49e710508ab8a011d1fd78574d11fe506c",
       "protected": true,
       "productionDeploymentChanged": false,
       "newEncryptedPreviewVariables": [
@@ -1737,13 +1750,20 @@
       ],
       "newProviderRequests": 0,
       "temporaryAutomationBypassRevoked": true,
-      "physicalPhoneWalkthrough": "feedback_received_corrected_ui_retest_pending",
+      "physicalPhoneWalkthrough": "corrected_header_retest_pending",
       "previousFunctionalHostedValidation": {
         "deploymentId": "dpl_CtVJEJtHE1PMhNpJeoGzonDgXiWd",
         "checksPassed": 26,
         "evidence": "docs/packproof/evidence/platform-preview.json"
       },
-      "hostedUiChecksPassed": 14
+      "previousUiValidation": {
+        "deploymentId": "dpl_E1MSYn5jniJgXji9SuincPWzLKJB",
+        "sourceSha256": "7653633221055936122f67452126905c1c0803a5aeee143435a4d0ead31989c9",
+        "hostedChecksPassed": 14,
+        "evidence": "docs/packproof/evidence/platform-browser.json#uiFollowup"
+      },
+      "hostedHeaderPagesChecked": 10,
+      "localOfflineBehavior": "passed"
     }
   }
 }

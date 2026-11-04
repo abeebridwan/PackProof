@@ -1,7 +1,7 @@
 'use client';
 import {platformRead} from '../../client/platform';
 import {preparePhoto} from '../../client/photo';
-import {Journey,useReview} from '../../client/journey';
+import {AppHeader,useReview} from '../../client/journey';
 import {useEffect,useRef,useState} from 'react';
 import {PublicInvestigation,type PublicInvestigation as Investigation} from '../../contracts/investigation';
 import {PublicObservation,Question as InspectionQuestion,type Question,type CaptureDetails} from '../../contracts/inspection';
@@ -50,7 +50,7 @@ export default function Inspector(){
  }catch(e){setError((e as Error).message);}finally{setBusy('');}}
  async function reload(){if(!result)return;setBusy('Loading the saved inspection…');try{await accept(await read(await fetch(`/api/investigations/${result.id}`,{cache:'no-store'})));setError('');}catch(e){setError((e as Error).message);}finally{setBusy('');}}
  const media=(id:string,kind:string)=>`/api/investigations/${result!.id}/media/${id}/${kind}`;
- return <div className="app-shell inspector"><header className="topbar"><a className="brand" href="/"><img src="/icon.svg" width="36" height="36" alt=""/>PackProof</a><a href="/">Investigator</a><a href="/chainproof">Handover</a></header><Journey/><main>
+ return <div className="app-shell inspector"><AppHeader/><main>
  <div className="page-heading"><div><span className="eyebrow">INSPECT THE VISIBLE DETAIL</span><h1>Show the mark.<br/><em>Keep the evidence.</em></h1><p>Take a photo or upload a short video. Read a label, inspect visible packaging condition and compare signed records.</p></div><aside className="demo-note"><p>{live?<>{localLive?<>Restricted local image testing is on. <a href="/p3-approved-photo" download>Download the approved test photo</a>.</>:<>Live SAM and Muse are on for your reviewer account. Take a non-sensitive photo or <a href="/review-label.png" target="_blank" rel="noreferrer">photograph our sample label</a>.</>} Inference uses the shared approved allowance. A reading does not verify ownership or renew signed records.</>:<>Live image analysis is off for this session. <a href="/review">Enter your reviewer invitation</a> to use live analysis when its allowance is available. A photo never changes ownership or renews a signed snapshot.</>}</p></aside></div>
  <div className="inspector-notifications" aria-label="Inspection notifications">
  {error&&<div className="error-box inspector-error" role="alert"><b>{error}</b>{result&&<button onClick={reload} disabled={!!busy}>Reload saved result</button>}</div>}

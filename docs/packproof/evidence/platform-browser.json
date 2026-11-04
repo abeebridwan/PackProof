@@ -231,5 +231,88 @@
       "finishedAt": "2026-11-04T15:45:34.825Z"
     },
     "physicalPhone": "Vivo Preview feedback identified hidden sign-in, DualProof and video controls. Corrected physical-device walkthrough pending; earlier P0\u2013P4 phone passes remain unchanged."
+  },
+  "headerConsistency": {
+    "local": {
+      "status": "passed",
+      "viewports": [
+        320,
+        390,
+        1280
+      ],
+      "pagesChecked": [
+        "/review",
+        "/",
+        "/account",
+        "/products",
+        "/inspector",
+        "/chainproof",
+        "/dualproof",
+        "/offline/index.html",
+        "/developers",
+        "/tools"
+      ],
+      "headerGeometry": "matching across pages at each width",
+      "decorativeDemoCopy": "absent",
+      "finalOfflineVerification": {
+        "status": "passed",
+        "checks": [
+          {
+            "name": "offline_account_uses_existing_auth",
+            "status": "passed"
+          },
+          {
+            "name": "completed_setup_collapses_without_changing_trust",
+            "status": "passed"
+          },
+          {
+            "name": "real_signed_pack_download_and_online_controls_collapsed",
+            "status": "passed"
+          },
+          {
+            "name": "offline_hides_online_only_controls",
+            "status": "passed"
+          },
+          {
+            "name": "new_shared_header_icon_and_signed_evidence_restore_offline",
+            "status": "passed"
+          }
+        ],
+        "finishedAt": "2026-11-04T15:59:17.936Z"
+      },
+      "newProviderRequests": 0,
+      "ownershipCommits": 0
+    },
+    "hosted": {
+      "status": "passed",
+      "origin": "https://packproof-p0-preview.vercel.app",
+      "deploymentId": "dpl_47Air3nKDVYbKyQ5YCuyo6riwh62",
+      "sourceSha256": "71c70b0596daefd2f377360cdc79fc49e710508ab8a011d1fd78574d11fe506c",
+      "viewport": 390,
+      "conditions": "Desktop Chrome; hosted layout check only. Offline persistence validated locally; physical-phone follow-up pending.",
+      "pagesChecked": [
+        "/review",
+        "/",
+        "/account",
+        "/products",
+        "/inspector",
+        "/chainproof",
+        "/dualproof",
+        "/offline/index.html",
+        "/developers",
+        "/tools"
+      ],
+      "newProviderRequests": 0,
+      "ownershipCommits": 0,
+      "startedAt": "2026-11-04T16:03:56.639Z",
+      "browserVersion": "156.0.8078.47",
+      "sharedAccountLink": "passed",
+      "headerGeometry": "matching",
+      "logos": "decoded on every page",
+      "decorativeDemoCopy": "absent",
+      "temporaryBypassRevoked": true,
+      "finishedAt": "2026-11-04T16:04:22.632Z"
+    },
+    "physicalPhoneRetest": "pending"
   }
 }

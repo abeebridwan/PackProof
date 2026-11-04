@@ -1,6 +1,6 @@
 'use client';
 import {displayText} from '../client/platform';
-import {Journey,useReview} from '../client/journey';
+import {AppHeader,useReview} from '../client/journey';
 import {FindingCards} from '../client/finding-cards';
 import {useEffect,useRef,useState} from 'react';
 import {PublicInvestigation,type PublicInvestigation as Investigation,type Finding} from '../contracts/investigation';
@@ -33,7 +33,7 @@ export default function Page(){
  }catch(e){setError(e instanceof Error?e.message:'Resume unavailable.');}finally{setBusy(false);}}
  async function refresh(){if(!result)return;try{accept(await read(await fetch(`/api/investigations/${result.id}`,{cache:'no-store'})));setError('');}catch(e){setError(e instanceof Error?e.message:'Refresh unavailable.');}}
  return <div className="app-shell">
- <a className="skip-link" href="#product-details">Skip to product details</a><header className="topbar"><a className="brand" href="/"><img src="/icon.svg" width="36" height="36" alt=""/><span>PackProof</span></a><span className="environment"><i/> Sample records</span></header><Journey/>
+ <a className="skip-link" href="#product-details">Skip to product details</a><AppHeader/>
  <main><div className="page-heading"><div><span className="eyebrow">CHECK BEFORE YOU BUY</span><h1>A clearer picture.<br/><em>A more informed choice.</em></h1><p>Check product records, seller authority and packaging notices. See what matches — and what still needs evidence.</p></div><div className="demo-note"><span className="note-icon" aria-hidden="true">i</span><div><b>Evidence and analysis mode</b><p>{review?.live?'Live Muse selects tools and explains verified evidence. Signed product records are independently checked against the database.':'Explore recorded AI with real database checks, or enter a reviewer session for live Muse.'} <a href="/review">Explore PackProof →</a></p></div></div></div>
  <div className="workspace"><aside className="input-panel" id="product-details"><div className="panel-title"><span className="step-number">1</span><div><h2>Enter product details</h2><p>Use an example or enter the codes you can read.</p></div></div>
  {review?.units?.some(u=>u.available)&&<div className="examples"><span className="eyebrow">YOUR REVIEWER ITEMS</span>{review.units.filter(u=>u.available).map(u=><button type="button" key={u.id} disabled={busy} onClick={()=>{setProduct(u.product);setPack(u.packaging);setSeller(u.seller);}}>{u.product} / {u.packaging}<span>↗</span></button>)}</div>}

@@ -24,7 +24,7 @@ function failed(e: unknown, operation: string) {
   const messages: Record<string, string> = {
     NotAllowedError: 'Camera permission denied or HTTPS unavailable. Allow camera access or use manual entry.',
     NotFoundError: 'No usable camera found. Use manual entry.', NotReadableError: 'Camera is busy or unavailable. Close other camera apps and retry.',
-    SyntaxError: 'The imported JSON or fingerprint is malformed.', ZodError: 'The file, fingerprint or response does not match the expected demo format.',
+    SyntaxError: 'The imported JSON or fingerprint is malformed.', ZodError: 'The file, fingerprint or response does not match the expected sample format.',
     TransportFingerprintMismatch: 'File differs from the separately supplied export fingerprint. Reject this transfer.',
     TransportFixtureTooLarge: 'File exceeds the 4 KiB transport-fixture limit.', CameraNotRunning: 'Start the camera before capturing. Manual entry is available.',
   };

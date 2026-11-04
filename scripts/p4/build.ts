@@ -1,12 +1,14 @@
 import {build} from 'esbuild';
-import {mkdir,readFile,writeFile,copyFile} from 'node:fs/promises';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import sharp from 'sharp';
+import {headerHtml} from '../../src/client/navigation.js';
 await mkdir('dist/offline',{recursive:true});
 const root=JSON.parse(await readFile('docs/packproof/demo/root-public.json','utf8'));
 const result=await build({entryPoints:['src/offline/viewer.ts'],outfile:'dist/offline/viewer.js',bundle:true,platform:'browser',format:'esm',target:'es2022',minify:true,metafile:true,define:{PACKPROOF_ROOT:JSON.stringify(root)}});
 await writeFile('dist/offline/bundle-inputs.json',JSON.stringify(Object.keys(result.metafile.inputs),null,2));
-await copyFile('src/offline/viewer.html','dist/offline/index.html');await copyFile('src/offline/style.css','dist/offline/style.css');
+await writeFile('dist/offline/index.html',(await readFile('src/offline/viewer.html','utf8')).replace('<!-- PACKPROOF_HEADER -->',headerHtml('/offline/index.html','/offline/icon192.png')));
+await writeFile('dist/offline/style.css',(await readFile('src/offline/style.css','utf8'))+'\n'+await readFile('src/client/navigation.css','utf8'));
 for(const size of [192,512])await sharp('public/icon.svg').resize(size,size).png().toFile(`dist/offline/icon${size}.png`);
 await writeFile('dist/offline/manifest.webmanifest',JSON.stringify({id:'/',name:'PackProof',short_name:'PackProof',description:'Signed evidence with clear limits. OfflineProof works after trusted setup.',start_url:'/offline/index.html',scope:'/',display:'standalone',background_color:'#f5f6f2',theme_color:'#183d32',icons:[{src:'/offline/icon192.png',sizes:'192x192',type:'image/png',purpose:'any'},{src:'/offline/icon512.png',sizes:'512x512',type:'image/png',purpose:'any'}]}));
 const names=['index.html','viewer.js','style.css','icon192.png','icon512.png','manifest.webmanifest'];const hash=createHash('sha256');for(const n of names)hash.update(await readFile('dist/offline/'+n));const version=hash.digest('hex').slice(0,20);

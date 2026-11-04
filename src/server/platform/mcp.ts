@@ -13,7 +13,7 @@ export async function mcpHttp(request:Request){try{
  let setCookie:string|null=null;
  for(const [name,descriptor] of Object.entries(API_OPERATIONS)){
   const operation=name as Operation,readOnly=!['products.draft','evidence.attach','investigations.start','investigations.resume','captures.submit','transfers.propose','packs.create'].includes(name);
-  server.registerTool(name.replaceAll('.','_'),{description:`PackProof v1 ${name}. Demo evidence only; uncertainty and authorization gates remain mandatory. No ownership commit.`,inputSchema:descriptor.input,annotations:{readOnlyHint:readOnly,destructiveHint:false,idempotentHint:readOnly,openWorldHint:!readOnly}},async (input:unknown)=>{
+  server.registerTool(name.replaceAll('.','_'),{description:`PackProof v1 ${name}. Sample evidence only; uncertainty and authorization gates remain mandatory. No ownership commit.`,inputSchema:descriptor.input,annotations:{readOnlyHint:readOnly,destructiveHint:false,idempotentHint:readOnly,openWorldHint:!readOnly}},async (input:unknown)=>{
    try{const auth=await apiContext(request,operation);setCookie=auth.setCookie;const value=await executeOperation(operation,input as never,auth,request);return {content:[{type:'text' as const,text:JSON.stringify(value)}],structuredContent:value as Record<string,unknown>};}
    catch(e){const r=apiFailure(e);return {isError:true,content:[{type:'text' as const,text:JSON.stringify(await r.json())}]};}
   });
