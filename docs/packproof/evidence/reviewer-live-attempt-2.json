@@ -1,0 +1,10 @@
+{
+  "conditions": "Desktop Chrome; real Supabase and budget-metered Meta. Not physical Android acceptance.",
+  "startedAt": "2026-11-04T09:12:07.700Z",
+  "invalidInvitationRejected": true,
+  "invitationAndSharedSignIn": true,
+  "mobile390NavigationNoOverflow": true,
+  "status": "failed",
+  "error": "expect(received).toBe(expected) // Object.is equality\n\nExpected: \"needs_input\"\nReceived: \"unavailable\"",
+  "finishedAt": "2026-11-04T09:13:59.751Z"
+}

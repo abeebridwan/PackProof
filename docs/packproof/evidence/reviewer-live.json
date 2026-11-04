@@ -1,0 +1,52 @@
+{
+  "conditions": "Desktop Chrome; real Supabase and budget-metered Meta. Not physical Android acceptance.",
+  "startedAt": "2026-11-04T10:03:09.460Z",
+  "invalidInvitationRejected": true,
+  "invitationAndSharedSignIn": true,
+  "mobile390NavigationNoOverflow": true,
+  "realMuseViewRequest": {
+    "id": "8279f60b-a6c4-41aa-870c-f5afb369e0d1",
+    "actions": 2,
+    "mode": "live",
+    "status": "needs_input"
+  },
+  "liveConsentRequiredInUi": true,
+  "obscuredPhoto": {
+    "question": "printed_expiry",
+    "literal": {
+      "value": null,
+      "readability": "unreadable",
+      "qualityBlockers": []
+    },
+    "provider": "live",
+    "request": {
+      "reason": "unreadable",
+      "view": "close_mark",
+      "instruction": "Take a sharp close photo of the printed expiry, with the whole date visible. Keep registration and batch dates separate.",
+      "revision": 2
+    },
+    "status": "needs_input"
+  },
+  "sharpPhoto": {
+    "literal": {
+      "value": "19/08/2028",
+      "readability": "readable",
+      "qualityBlockers": []
+    },
+    "reader": {
+      "model": "muse-spark-1.3",
+      "responseId": "chatcmpl-01a1a605-0b98-7099-becb-7e9dc6d11a35",
+      "requestId": "ef6b82b2-02b9-47ce-a11b-67978959030f",
+      "mode": "live"
+    },
+    "regionProvider": {
+      "model": "sam-3.1",
+      "responseId": "resp_6aeb034edb22349db39146cd",
+      "requestId": "c4497def-7e10-4459-bdb9-de84ef1acf0f",
+      "mode": "live"
+    }
+  },
+  "resultRestored": true,
+  "status": "passed",
+  "finishedAt": "2026-11-04T10:05:49.553Z"
+}

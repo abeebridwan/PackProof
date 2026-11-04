@@ -1,0 +1,12 @@
+{
+  "conditions": "Real Supabase reviewer identities, real signing and ownership; desktop synthetic camera relay, not physical phone acceptance",
+  "providerRequests": 0,
+  "sharedSignInAndEnrollment": true,
+  "transferId": "7ba5ed9d-4c4d-4cb2-a246-003736d30325",
+  "forwardScan": true,
+  "reverseScan": true,
+  "commitReceiptAndRecovery": true,
+  "sameAccountFreshUnitOfflinePack": true,
+  "viewerOfflineReload": true,
+  "status": "passed"
+}

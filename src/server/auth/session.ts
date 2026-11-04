@@ -3,6 +3,7 @@ import {sha256,utf8} from '../../domain/verification/p0-crypto.js';
 import {InvestigationError} from '../investigator/store.js';
 import {projectUrl,publicKeyAllowed} from '../../../scripts/spikes/infrastructure.js';
 import {z} from 'zod';
+import {authenticatedUser} from '../transfers/http.js';
 export const SESSION_COOKIE='packproof_session';
 export async function session(request:Request,create=false){
  const raw=request.headers.get('cookie')?.split(';').map(v=>v.trim()).find(v=>v.startsWith(SESSION_COOKIE+'='))?.slice(SESSION_COOKIE.length+1);
@@ -11,6 +12,7 @@ export async function session(request:Request,create=false){
  let setCookie:string|null=null;
  if(!token){token=randomBytes(32).toString('hex');const secure=new URL(request.url).protocol==='https:';setCookie=`${SESSION_COOKIE}=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=86400${secure?'; Secure':''}`;}
  let userId:string|null=null;
+ if(request.headers.get('cookie')?.split(';').some(v=>v.trim().startsWith('packproof_auth=')))userId=await authenticatedUser(request);
  const bearer=request.headers.get('authorization');
  if(bearer){
   if(!/^Bearer [A-Za-z0-9_.-]+$/.test(bearer)||bearer.length>8192)throw new InvestigationError('invalid_session',401);

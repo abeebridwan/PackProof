@@ -1,0 +1,155 @@
+{
+  "status": "passed_deployed",
+  "checkedAt": "2026-11-04T10:08:55.348Z",
+  "pairs": 2,
+  "syntheticUnits": 6,
+  "newProducts": 0,
+  "newRestrictedAuthorities": 1,
+  "migrationSha256": "df21c9cd69eca63bdb6d558009d8cd55c4bd32f013aaae18baabb46b3b6d7e33",
+  "grant": "review-live-2026-11-04",
+  "limitUsd": 5,
+  "requestCountCap": null,
+  "invitationFile": ".local/review/invitations.json",
+  "privateKeysDeployed": false,
+  "originalItemsReset": false,
+  "reviewUntil": "2026-11-18T09:04:44.441Z",
+  "originalItemAuthorityWindowHours": 24,
+  "syntheticReviewerAuthorityWindowDays": 14,
+  "liveValidation": "docs/packproof/evidence/reviewer-live.json",
+  "handoverAndOfflineValidation": "docs/packproof/evidence/reviewer-transfer.json",
+  "failedProviderAttempts": [
+    "docs/packproof/evidence/reviewer-live-attempt-1.json",
+    "docs/packproof/evidence/reviewer-live-attempt-2.json"
+  ],
+  "targetedChecks": {
+    "typecheck": "passed",
+    "providerInspectorRegression": 48,
+    "preservedFlows": 61,
+    "providerBoundaryAfterMinimalReasoning": 25,
+    "offlineVerifierIncludingTwoWeekDirectory": 19,
+    "actualDatabaseBudgetAndWeekWindow": "passed; writes rolled back",
+    "build": "passed",
+    "isolation": {
+      "status": "passed",
+      "clientAssets": 49,
+      "serverTraces": 21,
+      "traceReferences": 9428,
+      "secretValuesChecked": 17,
+      "privateCredentialsOrInvitationsInClient": false,
+      "offlineRootOrIssuerDeployed": false
+    },
+    "localPhonePhotoPreparation": {
+      "status": "passed",
+      "smallFileUnchanged": true,
+      "large": {
+        "width": 1920,
+        "height": 1152,
+        "bytes": 13718,
+        "mime": "image/jpeg"
+      },
+      "networkUpload": false
+    }
+  },
+  "limits": {
+    "directoryDays": 14,
+    "reviewerUnitPolicyDays": 14,
+    "ordinaryUnitAuthorityHours": 24,
+    "downloadedPackHours": 24,
+    "sameOwnerNeverReset": true,
+    "publicSignup": false,
+    "actualNewPhoneAcceptance": "not_run; existing P0-P4 phone evidence retained"
+  },
+  "pricing": {
+    "verifiedAt": "2026-11-04",
+    "source": "https://dev.meta.ai/docs/pricing-rate-limits",
+    "museInputPerMillion": 1.25,
+    "museOutputPerMillion": 4.25,
+    "samImageUsd": 0.0025,
+    "reservationCents": {
+      "muse": 5,
+      "sam": 1
+    },
+    "actualBilledUsd": null
+  },
+  "reasoningRepair": {
+    "source": "https://dev.meta.ai/docs/reasoning",
+    "effort": "minimal",
+    "inputTokensMax": 16000,
+    "outputTokensMax": 2048,
+    "priorFailure": "One default-effort response exhausted the bounded output before a valid answer. Strict validation rejected it; no guessed result or auto paid retry."
+  },
+  "deployment": {
+    "id": "dpl_5zPWvxiKsPbeXkbw4QnCN2ZiABbJ",
+    "sourceSha256": "964199f32b71962638625c36e87b935d1c174731bed3cc67fa0503b13074d170",
+    "sourceFiles": 115,
+    "permanentUrl": "https://packproof-p0.vercel.app/review",
+    "readyState": "READY",
+    "productionSmoke": "docs/packproof/evidence/reviewer-production.json"
+  },
+  "budgetEvidence": "docs/packproof/evidence/reviewer-budget.json",
+  "preservation": {
+    "status": "passed",
+    "mode": "Read-only post-release database preservation check",
+    "originalSignedRecordsUnchanged": 33,
+    "acceptedTransfers": 1,
+    "ownerVersion": 2,
+    "ownerRecordId": "518246e0-1fc6-42c6-9cb8-25902a92648e",
+    "credentialsAndOfflineReceiptKeysUnchanged": true,
+    "ownershipWrites": 0,
+    "providerRequests": 0
+  },
+  "commands": [
+    {
+      "command": "pnpm typecheck",
+      "result": "passed"
+    },
+    {
+      "command": "pnpm build",
+      "result": "passed; Production deployment separately built the exact uploaded source"
+    },
+    {
+      "command": "pnpm exec vitest run tests/unit/p1c.test.ts tests/unit/inspector.test.ts tests/unit/p1c-completion.test.ts",
+      "result": "48 passed before the minimal-reasoning repair; the changed p1c boundary was rerun with25 passes"
+    },
+    {
+      "command": "pnpm exec vitest run tests/unit/inspector.test.ts tests/unit/p1-performance.test.ts tests/unit/offline.test.ts tests/unit/transfer.test.ts tests/unit/investigator.test.ts",
+      "result": "61 passed; offline suite after the additional two-week boundary case passed19"
+    },
+    {
+      "command": "node --env-file-if-exists=.env.local --import tsx node_modules/vitest/vitest.mjs run tests/integration/review.test.ts",
+      "result": "1 passed against actual Supabase; all budget test writes rolled back"
+    },
+    {
+      "command": "node .local/review/browser.mjs (REVIEW_LIVE_TEST=1)",
+      "result": "passed; actual local Production build, Meta, Supabase; obscured \u2192 unknown \u2192 requested close view \u2192 exact expiry \u2192 reload"
+    },
+    {
+      "command": "node .local/review/transfer.mjs",
+      "result": "passed; real new synthetic-unit ownership/receipt, desktop synthetic QR camera relay, signed pack, offline reload"
+    },
+    {
+      "command": "node .local/review/hosted.mjs",
+      "result": "passed; permanent HTTPS reviewer sign-in, live Muse/SAM literal, reload, signed pack and offline reload"
+    },
+    {
+      "command": "node .local/review/isolation.mjs",
+      "result": "passed;49 client assets,21 server traces,9428 references; no invitation/password/private-key leaks"
+    }
+  ],
+  "newPhysicalAndroidAcceptance": "not_run; earlier P0\u2013P4 phone acceptance retained unchanged",
+  "reviewerDataRemaining": "Six issued synthetic units; one transferred during browser acceptance; five initially available across two pairs. Completed ownership never reset.",
+  "finalBudget": {
+    "requests": 34,
+    "reservedUsd": 1.54,
+    "remainingReservationUsd": 3.46,
+    "estimatedUsageUsd": 0.20580995000000002,
+    "actualBilledUsd": null
+  },
+  "initialNewProducts": 6,
+  "newProductsNote": "Last idempotent preparation appended zero additional units; six were originally issued for this release.",
+  "migrationVersions": [
+    "202611040008",
+    "202611040009"
+  ],
+  "deploymentArtifactSourceVerified": true
+}

@@ -6,6 +6,7 @@ import type {OfflineState} from './verify.js';
 declare const PACKPROOF_ROOT:unknown;
 const pin=RootPin.parse(PACKPROOF_ROOT),loaded=performance.now();
 const $=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
+const requested=new URLSearchParams(location.hash.slice(1)),requestedItem=requested.get('item');if(requestedItem&&/^[a-f0-9-]{36}$/.test(requestedItem)){const option=new Option((requested.get('label')??'Selected reviewer unit').slice(0,120),requestedItem);$<HTMLSelectElement>('item').add(option);$<HTMLSelectElement>('item').value=requestedItem;}
 const status=(s:string,error=false)=>{$('status').textContent=s;$('status').classList.toggle('error',error);};
 const measurements:{[key:string]:unknown}={kind:'P4-offline-device-report',userAgent:navigator.userAgent,startedAt:new Date().toISOString(),secureContext:isSecureContext,url:location.origin+location.pathname,imports:[]};
 function node(tag:string,text:string,parent:HTMLElement,className?:string){const e=document.createElement(tag);e.textContent=text;if(className)e.className=className;parent.append(e);return e;}

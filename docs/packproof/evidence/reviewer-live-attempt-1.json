@@ -1,0 +1,30 @@
+{
+  "conditions": "Desktop Chrome; real Supabase and budget-metered Meta. Not physical Android acceptance.",
+  "startedAt": "2026-11-04T09:08:15.335Z",
+  "invalidInvitationRejected": true,
+  "invitationAndSharedSignIn": true,
+  "mobile390NavigationNoOverflow": true,
+  "realMuseViewRequest": {
+    "id": "63279080-89c9-49e5-922c-dc7981f1cf13",
+    "actions": 3,
+    "mode": "live",
+    "status": "needs_input"
+  },
+  "liveConsentRequiredInUi": true,
+  "blurredPhoto": {
+    "question": "printed_expiry",
+    "literal": {
+      "value": "19/08/2028",
+      "readability": "readable",
+      "qualityBlockers": [
+        "blur"
+      ]
+    },
+    "provider": "live",
+    "request": null,
+    "status": "complete"
+  },
+  "status": "failed",
+  "error": "blurred_photo_did_not_request_another_view",
+  "finishedAt": "2026-11-04T09:11:18.930Z"
+}

@@ -13,7 +13,7 @@ import type {EvidenceServices} from '../evidence/services.js';
 import type {ImageInspector} from '../providers/recorded-image.js';
 import type {safeTracing} from '../../../scripts/spikes/safe-tracing.js';
 const GraphState=Annotation.Root({value:Annotation<RunState>});
-export type GraphOptions={store:InvestigationStore;owner:Owner;services:EvidenceServices;planner:MusePlanner;inspector:ImageInspector;checkpointer:BaseCheckpointSaver;trace:ReturnType<typeof safeTracing>;timeoutMs?:number;capCents?:number;modelReservationCents?:number;now?:()=>number;mode?:'live'|'recorded-demo';metrics?:{modelOperationMs:number;toolOperationMs:number;verificationMs:number}};
+export type GraphOptions={store:InvestigationStore;owner:Owner;services:EvidenceServices;planner:MusePlanner;inspector:ImageInspector;checkpointer:BaseCheckpointSaver;trace:ReturnType<typeof safeTracing>;timeoutMs?:number;capCents?:number;modelReservationCents?:number;freshnessPolicy?:(input:InvestigationInput)=>Promise<{maxAgeMs?:number;policyVersion?:string}>;now?:()=>number;mode?:'live'|'recorded-demo';metrics?:{modelOperationMs:number;toolOperationMs:number;verificationMs:number}};
 export function investigatorGraph(o:GraphOptions){
  const now=o.now??Date.now;const mode=o.mode??'recorded-demo';
  const context=(s:RunState):ToolContext=>({state:s,owner:o.owner,store:o.store,services:o.services,inspector:o.inspector});
@@ -63,7 +63,7 @@ export function investigatorGraph(o:GraphOptions){
  .addNode('tool',toolStep)
  .addNode('pause_assessment',async({value:s})=>{
   const checkStart=now();
-  const finding=await finalize({mode,input:s.input,services:o.services,selected:s.results,answer:{claimIds:factCatalog(s.results).map(f=>f.id)},error:null,pendingEvidence:true,clock:()=>new Date(now()).toISOString(),audit:(name,result)=>o.store.audit(o.owner,s.id,name,result,`pause:${s.revision}:${name}`)});
+  const finding=await finalize({...await o.freshnessPolicy?.(s.input),mode,input:s.input,services:o.services,selected:s.results,answer:{claimIds:factCatalog(s.results).map(f=>f.id)},error:null,pendingEvidence:true,clock:()=>new Date(now()).toISOString(),audit:(name,result)=>o.store.audit(o.owner,s.id,name,result,`pause:${s.revision}:${name}`)});
   if(o.metrics)o.metrics.verificationMs+=now()-checkStart;
   await o.store.save(o.owner,s.id,{finding,status:'needs_input'});
   return {value:{...s,finding}};
@@ -80,7 +80,7 @@ export function investigatorGraph(o:GraphOptions){
  })
  .addNode('finalize',async({value:s})=>{
   const checkStart=now();
-  const finding=await finalize({mode,input:s.input,services:o.services,selected:s.results,answer:s.answer,error:s.error,clock:()=>new Date(now()).toISOString(),audit:(name,result)=>o.store.audit(o.owner,s.id,name,result,`finalizer:${s.revision}:${name}`)});
+  const finding=await finalize({...await o.freshnessPolicy?.(s.input),mode,input:s.input,services:o.services,selected:s.results,answer:s.answer,error:s.error,clock:()=>new Date(now()).toISOString(),audit:(name,result)=>o.store.audit(o.owner,s.id,name,result,`finalizer:${s.revision}:${name}`)});
   if(o.metrics)o.metrics.verificationMs+=now()-checkStart;
   await o.store.save(o.owner,s.id,{status:finding.status==='unavailable'?'unavailable':'complete',finding,request:null,error:s.error});
   o.trace.emit({investigationId:s.id,mode,kind:'gate',status:finding.status==='supported'?'completed':finding.status==='blocked'?'rejected':finding.status==='unavailable'?'unavailable':'needs_evidence',refs:finding.claims.flatMap(c=>c.evidence_refs).slice(0,8),latencyMs:Math.min(60000,Math.max(0,Math.round(now()-checkStart)))});

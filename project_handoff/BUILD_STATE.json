@@ -1275,7 +1275,7 @@
   },
   "p1Ready": true,
   "handoffDirectory": "project_handoff",
-  "repositoryStatus": "P4 implementation deployed; O1\u2013O4 passed including user-confirmed real phone testing. User requested a local commit after acceptance on 2026-11-04. No Git push or public repository publication performed. P4 remains partial only for R1 film/public-repository evidence.",
+  "repositoryStatus": "Guided reviewer release deployed and validated; implementation and evidence are included in the local reviewer release commit. Prior P0\u2013P4 acceptance preserved. No Git push or public repository publication; P4 R1 film/public-repository evidence still pending.",
   "localToolchain": {
     "node": "24.22.2",
     "pnpm": "12.16.1",
@@ -1351,13 +1351,13 @@
       "preview"
     ],
     "previewEncryptedEnvironmentCount": 11,
-    "productionPromotion": "P4 published after privacy, crypto, rollback, PWA and isolated-build security checks; existing approved configuration inherited; distinct pack key explicitly approved for encrypted Production.",
-    "productionEncryptedEnvironmentCount": 15,
+    "productionPromotion": "Guided reviewer release READY; explicit approval for encrypted Production Meta key and shared $5 grant. Hosted real live photo/sign-in/pack/offline checks passed.",
+    "productionEncryptedEnvironmentCount": 17,
     "productionCredentialTargets": [
       "production"
     ],
     "toolsUrl": "https://packproof-p0.vercel.app/tools",
-    "productionDeploymentId": "dpl_8tfTkovpRrMrvodZVM6KMAFDvTyZ",
+    "productionDeploymentId": "dpl_5zPWvxiKsPbeXkbw4QnCN2ZiABbJ",
     "receiptSigningCredentialTargets": [
       "preview",
       "production"
@@ -1365,13 +1365,14 @@
     "chainproofUrl": "https://packproof-p0.vercel.app/chainproof",
     "previewDeploymentId": "dpl_7JSAkTgLxzBziDrDFnV3ysBG73FA",
     "previewInspectorUrl": "https://packproof-p0-preview.vercel.app/inspector",
-    "productionSourceSha256": "a8078bc01708916eacb0197ac55f62d90a3753392cf9e423a9ab5d0f64c71c90",
+    "productionSourceSha256": "964199f32b71962638625c36e87b935d1c174731bed3cc67fa0503b13074d170",
     "inspectorUrl": "https://packproof-p0.vercel.app/inspector",
-    "publicProviderMode": "recorded-demo",
+    "publicProviderMode": "invited live Muse/SAM; anonymous recorded",
     "offlineUrl": "https://packproof-p0.vercel.app/offline/index.html",
     "packSigningCredentialTargets": [
       "production"
-    ]
+    ],
+    "reviewerUrl": "https://packproof-p0.vercel.app/review"
   },
   "testingGuide": "TESTING.md",
   "continuationBaselineCommit": "e3e4688",
@@ -1388,7 +1389,7 @@
     "evidence": "docs/packproof/evidence/p4-release.json"
   },
   "p1IndependentWorkAuthorized": true,
-  "nextAuthorizedWork": "Record the user-requested local P4 commit. R1 still needs demo-film evidence and explicitly authorized public-repository publication/accessibility. No Git push, publication, submission or later phase authorized.",
+  "nextAuthorizedWork": "Current guided reviewer implementation, hosted live validation and requested two-week review window completed. Private invitations are in ignored .local/review/access.html. Public signup, film and repository publication remain unimplemented or unprovided; no new spending beyond the $5 shared reviewer grant.",
   "p1bReadiness": {
     "foundationReady": true,
     "implementationStarted": true,
@@ -1511,5 +1512,44 @@
     "publicLiveInferenceEnabled": false,
     "localLivePhysicalValidation": "passed approved CLI/local app and user-confirmed vivo result/reload"
   },
-  "p4Ready": true
+  "p4Ready": true,
+  "reviewerRelease": {
+    "status": "passed_deployed",
+    "url": "https://packproof-p0.vercel.app/review",
+    "deploymentId": "dpl_5zPWvxiKsPbeXkbw4QnCN2ZiABbJ",
+    "sourceSha256": "964199f32b71962638625c36e87b935d1c174731bed3cc67fa0503b13074d170",
+    "providerMode": "invited live Muse/SAM; anonymous recorded",
+    "reviewUntil": "2026-11-18T09:04:44.441Z",
+    "directoryUntil": "2026-11-18T10:09:12.274Z",
+    "syntheticUnits": 6,
+    "reviewerPairs": 2,
+    "invitationFile": ".local/review/access.html (ignored, private)",
+    "migrationVersions": [
+      "202611040008",
+      "202611040009"
+    ],
+    "originalItemsReset": false,
+    "ordinaryAuthorityPolicyHours": 24,
+    "syntheticReviewWindowDays": 14,
+    "downloadedPackPolicyHours": 24,
+    "newPhoneChecks": "not_run; prior P0-P4 acceptance preserved",
+    "evidence": [
+      "docs/packproof/evidence/reviewer-release.json",
+      "docs/packproof/evidence/reviewer-live.json",
+      "docs/packproof/evidence/reviewer-transfer.json",
+      "docs/packproof/evidence/reviewer-budget.json",
+      "docs/packproof/evidence/reviewer-production.json"
+    ],
+    "budget": {
+      "grantId": "review-live-2026-11-04",
+      "approvedUsd": 5,
+      "maximumInferenceRequests": null,
+      "requests": 34,
+      "reservedUsd": 1.54,
+      "estimatedUsageUsd": 0.20580995000000002,
+      "actualBilledUsd": null,
+      "remainingReservationUsd": 3.46
+    },
+    "initialAvailableUnitsRemaining": 5
+  }
 }

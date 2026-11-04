@@ -5,6 +5,8 @@ export const MAX_PACK_BYTES=2*1024*1024;
 export const PROFILE='packproof-public-demo-1';
 export const DATASET='packproof-demo-1';
 export const DAY=86400000;
+// Directory refresh window is distinct from the unchanged 24-hour pack window.
+export const DIRECTORY_MAX_AGE=14*DAY;
 export const SETUP_REQUIRED='Trusted setup required. Connect to the official PackProof application.';
 export const EvidencePack=z.strictObject({schemaVersion:z.literal(1),manifestJws:SignedPackManifest,directoryJws:SignedPackManifest,records:z.array(z.strictObject({id:Id,jws:SignedPackManifest})).min(1).max(128),media:z.array(z.strictObject({sha256:Hash,mime:z.literal('image/jpeg'),base64:z.string().max(1400000).regex(/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/)})).max(8)});
 export type EvidencePack=z.infer<typeof EvidencePack>;

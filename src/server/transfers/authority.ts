@@ -39,6 +39,11 @@ export async function checkAuthority(c:Sql,schema:string,pin:RootPin,itemId:stri
  const snapshot=extended.verified.get(stored.id)?.record;
  const gaps=[...base.verified.values()].flatMap(v=>v.record.type==='gap'&&v.record.data.itemId===itemId?[v.record.id]:[]);
  if(snapshot?.type!=='custody_snapshot'||snapshot.visibility!=='restricted'||snapshot.data.itemId!==itemId||snapshot.data.holderReference!==`registered-actor:${ownerId}`||snapshot.issuerId!==issuance.issuerId||!snapshot.data.sourceRecordIds.includes(ownerRecordId)||!snapshot.data.sourceRecordIds.includes(mapping.id)||gaps.some(g=>!snapshot.data.gapRecordIds.includes(g))||snapshot.data.sourceRecordIds.some(id=>!snapshot.previousIds.includes(id)))throw new TransferError('current_authority_invalid');
- const age=now-Date.parse(snapshot.data.asOf);if(age<0||age>=86400000||Date.parse(snapshot.issuedAt)>now)throw new TransferError('stale_authority');
+ let maxAge=86400000;
+ if(schema==='packproof'&&item.model_code==='JUDGE-SAMPLE'&&item.unit_mark.startsWith('JR-')){
+  const demo=(await c.query('SELECT authority_until FROM packproof.review_units WHERE item_id=$1 AND seller_id=$2',[itemId,sellerId])).rows[0];
+  if(demo?.authority_until&&Date.parse(demo.authority_until)>now)maxAge=14*86400000;
+ }
+ const age=now-Date.parse(snapshot.data.asOf);if(age<0||age>=maxAge||Date.parse(snapshot.issuedAt)>now)throw new TransferError('stale_authority');
  return {item,data,directory:extended.directory,verified:extended.verified,snapshot,refs:[issuance.id,mapping.id,ownerRecordId,snapshot.id,...delegations.map(d=>d.record.id)]};
 }

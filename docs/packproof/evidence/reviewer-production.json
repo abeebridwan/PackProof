@@ -1,0 +1,46 @@
+{
+  "origin": "https://packproof-p0.vercel.app",
+  "conditions": "Real Production HTTPS, actual Supabase and real Meta; desktop Chrome, not physical Android",
+  "startedAt": "2026-11-04T10:15:14.626Z",
+  "anonymousLiveDisabled": true,
+  "reviewerAccess": {
+    "role": "buyer",
+    "expiresAt": "2026-11-18T09:04:44.441Z",
+    "live": true
+  },
+  "navigationAnd390pxLayout": true,
+  "realViewRequest": {
+    "id": "f4ab184b-04d2-4c6a-9d01-5e7da272b7c2",
+    "request": {
+      "reason": "association_unclear",
+      "view": "both_marks",
+      "instruction": "Show the product code and packaging code together in one clear view. Enter the literal packaging code if readable.",
+      "revision": 1
+    },
+    "mode": "live"
+  },
+  "photo": {
+    "literal": {
+      "value": "19/08/2028",
+      "readability": "readable",
+      "qualityBlockers": []
+    },
+    "reader": {
+      "model": "muse-spark-1.3",
+      "responseId": "chatcmpl-01a1a60f-1fea-7644-8b9f-59afc21fe891",
+      "requestId": "1fd386d2-aa53-4b73-a32c-23c4eb458263",
+      "mode": "live"
+    },
+    "sam": {
+      "model": "sam-3.1",
+      "responseId": "resp_6aeb05e5054a0aec1bc84be0",
+      "requestId": "63b80581-896d-4cac-b608-30d3b3a751f0",
+      "mode": "live"
+    }
+  },
+  "savedReadingRecovered": true,
+  "signedReviewerPack": true,
+  "offlineReload": true,
+  "status": "passed",
+  "finishedAt": "2026-11-04T10:16:47.216Z"
+}

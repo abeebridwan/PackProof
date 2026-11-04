@@ -11,7 +11,7 @@ import {sha256,utf8} from '../../domain/verification/p0-crypto.js';
 const Identifier=z.string().min(1).max(128).regex(/^[a-zA-Z0-9_.:-]+$/);
 const Call=z.object({id:Identifier,type:z.literal('function'),function:z.object({name:ToolName,arguments:z.string().max(16000)})});
 type WireMessage={role:string;content?:string|null;tool_call_id?:string;tool_calls?:z.infer<typeof Call>[]};
-type WireBody={model:string;messages:WireMessage[];tools:{type:string;function:{name:string;description?:string;parameters:unknown;strict?:boolean}}[];response_format?:{type:string;json_schema?:Record<string,unknown>};max_completion_tokens:number;stream?:boolean;parallel_tool_calls?:boolean};
+type WireBody={model:string;reasoning_effort?:string;messages:WireMessage[];tools:{type:string;function:{name:string;description?:string;parameters:unknown;strict?:boolean}}[];response_format?:{type:string;json_schema?:Record<string,unknown>};max_completion_tokens:number;stream?:boolean;parallel_tool_calls?:boolean};
 export function countPayload(body:WireBody){
  const input:unknown[]=[];const pending=new Map<string,ToolName>();
  for(const message of body.messages){
@@ -27,7 +27,7 @@ export function countPayload(body:WireBody){
   }
  }
  if(pending.size)throw new P1BudgetError('p1_tool_correlation');
- return {model:MUSE_MODEL,input,tools:body.tools.map(t=>({type:'function',...t.function})),parallel_tool_calls:false,...(body.response_format?.json_schema?{text:{format:{type:'json_schema',...body.response_format.json_schema}}}:{})};
+ return {model:MUSE_MODEL,input,...(body.reasoning_effort?{reasoning:{effort:body.reasoning_effort}}:{}),tools:body.tools.map(t=>({type:'function',...t.function})),parallel_tool_calls:false,...(body.response_format?.json_schema?{text:{format:{type:'json_schema',...body.response_format.json_schema}}}:{})};
 }
 async function limitedJson(response:Response){
  const reader=response.body?.getReader();if(!reader)throw new Error('empty_provider_body');
@@ -47,16 +47,18 @@ export function providerEvidence(value:unknown){
  return {responseId:response.id,model:response.model,finishReason:choice.finish_reason,calls,answer,usage};
 }
 export type LiveEvidence={operationKey:string;requestId:string|null;requestSha256:string;countedInputTokens:number;latencyMs:number;preflightMs:number;inferenceMs:number;toolResults:{callId:string;name:ToolName;result:unknown}[];response:ReturnType<typeof providerEvidence>|null;outcome:string;adapter?:'langchain'|'native_validated_fallback';adapterFailure?:'SyntaxError'|'TypeError'|'Error'|'other'|null;wireShape?:{jsonContentType:boolean;assistantRole:boolean;contentKind:'absent'|'null'|'empty'|'json'|'text'}};
-export function liveMuse(budget:P1Budget,options:{apiKey:string;transport?:typeof fetch;evidence:LiveEvidence[];preflights?:{count:number}}):MusePlanner{
- budget.assertRun();if(!options.apiKey)throw new P1BudgetError('p1_credentials_missing');
+export type LiveBudget={assertRun():void|Promise<void>;assertCapacity(retry:boolean):void|Promise<void>;reserve(key:string,tokens:number,retry:boolean):string|Promise<string>;settle(id:string,receipt:Parameters<P1Budget['settle']>[1]):void|Promise<void>};
+export function liveMuse(budget:LiveBudget,options:{apiKey:string;transport?:typeof fetch;evidence:LiveEvidence[];preflights?:{count:number}}):MusePlanner{
+ if(budget instanceof P1Budget)budget.assertRun();
+ if(!options.apiKey)throw new P1BudgetError('p1_credentials_missing');
  const network=options.transport??fetch;
  let current:{key:string;retry:boolean;sent:boolean;failure?:Error}|null=null;
  const transport:typeof fetch=async(url,init)=>{
-  budget.assertRun();
+  await budget.assertRun();
   if(String(url)!==`${META_BASE_URL}/chat/completions`||!current||current.sent)throw new P1BudgetError('p1_endpoint_refused');
-  budget.assertCapacity(current.retry);
+  await budget.assertCapacity(current.retry);
   const body=JSON.parse(String(init?.body)) as WireBody;
-  if(body.model!==MUSE_MODEL||body.stream||body.max_completion_tokens!==2048||body.parallel_tool_calls!==false||body.tools.length!==6||new Set(body.tools.map(t=>t.function.name)).size!==6||body.tools.some(t=>t.type!=='function'||!ToolName.safeParse(t.function.name).success))throw new P1BudgetError('p1_request_invalid');
+  if(body.model!==MUSE_MODEL||body.reasoning_effort!=='minimal'||body.stream||body.max_completion_tokens!==2048||body.parallel_tool_calls!==false||body.tools.length!==6||new Set(body.tools.map(t=>t.function.name)).size!==6||body.tools.some(t=>t.type!=='function'||!ToolName.safeParse(t.function.name).success))throw new P1BudgetError('p1_request_invalid');
   const payload=countPayload(body);
   if(Buffer.byteLength(JSON.stringify(body))>128000)throw new P1BudgetError('p1_input_limit');
   const signal=AbortSignal.any([...(init?.signal?[init.signal]:[]),AbortSignal.timeout(P1_LIMITS.timeoutMs)]);
@@ -67,7 +69,7 @@ export function liveMuse(budget:P1Budget,options:{apiKey:string;transport?:typeo
   if(!count.ok)throw new P1BudgetError('p1_token_count_unavailable');
   const tokens=z.object({input_tokens:z.number().int().nonnegative().max(16000)}).safeParse(await limitedJson(count));
   if(!tokens.success)throw new P1BudgetError('p1_input_limit');
-  const id=budget.reserve(current.key,tokens.data.input_tokens,current.retry);current.sent=true;
+  const id=await budget.reserve(current.key,tokens.data.input_tokens,current.retry);current.sent=true;
   const knownCalls=new Map<string,ToolName>();const toolResults:LiveEvidence['toolResults']=[];
   for(const m of body.messages){for(const c of m.tool_calls??[])knownCalls.set(c.id,c.function.name);if(m.role==='tool')toolResults.push({callId:m.tool_call_id!,name:knownCalls.get(m.tool_call_id!)!,result:JSON.parse(m.content!)});}
   const event:LiveEvidence={operationKey:current.key,requestId:null,requestSha256:await sha256(utf8(JSON.stringify(body))),countedInputTokens:tokens.data.input_tokens,latencyMs:0,preflightMs:Date.now()-start,inferenceMs:0,toolResults,response:null,outcome:'ambiguous'};
@@ -95,12 +97,12 @@ export function liveMuse(budget:P1Budget,options:{apiKey:string;transport?:typeo
    // SDK sees the real envelope. Only the allowlisted evidence above is saved.
    return new Response(JSON.stringify(raw),{status:response.status,headers:response.headers});
   }catch(error){if(event.outcome==='ambiguous')event.outcome=receipt.state==='responded'?'invalid_output':'ambiguous';current.failure=error instanceof P1BudgetError||error instanceof ProviderFailure?error:receipt.state==='responded'?new P1BudgetError('p1_invalid_output'):new P1BudgetError('p1_operation_in_doubt');throw error;}
-  finally{event.latencyMs=Date.now()-start;event.inferenceMs=Date.now()-inferenceStart;budget.settle(id,receipt);}
+  finally{event.latencyMs=Date.now()-start;event.inferenceMs=Date.now()-inferenceStart;await budget.settle(id,receipt);}
  };
  const guarded:typeof fetch=async(...args)=>{try{return await transport(...args);}catch(error){if(current&&!current.failure)current.failure=error instanceof P1BudgetError?error:new P1BudgetError('p1_preflight_unavailable');throw error;}};
  const adapter=new LangChainMuse(guarded,{apiKey:options.apiKey,timeoutMs:45000,live:true});
  return {async invoke(state:RunState,tools:ReturnType<typeof langChainTools>,attempt?:{retry:boolean;attempt:number}){
-  budget.assertRun();if(current)throw new P1BudgetError('p1_run_locked');
+  await budget.assertRun();if(current)throw new P1BudgetError('p1_run_locked');
   current={key:`${state.id}:${state.revision}:${state.turn}:${attempt?.attempt??0}`,retry:attempt?.retry??false,sent:false};
   try{
    let result;

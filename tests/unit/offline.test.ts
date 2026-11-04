@@ -4,12 +4,21 @@ import {offlineFixture} from '../fixtures/offline.js';
 import {DEMO,DEMO_AT} from '../../scripts/p1/demo.js';
 import {utf8,sha256} from '../../src/domain/verification/p0-crypto.js';
 import {Manifest,DAY,MAX_PACK_BYTES,SETUP_REQUIRED} from '../../src/contracts/offline.js';
-import {boundedJson,bootstrapTrust,verifyPack,stagePack,payload,signedJson,freshness,MANIFEST_TYPE,DIRECTORY_TYPE} from '../../src/offline/verify.js';
+import {boundedJson,bootstrapTrust,verifyDirectory,verifyPack,stagePack,payload,signedJson,freshness,MANIFEST_TYPE,DIRECTORY_TYPE} from '../../src/offline/verify.js';
 import {signRecord} from '../../src/domain/trust/evidence.js';
 let f:Awaited<ReturnType<typeof offlineFixture>>;
 const bytes=(v:unknown)=>utf8(JSON.stringify(v));
 beforeAll(async()=>{f=await offlineFixture();});
 describe('P4 bounded cryptographic pack verification',()=>{
+ it('allows a signed two-week directory for review without extending pack freshness or accepting a longer directory',async()=>{
+  const d={...f.document,expiresAt:new Date(Date.parse(DEMO_AT)+14*DAY).toISOString()},jws=await signedJson(d,f.rootKey,f.root.keyId,DIRECTORY_TYPE);
+  const trusted=await bootstrapTrust({directoryJws:jws,serverTime:DEMO_AT,sequences:[]},f.root,null,Date.parse(DEMO_AT));
+  await expect(bootstrapTrust({directoryJws:jws,serverTime:new Date(Date.parse(DEMO_AT)+7*DAY).toISOString(),sequences:[]},f.root,null,Date.parse(DEMO_AT)+7*DAY)).resolves.toBeTruthy();
+  const p=await f.make(1,{},f.records,jws),m=Manifest.parse(payload(p.manifestJws));
+  expect(freshness(m,f.state.trust,Date.parse(DEMO_AT)+2*DAY)).toContain('Historical');
+  await expect(verifyPack(bytes(await f.make(1,{expiresAt:d.expiresAt},f.records,jws)),f.root,trusted.trust)).rejects.toThrow('invalid_pack_scope_or_time');
+  await expect(verifyDirectory(await signedJson({...d,expiresAt:new Date(Date.parse(DEMO_AT)+14*DAY+1).toISOString()},f.rootKey,f.root.keyId,DIRECTORY_TYPE),f.root)).rejects.toThrow('invalid_directory_policy');
+ });
  it('verifies exact bytes, role, full dependencies, notice and dated public ownership',async()=>{const p=await f.make(),v=await verifyPack(bytes(p),f.root,f.state.trust);expect(v.records.some(v=>v.record.type==='notice')).toBe(true);expect(v.records.some(v=>v.record.type==='custody_snapshot')).toBe(true);expect(v.records.some(v=>v.record.type==='transfer_receipt')).toBe(false);expect(bytes(p).length).toBeLessThan(250000);});
  it('requires trusted bootstrap and rejects a pack-provided root',async()=>{const p=await f.make();await expect(verifyPack(bytes(p),f.root,null)).rejects.toThrow(SETUP_REQUIRED);await expect(verifyPack(bytes({...p,root:f.root}),f.root,f.state.trust)).rejects.toThrow();const other=await offlineFixture();await expect(verifyPack(bytes(p),other.root,other.state.trust)).rejects.toThrow();});
  it('bounds size, malformed JSON, nesting, collections and unexpected schema before crypto',async()=>{expect(()=>boundedJson(new Uint8Array(MAX_PACK_BYTES+1))).toThrow('large');expect(()=>boundedJson(utf8('{'))).toThrow();expect(()=>boundedJson(utf8('['.repeat(17)+'0'+']'.repeat(17)))).toThrow('nesting');expect(()=>boundedJson(bytes(new Array(257).fill(0)))).toThrow('collection');await expect(verifyPack(bytes({schemaVersion:2}),f.root,f.state.trust)).rejects.toThrow();});

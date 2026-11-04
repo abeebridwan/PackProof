@@ -1,7 +1,7 @@
 import {CompactSign,compactVerify,decodeProtectedHeader,importJWK} from 'jose';
 import type {RootPin,StoredRecord} from '../contracts/evidence.js';
 import {EvidenceRecord} from '../contracts/evidence.js';
-import {EvidencePack,OfflineDirectory,Manifest,MAX_PACK_BYTES,DAY,SETUP_REQUIRED,scopeKey,type Bootstrap} from '../contracts/offline.js';
+import {EvidencePack,OfflineDirectory,Manifest,MAX_PACK_BYTES,DAY,DIRECTORY_MAX_AGE,SETUP_REQUIRED,scopeKey,type Bootstrap} from '../contracts/offline.js';
 import {loadDirectory,verifyRecordSet,EVIDENCE_JWS_TYPE,type VerifiedRecord} from '../domain/trust/evidence.js';
 import {sha256,utf8} from '../domain/verification/p0-crypto.js';
 export const DIRECTORY_TYPE='packproof-offline-directory+jws',MANIFEST_TYPE='packproof-pack+jws';
@@ -21,7 +21,7 @@ export async function openJson(jws:string,key:RootPin['publicKey'],kid:string,ty
 }
 export async function verifyDirectory(jws:string,pin:RootPin){
  const d=OfflineDirectory.parse(await openJson(jws,pin.publicKey,pin.keyId,DIRECTORY_TYPE));
- if(d.namespace!==pin.namespace||Date.parse(d.expiresAt)<=Date.parse(d.issuedAt)||Date.parse(d.expiresAt)-Date.parse(d.issuedAt)>DAY)throw new Error('invalid_directory_policy');
+ if(d.namespace!==pin.namespace||Date.parse(d.expiresAt)<=Date.parse(d.issuedAt)||Date.parse(d.expiresAt)-Date.parse(d.issuedAt)>DIRECTORY_MAX_AGE)throw new Error('invalid_directory_policy');
  if(new Set(d.packSigners.map(s=>s.keyId)).size!==d.packSigners.length)throw new Error('duplicate_pack_signer');
  for(const s of d.packSigners)if(s.keyId===pin.keyId||Date.parse(s.validUntil)<=Date.parse(s.validFrom))throw new Error('invalid_pack_grant');
  const directory=await loadDirectory(d.records,pin,d.issuedAt);

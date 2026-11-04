@@ -5,6 +5,7 @@ import type {ImageInspector} from '../providers/recorded-image.js';
 import {RecordedImageInspector} from '../providers/recorded-image.js';
 import type {InspectionRepository} from './repository.js';
 import {verifySource,deriveRegion,type Segmentation} from './grounding.js';
+import {P1BudgetError} from '../providers/p1-budget.js';
 export interface GroundingProvider{
  segment(c:Capture,bytes:Uint8Array,box:CaptureDetails['box']):Promise<{parsed:Segmentation;provider:NonNullable<Observation['region']>['provider']}>;
  read(c:Capture,bytes:Uint8Array,region:NonNullable<Observation['region']>,crop:Uint8Array,q:Question):Promise<{literal:Observation['literal'];reader:NonNullable<Observation['reader']>}>;
@@ -30,9 +31,10 @@ export class GroundedImageInspector implements ImageInspector{
     grounded=region;
     const read=await this.provider.read(c,bytes,region,crop,details.question);
     observation=Observation.parse({...base,region,...read});
-   }catch{
+   }catch(e){
     // No provider error bodies, private URLs or arbitrary text are persisted.
-    observation=Observation.parse({...base,literal:{value:null,readability:'unreadable',qualityBlockers:['No validated model reading is available. This does not establish whether your text is readable; check the analysis mode and provider status.']},region:grounded,reader:null});
+    const reason=e instanceof P1BudgetError&&e.code==='p1_budget_exhausted'?'The shared live AI allowance is exhausted. No validated model reading was issued.':e instanceof P1BudgetError&&e.code==='review_rate_limit'?'Live analysis is temporarily limited. Wait before starting another inspection.':'No validated model reading is available. This does not establish whether your text is readable; check the analysis mode and provider status.';
+    observation=Observation.parse({...base,literal:{value:null,readability:'unreadable',qualityBlockers:[reason]},region:grounded,reader:null});
    }
   }
   return observationResult(await this.repository.append(observation));
