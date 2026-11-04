@@ -30,7 +30,7 @@ try{
  if(bypass)await context.route(`${origin}/**`,route=>route.continue({headers:{...route.request().headers(),'x-vercel-protection-bypass':bypass}}));
  if(process.env.PACKPROOF_TEST_TOOLS_ONLY==='1'){await checkTools(context);checks.status='passed';await context.close();await writeFile(`${prefix}-browser.json`,JSON.stringify(checks,null,2)+'\n');console.log(JSON.stringify(checks));}else{
  const page=await context.newPage();page.setDefaultTimeout(90000);let pageErrors=0;page.on('pageerror',()=>{pageErrors++;});
- await page.goto(origin);await expect(page.getByText('AI responses are replayed for this demo.',{exact:false})).toBeVisible();
+ await page.goto(origin+'/investigate');await expect(page.getByText('AI responses are replayed for this demo.',{exact:false})).toBeVisible();
  if(process.env.PACKPROOF_TEST_TOOLS==='1'){await page.screenshot({path:`${prefix}-home-mobile.png`,fullPage:true});await page.setViewportSize({width:1366,height:900});await page.screenshot({path:`${prefix}-home-desktop.png`,fullPage:true});await page.setViewportSize({width:390,height:844});}
  await page.getByRole('button',{name:'Investigate evidence'}).click();await expect(page.getByRole('button',{name:'Investigating…'})).toBeVisible();
  await expect(page.getByRole('heading',{name:expectedRecorded,exact:true})).toBeVisible();await expect(page.getByText(/visible wrapper artwork changed/).first()).toBeVisible();expect(await page.locator('.references code').count()).toBeGreaterThan(0);checks.inputsProgressSignedResultsAndNotice='passed';const supportedId=await page.evaluate(()=>localStorage.getItem('packproof-last-investigation'));

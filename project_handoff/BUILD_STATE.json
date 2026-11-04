@@ -1275,7 +1275,7 @@
   },
   "p1Ready": true,
   "handoffDirectory": "project_handoff",
-  "repositoryStatus": "Terminal 1 verified checkpoint with explicit blockers; protected Preview deployed and validated. Production deployment preserved. No Git push, npm publication or public repository creation.",
+  "repositoryStatus": "Terminal 1 verified checkpoint with explicit blockers on protected Preview. Production received only the approved shared-budget compatibility patch; Terminal 1 features were not promoted. No Git push, npm publication or public repository creation.",
   "localToolchain": {
     "node": "24.22.2",
     "pnpm": "12.16.1",
@@ -1517,17 +1517,18 @@
   "reviewerRelease": {
     "status": "passed_deployed",
     "url": "https://packproof-p0.vercel.app/review",
-    "deploymentId": "dpl_5zPWvxiKsPbeXkbw4QnCN2ZiABbJ",
-    "sourceSha256": "964199f32b71962638625c36e87b935d1c174731bed3cc67fa0503b13074d170",
+    "deploymentId": "dpl_5YbVpaWLKf221xvakREHZrCt5s9X",
+    "sourceSha256": "570db6541ac92877216133815878626eeb93886ae9b943bd81555176fe777b23",
     "providerMode": "invited live Muse/SAM; anonymous recorded",
     "reviewUntil": "2026-11-18T09:04:44.441Z",
     "directoryUntil": "2026-11-18T10:09:12.274Z",
-    "syntheticUnits": 6,
-    "reviewerPairs": 2,
+    "syntheticUnits": 26,
+    "reviewerPairs": 12,
     "invitationFile": ".local/review/access.html (ignored, private)",
     "migrationVersions": [
       "202611040008",
-      "202611040009"
+      "202611040009",
+      "202611040015"
     ],
     "originalItemsReset": false,
     "ordinaryAuthorityPolicyHours": 24,
@@ -1543,15 +1544,23 @@
     ],
     "budget": {
       "grantId": "review-live-2026-11-04",
-      "approvedUsd": 5,
+      "approvedUsd": 10,
       "maximumInferenceRequests": null,
       "requests": 38,
       "reservedUsd": 1.66,
       "estimatedUsageUsd": 0.21835545,
       "actualBilledUsd": null,
-      "remainingReservationUsd": 3.34
+      "remainingReservationUsd": 8.34
     },
-    "initialAvailableUnitsRemaining": 5
+    "initialAvailableUnitsRemaining": 5,
+    "reviewerAccounts": 24,
+    "budgetExpansion": {
+      "additionalPairs": 10,
+      "newAccounts": 20,
+      "newProviderRequests": 0,
+      "allPriorInvitationsAndSignedOwnershipPreserved": true,
+      "evidence": "docs/packproof/evidence/reviewer-release.json#budgetExpansion"
+    }
   },
   "terminal1": {
     "status": "verified_checkpoint_with_explicit_blockers",
@@ -1593,7 +1602,7 @@
       "contract": "src/contracts/api-v1.ts",
       "mcp": "POST /api/mcp, official stateless Streamable HTTP v2",
       "mcpVersion": "2.4.0",
-      "sdk": "packages/packproof-sdk, local @packproof/sdk 0.1.0; not published",
+      "sdk": "@packproof/sdk 0.1.0, MIT; clean release archive verified; npm browser authentication pending",
       "webMCP": "Native document.modelContext registration and actual execution passed in desktop Chrome 156.0.8078.47 with feature flag",
       "privateAuth": "Current session, Supabase Bearer token or hashed/scoped/expiring developer key",
       "autonomousCommit": false
@@ -1637,7 +1646,43 @@
         "typecheck": "passed",
         "build": "passed",
         "evidence": "docs/packproof/evidence/platform-browser.json#headerConsistency"
-      }
+      },
+      "homepageFlow": {
+        "status": "passed_local_and_hosted",
+        "home": "/",
+        "investigate": "/investigate",
+        "legacyReview": "308 redirect to /; invitation fragment preserved and scrubbed",
+        "localChecksPassed": 15,
+        "typecheck": "passed",
+        "build": "passed",
+        "newProviderRequests": 0,
+        "ownershipCommits": 0,
+        "evidence": "docs/packproof/evidence/platform-browser.json#homepageFlow",
+        "publicSignupEmail": "existing delivery blocker unchanged",
+        "hostedChecksPassed": 7,
+        "hostedEvidence": "docs/packproof/evidence/platform-preview.json#homepageFlow"
+      },
+      "mobileAlignment": {
+        "status": "passed_local_and_hosted",
+        "localBrowserChecksPassed": 17,
+        "hostedBrowserChecksPassed": 6,
+        "viewports": [
+          320,
+          390,
+          1280
+        ],
+        "targetedUnitPassed": 3,
+        "rollbackDatabasePassed": 1,
+        "typecheck": "passed",
+        "build": "passed_on_vercel",
+        "uploadedSourceMatchesWorkspace": true,
+        "evidence": "docs/packproof/evidence/platform-browser.json#mobileAlignment",
+        "hostedEvidence": "docs/packproof/evidence/platform-preview.json#mobileAlignment",
+        "newProviderRequests": 0,
+        "ownershipCommits": 0,
+        "physicalAndroidRetest": "pending"
+      },
+      "sampleAssessmentPolicy": "Finite 14-day read-only assessment window for three pinned public synthetic examples and authorized reviewer units during the active review period. Actual signed dates remain visible; ordinary evidence, issuer expiry and ChainProof commit checks remain unchanged."
     },
     "acceptance": {
       "1": {
@@ -1724,22 +1769,23 @@
     ],
     "sharedBudget": {
       "grantId": "review-live-2026-11-04",
-      "approvedUsd": 5,
+      "approvedUsd": 10,
       "requestsBeforeTask": 34,
       "requestsAfterTask": 38,
       "newCombinedMuseSamRequests": 4,
       "newReservedUsd": 0.12,
       "reservedUsd": 1.66,
-      "remainingReservationUsd": 3.34,
+      "remainingReservationUsd": 8.34,
       "estimatedTotalUsageUsd": 0.21835545,
       "actualBilledUsd": null,
-      "separateRequestCountCap": null
+      "separateRequestCountCap": null,
+      "budgetExpansionProviderRequests": 0
     },
     "preview": {
       "status": "passed_deployed",
-      "url": "https://packproof-p0-preview.vercel.app/review",
-      "deploymentId": "dpl_47Air3nKDVYbKyQ5YCuyo6riwh62",
-      "sourceSha256": "71c70b0596daefd2f377360cdc79fc49e710508ab8a011d1fd78574d11fe506c",
+      "url": "https://packproof-p0-preview.vercel.app/",
+      "deploymentId": "dpl_D1TDK3kqFF9sq9jqhBYhacKD2h9x",
+      "sourceSha256": "88725e66f785000dd83194a9d40a30aeb1f8986a1ce552953adf5c1ebe7b65fd",
       "protected": true,
       "productionDeploymentChanged": false,
       "newEncryptedPreviewVariables": [
@@ -1750,7 +1796,7 @@
       ],
       "newProviderRequests": 0,
       "temporaryAutomationBypassRevoked": true,
-      "physicalPhoneWalkthrough": "corrected_header_retest_pending",
+      "physicalPhoneWalkthrough": "mobile_alignment_and_new_platform_pages_retest_pending",
       "previousFunctionalHostedValidation": {
         "deploymentId": "dpl_CtVJEJtHE1PMhNpJeoGzonDgXiWd",
         "checksPassed": 26,
@@ -1763,7 +1809,22 @@
         "evidence": "docs/packproof/evidence/platform-browser.json#uiFollowup"
       },
       "hostedHeaderPagesChecked": 10,
-      "localOfflineBehavior": "passed"
+      "localOfflineBehavior": "passed",
+      "hostedHomepageChecksPassed": 7,
+      "productionChangeScope": "No change for mobile alignment; prior budget-only Production update retained.",
+      "reviewerBudgetChecksPassed": 4,
+      "mobileAlignmentChecksPassed": 6
+    },
+    "sdkRelease": {
+      "status": "awaiting_npm_browser_authentication",
+      "evidence": "docs/packproof/evidence/sdk-release.json"
+    },
+    "privateAccessSheet": {
+      "roles": "First sender / First receiver per pair; separate Manufacturer / Producer sign-in",
+      "renderer": "scripts/review/access.ts",
+      "containsSecrets": true,
+      "tracked": false,
+      "checks": "390px layout passed; no database or provider calls"
     }
   }
 }

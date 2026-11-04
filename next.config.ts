@@ -4,6 +4,10 @@ const config:NextConfig={
  outputFileTracingIncludes:{'/offline/**':['./dist/offline/**'],'/tools/**':['./dist/index.html','./dist/phone.js'],'/api/platform/**':['./vendor/ffmpeg/**'],'/api/**':['./docs/packproof/demo/root-public.json','./certs/supabase-roots.crt','./docs/packproof/evidence/provider.json','./docs/packproof/evidence/sam/special-token-output.txt']},
  outputFileTracingExcludes:{'/*':['./.local/**','./.env*','./tests/**','./scripts/p1/**','./scripts/p1c/**','./scripts/p2/**','./scripts/p3/**','./scripts/p4/**','./scripts/review/**']},
  webpack(config){config.resolve.extensionAlias={...config.resolve.extensionAlias,'.js':['.ts','.tsx','.js']};return config;},
+ async redirects(){return [
+  {source:'/review',destination:'/',permanent:true},
+  {source:'/',has:[{type:'query',key:'product'}],destination:'/investigate',permanent:false},
+ ];},
  async headers(){return [{source:'/(.*)',headers:[{key:'X-Content-Type-Options',value:'nosniff'},{key:'Referrer-Policy',value:'same-origin'},{key:'X-Frame-Options',value:'DENY'},{key:'Permissions-Policy',value:'camera=(self), microphone=(), geolocation=()'}]}];},
 };
 export default config;

@@ -1,0 +1,40 @@
+{
+  "package": "@packproof/sdk",
+  "version": "0.1.0",
+  "license": "MIT",
+  "registry": "https://registry.npmjs.org",
+  "npmUrl": "https://www.npmjs.com/package/@packproof/sdk",
+  "organization": "packproof",
+  "publisher": "olumide100",
+  "organizationRole": "owner",
+  "status": "awaiting_npm_browser_authentication",
+  "checkedAt": "2026-11-04T18:19:48.116407+00:00",
+  "archive": {
+    "bytes": 24399,
+    "unpackedBytes": 211083,
+    "entries": 21,
+    "shasum": "c67626ee880855dfff0f3fd5498f49c5e7c6ae73",
+    "integrity": "sha512-7IvhHzjQNyw0dNhO8doKKmKqwJ3xhNsvX4fJdWvnV/heyvyglFTVoHA7UOLDDgGw+yhDHBHxkeMeCn+VfFguwg=="
+  },
+  "checks": {
+    "sdkBuild": "passed",
+    "applicationTypecheck": "passed",
+    "archiveAllowlistAndSecretAudit": "passed",
+    "cleanConsumerInstall": "passed",
+    "packagedRuntimeChecksPassed": 4,
+    "packagedDeclarations": "passed",
+    "privateAccessSheet": "passed_390px",
+    "changedFileSecretAudit": "passed"
+  },
+  "accessSheet": {
+    "path": ".local/review/access.html",
+    "trackedRenderer": "scripts/review/access.ts",
+    "pairs": 12,
+    "regularAccounts": 24,
+    "manufacturerSignIn": "separate_existing_account_in_private_sheet",
+    "databaseWrites": 0
+  },
+  "providerRequests": 0,
+  "ownershipCommits": 0,
+  "actualPublishConfirmed": false
+}

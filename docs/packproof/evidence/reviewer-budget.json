@@ -1,11 +1,11 @@
 {
   "grant": {
     "id": "review-live-2026-11-04",
-    "limit_cents": 500,
+    "limit_cents": 1000,
     "reserved_cents": 166,
     "enabled": true,
-    "approval": "User approved 5 USD for unlimited requests; no separate request-count cap; nonrefundable per-call reservations bound spend.",
-    "approved_at": "2026-11-04T09:04:44.087Z"
+    "approval": "User approved $10 total shared live Meta allowance and 10 additional reviewer pairs on 2026-11-04. Existing reservations retained; no separate total inference request cap.",
+    "approved_at": "2026-11-04T16:59:08.437Z"
   },
   "calls": [
     {
@@ -620,6 +620,6 @@
   "estimatedUsageUsd": 0.21835545,
   "actualBilledUsd": null,
   "nonrefundableReservedUsd": 1.66,
-  "remainingReservationUsd": 3.34,
+  "remainingReservationUsd": 8.34,
   "separateRequestCap": null
 }

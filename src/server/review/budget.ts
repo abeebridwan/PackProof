@@ -10,9 +10,14 @@ export async function reviewer(userId:string|null){
  if(!userId)return null;
  return reviewTransaction(async c=>(await c.query('SELECT user_id,role,pair_id,expires_at FROM packproof.review_access WHERE user_id=$1 AND revoked_at IS NULL AND expires_at>now()',[z.uuid().parse(userId)])).rows[0]??null);
 }
-export async function reviewPolicy(userId:string,input:InvestigationInput){
- return reviewTransaction(async c=>{
-  const r=await c.query("SELECT 1 FROM packproof.review_units u JOIN packproof.review_access a ON a.pair_id=u.pair_id JOIN packproof.items i ON i.id=u.item_id WHERE a.user_id=$1 AND a.revoked_at IS NULL AND a.expires_at>now() AND u.authority_until>now() AND u.product_mark=$2 AND (u.packaging_mark=$3 OR $3 IS NULL) AND i.model_code='JUDGE-SAMPLE' AND i.unit_mark LIKE 'JR-%'",[userId,input.productMark,input.packagingMark]);
+export async function reviewPolicy(userId:string|null,input:InvestigationInput,transaction:typeof reviewTransaction=reviewTransaction){
+ if(input.namespace!=='packproof-demo')return {};
+ return transaction(async c=>{
+  // The three original public examples are synthetic too. Their read-only
+  // assessment uses the same finite review window in recorded and live mode.
+  // Signed dates, issuer expiry and ChainProof's commit policy do not change.
+  const r=await c.query(`SELECT 1 FROM packproof.review_units u JOIN packproof.review_access a ON a.pair_id=u.pair_id JOIN packproof.items i ON i.id=u.item_id WHERE a.user_id=$1 AND a.revoked_at IS NULL AND a.expires_at>now() AND u.authority_until>now() AND u.product_mark=$2 AND (u.packaging_mark=$3 OR $3 IS NULL) AND i.model_code='JUDGE-SAMPLE' AND i.unit_mark LIKE 'JR-%'
+   UNION ALL SELECT 1 FROM packproof.items i WHERE i.id IN('10000000-0000-4000-8000-000000000001','10000000-0000-4000-8000-000000000002','30000000-0000-4000-8000-000000000103') AND i.namespace='packproof-demo' AND i.model_code='DEMO-FORMULA' AND i.unit_mark=$2 AND i.unit_mark IN('FP-1001','FP-1002','FP-GAP-01') AND EXISTS(SELECT 1 FROM packproof.review_units WHERE authority_until>now()) LIMIT 1`,[userId,input.productMark,input.packagingMark]);
   return r.rowCount?{maxAgeMs:REVIEW_EVIDENCE_MAX_AGE_MS,policyVersion:REVIEW_EVIDENCE_POLICY}:{};
  });
 }
@@ -27,7 +32,8 @@ export class HostedBudget{
   if(!Number.isInteger(inputTokens)||inputTokens<0||inputTokens>16000)throw new P1BudgetError('p1_input_limit');
   return this.transaction(async c=>{
    const grant=(await c.query('SELECT * FROM packproof.review_budget WHERE id=$1 FOR UPDATE',[REVIEW_GRANT])).rows[0];
-   if(!grant?.enabled||grant.limit_cents!==500)throw new P1BudgetError('review_live_unavailable');
+   // Keep the prior grant working during rollout; only explicitly approved caps are accepted.
+   if(!grant?.enabled||![500,1000].includes(grant.limit_cents))throw new P1BudgetError('review_live_unavailable');
    const pending=await c.query("SELECT 1 FROM packproof.review_calls WHERE grant_id=$1 AND (state='ambiguous' OR state='reserved' AND reserved_at<now()-interval '120 seconds') LIMIT 1",[REVIEW_GRANT]);
    if(pending.rowCount)throw new P1BudgetError('p1_operation_in_doubt');
    const rate=(await c.query("SELECT count(*)::int n,coalesce(sum(cents),0)::int cents,count(*) FILTER(WHERE state='reserved')::int pending FROM packproof.review_calls WHERE user_id=$1 AND reserved_at>now()-interval '1 hour'",[this.userId])).rows[0];

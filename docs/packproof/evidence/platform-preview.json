@@ -136,5 +136,124 @@
     "temporaryBypassRevoked": true,
     "newProviderRequests": 0,
     "ownershipCommits": 0
+  },
+  "homepageFlow": {
+    "status": "passed",
+    "origin": "https://packproof-p0-preview.vercel.app",
+    "deploymentId": "dpl_GRcB8tKTNZEiaVqubfBhcdFL4v1B",
+    "sourceSha256": "5b2865e3e49fd93718d729306d8c48474939076d839d9e7a8984879c96521b57",
+    "viewport": 390,
+    "conditions": "Actual hosted Preview in desktop Chrome; new Android walkthrough remains pending",
+    "checks": [
+      {
+        "name": "one_homepage_with_tasks_and_visible_reviewer_entry",
+        "status": "passed"
+      },
+      {
+        "name": "home_to_investigator",
+        "status": "passed"
+      },
+      {
+        "name": "producer_account_entry",
+        "status": "passed"
+      },
+      {
+        "name": "old_reviewer_link_redirect_and_invitation_in_view",
+        "status": "passed"
+      },
+      {
+        "name": "old_product_link_preserves_inputs",
+        "status": "passed"
+      },
+      {
+        "name": "all_ten_feature_pages_share_home_and_investigator_routes",
+        "status": "passed"
+      },
+      {
+        "name": "hosted_existing_login_returns_to_handover",
+        "status": "passed"
+      }
+    ],
+    "newProviderRequests": 0,
+    "ownershipCommits": 0,
+    "startedAt": "2026-11-04T16:37:37.610Z",
+    "browserVersion": "156.0.8078.47",
+    "temporaryBypassRevoked": true,
+    "finishedAt": "2026-11-04T16:38:02.765Z",
+    "productionDeploymentUnchanged": {
+      "deploymentId": "dpl_5zPWvxiKsPbeXkbw4QnCN2ZiABbJ",
+      "unchanged": true,
+      "checkedAt": "2026-11-04T16:38:06.734Z"
+    }
+  },
+  "reviewerBudgetExpansion": {
+    "status": "passed",
+    "deploymentId": "dpl_jikvEGEzP6eAbf2szZe7rqLLWsC2",
+    "sourceSha256": "f2b3ba06d2a0c33a28414488b5145cd356295e4d4e756178d22ae8daf9590f2e",
+    "evidence": "docs/packproof/evidence/reviewer-release.json#budgetExpansion",
+    "checks": [
+      {
+        "name": "new_reviewer_private_link_and_sign_in_in_hosted_mobile_layout",
+        "status": "passed"
+      },
+      {
+        "name": "paired_separate_identities_share_their_assigned_items",
+        "status": "passed"
+      },
+      {
+        "name": "different_pairs_have_separate_items",
+        "status": "passed"
+      },
+      {
+        "name": "production_accepts_new_invitation_and_same_shared_budget",
+        "status": "passed"
+      }
+    ],
+    "temporaryBypassRevoked": true,
+    "newProviderRequests": 0,
+    "productionChangeScope": "Budget guard only; new Terminal 1 platform features remain Preview-only."
+  },
+  "mobileAlignment": {
+    "status": "passed",
+    "origin": "https://packproof-p0-preview.vercel.app",
+    "deploymentId": "dpl_D1TDK3kqFF9sq9jqhBYhacKD2h9x",
+    "sourceSha256": "88725e66f785000dd83194a9d40a30aeb1f8986a1ce552953adf5c1ebe7b65fd",
+    "viewport": 390,
+    "conditions": "Hosted protected Preview in desktop Chrome; physical Android confirmation pending",
+    "checks": [
+      {
+        "name": "hosted_mobile_operations_aligned",
+        "status": "passed"
+      },
+      {
+        "name": "sdk_publication_status_explicit",
+        "status": "passed"
+      },
+      {
+        "name": "hosted_positive_example_and_selected_highlight",
+        "status": "passed"
+      },
+      {
+        "name": "hosted_listing_physical_buttons_aligned",
+        "status": "passed"
+      },
+      {
+        "name": "finite_sample_window_disclosed",
+        "status": "passed"
+      },
+      {
+        "name": "hosted_inspector_mobile_entry",
+        "status": "passed"
+      }
+    ],
+    "newProviderRequests": 0,
+    "ownershipCommits": 0,
+    "startedAt": "2026-11-04T17:29:23.794Z",
+    "productionDeploymentUnchanged": {
+      "deploymentId": "dpl_5YbVpaWLKf221xvakREHZrCt5s9X",
+      "unchanged": true
+    },
+    "temporaryBypassRevoked": true,
+    "finishedAt": "2026-11-04T17:29:38.061Z"
   }
 }

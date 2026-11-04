@@ -3,6 +3,7 @@ import {readFile,writeFile,mkdir,stat} from 'node:fs/promises';
 import {randomUUID,randomBytes,createHash} from 'node:crypto';
 import {importJWK} from 'jose';
 import sharp from 'sharp';
+import {writeReviewAccess} from './access.js';
 import {databasePool} from '../../src/server/data/postgres.js';
 import {loadSources,rootPin} from '../../src/server/transfers/authority.js';
 import {validateDataset} from '../../src/server/evidence/services.js';
@@ -16,16 +17,27 @@ process.env.SUPABASE_DB_URL=(await readFile('.local/deploy/preview-db-url','utf8
 await mkdir('.local/review',{recursive:true,mode:0o700});
 type Identity={role:'buyer'|'seller';email:string;password:string;code:string;actorId:string;userId?:string};
 type Pair={id:string;identities:Identity[];items:{id:string;product:string;packaging:string}[]};
+const pairArgument=process.argv.find(a=>a.startsWith('--pairs='));
+const targetPairs=pairArgument?Number(pairArgument.slice('--pairs='.length)):null;
+if(targetPairs!==null&&(!Number.isSafeInteger(targetPairs)||targetPairs<1||targetPairs>50))throw new Error('expected_pair_count_1_to_50');
+function newPairs(start:number,count:number):Pair[]{
+ const suffix=randomBytes(4).toString('hex');
+ return Array.from({length:count},(_,index)=>{const n=start+index;return {id:randomUUID(),identities:(['buyer','seller'] as const).map(role=>({role,email:`packproof-review-${suffix}-${n}-${role}@example.invalid`,password:randomBytes(24).toString('base64url'),code:randomBytes(24).toString('base64url'),actorId:randomUUID()})),items:[1,2].map(i=>({id:randomUUID(),product:`JR-${suffix.toUpperCase()}-${n}-${i}`,packaging:`JP-${suffix.toUpperCase()}-${n}-${i}`}))};});
+}
 const path='.local/review/invitations.json';let pairs:Pair[];
 try{pairs=JSON.parse(await readFile(path,'utf8'));}catch(e){if(!(e&&typeof e==='object'&&'code'in e&&e.code==='ENOENT'))throw e;
- const suffix=randomBytes(4).toString('hex');pairs=[1,2].map(n=>({id:randomUUID(),identities:(['buyer','seller'] as const).map(role=>({role,email:`packproof-review-${suffix}-${n}-${role}@example.invalid`,password:randomBytes(24).toString('base64url'),code:randomBytes(24).toString('base64url'),actorId:randomUUID()})),items:[1,2,3].map(i=>({id:randomUUID(),product:`JR-${suffix.toUpperCase()}-${n}${i}`,packaging:`JP-${suffix.toUpperCase()}-${n}${i}`}))}));
+ pairs=newPairs(1,targetPairs??2);
  await writeFile(path,JSON.stringify(pairs,null,2)+'\n',{flag:'wx',mode:0o600});
 }
 const persist=()=>writeFile(path,JSON.stringify(pairs,null,2)+'\n',{mode:0o600});
+if(targetPairs!==null){if(targetPairs<pairs.length)throw new Error('cannot_remove_existing_pairs');if(targetPairs>pairs.length){pairs.push(...newPairs(pairs.length+1,targetPairs-pairs.length));await persist();}}
 const authOrigin=process.env.SUPABASE_URL;if(authOrigin!=='https://hvbzxeuedookkwleyjmx.supabase.co')throw new Error('Existing project required');
 const secret=process.env.SUPABASE_SECRET_KEY;if(!secret)throw new Error('Operator credential required');
 const pool=databasePool();
 try{
+ const planned=pairs.flatMap(p=>p.items).map(i=>i.id);
+ const capacity=(await pool.query('SELECT count(*)::int n FROM packproof.items WHERE NOT(id=ANY($1::uuid[]))',[planned])).rows[0];
+ if(capacity.n+planned.length>32)throw new Error('reviewer_unit_capacity_exceeded');
  const sql=await readFile('supabase/migrations/202611040008_review.sql','utf8'),hash=createHash('sha256').update(sql).digest('hex');
  const m=await pool.connect();try{await m.query('BEGIN');await m.query('SELECT pg_advisory_xact_lock(7140915)');const prior=(await m.query("SELECT sha256 FROM packproof.schema_migrations WHERE version='202611040008'")).rows[0];if(prior&&prior.sha256!==hash)throw new Error('migration_hash_changed');if(!prior){await m.query(sql);await m.query("INSERT INTO packproof.schema_migrations(version,sha256) VALUES('202611040008',$1)",[hash]);}await m.query('COMMIT');}catch(e){await m.query('ROLLBACK');throw e;}finally{m.release();}
  const windowSql=await readFile('supabase/migrations/202611040009_review_window.sql','utf8'),windowHash=createHash('sha256').update(windowSql).digest('hex');
@@ -88,14 +100,19 @@ try{
    const refs=[p.issuanceRecordId,p.mappingRecordId,p.ownerRecordId].filter((v,i,a)=>a.indexOf(v)===i);
    const record=EvidenceRecord.parse({schemaVersion:1,id:randomUUID(),type:'custody_snapshot',namespace:pin.namespace,subjectIds:[p.itemId],scope:'unit',issuerId:DEMO.issuer,keyId:DEMO.issuerKey,issuedAt:at,receivedAt:at,revision:p.ownerVersion,previousIds:refs,evidenceHashes:refs.map(id=>data.records.find(s=>s.id===id)!.sha256),visibility:'restricted',demo:true,data:{itemId:p.itemId,holderReference:`registered-actor:${p.registeredOwnerId}`,sourceRecordIds:refs,gapRecordIds:[],asOf:at}});
    const stored=await signRecord(record,issuer);await c.query('INSERT INTO packproof.transfer_authority_snapshots(id,item_id,owner_version,jws,sha256,payload) VALUES($1,$2,$3,$4,$5,$6)',[stored.id,p.itemId,p.ownerVersion,stored.jws,stored.sha256,record]);authorities++;
-   await c.query('INSERT INTO packproof.review_units VALUES($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING',[p.itemId,pair.id,unit.product,unit.packaging,pair.identities.find(a=>a.role==='seller')!.actorId]);
+   await c.query('INSERT INTO packproof.review_units(item_id,pair_id,product_mark,packaging_mark,seller_id,authority_until) VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT DO NOTHING',[p.itemId,pair.id,unit.product,unit.packaging,pair.identities.find(a=>a.role==='seller')!.actorId,reviewUntil]);
   }
-  await c.query('INSERT INTO packproof.review_budget(id,limit_cents,enabled,approval) VALUES($1,500,true,$2) ON CONFLICT DO NOTHING',[REVIEW_GRANT,'User approved 5 USD for unlimited requests; no separate request-count cap; nonrefundable per-call reservations bound spend.']);
+  const budget=(await c.query('SELECT limit_cents FROM packproof.review_budget WHERE id=$1',[REVIEW_GRANT])).rows[0];
+  if(!budget)throw new Error('existing_approved_budget_required');
   await validateDataset(await loadSources(c,'packproof'),pin,at);await c.query('COMMIT');
   const sample=pairs[0]!.items[0]!;
   const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900"><rect width="1200" height="900" fill="#fff"/><rect x="30" y="30" width="1140" height="840" rx="20" fill="none" stroke="#163b32" stroke-width="5"/><g font-family="sans-serif" fill="#163b32"><text x="80" y="120" font-size="48" font-weight="bold">PackProof · SYNTHETIC TEST LABEL</text><text x="80" y="195" font-size="30">Fictional sample · not for sale · no regulatory claim</text><text x="80" y="310" font-size="44">PRODUCT: ${sample.product}</text><text x="80" y="400" font-size="44">PACKAGE: ${sample.packaging}</text><text x="80" y="495" font-size="44">BATCH: SYNTHETIC-01</text><text x="80" y="610" font-size="64" font-weight="bold">EXP: 19/08/2028</text><text x="80" y="735" font-size="28">Print or display this label, then photograph it.</text><text x="80" y="790" font-size="28">A literal reading is not a product safety verdict.</text></g></svg>`;
   await sharp(Buffer.from(svg)).png().toFile('public/review-label.png');
-  const evidence={status:'passed',checkedAt:at,pairs:pairs.length,syntheticUnits:pairs.flatMap(p=>p.items).length,newProducts:products.length,newRestrictedAuthorities:authorities,migrationSha256:hash,grant:REVIEW_GRANT,limitUsd:5,requestCountCap:null,invitationFile:path,privateKeysDeployed:false,originalItemsReset:false,reviewUntil,originalItemAuthorityWindowHours:24,syntheticReviewerAuthorityWindowDays:14};
-  await writeFile('docs/packproof/evidence/reviewer-release.json',JSON.stringify(evidence,null,2)+'\n');console.log(JSON.stringify(evidence));
+  const evidence={...previousRelease,status:'passed',checkedAt:at,pairs:pairs.length,syntheticUnits:pairs.flatMap(p=>p.items).length,newProducts:products.length,newRestrictedAuthorities:authorities,migrationSha256:hash,grant:REVIEW_GRANT,limitUsd:budget.limit_cents/100,requestCountCap:null,invitationFile:path,privateKeysDeployed:false,originalItemsReset:false,reviewUntil,originalItemAuthorityWindowHours:24,syntheticReviewerAuthorityWindowDays:14};
+  await writeFile('docs/packproof/evidence/reviewer-release.json',JSON.stringify(evidence,null,2)+'\n');
+  const origin=process.env.PACKPROOF_REVIEW_ORIGIN??'https://packproof-p0-preview.vercel.app';
+  if(!['https://packproof-p0-preview.vercel.app','https://packproof-p0.vercel.app'].includes(origin))throw new Error('existing_app_origin_required');
+  await writeReviewAccess(pairs,{origin,limitUsd:budget.limit_cents/100,reviewUntil});
+  console.log(JSON.stringify({status:evidence.status,pairs:evidence.pairs,syntheticUnits:evidence.syntheticUnits,newProducts:evidence.newProducts,newRestrictedAuthorities:evidence.newRestrictedAuthorities,limitUsd:evidence.limitUsd,reviewUntil,privateAccessFile:'.local/review/access.html',origin}));
  }catch(e){await c.query('ROLLBACK');throw e;}finally{c.release();}
 }catch(e){console.error(JSON.stringify({status:'blocked',code:e&&typeof e==='object'&&'code'in e?e.code:e instanceof Error&&/^[a-z_0-9]+$/.test(e.message)?e.message:'review_prepare_failed'}));process.exitCode=1;}finally{await pool.end();}

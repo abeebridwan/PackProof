@@ -31,5 +31,5 @@ export async function runtime(owner:Owner){
  const enabled=process.env.P1_TRACING==='true'&&Boolean(process.env.LANGSMITH_API_KEY);
  const trace=safeTracing({enabled,...(enabled?{send:langSmithSender(process.env.LANGSMITH_API_KEY!,fetch,'packproof-p1b')}:{})});
  const options={owner,store,services:createEvidenceServices(repository,pin),planner:budget?liveMuse(budget,{apiKey:process.env.MODEL_API_KEY!,evidence:[]}):recordedMuse(),mode:live?'live' as const:'recorded-demo' as const,modelReservationCents:live?5:0,inspector:localValidation()?.inspector(pool)??new GroundedImageInspector(new PostgresInspectionRepository(pool),c=>new SupabaseCaptureStorage().read(c.objectPath),budget?groundedMeta(process.env.MODEL_API_KEY!,budget.image()):new RecordedGroundingProvider()),checkpointer:new PostgresSaver(pool,undefined,{schema:'packproof_graph'}),trace,timeoutMs:settings.timeout,capCents:settings.cap};
- return {pool,store,options:{...options,...(live?{freshnessPolicy:(input:InvestigationInput)=>reviewPolicy(owner.userId!,input)}:{})},close:()=>pool.end()};
+ return {pool,store,options:{...options,freshnessPolicy:(input:InvestigationInput)=>reviewPolicy(owner.userId,input)},close:()=>pool.end()};
 }

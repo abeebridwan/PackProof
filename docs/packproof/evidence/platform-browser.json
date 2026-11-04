@@ -314,5 +314,179 @@
       "finishedAt": "2026-11-04T16:04:22.632Z"
     },
     "physicalPhoneRetest": "pending"
+  },
+  "homepageFlow": {
+    "status": "passed",
+    "origin": "http://127.0.0.1:4312",
+    "conditions": "Desktop Chrome at 320, 390 and 1280px; actual existing Supabase login and reviewer entry, no account creation or new Android test",
+    "browserVersion": "156.0.8078.47",
+    "checks": [
+      {
+        "name": "homepage_paths_and_layout_320",
+        "status": "passed"
+      },
+      {
+        "name": "homepage_paths_and_layout_390",
+        "status": "passed"
+      },
+      {
+        "name": "homepage_paths_and_layout_1280",
+        "status": "passed"
+      },
+      {
+        "name": "homepage_to_investigator_and_sample_selection",
+        "status": "passed"
+      },
+      {
+        "name": "legacy_root_product_links_keep_codes",
+        "status": "passed"
+      },
+      {
+        "name": "legacy_review_redirect_preserves_private_fragment_and_scrubs_code",
+        "status": "passed"
+      },
+      {
+        "name": "regular_signup_entry",
+        "status": "passed"
+      },
+      {
+        "name": "producer_signup_and_existing_login_keep_destination",
+        "status": "passed"
+      },
+      {
+        "name": "direct_products_has_account_entry",
+        "status": "passed"
+      },
+      {
+        "name": "handover_has_clear_account_entry_and_return_path",
+        "status": "passed"
+      },
+      {
+        "name": "real_existing_signin_returns_to_selected_task",
+        "status": "passed"
+      },
+      {
+        "name": "external_return_url_is_ignored",
+        "status": "passed"
+      },
+      {
+        "name": "static_offline_header_returns_to_same_signed_in_home",
+        "status": "passed"
+      },
+      {
+        "name": "real_reviewer_entry_returns_to_single_home",
+        "status": "passed"
+      },
+      {
+        "name": "no_page_runtime_errors",
+        "status": "passed"
+      }
+    ],
+    "newProviderRequests": 0,
+    "ownershipCommits": 0,
+    "publicSignupEmailDelivery": "not retested; UI only",
+    "startedAt": "2026-11-04T16:30:58.967Z",
+    "finishedAt": "2026-11-04T16:31:17.113Z",
+    "build": "passed: pnpm build; final pnpm exec next build --webpack",
+    "typecheck": "passed: pnpm typecheck after route types regenerated",
+    "secretScan": {
+      "status": "passed",
+      "files": 16,
+      "knownSecretValues": 23
+    },
+    "testHarness": "Local browser check; no new permanent test guide or fixture file"
+  },
+  "mobileAlignment": {
+    "status": "passed",
+    "origin": "http://localhost:4311",
+    "conditions": "Desktop Chrome at 320px, 390px and 1280px; synthetic browser camera, no new physical-phone claim",
+    "checks": [
+      {
+        "name": "all_ten_pages_fit_viewport_320",
+        "status": "passed"
+      },
+      {
+        "name": "developer_checkbox_alignment_320",
+        "status": "passed"
+      },
+      {
+        "name": "listing_and_physical_controls_align_320",
+        "status": "passed"
+      },
+      {
+        "name": "all_ten_pages_fit_viewport_390",
+        "status": "passed"
+      },
+      {
+        "name": "developer_checkbox_alignment_390",
+        "status": "passed"
+      },
+      {
+        "name": "listing_and_physical_controls_align_390",
+        "status": "passed"
+      },
+      {
+        "name": "all_ten_pages_fit_viewport_1280",
+        "status": "passed"
+      },
+      {
+        "name": "developer_checkbox_alignment_1280",
+        "status": "passed"
+      },
+      {
+        "name": "listing_and_physical_controls_align_1280",
+        "status": "passed"
+      },
+      {
+        "name": "selected_and_checking_state_with_actual_supported_database_result",
+        "status": "passed"
+      },
+      {
+        "name": "unauthorized_example_still_blocked",
+        "status": "passed"
+      },
+      {
+        "name": "history_gap_still_needs_evidence_without_premature_stale",
+        "status": "passed"
+      },
+      {
+        "name": "inspector_physical_request_uses_finite_sample_window",
+        "status": "passed"
+      },
+      {
+        "name": "camera_buttons_align_320",
+        "status": "passed"
+      },
+      {
+        "name": "camera_buttons_align_390",
+        "status": "passed"
+      },
+      {
+        "name": "camera_buttons_align_1280",
+        "status": "passed"
+      },
+      {
+        "name": "camera_capture_and_stop_still_work_without_upload",
+        "status": "passed"
+      }
+    ],
+    "newProviderRequests": 0,
+    "ownershipCommits": 0,
+    "startedAt": "2026-11-04T17:19:13.106Z",
+    "finishedAt": "2026-11-04T17:22:39.008Z",
+    "typecheck": "passed",
+    "focusedUnitChecks": {
+      "command": "pnpm exec vitest run tests/unit/investigator.test.ts -t 'sample window|signed snapshot boundary|old custody snapshot'",
+      "passed": 3,
+      "skipped": 21
+    },
+    "focusedDatabaseCheck": {
+      "command": "node --env-file-if-exists=.env.local --import tsx node_modules/vitest/vitest.mjs run tests/integration/review.test.ts -t 'dated sample review policy'",
+      "passed": 1,
+      "skipped": 1,
+      "writes": "rolled back"
+    },
+    "evidencePolicy": "Finite 14-day assessment window for the three pinned original synthetic examples and authorized reviewer units while the existing review window is active; signed dates and normal evidence/transfer expiry checks unchanged.",
+    "npmPublication": "not published; private local workspace package"
   }
 }

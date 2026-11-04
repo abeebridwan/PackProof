@@ -1,7 +1,10 @@
 {
- "name":"@packproof/sdk","version":"0.1.0","private":true,"type":"module",
+ "name":"@packproof/sdk","version":"0.1.0","type":"module","license":"MIT",
  "description":"Typed client for PackProof v1 evidence and consent-gated operations",
  "exports":{".":{"types":"./dist/packages/packproof-sdk/src/index.d.ts","import":"./dist/packages/packproof-sdk/src/index.js"}},
- "files":["dist"],"scripts":{"build":"tsc -p tsconfig.json"},
+ "types":"./dist/packages/packproof-sdk/src/index.d.ts",
+ "files":["dist/packages/packproof-sdk/src","dist/src/contracts","README.md","LICENSE"],
+ "publishConfig":{"access":"public","registry":"https://registry.npmjs.org"},
+ "scripts":{"build":"tsc -p tsconfig.json","prepack":"pnpm run build"},
  "dependencies":{"zod":"4.6.7"},"engines":{"node":">=24"}
 }

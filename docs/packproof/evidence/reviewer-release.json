@@ -1,13 +1,13 @@
 {
   "status": "passed_deployed",
-  "checkedAt": "2026-11-04T10:08:55.348Z",
-  "pairs": 2,
-  "syntheticUnits": 6,
-  "newProducts": 0,
-  "newRestrictedAuthorities": 1,
+  "checkedAt": "2026-11-04T16:58:01.049Z",
+  "pairs": 12,
+  "syntheticUnits": 26,
+  "newProducts": 20,
+  "newRestrictedAuthorities": 20,
   "migrationSha256": "df21c9cd69eca63bdb6d558009d8cd55c4bd32f013aaae18baabb46b3b6d7e33",
   "grant": "review-live-2026-11-04",
-  "limitUsd": 5,
+  "limitUsd": 10,
   "requestCountCap": null,
   "invitationFile": ".local/review/invitations.json",
   "privateKeysDeployed": false,
@@ -79,12 +79,18 @@
     "priorFailure": "One default-effort response exhausted the bounded output before a valid answer. Strict validation rejected it; no guessed result or auto paid retry."
   },
   "deployment": {
-    "id": "dpl_5zPWvxiKsPbeXkbw4QnCN2ZiABbJ",
-    "sourceSha256": "964199f32b71962638625c36e87b935d1c174731bed3cc67fa0503b13074d170",
+    "id": "dpl_5YbVpaWLKf221xvakREHZrCt5s9X",
+    "sourceSha256": "570db6541ac92877216133815878626eeb93886ae9b943bd81555176fe777b23",
     "sourceFiles": 115,
     "permanentUrl": "https://packproof-p0.vercel.app/review",
     "readyState": "READY",
-    "productionSmoke": "docs/packproof/evidence/reviewer-production.json"
+    "productionSmoke": "docs/packproof/evidence/reviewer-release.json#budgetExpansion/hosted",
+    "url": "https://packproof-p0.vercel.app",
+    "changedFiles": [
+      "src/server/review/budget.ts"
+    ],
+    "existingEncryptedConfigurationReused": true,
+    "terminal1Promoted": false
   },
   "budgetEvidence": "docs/packproof/evidence/reviewer-budget.json",
   "preservation": {
@@ -121,7 +127,7 @@
     },
     {
       "command": "node .local/review/browser.mjs (REVIEW_LIVE_TEST=1)",
-      "result": "passed; actual local Production build, Meta, Supabase; obscured \u2192 unknown \u2192 requested close view \u2192 exact expiry \u2192 reload"
+      "result": "passed; actual local Production build, Meta, Supabase; obscured → unknown → requested close view → exact expiry → reload"
     },
     {
       "command": "node .local/review/transfer.mjs",
@@ -136,7 +142,7 @@
       "result": "passed;49 client assets,21 server traces,9428 references; no invitation/password/private-key leaks"
     }
   ],
-  "newPhysicalAndroidAcceptance": "not_run; earlier P0\u2013P4 phone acceptance retained unchanged",
+  "newPhysicalAndroidAcceptance": "not_run; earlier P0–P4 phone acceptance retained unchanged",
   "reviewerDataRemaining": "Six issued synthetic units; one transferred during browser acceptance; five initially available across two pairs. Completed ownership never reset.",
   "finalBudget": {
     "requests": 34,
@@ -151,5 +157,118 @@
     "202611040008",
     "202611040009"
   ],
-  "deploymentArtifactSourceVerified": true
+  "deploymentArtifactSourceVerified": true,
+  "budgetExpansion": {
+    "checkedAt": "2026-11-04T16:59:09.085Z",
+    "previousApproval": "User approved 5 USD for unlimited requests; no separate request-count cap; nonrefundable per-call reservations bound spend.",
+    "previousLimitUsd": 5,
+    "approvedLimitUsd": 10,
+    "priorPairs": 2,
+    "additionalPairs": 10,
+    "targetPairs": 12,
+    "migrationSha256": "6ece30d14f7471d55dd9cf70f39af25ae00625c6d3a318253370c53c58dd82bc",
+    "reservedCentsAtChange": 166,
+    "reservationsRetained": true,
+    "newProviderRequests": 0,
+    "actualBilledUsd": null,
+    "verification": {
+      "status": "passed",
+      "checkedAt": "2026-11-04T16:59:32.851Z",
+      "pairs": 12,
+      "accounts": 24,
+      "syntheticUnits": 26,
+      "priorInvitationsUnchanged": true,
+      "priorItemsUnchanged": 9,
+      "priorSignedRecordsUnchanged": 61,
+      "priorSnapshotsUnchanged": 9,
+      "priorCallReceiptsUnchanged": 38,
+      "allPairsHaveSeparateUnits": true,
+      "newUnitsPerPair": 2,
+      "allInvitationsBoundToSeparateAccounts": true,
+      "reservedCents": 166,
+      "limitCents": 1000,
+      "newProviderRequests": 0
+    },
+    "previousProductionDeployment": {
+      "id": "dpl_5zPWvxiKsPbeXkbw4QnCN2ZiABbJ",
+      "sourceSha256": "964199f32b71962638625c36e87b935d1c174731bed3cc67fa0503b13074d170",
+      "sourceFiles": 115,
+      "permanentUrl": "https://packproof-p0.vercel.app/review",
+      "readyState": "READY",
+      "productionSmoke": "docs/packproof/evidence/reviewer-production.json"
+    },
+    "production": {
+      "id": "dpl_5YbVpaWLKf221xvakREHZrCt5s9X",
+      "sourceSha256": "570db6541ac92877216133815878626eeb93886ae9b943bd81555176fe777b23",
+      "readyState": "READY",
+      "url": "https://packproof-p0.vercel.app",
+      "changedFiles": [
+        "src/server/review/budget.ts"
+      ],
+      "sourceFiles": 115,
+      "existingEncryptedConfigurationReused": true,
+      "terminal1Promoted": false
+    },
+    "preview": {
+      "id": "dpl_jikvEGEzP6eAbf2szZe7rqLLWsC2",
+      "sourceSha256": "f2b3ba06d2a0c33a28414488b5145cd356295e4d4e756178d22ae8daf9590f2e",
+      "readyState": "READY",
+      "url": "https://packproof-p0-preview.vercel.app/",
+      "sourceFiles": 142,
+      "changedFiles": [
+        "src/server/review/budget.ts"
+      ],
+      "existingEncryptedConfigurationReused": true
+    },
+    "hosted": {
+      "status": "passed",
+      "startedAt": "2026-11-04T16:59:30.543Z",
+      "previewDeployment": "dpl_jikvEGEzP6eAbf2szZe7rqLLWsC2",
+      "productionDeployment": "dpl_5YbVpaWLKf221xvakREHZrCt5s9X",
+      "checks": [
+        {
+          "name": "new_reviewer_private_link_and_sign_in_in_hosted_mobile_layout",
+          "status": "passed"
+        },
+        {
+          "name": "paired_separate_identities_share_their_assigned_items",
+          "status": "passed"
+        },
+        {
+          "name": "different_pairs_have_separate_items",
+          "status": "passed"
+        },
+        {
+          "name": "production_accepts_new_invitation_and_same_shared_budget",
+          "status": "passed"
+        }
+      ],
+      "newProviderRequests": 0,
+      "remainingCents": 834,
+      "temporaryBypassRevoked": true,
+      "finishedAt": "2026-11-04T16:59:57.977Z"
+    },
+    "validation": {
+      "typecheck": "passed",
+      "budgetBoundaryCommand": "node --env-file-if-exists=.env.local --import tsx node_modules/vitest/vitest.mjs run tests/integration/review.test.ts --reporter=default",
+      "budgetBoundaryResult": "2 passed: updated runtime checks both $5 and $10 limits, overspend, ambiguity and privilege rejection; prior Production runtime also passed at $5 during rollout. All test writes rolled back. The isolated Production source was moved outside the workspace afterward.",
+      "deployedBuilds": "Preview and minimal Production patch READY",
+      "newProviderRequests": 0,
+      "newReservedUsd": 0,
+      "actualBilledUsd": null
+    },
+    "provisioning": {
+      "newAuthAccounts": 20,
+      "newProducts": 20,
+      "newPublicSignedRecords": 80,
+      "newRestrictedOwnershipSnapshots": 20,
+      "newUnitsPerPair": 2,
+      "existingUnitsRetained": true,
+      "bounds": "Two items per additional pair keep the whole existing dataset within its unchanged 32-product schema bound. A capacity check now runs before further account provisioning.",
+      "privateAccessFile": ".local/review/access.html",
+      "privateAccessOrigin": "https://packproof-p0-preview.vercel.app/",
+      "qrCards": 24,
+      "expiryUnchanged": "2026-11-18T09:04:44.441Z"
+    }
+  }
 }
