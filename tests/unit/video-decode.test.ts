@@ -1,0 +1,5 @@
+import {it,expect} from 'vitest';
+import {readFile} from 'node:fs/promises';
+import {decodeVideo} from '../../src/server/platform/video-decode.js';
+it('decodes real H.264 into bounded source-derived frames with actual relative timestamps',async()=>{const decoded=await decodeVideo(await readFile('tests/fixtures/short-clip.mp4'),'video/mp4');expect(decoded.durationMs).toBe(2200);expect(decoded.frames.map(f=>f.timestampMs)).toEqual([0,1000,2000]);expect(new Set(decoded.frames.map(f=>f.sha256)).size).toBe(3);expect(decoded.frames.every(f=>f.width===320&&f.height===240)).toBe(true);},30000);
+it('rejects oversized, malformed and over-duration videos before any provider processing',async()=>{await expect(decodeVideo(new Uint8Array(3145729),'video/mp4')).rejects.toMatchObject({code:'invalid_video'});await expect(decodeVideo(new Uint8Array(100),'video/mp4')).rejects.toMatchObject({code:'video_could_not_be_decoded'});await expect(decodeVideo(await readFile('tests/fixtures/long-clip.mp4'),'video/mp4')).rejects.toMatchObject({code:'video_maximum_eight_seconds'});},30000);

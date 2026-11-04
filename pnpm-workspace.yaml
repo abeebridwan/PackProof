@@ -1,5 +1,6 @@
 packages:
   - '.'
+  - 'packages/packproof-sdk'
 
 allowBuilds:
   esbuild: true

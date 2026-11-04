@@ -1,144 +1,71 @@
 # PackProof
 
-PackProof is a product-evidence project for buyers, sellers and mechanics who want to understand goods before buying, handing them over or receiving them. It aims to connect visible markings, issuer records, product notices and signed handovers, with clear explanations of what the evidence supports and what is still unknown.
+PackProof connects signed product records, visible evidence, registered handovers and offline verification in one Next.js PWA. The demonstration uses sample products; signatures, database authorization and cryptographic checks are real. A matching code or photograph never establishes authenticity, safety, legal title or uninterrupted custody.
 
-The planned experience combines guided camera inspection, seller authorization checks and signed evidence that can be consulted offline. The first demonstration uses fictional product records and packaging. Product direction and requirements will evolve as the system is built and tested.
+The permanent application is [packproof-p0.vercel.app](https://packproof-p0.vercel.app/review). The Terminal 1 checkpoint is deployed and runtime-validated on [protected Preview](https://packproof-p0-preview.vercel.app/review); they have **not been promoted to Production**. Current acceptance and deployment status live in [BUILD_STATE.json](project_handoff/BUILD_STATE.json).
 
-## What works today
+## Accounts and the connected flow
 
-The repository maintains one evolving Next.js/React application, with feasibility probes retained as development tools:
+There are exactly two account types:
 
-- Strict schemas for markings, verification results, transfer agreements and signed pack manifests.
-- A read-only fictional registry that Muse can query through a typed tool, with independently validated responses.
-- Real SAM segmentation through Meta's Responses API and the official parser, with saved masks, boxes and source-image references.
-- Demonstrated Muse readings from grounded synthetic evidence and one consented physical product-label sample; the vivo Y03 live test and result recovery passed.
-- ES256 signing and verification between Node and a browser, SHA-256 integrity checks, and rejection of tampered data and untrusted keys.
-- A browser test page for camera capture, manual identifiers, rotating QR handles and small JSON file export/import.
-- A Supabase data foundation with immutable signed claims, versioned issuer-directory audit history, scoped key permissions and restricted writes.
-- Signed fictional units, packaging mappings, seller authorization, packaging notices and explicit custody gaps, with typed server read services.
-- A mobile-first Next.js Evidence Investigator with six typed tools, mandatory server finalization, private session-scoped API routes, private image capture storage and durable LangGraph pause/resume.
-- LangChain runs live Muse for authorized reviewer sessions when `REVIEW_LIVE_ENABLED=1`; other sessions use explicitly labelled recorded responses. All read tools use real signed Supabase records. Guarded CLI validation has passed real Muse seller, notice, custody-gap and evidence-request workflows. Optional LangSmith traces contain only allowed metadata. Reviewer inference uses a separate PostgreSQL-metered $5 shared grant, nonrefundable reservations, per-user rate/concurrency controls and a hard stop. New photos require per-photo consent before SAM/Muse processing.
-- A guided Inspector with private originals, movable/resizable and lockable selection, local crop preview, per-photo consent, source-bound SAM overlays/crops, literal comparisons and saved-result recovery. Real physical-image validation passed through the CLI/local app and a user-confirmed vivo Y03 run. Authorized reviewers can submit new non-sensitive package photos or photograph `public/review-label.png`. Other sessions replay only the exact original synthetic fixture; arbitrary photos remain unassessed without live access.
-- ChainProof account-bound device enrollment, two-way signed QR exchange, atomic registered ownership changes, signed receipts and recovery are implemented and tested locally with isolated Supabase fixtures. P2 is verified and published in the same public app, following user-confirmed two-phone handover and independent database/signature checks.
+- **Manufacturer / Producer** creates private product drafts and original evidence. Selecting it does not grant trusted issuer authority.
+- **Regular User** buys, sells, distributes, inspects and transfers according to registered ownership and permitted delegation.
 
-- OfflineProof exports selected public fictional evidence as signed `.packproof.json`, checks signatures and typed code pairs locally, retains valid evidence after bad imports, and reopens offline after trusted setup. Physical P4 acceptance passed by user-confirmed Redmi/vivo Bluetooth and offline verification checks; final film/public-repository evidence remains pending.
+Buyer, seller, distributor, wholesaler and retailer are transaction roles. A receiver uses the same account and enrolled device when selling onward. A consumer does not need another seller registration. Every ChainProof handover still requires two distinct authenticated identities, independent device keys, fresh QR checks and both explicit signed approvals.
 
-Start at **[PackProof’s guided journey](https://packproof-p0.vercel.app/review)** for the connected reviewer flow: investigate → photograph a label → hand over → verify offline. Private reviewer invitations live only in ignored `.local/review/access.html`; each phone uses its own paired buyer/seller invitation. Public sign-up is not implemented. Open **[Investigator](https://packproof-p0.vercel.app)** directly for product investigations. The **[device checks](https://packproof-p0.vercel.app/tools)** are part of the same website and linked from its footer. Both use the existing `packproof-p0` Vercel project; product evidence uses the existing Supabase project. The public application does not require a Vercel login. Use [ChainProof handover](https://packproof-p0.vercel.app/chainproof) on both phones. The protected [Preview](https://packproof-p0-preview.vercel.app/chainproof) remains available for operator checks.
+| Page | Purpose |
+| --- | --- |
+| `/review` | Start the guided sample journey or enter a private reviewer invitation. |
+| `/account` | Register, sign in and choose one of the two account types. |
+| `/products` | Save literal model/batch/unit/container identifiers and original producer evidence. |
+| `/` | Investigate signed product, seller, notice and custody records through the six typed tools and mandatory Evidence Engine. |
+| `/inspector` | Capture a photo, select a region, give processing consent, inspect a visible detail and resume with a clearer view. |
+| `/chainproof` | Receive or send an exact registered item, exchange signed QR sequences and verify the receipt. |
+| `/dualproof` | Compare participant-bound dispatch and arrival evidence; open Inspector for discrepancies. |
+| `/offline/index.html` | Download or import signed evidence packs and verify them offline after trusted setup. |
+| `/developers` | Scoped API keys, REST operations, local SDK, MCP and browser tools. |
+| `/tools` | Retained P0 device feasibility checks. |
 
-Inspector uses the same app at [Inspect a photo](https://packproof-p0.vercel.app/inspector), linked from Investigator. Reviewer sessions can use live Muse/SAM within the shared grant; other sessions remain recorded. A correct label reading does not verify regulatory status, batch expiry, safety, physical association or ownership. The protected Preview remains available for operator checks.
+Private reviewer invitations remain in ignored `.local/review/access.html`. An invitation’s buyer/seller hint does not restrict the account’s transaction roles. Live Muse/SAM requires authorized reviewer access, consent for the submitted media and remaining capacity in the existing PostgreSQL-metered **$5 shared allowance**. Other sessions remain explicitly recorded; unknown readings stay unknown.
 
-The same Investigator is available locally through `pnpm dev` at `http://localhost:3000`. Model steps default to recorded demos; locally enabling reviewer live access uses the same durable shared grant as hosting. Evidence reads use the signed database. Its deployed browser, session-isolation, database, private-capture and rate-limit checks are recorded in the delivery evidence. The user confirmed all requested vivo Y03 Investigator checks passed; no new device measurement report was supplied. P0 feasibility is verified: provider, crypto, phone camera/manual fallback, two-phone QR and JSON transport checks passed. Both-direction file matching and the final nonce-tamper/truncated-JSON rejections include user-confirmed manual results; exact per-speed QR attribution remains a documented limitation. Authenticated handovers passed real two-phone Preview acceptance and public Production sign-in/receipt recovery checks. The same demo accounts work on Production; browser signing keys are bound to their original domain, while existing receipts can be verified without re-enrollment. Self-service account/shop onboarding and automatic issuer snapshot renewal are not implemented. Reviewers use private invitations and isolated synthetic units; completed ownership is never reset. `scripts/review/prepare.ts --prepare --renew` is an explicit offline operator action for rechecked reviewer-only authority; it never renews original public claims or resets the shared allowance. Judge units and access are finite, with no automatic owner reset or private issuer key on the server. Reviewer invitations and the explicit synthetic-unit evaluation policy run until 18 November 2026. Original/ordinary items keep their 24-hour authority policy. The root-signed directory has a separate 14-day window; downloaded evidence packs still expire after 24 hours and remain readable as dated history. OfflineProof now provides signed public evidence packs, pinned-root setup, local verification, atomic browser storage and a cached offline viewer. Two-phone P4 transfer, cold offline recovery and tamper-preservation passed by user confirmation; final film/public-repository evidence remains pending. The single physical-label sample establishes a limited live acceptance result, not generalized recognition accuracy or a product-safety verdict.
+Public signup honors Supabase confirmation and mail limits. Automated reserved-address signup hit a provider rate limit; email delivery remains unverified. Synthetic acceptance accounts were explicitly provisioned for the remaining tests. Product drafts are private submissions: **trusted new issuance remains blocked until independently authorized signing is configured**. No manufacturer signature is silently created. A separately approved, snapshot-only demo delegate can attest verified registry ownership for an onward handover through 18 November; it cannot issue a product, approve a handover or change ownership. Ordinary transfer-authority snapshots retain their freshness requirements; the existing finite judge window is not an automatic renewal mechanism.
 
-Signed demo custody snapshots expire after **2 November 2026, 12:00 UTC**. Expired investigations show stale/historical evidence, including on reload; retrieving them does not renew authority. Those original public snapshots were not renewed or reseeded. P2 appends a separate restricted current-state authorization snapshot and a receipt-only key grant, after independently checking the existing source state. The user approved encrypted Supabase credentials for Production as well as Preview. Root and product-issuer private keys stay offline. The dedicated receipt-only key is encrypted in Preview and explicitly approved Production; the Meta key is separately approved as an encrypted, server-only Production variable for invited live reviewer access. No root/product-issuer key is deployed. See [deployment evidence](docs/packproof/evidence/p1d.json).
+## Evidence and trust
 
-## Local setup
+Inspector preserves original image fingerprints, selected regions, actual SAM masks/crops and model provenance. It distinguishes printed expiry from regulatory registration and batch validity. Short MP4/WebM clips are bounded to **8 seconds / 3 MiB**, decoded server-side into timestamped frames, and retained privately. Only the selected frame can enter the existing SAM/Muse path with consent; video tracking and forensic editing detection are not claimed.
 
-Required tools: **Node 24.22.2** and **pnpm 12.16.1**. From the repository directory:
+DualProof compares literal product/packaging readings, printed expiry, source-bound visible seal/surface observations, original/crop/frame integrity, source reuse and applicable signed packaging notices. Human condition notes remain labelled separately. Missing or unclear evidence stays unresolved. Comparison results do not authorize ownership changes; ChainProof independently checks signed authority, current ownership/version, participant devices, consent and an atomic commit.
+
+OfflineProof preserves the existing `.packproof.json` format, pinned trust, signed dependencies, rollback protection, atomic IndexedDB storage and offline PWA. An expired pack remains dated history; an absent notice never means clearance.
+
+Root/product-issuer private keys stay offline. Existing receipt-only and pack-only signers keep their separate purposes. No secrets, raw customer media or private model reasoning belong in logs, browser bundles or Git.
+
+## Local development
+
+Use **Node 24.22.2**, **pnpm 12.16.1** and the single `pnpm-lock.yaml`:
 
 ```bash
 bash scripts/setup-toolchain.sh
 export PATH="$PWD/.local/toolchain/node_modules/.bin:$PATH"
-node --version
-pnpm --version
 pnpm install --frozen-lockfile
-```
-
-The version commands should print `v24.22.2` and `12.16.1`. The setup script installs the pinned tools under the ignored `.local/toolchain/` directory and preserves system installations. Run the PATH export again from the repository directory in each new terminal. Project dependencies use pnpm and `pnpm-lock.yaml`.
-
-Local checks and the browser test page can run without model credentials. For provider or deployment configuration, use `.env.example` as a reference and configure an ignored `.env.local` file. Keep credentials and private keys out of source control and browser code.
-
-## Development commands
-
-See [TESTING.md](TESTING.md) for feature-by-feature commands, expected results and manual browser steps.
-
-```bash
-pnpm dev  # Investigator at http://localhost:3000
 pnpm typecheck
 pnpm test
 pnpm build
-pnpm probe:bundle
-pnpm probe:crypto
-pnpm probe:access
+pnpm dev
 ```
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm typecheck` | Check strict TypeScript types. |
-| `pnpm test` | Run schema, provider-output, parser, budget, trust and tamper tests. |
-| `pnpm build` | Build the Next.js Investigator and preserve the standalone P0 page in `dist/`. |
-| `pnpm dev` / `pnpm start` | Run the Investigator in development / after a production build. |
-| `pnpm db:migrate:p1b` | Apply/verify the additive P1B runtime migration and restricted official Postgres checkpointer. |
-| `pnpm db:migrate:performance` | Apply/verify the additive operation-reservation performance function after P1B migration. |
-| `pnpm evaluate:p1b` | Run the shared 12-case evaluation against a signed database snapshot using recorded responses. |
-| `pnpm p3:live --status` | Inspect the separate $5 P3 allowance and receipts; no inference. |
-| `pnpm p3:app` | Run the approved-photo-only private HTTPS local live test with temporary access, per-photo consent and the same persisted budget. No public live enablement. |
-| `pnpm p1c:budget status` | Inspect the independent P1 approval/reservation ledger; does not approve spending. |
-| `pnpm p1c:live` | Run guarded operator-only live validation after separate approval; refuses all Meta requests while unapproved. |
-| `pnpm p1c:budget --completion status` | Inspect the fixed follow-up grant; its16-request allowance is exhausted. |
-| `pnpm p1c:budget --repair status` | Inspect the new $4 dollar-only grant without making a provider call. |
-| `pnpm p1c:complete` | Report/run the separately authorized completion attempts; preserves prior evidence and skips completed cases. |
-| `pnpm probe:bundle` | Check browser inputs and output for server modules and configured secrets. |
-| `pnpm probe:crypto` | Exercise Node/browser signing, verification and local browser checks. |
-| `pnpm probe:access` | Report which access settings are configured, without printing credentials. |
-| `pnpm probe:serve` | Serve the browser test page locally. |
-| `pnpm probe:langchain` | Check LangChain tools and LangSmith serialization with intercepted offline transports; no live model calls. |
-| `pnpm db:inspect` | Inspect only the dedicated PackProof development schema. |
-| `pnpm db:migrate` | Apply or verify the additive versioned P1A migration; rejects an unexpected project/schema. |
-| `pnpm demo:seed` | Validate and idempotently seed the published signed fictional records; refuses ownership changes. |
-| `pnpm demo:read` | Read actual seeded product/seller/notice/history findings under the serving role, with mandatory signature checks. |
-| `pnpm record:sign` | Offline CLI signing using ignored owner-only operator key storage; never a web endpoint. |
-| `PACKPROOF_P1A_INTEGRATION=1 pnpm test:integration` | Explicitly run the dedicated Supabase integration checks; temporary RLS fixtures roll back. |
-| `pnpm probe:phone` | Run desktop browser checks for the phone surface, including permission errors and altered-file rejection; does not qualify real phones. |
+Configure ignored `.env.local` from `.env.example`. The pinned toolchain is local to this repository; export its PATH in each terminal. `next-env.d.ts` is generated and ignored.
 
-The browser crypto check requires Chrome at `/usr/bin/google-chrome`, or a `CHROME_PATH` override, and permission to start a local loopback server. Desktop results are recorded separately from phone results.
+Video support builds a minimal **FFmpeg 9.0.2** decoder from hash-pinned official source using `cc`, `make` and `tar`. `pnpm video:prepare` prepares it; tests/build invoke it and reuse a verified matching-platform cache in ignored `vendor/ffmpeg/`. No binary enters Git or the browser bundle. The first build needs network access and a C toolchain.
 
-`next-env.d.ts` is generated and ignored. `pnpm typecheck` runs `next typegen` before TypeScript, so a clean checkout can regenerate it. Deployment tooling is in `scripts/deploy/app.ts`; it targets the existing project only and requires a verified IPv4 session-pooler credential file through `PACKPROOF_PREVIEW_DB_URL_FILE`. It defaults to Preview; an explicit `--production` action uses Production variables and publishes to the existing project.
+`node --env-file-if-exists=.env.local --import tsx scripts/platform/migrate.ts` applies/verifies additive migrations **010–014** in the existing dedicated project. Applied migration hashes are immutable. Existing Supabase/Storage configuration and signed data are preserved.
 
-## OfflineProof
+## Developer integration
 
-Open [OfflineProof](https://packproof-p0.vercel.app/offline/index.html) in the same app. Prepare the browser online, then download an exact-selection public demo pack using your existing PackProof account. Opening saved evidence and importing a `.packproof.json` work offline without authentication. Packs preserve the original signed bytes and contain a separately signed dated owner projection, never a private handover receipt or inspection photo. Current ownership, new notices and new revocations need an online recheck.
+POST JSON to `/api/v1/<operation>`. Inputs and outputs are defined once in [api-v1.ts](src/contracts/api-v1.ts). Public demo reads need no key. Private calls use the current session, a Supabase access token or a hashed, scoped, expiring developer key. Keys can be rotated or revoked; per-key/user/global quotas apply. Transfer proposals require an `Idempotency-Key` UUID. No agent operation commits ownership or signs participant consent.
 
-The root-authorized directory and snapshots follow a 24-hour demo policy; expired evidence remains historical. Root-signed directory renewal is an explicit offline operator append (`pnpm offline:authority -- --renew`), not automatic authority renewal. Current acceptance and limitations: [P4 evidence](docs/packproof/evidence/P4.md).
+The local `@packproof/sdk` workspace builds with `pnpm --filter @packproof/sdk build`; it supports typed calls, validation, timeout, cancellation and structured errors. Run its read-only example with `PACKPROOF_BASE_URL=http://localhost:3000 pnpm exec tsx packages/packproof-sdk/example.ts`. It has not been published to npm. The official MCP v2 server/client packages are pinned at **2.4.0**; stateless Streamable HTTP is served at `/api/mcp`. Native browser enhancement uses `document.modelContext.registerTool()` with lifecycle cleanup and confirmation before writes; unsupported browsers retain the normal UI.
 
-## Open the Investigator
+Notice events reference verified effective demo packaging notices, carry stable idempotency keys and retain scope/freshness provenance. A custody gap is never a danger alert. Private signing keys and privileged ownership operations are not integration tools.
 
-`pnpm dev` opens the local app on port 3000. Choose a fictional scenario, investigate its records, then review the cited product, seller, notice and custody findings. If asked for another view, supply the literal code or a small private image and resume the same investigation. New images remain unknown without authorized live analysis; physical association never follows from a matched code alone.
-
-Use the existing ignored Supabase configuration. For an HTTPS reverse proxy, set `APP_ORIGIN` to its exact public origin. P1B evidence and current limitations are recorded in [P1B.md](docs/packproof/evidence/P1B.md). The app has a PWA manifest and a cached verifier at `/offline/index.html`. Prepare this browser online before closing it and reopening offline; cleared local trust requires official setup again.
-
-Guarded operator validation has passed real Muse investigations for Shop A's authorization refusal, Shop B's signed notice, the custody gap, and controlled closer-view pause/resume across separate processes. Missing packaging now triggers a specific evidence request before lookup; the supplied code can resume the investigation. Muse's direct nullable-argument generation remains an observed limitation and is never coerced into success. Non-reviewer web sessions remain recorded AI; invited reviewers can run live checks. Physical association is never inferred from matching records. See [P1C evidence](docs/packproof/evidence/P1C.md) for receipts, budgets and validation. P1 functional acceptance checks pass, including user-confirmed vivo Y03 use. The same app is published at the permanent URL, with device checks under `/tools`; ChainProof is published under `/chainproof` on the same permanent website, with authenticated transfer endpoints enabled. Its receipt-only key is encrypted for Production under explicit user approval; root/product-issuer private keys remain offline. See [P2 evidence](docs/packproof/evidence/P2.md).
-
-The recorded-AI controller comparison remains **10.05→9.07 seconds** and **123→109 database requests**, with mandatory checks retained. It is one local before/after sample, separate from live-model timings.
-
-## Try the P0 browser test page
-
-```bash
-pnpm build
-pnpm probe:serve
-```
-
-Open `http://127.0.0.1:4173` on the development computer. The page provides local camera capture, manual entry that preserves leading zeros, selectable QR animation rates and a demo JSON transport fixture. Captured phone images stay on the device.
-
-For phone access, configure `PROBE_TLS_CERT` and `PROBE_TLS_KEY` with a certificate/key trusted by the phones, set `PROBE_HOST=0.0.0.0`, and restart the server. Open the computer's reachable HTTPS address on each phone. Camera access requires browser permission and a secure context; the desktop localhost exception does not provide trusted HTTPS to another device.
-
-Follow the [phone test instructions](docs/packproof/evidence/PHONE_CHECKS.md) to record devices, capture dimensions, achieved QR rates, duplicate scans, consecutive distinct frames and the exact Bluetooth or local Wi-Fi file-sharing route. Supply the exporter's separate bytes/hash/nonce fingerprint before importing a received file; otherwise it stays uncompared. The QR page is a feasibility tool; it does not approve ownership transfers. JSON file sharing is a transport check, not a completed offline verification flow.
-
-## Provider access
-
-Provider probes run on the server using `MODEL_API_KEY`, `https://api.meta.ai/v1`, and the account's confirmed access to `muse-spark-1.3` and `sam-3.1`. The registry is explicitly labeled demo data. Provider output is validated before it becomes a finding, and an unreadable marking remains unknown.
-
-Live inference consumes credits. `scripts/spikes/provider.ts` enforces persistent request and cost reservations in `.local/provider-budget.json`. The current probe allowance is exhausted; retain the ledger and review [recorded usage and results](docs/packproof/evidence/P0.md) before authorizing additional calls. Routine development commands above make no model inference requests.
-
-## Repository layout
-
-| Path | Contents |
-| --- | --- |
-| `src/contracts/` | Shared schemas and application types. |
-| `src/domain/verification/` | Signing, integrity and trust-verification functions. |
-| `scripts/spikes/` | Provider, browser, camera, QR, transport and access probes. |
-| `scripts/setup-toolchain.sh` | Reproducible local Node/pnpm setup. |
-| `tests/unit/` | Automated contract, provider and cryptographic checks. |
-| `docs/packproof/evidence/` | Validation reports, actual provider artifacts and manual test instructions. |
-| `project_handoff/` | Product specification, implementation plan, developer contracts and build records. |
-
-See the [product specification](project_handoff/PackProof_v10_Product_Vision_and_Specification.md), [architecture amendments](project_handoff/Architecture_Amendments.md), [current implementation status](project_handoff/BUILD_STATE.json), [build history](project_handoff/BUILD_LOG.md) and [product direction notes](project_handoff/Product_Direction_Notes.md) for detailed requirements, orchestration/persistence design and conditional Glimmer POS/Android and radio/voice work.
+P0–P3 and P4 functional phone checks remain recorded in [evidence](docs/packproof/evidence). The original FP-1002 transfer, its version-2 owner, signed receipt and original signed claims must never be reset for repeat testing. Final release still needs the public repository and demo film. This workstream does not implement communications, Ember training or Bitchat integration.

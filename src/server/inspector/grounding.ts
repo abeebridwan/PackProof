@@ -7,7 +7,7 @@ import {InvestigationError} from '../investigator/store.js';
 import {decodeSam} from '../../../scripts/spikes/sam.js';
 export type Segmentation=Awaited<ReturnType<typeof decodeSam>>;
 export async function verifySource(c:Capture,bytes:Uint8Array){const v=await validateImage(bytes,c.mime);if(v.sha256!==c.sha256||v.width!==c.width||v.height!==c.height||bytes.length!==c.bytes)throw new InvestigationError('capture_integrity_mismatch');return bytes;}
-export async function deriveRegion(c:Capture,bytes:Uint8Array,selection:Region['promptBox'],parsed:Segmentation,provider:Region['provider']){
+export async function deriveRegion(c:Capture,bytes:Uint8Array,selection:Region['promptBox'],parsed:Segmentation,provider:Region['provider'],frameTimestamp:number|null=null){
  await verifySource(c,bytes);
  const {mask,box,raster}=parsed,b=mask.bounds;
  if(selection.right>c.width||selection.bottom>c.height||b.right>c.width||b.bottom>c.height)throw new InvestigationError('region_out_of_bounds');
@@ -16,7 +16,7 @@ export async function deriveRegion(c:Capture,bytes:Uint8Array,selection:Region['
  const maskPng=await sharp(Buffer.from(raster.map(x=>x?255:0)),{raw:{width:mask.mask.width,height:mask.mask.height,channels:1}}).png().toBuffer();
  const crop=await sharp(bytes).rotate().extract({left:b.left,top:b.top,width:b.right-b.left,height:b.bottom-b.top}).png().toBuffer();
  if(crop.length>2097152)throw new InvestigationError('crop_too_large');
- const region=Region.parse({id:crypto.randomUUID(),sourceCaptureId:c.id,sourceSha256:c.sha256,sourceWidth:c.width,sourceHeight:c.height,objectId:mask.objectId,maskEncoding:mask.mask.encoding,promptBox:selection,bounds:b,box:{left:Math.floor(box.left),top:Math.floor(box.top),right:Math.ceil(box.right),bottom:Math.ceil(box.bottom)},maskWidth:mask.mask.width,maskHeight:mask.mask.height,maskBase64:maskPng.toString('base64'),maskSha256:await sha256(maskPng),cropSha256:await sha256(crop),cropWidth:b.right-b.left,cropHeight:b.bottom-b.top,transform:'EXIF-upright original; half-open crop; nearest mask resize to bounds',frameTimestamp:null,provider});
+ const region=Region.parse({id:crypto.randomUUID(),sourceCaptureId:c.id,sourceSha256:c.sha256,sourceWidth:c.width,sourceHeight:c.height,objectId:mask.objectId,maskEncoding:mask.mask.encoding,promptBox:selection,bounds:b,box:{left:Math.floor(box.left),top:Math.floor(box.top),right:Math.ceil(box.right),bottom:Math.ceil(box.bottom)},maskWidth:mask.mask.width,maskHeight:mask.mask.height,maskBase64:maskPng.toString('base64'),maskSha256:await sha256(maskPng),cropSha256:await sha256(crop),cropWidth:b.right-b.left,cropHeight:b.bottom-b.top,transform:'EXIF-upright original; half-open crop; nearest mask resize to bounds',frameTimestamp,provider});
  return {region,crop};
 }
 export async function renderRegion(c:Capture,bytes:Uint8Array,r:Region,kind:'crop'|'overlay'|'mask'){
@@ -35,6 +35,7 @@ export function comparison(question:Question,raw:unknown,input:{productMark:stri
  const reading=LiteralReading.parse(raw),expected=question==='product_mark'?input.productMark:question==='package_mark'?input.packagingMark:null;
  if(reading.value===null&&!readingAttempted)return {status:'needs_evidence' as const,reason:'No model reading is available for this photo. The text has not been assessed.'};
  if(reading.value===null)return {status:'needs_evidence' as const,reason:'The requested text is unreadable or ambiguous. Retake a sharp, glare-free close view.'};
+ if(question==='packaging_condition')return {status:'needs_evidence' as const,reason:'Visible packaging condition is a source-bound model observation, not a forensic authenticity or continuity finding. Compare both handover views in DualProof.'};
  if(question==='printed_expiry')return {status:'needs_evidence' as const,reason:'Printed expiry observed literally; regulatory registration and batch expiry remain unknown. No safety or validity verdict.'};
  if(expected===null)return {status:'needs_evidence' as const,reason:'Literal marking observed; no human-supplied comparison code. Pair relationship remains unchecked.'};
  return reading.value===expected?{status:'supported' as const,reason:'Literal marking agrees with the supplied code; signed mapping and physical association are separate checks.'}:{status:'blocked' as const,reason:'Literal marking conflicts with the supplied code. Confirm the observed code; do not infer authenticity.'};

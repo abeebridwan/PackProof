@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-11-04T12:59:42.054Z",
+  "providerRequests": 0,
+  "checks": [
+    {
+      "name": "real_account_sign_in",
+      "status": "passed"
+    },
+    {
+      "name": "existing_inspector_requested_video_frame",
+      "status": "passed"
+    },
+    {
+      "name": "private_video_saved_and_decoded",
+      "status": "passed"
+    },
+    {
+      "name": "actual_frame_timestamps_preserved",
+      "status": "passed"
+    },
+    {
+      "name": "authorized_original_video_read",
+      "status": "passed"
+    },
+    {
+      "name": "selected_frame_resumed_existing_inspector",
+      "status": "passed"
+    },
+    {
+      "name": "specific_recapture_request_without_fabricated_reading",
+      "status": "passed"
+    },
+    {
+      "name": "durable_inspection_recovery",
+      "status": "passed"
+    },
+    {
+      "name": "all_frames_bound_to_original_draft_and_clip",
+      "status": "passed"
+    }
+  ],
+  "status": "passed",
+  "videoId": "3acefb29-bbbd-44e0-909c-27bf9034cb95",
+  "sourceSha256": "3cd989faa7a50be1d1a619e8a75268d920756c717d85f1178d09d9fd16fe6b93",
+  "decoderVersion": "9.0.2",
+  "frames": [
+    {
+      "captureId": "81242544-ff8f-4b8f-b798-a6ae98116ae4",
+      "timestampMs": 0,
+      "sha256": "5905c5d02265d92a50e6db8e976e2dc2f11b145293dacdb56de3118296b2040f"
+    },
+    {
+      "captureId": "4f398aa9-f04f-4858-95ff-61af8ab5eedb",
+      "timestampMs": 1000,
+      "sha256": "f046533aa46d51093e75b3ac5bb783e0f91747752eb7b4e552b502671ca486bf"
+    },
+    {
+      "captureId": "862c1562-cdc5-4813-ab61-75c783b707a9",
+      "timestampMs": 2000,
+      "sha256": "e5525816c88997ed2749e4fb6095c37bc8e9aa32e93c2947f6e5af19e27e866c"
+    }
+  ],
+  "investigationId": "277e665a-10e6-48a8-b545-b070c389c396",
+  "revision": 2
+}

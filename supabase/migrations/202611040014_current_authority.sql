@@ -1,0 +1,20 @@
+-- A separate root-delegated snapshot key may attest verified current registry
+-- ownership. It cannot issue products, sign receipts or commit transfers.
+CREATE FUNCTION packproof.store_current_authority_snapshot(p_actor uuid,p_payload jsonb,p_jws text,p_hash text) RETURNS void LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
+DECLARE i packproof.items%ROWTYPE; issued packproof.signed_records%ROWTYPE; key_record packproof.issuer_bindings%ROWTYPE; ref text; n integer;
+BEGIN
+ IF p_payload IS NULL OR p_jws IS NULL OR p_hash IS NULL OR jsonb_typeof(p_payload) IS DISTINCT FROM 'object' OR p_payload->>'demo' IS DISTINCT FROM 'true' THEN RAISE EXCEPTION 'current_authority_binding_rejected';END IF;
+ IF p_actor IS DISTINCT FROM packproof.transfer_actor() OR NOT EXISTS(SELECT 1 FROM packproof.actor_accounts WHERE actor_id=p_actor) THEN RAISE EXCEPTION 'authenticated_actor_required';END IF;
+ SELECT * INTO i FROM packproof.items WHERE id=(p_payload->'data'->>'itemId')::uuid FOR SHARE;
+ SELECT * INTO issued FROM packproof.signed_records WHERE id=i.issuance_record_id;
+ SELECT b.* INTO key_record FROM packproof.issuer_bindings b JOIN packproof.signed_records r ON r.id=b.record_id WHERE b.key_id=(p_payload->>'keyId')::uuid ORDER BY r.issued_at DESC,r.revision DESC LIMIT 1;
+ IF (i.id IS NULL OR p_payload->>'type' IS DISTINCT FROM 'custody_snapshot' OR p_payload->>'visibility' IS DISTINCT FROM 'restricted' OR p_payload->>'namespace' IS DISTINCT FROM 'packproof-demo' OR p_payload->>'scope' IS DISTINCT FROM 'unit' OR p_payload->'subjectIds' IS DISTINCT FROM jsonb_build_array(i.id) OR (p_payload->>'issuerId')::uuid IS DISTINCT FROM issued.issuer_id OR p_payload->'data'->>'holderReference' IS DISTINCT FROM 'registered-actor:'||i.registered_owner_id::text OR key_record.record_id IS NULL OR key_record.issuer_id IS DISTINCT FROM issued.issuer_id OR key_record.record_types IS DISTINCT FROM ARRAY['custody_snapshot'] OR key_record.namespaces IS DISTINCT FROM ARRAY['packproof-demo'] OR key_record.revoked_at IS NOT NULL OR clock_timestamp()<key_record.valid_from OR clock_timestamp()>=key_record.valid_until OR (p_payload->'data'->>'asOf')::timestamptz<clock_timestamp()-interval '1 minute' OR (p_payload->'data'->>'asOf')::timestamptz>clock_timestamp()+interval '5 seconds' OR p_hash<>encode(sha256(convert_to(p_jws,'UTF8')),'hex')) IS DISTINCT FROM FALSE THEN RAISE EXCEPTION 'current_authority_binding_rejected';END IF;
+ IF jsonb_typeof(p_payload->'previousIds') IS DISTINCT FROM 'array' OR jsonb_typeof(p_payload->'evidenceHashes') IS DISTINCT FROM 'array' OR jsonb_typeof(p_payload->'data'->'sourceRecordIds') IS DISTINCT FROM 'array' OR jsonb_typeof(p_payload->'data'->'gapRecordIds') IS DISTINCT FROM 'array' OR NOT (p_payload->'previousIds' ? i.owner_record_id::text) OR NOT (p_payload->'previousIds' ? i.mapping_record_id::text) OR p_payload->'previousIds' IS DISTINCT FROM p_payload->'data'->'sourceRecordIds' OR jsonb_array_length(p_payload->'previousIds')<>jsonb_array_length(p_payload->'evidenceHashes') THEN RAISE EXCEPTION 'current_authority_sources_rejected';END IF;
+ n:=0;FOR ref IN SELECT jsonb_array_elements_text(p_payload->'previousIds') LOOP
+  IF NOT EXISTS(SELECT 1 FROM packproof.signed_records WHERE id=ref::uuid AND sha256=p_payload->'evidenceHashes'->>n) THEN RAISE EXCEPTION 'current_authority_hash_rejected';END IF;n:=n+1;
+ END LOOP;
+ IF EXISTS(SELECT 1 FROM packproof.signed_records r WHERE r.record_type='gap' AND r.payload->'data'->>'itemId'=i.id::text AND NOT (p_payload->'data'->'gapRecordIds' ? r.id::text)) THEN RAISE EXCEPTION 'current_authority_hides_gap';END IF;
+ INSERT INTO packproof.transfer_authority_snapshots(id,item_id,owner_version,jws,sha256,payload) VALUES((p_payload->>'id')::uuid,i.id,i.owner_version,p_jws,p_hash,p_payload);
+END $$;
+REVOKE ALL ON FUNCTION packproof.store_current_authority_snapshot(uuid,jsonb,text,text) FROM PUBLIC,anon,authenticated,service_role;
+GRANT EXECUTE ON FUNCTION packproof.store_current_authority_snapshot(uuid,jsonb,text,text) TO packproof_transfer;

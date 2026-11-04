@@ -3,7 +3,7 @@
   "project": "PackProof",
   "productVersion": "v10",
   "status": "partial",
-  "currentPhase": "P4",
+  "currentPhase": "Terminal 1 core platform",
   "timezone": "Africa/Lagos",
   "officialDeadline": "2026-11-05T03:00:00+01:00",
   "internalTarget": "2026-11-04T20:00:00+01:00",
@@ -1275,7 +1275,7 @@
   },
   "p1Ready": true,
   "handoffDirectory": "project_handoff",
-  "repositoryStatus": "Guided reviewer release deployed and validated; implementation and evidence are included in the local reviewer release commit. Prior P0\u2013P4 acceptance preserved. No Git push or public repository publication; P4 R1 film/public-repository evidence still pending.",
+  "repositoryStatus": "Terminal 1 verified checkpoint with explicit blockers; protected Preview deployed and validated. Production deployment preserved. No Git push, npm publication or public repository creation.",
   "localToolchain": {
     "node": "24.22.2",
     "pnpm": "12.16.1",
@@ -1374,22 +1374,23 @@
     ],
     "reviewerUrl": "https://packproof-p0.vercel.app/review"
   },
-  "testingGuide": "TESTING.md",
+  "testingGuide": "README.md",
   "continuationBaselineCommit": "e3e4688",
   "latestLocalValidation": {
-    "phase": "P4",
+    "phase": "Terminal 1 core platform",
     "typecheck": "passed",
-    "productionBuild": "passed workspace and isolated exact107file source; Vercel Production ready",
-    "unit": "178 broad regression passes plus24 final targeted passes, including18 OfflineProof cases",
-    "integration": "Actual Supabase P4 export/privacy/sequence/preservation case passed;2 existing P3 Storage/RLS/grounded-recorded regression cases passed",
-    "browser": "Actual Chrome persisted DB, three atomic interruption stages, closed-browser offline reopen, another offline pack, rollback after cold reopen/reload, tamper/malformed rejection and trust-clear failure passed",
-    "secretScan": "43 client assets plus offline HTML/JS/CSS;19 traces/9110 references/14 secrets; no leak/operator files",
-    "existingReceiptRegression": "Original receipt and both approvals verified locally and on Production; one accepted transfer/owner2/33 original signed records and existing private files unchanged",
-    "manual": "P4 Redmi/vivo Bluetooth transfers, offline verification/reopen, gap import and tamper-preservation passed by user report; no physical timing/file-size measurements supplied",
-    "evidence": "docs/packproof/evidence/p4-release.json"
+    "productionBuild": "passed locally and Vercel protected Preview READY; hosted runtime smoke passed",
+    "unit": "193 broad plus 62 final focused passes; overlapping results are not added together",
+    "integration": "4 actual API/MCP/SDK/RLS, one three-leg/four-identity chain case, one snapshot delegate case, 3 preserved P3/P4 cases",
+    "browser": "Chrome 156 native WebMCP actual API invocation and 390px account/workflow navigation passed",
+    "secretScan": "56 client assets,28 traces/13084 references,18 known secret values; no client leaks or operator files in server traces",
+    "existingReceiptRegression": "33 original signed records, one accepted transfer, original receipt and version-2 owner preserved",
+    "manual": "No new physical Android claim; prior P0-P4 user acceptance preserved",
+    "evidence": "project_handoff/BUILD_STATE.json terminal1",
+    "stagedSecretScan": "105 staged files checked against23 known secrets; no private bytes or ignored credential/operator paths"
   },
   "p1IndependentWorkAuthorized": true,
-  "nextAuthorizedWork": "Current guided reviewer implementation, hosted live validation and requested two-week review window completed. Private invitations are in ignored .local/review/access.html. Public signup, film and repository publication remain unimplemented or unprovided; no new spending beyond the $5 shared reviewer grant.",
+  "nextAuthorizedWork": "Finish protected Preview validation and checkpoint the Terminal 1 platform. No automatic Production promotion; review tested Terminal 2/3 commits before later integration.",
   "p1bReadiness": {
     "foundationReady": true,
     "implementationStarted": true,
@@ -1544,12 +1545,192 @@
       "grantId": "review-live-2026-11-04",
       "approvedUsd": 5,
       "maximumInferenceRequests": null,
-      "requests": 34,
-      "reservedUsd": 1.54,
-      "estimatedUsageUsd": 0.20580995000000002,
+      "requests": 38,
+      "reservedUsd": 1.66,
+      "estimatedUsageUsd": 0.21835545,
       "actualBilledUsd": null,
-      "remainingReservationUsd": 3.46
+      "remainingReservationUsd": 3.34
     },
     "initialAvailableUnitsRemaining": 5
+  },
+  "terminal1": {
+    "status": "verified_checkpoint_with_explicit_blockers",
+    "contractCommit": "7ff3ef9",
+    "primaryAccountTypes": [
+      "manufacturer",
+      "regular"
+    ],
+    "contextualTransactionRoles": [
+      "buyer",
+      "seller",
+      "distributor",
+      "wholesaler",
+      "retailer"
+    ],
+    "sameReceivingIdentityAndDeviceCanSellOnward": true,
+    "trustedIssuance": "blocked: new drafts are private, independently authorized product signer not configured",
+    "migrations": [
+      "202611040010",
+      "202611040011",
+      "202611040012",
+      "202611040013",
+      "202611040014"
+    ],
+    "snapshotDelegate": {
+      "keyId": "c63e5263-29f5-4a50-911d-765cc4771611",
+      "directoryVersion": 9,
+      "purpose": "custody_snapshot only",
+      "namespace": "packproof-demo",
+      "validUntil": "2026-11-18T09:04:44.441Z",
+      "keyDeploymentTargets": [
+        "preview"
+      ],
+      "rootRemainsOffline": true,
+      "ownerCommitAuthority": false
+    },
+    "api": {
+      "path": "POST /api/v1/<operation>",
+      "contract": "src/contracts/api-v1.ts",
+      "mcp": "POST /api/mcp, official stateless Streamable HTTP v2",
+      "mcpVersion": "2.4.0",
+      "sdk": "packages/packproof-sdk, local @packproof/sdk 0.1.0; not published",
+      "webMCP": "Native document.modelContext registration and actual execution passed in desktop Chrome 156.0.8078.47 with feature flag",
+      "privateAuth": "Current session, Supabase Bearer token or hashed/scoped/expiring developer key",
+      "autonomousCommit": false
+    },
+    "video": {
+      "maximumSeconds": 8,
+      "maximumBytes": 3145728,
+      "decoder": "FFmpeg 9.0.2 minimal hash-pinned upstream source build",
+      "sourceSha256": "6e374ed621e48faa40639307dff48ba6fe574a509977956d2cce9669b7cc27e9",
+      "captureLink": "Original clip hash plus timestamped frame hashes; only selected frame enters existing Inspector"
+    },
+    "validation": {
+      "unit": "193 broad passes before final refinements; 62 final focused passes (overlap not summed)",
+      "integration": "4 API/MCP/SDK/RLS passes, one three-leg/four-identity ChainProof case, one snapshot-only onward-authority case; 3 preserved P3/P4 cases",
+      "typecheck": "passed",
+      "sdkBuild": "passed",
+      "build": "passed",
+      "mobileViewportAndNativeWebMCP": "passed; desktop Chrome 390px, not a new Android test",
+      "sourceIntegrity": "33 original signed records, accepted receipt and version-2 owner preserved",
+      "publicSignup": "email confirmation/delivery unverified: provider rate limit; test identities were explicitly admin-created synthetic accounts",
+      "liveDualProof": "Actual SAM/Muse dispatch 19/08/2028 versus arrival 20/08/2028 mismatch; no ownership change",
+      "packagingCondition": "Source-bound seal/surface comparison and unknown handling tested with controlled observations; live condition-model acceptance not run",
+      "hosted": "26 checks passed including real private video decoder execution, actual official MCP/SDK calls, signed-pack verification and saved live mismatch UI; zero new inference or owner commits"
+    },
+    "acceptance": {
+      "1": {
+        "status": "partial",
+        "evidence": "Real synthetic Auth accounts and navigation pass; public signup email flow rate-limited/unverified"
+      },
+      "2": {
+        "status": "passed",
+        "evidence": "Private product draft plus original captured image and bounded video saved with literal identifiers"
+      },
+      "3": {
+        "status": "blocked",
+        "evidence": "Trusted new issuance requires separately verified issuer authorization; drafts visibly remain untrusted"
+      },
+      "4": {
+        "status": "passed",
+        "evidence": "Distinct participant dispatch and arrival capture bindings verified in real Supabase"
+      },
+      "5": {
+        "status": "passed",
+        "evidence": "Real SAM/Muse expiry mismatch and deterministic integrity/identifier/condition/reuse checks"
+      },
+      "6": {
+        "status": "passed",
+        "evidence": "Existing Inspector discrepancy context, specific recapture and durable selected-video-frame resume"
+      },
+      "7": {
+        "status": "passed",
+        "evidence": "Three software-tested handovers, signatures, exact-once updates and receipt verification; not new phone tests"
+      },
+      "8": {
+        "status": "passed",
+        "evidence": "Append-only original history, participant media isolation and original FP-1002 preservation"
+      },
+      "9": {
+        "status": "passed",
+        "evidence": "Real REST public/private calls, consent-aware capture, scoped keys and revocation"
+      },
+      "10": {
+        "status": "passed",
+        "evidence": "Official MCP client initialize/list/call, malformed/private denial, missing and stale results"
+      },
+      "11": {
+        "status": "passed",
+        "evidence": "Typed SDK execution against same API and runnable example"
+      },
+      "12": {
+        "status": "passed",
+        "evidence": "Actual native Chrome WebMCP tool registration and product lookup execution; feature flag required"
+      },
+      "13": {
+        "status": "passed",
+        "evidence": "Existing P1/P2 unit coverage, focused P2 integration and 3 preserved P3/P4 integrations; full historical suites not repeated"
+      },
+      "14": {
+        "status": "partial",
+        "evidence": "Connected judge navigation and fresh existing review units; public email, new issuance and new physical-device walkthrough remain pending"
+      }
+    },
+    "evidence": [
+      "docs/packproof/evidence/platform-accounts.json",
+      "docs/packproof/evidence/platform-migrations.json",
+      "docs/packproof/evidence/platform-authority-proposal.json",
+      "docs/packproof/evidence/platform-authority-grant.json",
+      "docs/packproof/evidence/platform-authority-tests.json",
+      "docs/packproof/evidence/platform-chain-tests.json",
+      "docs/packproof/evidence/platform-dual-live.json",
+      "docs/packproof/evidence/platform-video.json",
+      "docs/packproof/evidence/platform-integration-tests.json",
+      "docs/packproof/evidence/platform-unit-tests.json",
+      "docs/packproof/evidence/platform-targeted-tests.json",
+      "docs/packproof/evidence/platform-preserved-flows.json",
+      "docs/packproof/evidence/platform-preservation.json",
+      "docs/packproof/evidence/platform-browser.json",
+      "docs/packproof/evidence/platform-preview.json",
+      "docs/packproof/evidence/platform-preview-alias.json"
+    ],
+    "remaining": [
+      "Public self-signup email confirmation and delivery",
+      "New product drafts need separately authorized issuance before registered handovers",
+      "Physical Android walkthrough of the new account/DualProof/video pages",
+      "Terminal 2/3 integration and final integrated acceptance; no automatic Production promotion",
+      "P4 public repository and demo film remain unprovided"
+    ],
+    "sharedBudget": {
+      "grantId": "review-live-2026-11-04",
+      "approvedUsd": 5,
+      "requestsBeforeTask": 34,
+      "requestsAfterTask": 38,
+      "newCombinedMuseSamRequests": 4,
+      "newReservedUsd": 0.12,
+      "reservedUsd": 1.66,
+      "remainingReservationUsd": 3.34,
+      "estimatedTotalUsageUsd": 0.21835545,
+      "actualBilledUsd": null,
+      "separateRequestCountCap": null
+    },
+    "preview": {
+      "status": "passed_deployed",
+      "url": "https://packproof-p0-preview.vercel.app/review",
+      "deploymentId": "dpl_CtVJEJtHE1PMhNpJeoGzonDgXiWd",
+      "sourceSha256": "04797a0d836d20bfc6fdc0cff41ab22de0d9b3eb839dbe907a2b46348d3347df",
+      "protected": true,
+      "productionDeploymentChanged": false,
+      "newEncryptedPreviewVariables": [
+        "MODEL_API_KEY",
+        "REVIEW_LIVE_ENABLED",
+        "PACK_SIGNING_JWK",
+        "TRANSFER_AUTHORITY_SIGNING_JWK"
+      ],
+      "hostedChecksPassed": 26,
+      "newProviderRequests": 0,
+      "temporaryAutomationBypassRevoked": true,
+      "physicalPhoneWalkthrough": "not_run"
+    }
   }
 }

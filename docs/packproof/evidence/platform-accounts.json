@@ -1,0 +1,97 @@
+{
+  "checkedAt": "2026-11-04T12:46:58.691Z",
+  "providerRequests": 0,
+  "emailDelivery": "not_verified",
+  "accounts": [
+    {
+      "userId": "fa2380c9-a265-4c08-8037-e7a6e4d8cde9",
+      "actorId": "de917245-4b6b-4aaa-8504-2a7411eaa6d9",
+      "accountType": "manufacturer"
+    },
+    {
+      "userId": "a9fadf68-1bf0-40c1-a0da-f03a13318324",
+      "actorId": "ec535386-de9c-461c-abe5-7f2a16944f95",
+      "accountType": "regular"
+    }
+  ],
+  "checks": [
+    {
+      "name": "real_password_sign_in",
+      "status": "passed"
+    },
+    {
+      "name": "http_only_session_created",
+      "status": "passed"
+    },
+    {
+      "name": "real_password_sign_in",
+      "status": "passed"
+    },
+    {
+      "name": "http_only_session_created",
+      "status": "passed"
+    },
+    {
+      "name": "two_primary_account_types_after_sign_in",
+      "status": "passed"
+    },
+    {
+      "name": "regular_profile_cannot_issue_or_create_manufacturer_draft",
+      "status": "passed"
+    },
+    {
+      "name": "scoped_key_created",
+      "status": "passed"
+    },
+    {
+      "name": "manufacturer_saved_literal_draft",
+      "status": "passed"
+    },
+    {
+      "name": "draft_is_not_trusted_issuance_and_leading_zeros_preserved",
+      "status": "passed"
+    },
+    {
+      "name": "existing_investigator_started",
+      "status": "passed"
+    },
+    {
+      "name": "precise_capture_request_persisted",
+      "status": "passed"
+    },
+    {
+      "name": "real_private_original_capture_saved_without_meta_consent",
+      "status": "passed"
+    },
+    {
+      "name": "original_capture_bound_to_correct_draft",
+      "status": "passed"
+    },
+    {
+      "name": "saved_original_evidence_restored",
+      "status": "passed"
+    },
+    {
+      "name": "other_account_cannot_read_private_origin",
+      "status": "passed"
+    },
+    {
+      "name": "key_scope_cannot_read_transfers",
+      "status": "passed"
+    },
+    {
+      "name": "revoked_key_rejected",
+      "status": "passed"
+    }
+  ],
+  "signup": {
+    "status": 429,
+    "confirmationRequired": false
+  },
+  "publicSignupBlocker": "rate_limit",
+  "accountProvisioning": "Admin-created new synthetic test identities; public signup success is not claimed.",
+  "draftId": "19f0114e-65f6-42ed-82f2-7ca5c79ff50c",
+  "status": "passed",
+  "issuance": "blocked: independently authorized signer required; no issuer authority granted",
+  "captureId": "9d1b4f99-6e9a-47b1-8edc-b9ca07115831"
+}

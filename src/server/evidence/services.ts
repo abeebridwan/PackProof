@@ -58,7 +58,7 @@ export function createEvidenceServices(repository: EvidenceRepository, pin: Root
         const grant = s.directory.grants.get(issuance.keyId)!;
         const mappingStatus = args.packagingMark === null ? 'not_checked' : args.packagingMark === mapping.data.packagingMark.value ? 'matched' : 'mismatched';
         const refs = [issuance.id, mapping.id, grant.bindingId];
-        return ProductResult.parse({ ...base(s.at, mappingStatus === 'matched' ? 'Signed marks are consistent; physical association remains unresolved' : mappingStatus === 'not_checked' ? 'Two-mark relationship not checked' : 'Product/packaging relationship mismatch', refs, mappingStatus === 'matched' ? 'supported' : mappingStatus === 'mismatched' ? 'blocked' : 'needs_evidence'), data: { demo: true, label: s.data.label, itemId: p.itemId, scope: issuance.scope, modelCode: p.modelCode, batchCode: p.batchCode, issuer: { ...s.actors.get(issuance.issuerId)!, label: grant.data.label }, issuerBindingId: grant.bindingId, mappingStatus, physicalBinding: 'unresolved', recordIds: refs } });
+        return ProductResult.parse({ ...base(s.at, mappingStatus === 'matched' ? 'Signed marks are consistent; physical association remains unresolved' : mappingStatus === 'not_checked' ? 'Two-mark relationship not checked' : 'Product/packaging relationship mismatch', refs, mappingStatus === 'matched' ? 'supported' : mappingStatus === 'mismatched' ? 'blocked' : 'needs_evidence'), data: { demo: true, label: 'PackProof demonstration data', itemId: p.itemId, scope: issuance.scope, modelCode: p.modelCode, batchCode: p.batchCode, issuer: { ...s.actors.get(issuance.issuerId)!, label: grant.data.label }, issuerBindingId: grant.bindingId, mappingStatus, physicalBinding: 'unresolved', recordIds: refs } });
       } catch { return ProductResult.parse({ ...base(at, 'Signed evidence or issuer authority failed validation', [], 'blocked'), data: null }); }
     },
     async lookupSeller(input: unknown) {
@@ -71,11 +71,11 @@ export function createEvidenceServices(repository: EvidenceRepository, pin: Root
           if(receipt?.type!=='transfer_receipt'||receipt.data.itemId!==p.itemId||receipt.data.toVersion!==p.ownerVersion||JSON.parse(receipt.data.agreementPayload).buyerActorId!==p.registeredOwnerId)throw new Error('Current ownership receipt preparing or invalid');
         }
         const sellerKind=s.actors.get(args.sellerId)?.kind;
-        const registeredSeller = sellerKind === 'shop'||sellerKind === 'consumer';
+        const registeredSeller = sellerKind !== undefined; // Account presentation never grants or removes ownership authority.
         const authorized = registeredSeller && p.registeredOwnerId === args.sellerId;
         const source = s.verified.get(p.ownerRecordId)!.record;
         const refs = [source.id, s.directory.grants.get(source.keyId)!.bindingId];
-        return SellerResult.parse({ ...base(s.at, authorized ? 'Fictional registered seller authorized as of this record; transfer requires fresh commit checks' : 'Transfer blocked: seller is not authorized for this registered item.', refs, authorized ? 'supported' : 'blocked'), data: { demo: true, itemId: p.itemId, sellerId: args.sellerId, registeredSeller, authorized, ownerVersion: p.ownerVersion, authorityRecordIds: refs, asOf: s.at } });
+        return SellerResult.parse({ ...base(s.at, authorized ? 'Demo registered seller authorized as of this record; transfer requires fresh commit checks' : 'Transfer blocked: seller is not authorized for this registered item.', refs, authorized ? 'supported' : 'blocked'), data: { demo: true, itemId: p.itemId, sellerId: args.sellerId, registeredSeller, authorized, ownerVersion: p.ownerVersion, authorityRecordIds: refs, asOf: s.at } });
       } catch { return SellerResult.parse({ ...base(at, 'Signed owner/issuer validation failed', [], 'blocked'), data: null }); }
     },
     async getProductNotices(input: unknown) {
@@ -86,7 +86,7 @@ export function createEvidenceServices(repository: EvidenceRepository, pin: Root
         const issuerId = s.verified.get(p.issuanceRecordId)!.record.issuerId;
         const superseded = new Set(s.records.flatMap(r => r.type === 'correction' ? [r.data.targetRecordId] : []));
         const notices = s.records.flatMap(r => r.type === 'notice' && r.visibility === 'public' && !superseded.has(r.id) && r.issuerId === issuerId && r.data.modelCode === p.modelCode && r.data.batchCodes.includes(p.batchCode) && Date.parse(r.data.effectiveFrom) <= Date.parse(s.at) && Date.parse(s.at) < Date.parse(r.data.effectiveUntil) ? [{ recordId: r.id, kind: r.data.kind, explanation: r.data.explanation, effectiveFrom: r.data.effectiveFrom, effectiveUntil: r.data.effectiveUntil }] : []);
-        return NoticeResult.parse({ ...base(s.at, 'Applicable fictional notices in this dataset; external source coverage is unknown', notices.map(n => n.recordId)), data: { demo: true, notices, coverage: 'demo_dataset_only', directoryVersion: s.directory.version, retrievedAt: s.at } });
+        return NoticeResult.parse({ ...base(s.at, 'Applicable demo notices in this dataset; external source coverage is unknown', notices.map(n => n.recordId)), data: { demo: true, notices, coverage: 'demo_dataset_only', directoryVersion: s.directory.version, retrievedAt: s.at } });
       } catch { return NoticeResult.parse({ ...base(at, 'Signed notice/issuer validation failed', [], 'blocked'), data: null }); }
     },
     async getCustodyHistory(input: unknown) {
@@ -110,10 +110,10 @@ export type EvidenceServices = ReturnType<typeof createEvidenceServices>;
 // Interfaces only: P1B owns capture authorization, provider execution and durable pause/resume.
 export const H2_INPUTS = {
   lookup_product: ProductInput, lookup_seller: SellerInput, get_product_notices: ItemInput, get_custody_history: ItemInput,
-  inspect_product_image: z.strictObject({ investigationId: z.uuid(), captureId: z.uuid(), question: z.enum(['product_mark', 'package_mark', 'printed_expiry']) }),
+  inspect_product_image: z.strictObject({ investigationId: z.uuid(), captureId: z.uuid(), question: z.enum(['product_mark', 'package_mark', 'printed_expiry', 'packaging_condition']) }),
   request_additional_evidence: z.strictObject({ investigationId: z.uuid(), reason: z.enum(['unreadable', 'missing_package', 'association_unclear']), view: z.enum(['close_mark', 'both_marks', 'full_package']) }),
 };
-export const ImageEvidenceResult = gateResult(z.strictObject({ value: Text.nullable(), cropRecordIds: z.array(Id).max(16), maskRecordIds: z.array(Id).max(16), frameRecordIds: z.array(Id).max(16), provenance: z.enum(['model_reading','human_observation']), qualityBlockers: z.array(Text).max(8), question:z.enum(['product_mark','package_mark','printed_expiry']).optional(),observationId:Id.optional() }));
+export const ImageEvidenceResult = gateResult(z.strictObject({ value: Text.nullable(), cropRecordIds: z.array(Id).max(16), maskRecordIds: z.array(Id).max(16), frameRecordIds: z.array(Id).max(16), provenance: z.enum(['model_reading','human_observation']), qualityBlockers: z.array(Text).max(8), question:z.enum(['product_mark','package_mark','printed_expiry','packaging_condition']).optional(),observationId:Id.optional() }));
 export const AdditionalEvidenceResult = gateResult(z.strictObject({ state: z.literal('needs_input'), investigationId: Id, evidenceRevision: z.number().int().positive(), instruction: Text }));
 export interface InvestigatorFoundation {
   lookup_product: EvidenceServices['lookupProduct']; lookup_seller: EvidenceServices['lookupSeller'];

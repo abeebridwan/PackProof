@@ -1,5 +1,12 @@
 # PackProof architecture amendments
 
+## Current account contract — 4 November 2026
+
+Only Manufacturer / Producer and Regular User are primary account types. Distributor, wholesaler, retailer, seller and buyer are contextual transaction roles. One regular identity and its enrolled device can receive and transfer onward without another registration. Manufacturer profiles can create drafts; independently verified issuer authority is required for trusted issuance. Ownership and delegation determine authority, never a UI choice. Existing actor identities, legacy actor metadata and signed owner history remain unchanged. Each handover still requires distinct authenticated participants, independent keys, explicit consent and mandatory server gates.
+
+Current delivery status is maintained in BUILD_STATE.json. Earlier phase-ordering notes below are historical; they do not override completed P0 phone acceptance or the account contract above.
+
+
 1 November 2026. Explicit later user decision, supplementing v10 H0–H8 rather than rewriting the product specification. Only the original first implementation prompt was previously executed. This amendment prepares the next architecture; the full Investigator and persistent investigations remain unbuilt.
 
 ## Orchestration decision and verified compatibility

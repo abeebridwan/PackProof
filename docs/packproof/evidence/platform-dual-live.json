@@ -1,0 +1,244 @@
+{
+  "startedAt": "2026-11-04T13:11:25.126Z",
+  "syntheticImages": true,
+  "scope": "Backend DualProof validation with real SAM/Muse; not a physical phone acceptance or completed handover",
+  "checks": [
+    {
+      "name": "actual_registered_sender_and_distinct_authenticated_receiver",
+      "status": "passed"
+    },
+    {
+      "name": "distinct_participant_identities",
+      "status": "passed"
+    },
+    {
+      "name": "live_blinded_dispatch_expiry_reading",
+      "status": "passed"
+    },
+    {
+      "name": "live_blinded_arrival_expiry_reading",
+      "status": "passed"
+    },
+    {
+      "name": "actual_source_bound_expiry_discrepancy",
+      "status": "passed"
+    },
+    {
+      "name": "specific_inspector_recapture_guidance",
+      "status": "passed"
+    },
+    {
+      "name": "both_participants_see_shared_append_only_evidence",
+      "status": "passed"
+    },
+    {
+      "name": "comparison_did_not_change_ownership",
+      "status": "passed"
+    }
+  ],
+  "reservedCentsBefore": 160,
+  "transferId": "e0b5a758-f5ae-4cab-abb2-efe8271e2255",
+  "itemId": "31a7412d-7a39-4f45-bc04-96f28499701f",
+  "proposalOnly": true,
+  "readings": [
+    {
+      "side": "dispatch",
+      "investigationId": "f5408712-7562-419d-8a21-1a3d6d922958",
+      "captureId": "52610bf5-5b92-4054-a683-66e89ff244bd",
+      "sourceSha256": "3f7eadf12d705629e079c438c441b1f0f5512d719734513152ee711b8389654b",
+      "expectedIndependentReference": "19/08/2028",
+      "literal": {
+        "value": "EXP 19/08/2028",
+        "readability": "readable",
+        "qualityBlockers": []
+      },
+      "region": {
+        "id": "fed80b31-4c1b-433e-b8f6-cc7e4073c438",
+        "sourceCaptureId": "52610bf5-5b92-4054-a683-66e89ff244bd",
+        "sourceSha256": "3f7eadf12d705629e079c438c441b1f0f5512d719734513152ee711b8389654b",
+        "sourceWidth": 1200,
+        "sourceHeight": 800,
+        "objectId": "0",
+        "maskEncoding": "one_bit",
+        "promptBox": {
+          "left": 60,
+          "top": 420,
+          "right": 1140,
+          "bottom": 610
+        },
+        "bounds": {
+          "left": 77,
+          "top": 416,
+          "right": 1151,
+          "bottom": 598
+        },
+        "box": {
+          "left": 77,
+          "top": 416,
+          "right": 1151,
+          "bottom": 598
+        },
+        "maskWidth": 1024,
+        "maskHeight": 174,
+        "maskSha256": "787487fd8268a01f735550873737997fc5bc6e70a641979ad3d031dd5701f8f2",
+        "cropSha256": "dc068d383e17bbf7d3733db0172f911ee53b9942ca09f0b3c3e2040845f738eb",
+        "cropWidth": 1074,
+        "cropHeight": 182,
+        "transform": "EXIF-upright original; half-open crop; nearest mask resize to bounds",
+        "frameTimestamp": null,
+        "provider": {
+          "model": "sam-3.1",
+          "responseId": "resp_6aeb2e72f55e46a8218d43cd",
+          "requestId": "6ddb8afb-ca81-40d4-8dbf-5e83fa9a9d33",
+          "mode": "live"
+        }
+      },
+      "reader": {
+        "model": "muse-spark-1.3",
+        "responseId": "chatcmpl-01a1a6ad-a105-75f4-b51f-04fcf7d53478",
+        "requestId": "b4213ec6-9acb-4ef4-9f7b-d748e2d68412",
+        "mode": "live"
+      },
+      "reusedSavedProviderEvidence": true
+    },
+    {
+      "side": "arrival",
+      "investigationId": "2c7b4aa2-c9e0-438f-82a0-6928461dd668",
+      "captureId": "c10eda70-6097-42b6-bc20-7fe4ea0c359f",
+      "sourceSha256": "5125e6cf5b90b09b9d936aabe91cb754f2661a736b5099de26d57ad8dd24fbea",
+      "expectedIndependentReference": "20/08/2028",
+      "literal": {
+        "value": "EXP 20/08/2028",
+        "readability": "readable",
+        "qualityBlockers": []
+      },
+      "region": {
+        "id": "e3b7b1be-fade-4434-bd27-3c6479ff1d8a",
+        "cropSha256": "62cf097be0546e8e1d5f1776f316d9b2ec43dd42638e31ed3b49cf1e64868e00",
+        "maskSha256": "7934f2c9d42671ad1df6a3550de40088ebd12a53bb10fee756dc46fd4aa4d57c",
+        "sam": {
+          "model": "sam-3.1",
+          "responseId": "resp_6aeb2f0df7d3f6b5108340d4",
+          "requestId": "035d28e6-f7e9-4e93-9d77-e2470f68ff1e",
+          "mode": "live"
+        }
+      },
+      "reader": {
+        "model": "muse-spark-1.3",
+        "responseId": "chatcmpl-01a1a6af-faee-71c7-9cba-86492961aeca",
+        "requestId": "c910072f-8d37-4f77-b32d-16205e28fe96",
+        "mode": "live"
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "transferId": "e0b5a758-f5ae-4cab-abb2-efe8271e2255",
+    "asOf": "2026-11-04T13:11:56.685Z",
+    "findings": [
+      {
+        "field": "product_mark",
+        "status": "insufficient_evidence",
+        "dispatch": null,
+        "arrival": null,
+        "evidenceRefs": [],
+        "nextView": "Supply a sharp, glare-free close view of the complete product mark on the dispatch side. Contradictory readings need a new contextual view."
+      },
+      {
+        "field": "package_mark",
+        "status": "insufficient_evidence",
+        "dispatch": null,
+        "arrival": null,
+        "evidenceRefs": [],
+        "nextView": "Supply a sharp, glare-free close view of the complete package mark on the dispatch side. Contradictory readings need a new contextual view."
+      },
+      {
+        "field": "printed_expiry",
+        "status": "mismatch",
+        "dispatch": "EXP 19/08/2028",
+        "arrival": "EXP 20/08/2028",
+        "evidenceRefs": [
+          "d15de9ac-e797-4f96-aab9-0afe12daccdb",
+          "95b7b5af-aeb0-437e-88fe-cb7b549e50af",
+          "43d780ca-ed25-446c-a530-3bdead3504c5",
+          "da342f2f-3c6c-4b8e-b019-a462e4271fa1"
+        ],
+        "nextView": "Supply a sharp, glare-free close view of the complete printed expiry on the arrival side. Contradictory readings need a new contextual view."
+      },
+      {
+        "field": "packaging_seal_model_observation",
+        "status": "insufficient_evidence",
+        "dispatch": null,
+        "arrival": null,
+        "evidenceRefs": [],
+        "nextView": "Show the entire seal and affected outer package surface from a sharp new angle. This is a visible condition observation, not forensic proof."
+      },
+      {
+        "field": "packaging_surface_model_observation",
+        "status": "insufficient_evidence",
+        "dispatch": null,
+        "arrival": null,
+        "evidenceRefs": [],
+        "nextView": "Show the entire seal and affected outer package surface from a sharp new angle. This is a visible condition observation, not forensic proof."
+      },
+      {
+        "field": "original_integrity",
+        "status": "observed_consistency",
+        "dispatch": null,
+        "arrival": null,
+        "evidenceRefs": [
+          "d15de9ac-e797-4f96-aab9-0afe12daccdb",
+          "43d780ca-ed25-446c-a530-3bdead3504c5"
+        ],
+        "nextView": null
+      },
+      {
+        "field": "reused_source",
+        "status": "observed_consistency",
+        "dispatch": null,
+        "arrival": null,
+        "evidenceRefs": [],
+        "nextView": null
+      },
+      {
+        "field": "packaging_condition_human_observation",
+        "status": "mismatch",
+        "dispatch": "Seal visible in sender description",
+        "arrival": "Receiver reports a different seal view; human observation only",
+        "evidenceRefs": [
+          "d15de9ac-e797-4f96-aab9-0afe12daccdb",
+          "43d780ca-ed25-446c-a530-3bdead3504c5"
+        ],
+        "nextView": "Human condition descriptions are not model findings. Supply full-package views of any discrepancy for Inspector."
+      },
+      {
+        "field": "physical_association",
+        "status": "unresolved_physical_association",
+        "dispatch": null,
+        "arrival": null,
+        "evidenceRefs": [
+          "d15de9ac-e797-4f96-aab9-0afe12daccdb",
+          "43d780ca-ed25-446c-a530-3bdead3504c5"
+        ],
+        "nextView": "Keep both markings and the full package in one contextual view. Matching readings do not establish authenticity, substitution resistance or uninterrupted custody."
+      },
+      {
+        "field": "packaging_notice_coverage",
+        "status": "unresolved_physical_association",
+        "dispatch": "Applicable demo notices in this dataset; external source coverage is unknown",
+        "arrival": null,
+        "evidenceRefs": [],
+        "nextView": "This covers the signed demo registry only. External manufacturer notices and the observed package revision remain unknown."
+      }
+    ],
+    "physicalAssociation": "unresolved",
+    "ownershipEffect": "none",
+    "evidenceRefs": [
+      "d15de9ac-e797-4f96-aab9-0afe12daccdb",
+      "43d780ca-ed25-446c-a530-3bdead3504c5"
+    ]
+  },
+  "status": "passed",
+  "reservedCentsAfter": 166,
+  "actualBilledUsd": null
+}

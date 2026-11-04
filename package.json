@@ -10,8 +10,8 @@
   "packageManager": "pnpm@12.16.1",
   "scripts": {
     "typecheck": "next typegen && tsc --noEmit && tsc --noEmit -p tsconfig.app.json",
-    "test": "vitest run tests/unit",
-    "build": "pnpm probe:build && pnpm offline:build && next build --webpack",
+    "test": "pnpm video:prepare && vitest run tests/unit",
+    "build": "pnpm video:prepare && pnpm probe:build && pnpm offline:build && next build --webpack",
     "probe:serve": "node --env-file-if-exists=.env.local --import tsx scripts/spikes/serve.ts",
     "probe:crypto": "node --import tsx scripts/spikes/crypto-browser.ts",
     "probe:provider": "node --env-file-if-exists=.env.local --import tsx scripts/spikes/provider.ts",
@@ -43,7 +43,8 @@
     "p3:app": "node --env-file-if-exists=.env.local --import tsx scripts/p3/serve-local.ts",
     "offline:build": "node --import tsx scripts/p4/build.ts",
     "db:migrate:p4": "node --env-file-if-exists=.env.local --import tsx scripts/p4/migrate.ts",
-    "offline:authority": "node --env-file-if-exists=.env.local --import tsx scripts/p4/prepare-authority.ts"
+    "offline:authority": "node --env-file-if-exists=.env.local --import tsx scripts/p4/prepare-authority.ts",
+    "video:prepare": "node --import tsx scripts/platform/prepare-video.ts"
   },
   "dependencies": {
     "@langchain/core": "1.3.2",
@@ -51,6 +52,8 @@
     "@langchain/langgraph-checkpoint-postgres": "1.1.2",
     "@langchain/openai": "1.8.0",
     "@meta-sam/parser": "0.1.0",
+    "@modelcontextprotocol/client": "2.4.0",
+    "@modelcontextprotocol/server": "2.4.0",
     "@zxing/browser": "0.2.1",
     "@zxing/library": "0.23.0",
     "jose": "6.2.14",

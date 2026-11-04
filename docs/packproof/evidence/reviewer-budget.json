@@ -2,7 +2,7 @@
   "grant": {
     "id": "review-live-2026-11-04",
     "limit_cents": 500,
-    "reserved_cents": 154,
+    "reserved_cents": 166,
     "enabled": true,
     "approval": "User approved 5 USD for unlimited requests; no separate request-count cap; nonrefundable per-call reservations bound spend.",
     "approved_at": "2026-11-04T09:04:44.087Z"
@@ -551,11 +551,75 @@
       },
       "reserved_at": "2026-11-04T10:16:23.877Z",
       "settled_at": "2026-11-04T10:16:25.388Z"
+    },
+    {
+      "id": "8df9cc02-b776-4b86-a307-86a0831f067a",
+      "model": "sam-3.1",
+      "state": "responded",
+      "cents": 1,
+      "input_tokens": 0,
+      "response_id": "resp_6aeb2e72f55e46a8218d43cd",
+      "request_id": "6ddb8afb-ca81-40d4-8dbf-5e83fa9a9d33",
+      "usage": {
+        "inputTokens": 0,
+        "cachedTokens": 0,
+        "outputTokens": 0
+      },
+      "reserved_at": "2026-11-04T13:09:04.215Z",
+      "settled_at": "2026-11-04T13:09:08.035Z"
+    },
+    {
+      "id": "f40bd0b3-c87e-4e15-94af-96f3e2cf7a08",
+      "model": "muse-spark-1.3",
+      "state": "responded",
+      "cents": 5,
+      "input_tokens": 0,
+      "response_id": "chatcmpl-01a1a6ad-a105-75f4-b51f-04fcf7d53478",
+      "request_id": "b4213ec6-9acb-4ef4-9f7b-d748e2d68412",
+      "usage": {
+        "inputTokens": 1737,
+        "cachedTokens": 0,
+        "outputTokens": 308
+      },
+      "reserved_at": "2026-11-04T13:09:13.165Z",
+      "settled_at": "2026-11-04T13:09:19.546Z"
+    },
+    {
+      "id": "60a4d130-3226-4738-905f-9c02540c1bb8",
+      "model": "sam-3.1",
+      "state": "responded",
+      "cents": 1,
+      "input_tokens": 0,
+      "response_id": "resp_6aeb2f0df7d3f6b5108340d4",
+      "request_id": "035d28e6-f7e9-4e93-9d77-e2470f68ff1e",
+      "usage": {
+        "inputTokens": 0,
+        "cachedTokens": 0,
+        "outputTokens": 0
+      },
+      "reserved_at": "2026-11-04T13:11:39.391Z",
+      "settled_at": "2026-11-04T13:11:42.758Z"
+    },
+    {
+      "id": "31ad75ac-7a2d-4da9-a6ce-225e17e62870",
+      "model": "muse-spark-1.3",
+      "state": "responded",
+      "cents": 5,
+      "input_tokens": 0,
+      "response_id": "chatcmpl-01a1a6af-faee-71c7-9cba-86492961aeca",
+      "request_id": "c910072f-8d37-4f77-b32d-16205e28fe96",
+      "usage": {
+        "inputTokens": 1695,
+        "cachedTokens": 0,
+        "outputTokens": 458
+      },
+      "reserved_at": "2026-11-04T13:11:46.766Z",
+      "settled_at": "2026-11-04T13:11:53.530Z"
     }
   ],
-  "estimatedUsageUsd": 0.20580995000000002,
+  "estimatedUsageUsd": 0.21835545,
   "actualBilledUsd": null,
-  "nonrefundableReservedUsd": 1.54,
-  "remainingReservationUsd": 3.46,
+  "nonrefundableReservedUsd": 1.66,
+  "remainingReservationUsd": 3.34,
   "separateRequestCap": null
 }

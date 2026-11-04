@@ -11,7 +11,7 @@ export async function loadSources(c:Sql,schema:string){
  const row=await c.query(DATASET_QUERY.replaceAll('packproof.',schema+'.'));
  return DatasetSchema.parse(Object.values(row.rows[0])[0]);
 }
-export async function checkAuthority(c:Sql,schema:string,pin:RootPin,itemId:string,sellerId:string,at:string,snapshotId?:string,expected?:{ownerId:string;version:number}){
+export async function currentOwnership(c:Sql,schema:string,pin:RootPin,itemId:string,sellerId:string,at:string,expected?:{ownerId:string;version:number}){
  const now=Date.parse(at);await c.query(`SELECT ${schema}.lock_transfer_sources($1)`,[itemId]);
  const item=(await c.query(`SELECT * FROM ${schema}.items WHERE id=$1`,[itemId])).rows[0];
  if(!item)throw new TransferError('unknown_unit',404);
@@ -33,6 +33,11 @@ export async function checkAuthority(c:Sql,schema:string,pin:RootPin,itemId:stri
  if(item.owner_version!==version||item.registered_owner_id!==ownerId||item.owner_record_id!==ownerRecordId)throw new TransferError('owner_projection_conflict');
  const delegations=[...base.verified.values()].filter(v=>v.record.type==='delegation'&&v.record.issuerId===issuance.issuerId&&v.record.data.itemId===itemId&&v.record.data.ownerActorId===ownerId&&v.record.data.delegateActorId===sellerId&&v.record.data.ownerVersion===version&&v.record.data.revokedAt===null&&Date.parse(v.record.data.expiresAt)>now);
  if(sellerId!==ownerId&&delegations.length!==1)throw new TransferError('seller_not_authorized');
+ return {item,data,directory:base.directory,verified:base.verified,issuance,mapping,ownerId,version,ownerRecordId,delegations};
+}
+export async function checkAuthority(c:Sql,schema:string,pin:RootPin,itemId:string,sellerId:string,at:string,snapshotId?:string,expected?:{ownerId:string;version:number}){
+ const {item,data,directory,verified,issuance,mapping,ownerId,version,ownerRecordId,delegations}=await currentOwnership(c,schema,pin,itemId,sellerId,at,expected);
+ const base={directory,verified},now=Date.parse(at);
  const snapshots=(await c.query(`SELECT * FROM ${schema}.transfer_authority_snapshots WHERE item_id=$1 AND owner_version=$2 ${snapshotId?'AND id=$3':''} ORDER BY created_at DESC LIMIT 1`,snapshotId?[itemId,version,snapshotId]:[itemId,version])).rows;
  const stored=snapshots[0];if(!stored)throw new TransferError('current_authority_snapshot_required');
  const extended=await verifyRecordSet([...data.records,{id:stored.id,jws:stored.jws,sha256:stored.sha256}],pin,at);

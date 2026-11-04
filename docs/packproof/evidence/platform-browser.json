@@ -1,0 +1,84 @@
+{
+  "conditions": "Actual desktop Chrome at phone viewport; native WebMCP feature flag enabled where supported; no physical Android or inference claimed",
+  "browserVersion": "156.0.8078.47",
+  "checks": [
+    {
+      "name": "mobile_navigation_review",
+      "status": "passed"
+    },
+    {
+      "name": "mobile_navigation_account",
+      "status": "passed"
+    },
+    {
+      "name": "mobile_navigation_products",
+      "status": "passed"
+    },
+    {
+      "name": "mobile_navigation_chainproof",
+      "status": "passed"
+    },
+    {
+      "name": "mobile_navigation_dualproof",
+      "status": "passed"
+    },
+    {
+      "name": "mobile_navigation_developers",
+      "status": "passed"
+    },
+    {
+      "name": "mobile_navigation_inspector",
+      "status": "passed"
+    },
+    {
+      "name": "registration_has_exactly_two_account_types",
+      "status": "passed"
+    },
+    {
+      "name": "real_synthetic_account_sign_in",
+      "status": "passed"
+    },
+    {
+      "name": "contextual_workflows_share_one_account",
+      "status": "passed"
+    },
+    {
+      "name": "same_account_switches_buying_and_selling_without_registration",
+      "status": "passed"
+    },
+    {
+      "name": "manufacturer_original_evidence_and_trust_blocker_visible",
+      "status": "passed"
+    },
+    {
+      "name": "unique_demo_identifiers_fill_blank_fields",
+      "status": "passed"
+    },
+    {
+      "name": "demo_helper_preserves_entered_leading_zero_identifier",
+      "status": "passed"
+    },
+    {
+      "name": "webmcp_exposes_no_ownership_commit_or_signing",
+      "status": "passed"
+    },
+    {
+      "name": "native_browser_tool_called_actual_evidence_api",
+      "status": "passed"
+    }
+  ],
+  "startedAt": "2026-11-04T15:05:23.887Z",
+  "registrationOptions": [
+    "Regular User",
+    "Manufacturer / Producer"
+  ],
+  "webMCP": {
+    "nativeAvailable": true,
+    "registration": "passed",
+    "execution": "passed",
+    "toolCount": 22,
+    "returnShape": "string",
+    "returnKeys": []
+  },
+  "status": "passed"
+}

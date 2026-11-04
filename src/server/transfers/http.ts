@@ -9,6 +9,10 @@ import {TransferService,configuredSigner,type ReceiptSigner} from './service.js'
 import {rootPin,SELLER_REFUSAL} from './authority.js';
 import {projectUrl,publicKeyAllowed} from '../../../scripts/spikes/infrastructure.js';
 import {sha256,utf8} from '../../domain/verification/p0-crypto.js';
+import {Signup} from '../../contracts/platform.js';
+import {saveProfile,profile} from '../platform/accounts.js';
+import {platformIdentity,platformLimit} from '../platform/database.js';
+import {ensureAuthoritySnapshot,configuredAuthoritySigner} from './snapshot.js';
 const COOKIE='packproof_auth';
 const response=(v:unknown,status=200,cookie?:string)=>Response.json(v,{status,headers:{'cache-control':'private, no-store','x-content-type-options':'nosniff',...(cookie?{'set-cookie':cookie}:{})}});
 const enabled=()=>process.env.P2_ENABLED==='1';
@@ -20,7 +24,7 @@ function transferDatabase(){
  if(!sharedPool){sharedPool=databasePool();sharedPool.on('error',()=>{/* pg removes failed idle clients; the next request reconnects. */});}
  return new TransferDatabase(sharedPool);
 }
-function token(request:Request){const value=request.headers.get('cookie')?.split(';').map(v=>v.trim()).find(v=>v.startsWith(COOKIE+'='))?.slice(COOKIE.length+1);if(!value||value.length>8192||!/^[-A-Za-z0-9_.]+$/.test(value))throw new TransferError('sign_in_required',401);return value;}
+function token(request:Request){const authorization=request.headers.get('authorization');const value=authorization?.startsWith('Bearer ')?authorization.slice(7):request.headers.get('cookie')?.split(';').map(v=>v.trim()).find(v=>v.startsWith(COOKIE+'='))?.slice(COOKIE.length+1);if(!value||value.length>8192||!/^[-A-Za-z0-9_.]+$/.test(value))throw new TransferError('sign_in_required',401);return value;}
 function authHeaders(bearer?:string){const key=process.env.SUPABASE_PUBLISHABLE_KEY??'';if(!publicKeyAllowed(key))throw new TransferError('auth_unavailable',503);return {apikey:key,'content-type':'application/json',...(bearer?{authorization:`Bearer ${bearer}`}:{})};}
 function authUrl(path:string){return new URL(`/auth/v1/${path}`,projectUrl(process.env.SUPABASE_URL??'',process.env.SUPABASE_PROJECT_REF??''));}
 export async function authenticatedUser(request:Request){const value=token(request);const r=await fetch(authUrl('user'),{headers:authHeaders(value),redirect:'error',signal:AbortSignal.timeout(8000)});if(!r.ok)throw new TransferError('sign_in_required',401);return z.object({id:z.uuid()}).parse(await r.json()).id;}
@@ -32,11 +36,23 @@ export async function transferHttp(request:Request,kind:'auth'|'device'|'transfe
   if(kind==='auth'&&parts.join('/')==='status'&&request.method==='GET')return response({enabled:enabled()});
   if(!enabled())return response({enabled:false,error:'chainproof_not_enabled'},503);
   const method=request.method,path=parts.join('/');if(method!=='GET')sameOrigin(request);
+  if(kind==='auth'&&path==='signup'&&method==='POST'){
+   const input=Signup.parse((await body(request)).value);await platformLimit('signup-global',30);
+   // Public signup never uses the admin API or auto-confirms an email address.
+   const r=await fetch(authUrl('signup'),{method:'POST',headers:authHeaders(),body:JSON.stringify({email:input.email,password:input.password,data:{account_type:input.accountType,display_name:input.displayName}}),redirect:'error',signal:AbortSignal.timeout(10000)});
+   if(!r.ok){const error=await r.json().catch(()=>null);const allowed=['email_address_invalid','email_address_not_authorized','signup_disabled','over_email_send_rate_limit','weak_password','user_already_exists'];const providerCode=error?.error_code??error?.code;const code=allowed.includes(providerCode)?providerCode:r.status===429?'rate_limit':'signup_failed';throw new TransferError(code,r.status===429?429:400);}
+   const v=z.object({access_token:z.string().max(8192).optional(),expires_in:z.number().positive().optional()}).passthrough().parse(await r.json());
+   if(!v.access_token)return response({authenticated:false,confirmationRequired:true,message:'Check your email to confirm your account, then sign in.'},202);
+   const cookie=`${COOKIE}=${v.access_token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${Math.min(3600,Math.floor(v.expires_in??3600))}${new URL(request.url).protocol==='https:'?'; Secure':''}`;
+   const userId=await authenticatedUser(new Request(request.url,{headers:{authorization:`Bearer ${v.access_token}`}}));await saveProfile(await platformIdentity(userId),{accountType:input.accountType,displayName:input.displayName});
+   return response({authenticated:true,confirmationRequired:false},201,cookie);
+  }
   if(kind==='auth'&&path==='login'&&method==='POST'){
    const input=Login.parse((await body(request)).value);
    const r=await fetch(authUrl('token?grant_type=password'),{method:'POST',headers:authHeaders(),body:JSON.stringify(input),redirect:'error',signal:AbortSignal.timeout(10000)});
    if(!r.ok)throw new TransferError(r.status===429?'rate_limit':'invalid_login',r.status===429?429:401);
-   const v=z.object({access_token:z.string().max(8192),expires_in:z.number().positive()}).parse(await r.json());
+   const v=z.object({access_token:z.string().max(8192),expires_in:z.number().positive(),user:z.object({id:z.uuid(),user_metadata:z.record(z.string(),z.unknown()).optional()}).optional()}).parse(await r.json());
+   if(v.user?.user_metadata){const metadata=v.user.user_metadata;const identity=await platformIdentity(v.user.id);if(!(await profile(identity)).profileConfigured){const selected=Signup.omit({email:true,password:true}).safeParse({accountType:metadata.account_type,displayName:metadata.display_name});if(selected.success)await saveProfile(identity,selected.data);}}
    const secure=new URL(request.url).protocol==='https:';
    return response({authenticated:true},200,`${COOKIE}=${v.access_token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${Math.min(3600,Math.floor(v.expires_in))}${secure?'; Secure':''}`);
   }
@@ -45,7 +61,7 @@ export async function transferHttp(request:Request,kind:'auth'|'device'|'transfe
    return response({authenticated:false},200,`${COOKIE}=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0${new URL(request.url).protocol==='https:'?'; Secure':''}`);
   }
   const userId=await authenticatedUser(request);const db=testDependencies?.db??transferDatabase(),actor=await db.actor(userId),service=new TransferService(db,await rootPin(),testDependencies?testDependencies.signer:await configuredSigner());
-  if(kind==='auth'&&path==='session'&&method==='GET')return response({enabled:true,authenticated:true,...await service.account(actor)});
+  if(kind==='auth'&&path==='session'&&method==='GET')return response({enabled:true,authenticated:true,...await service.account(actor),...await profile({userId,actorId:actor})});
   if(kind==='device'){
    if(method!=='POST')throw new TransferError('method_not_allowed',405);
    if(path==='challenge'){const b=await body(request);z.strictObject({}).parse(b.value);return response(await service.enrollment(actor,userId,key(request),b.hash),201);}
@@ -53,7 +69,7 @@ export async function transferHttp(request:Request,kind:'auth'|'device'|'transfe
    if(path==='revoke'){const b=await body(request);z.strictObject({}).parse(b.value);return response(await service.revoke(actor,key(request),b.hash));}
   }
   if(kind==='transfer'){
-   if(parts.length===0&&method==='POST'){const b=await body(request);return response(await service.create(actor,key(request),CreateTransfer.parse(b.value),b.hash),201);}
+   if(parts.length===0&&method==='POST'){const b=await body(request),input=CreateTransfer.parse(b.value);await ensureAuthoritySnapshot(db,service.pin,actor,input.itemId,input.sellerActorId,await configuredAuthoritySigner());return response(await service.create(actor,key(request),input,b.hash),201);}
    if(parts[0]==='resolve'&&parts.length===1&&method==='POST'){const b=z.strictObject({handle:z.string().regex(/^cp2_[a-f0-9]{32}$/)}).parse((await body(request)).value);return response(await service.resolve(actor,b.handle));}
    const id=z.uuid().parse(parts[0]);
    if(parts.length===2&&parts[1]==='receipt-proof'&&method==='GET')return response(await service.receiptProof(actor,id));

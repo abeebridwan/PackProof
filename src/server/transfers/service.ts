@@ -81,6 +81,12 @@ export class TransferService{
   await c.query(`INSERT INTO ${this.s}.transfer_events(transfer_id,actor_id,event) VALUES($1,$2,'offered')`,[agreement.transferId,actor]);
   return {id:agreement.transferId,agreement,agreementPayload:payload,agreementHash,offer:Offer.parse({kind:'transfer-offer',transferId:agreement.transferId,agreementHash,actorId:actor,keyId:buyer.id,expiresAt:agreement.expiresAt})};
  },rawHash);}
+ async eligibility(actor:string,input:{itemId:string;sellerActorId:string}){
+  const at=now(),base={scope:'unit' as const,asOf:at,policyVersion:TRANSFER_POLICY,next_actions:['Both participants must explicitly sign the exact agreement and complete fresh QR checks.']};
+  if(!this.signer)return {...base,status:'unavailable' as const,reason:'Receipt signing is not configured. No signed handover can be completed.',evidence_refs:[],data:null};
+  try{return await this.db.transaction(actor,async c=>{if(actor===input.sellerActorId)throw new TransferError('distinct_parties_required');const policy=(await c.query(`SELECT active FROM ${this.s}.transfer_policies WHERE version=$1`,[TRANSFER_POLICY])).rows[0];if(!policy?.active)throw new TransferError('policy_unavailable');const authority=await checkAuthority(c,this.s,this.pin,input.itemId,input.sellerActorId,at);await this.device(c,actor);await this.device(c,input.sellerActorId);return {...base,status:'supported' as const,reason:'Current registered authority and enrolled devices support preparing an agreement. Commit checks and both signed approvals remain mandatory.',evidence_refs:authority.refs,data:{eligible:true,itemId:input.itemId,sellerActorId:input.sellerActorId,buyerActorId:actor,ownerVersion:authority.item.owner_version,physicalAssociation:'unresolved' as const}};});}
+  catch(e){if(!(e instanceof TransferError))throw e;return {...base,status:e.code==='stale_authority'?'stale' as const:'blocked' as const,reason:e.code.replaceAll('_',' '),evidence_refs:[],data:null};}
+ }
  async offer(actor:string,id:string,key:string,signature:string,rawHash?:string){return this.operation(actor,`offer:${id}`,key,{signature},async c=>{
   const s=await this.session(c,actor,id);this.active(s,['offered']);if(s.buyer_actor_id!==actor||s.buyer_offer)throw new TransferError('offer_not_available');
   const d=await this.device(c,actor,s.buyer_device_key_id);await this.device(c,s.seller_actor_id,s.seller_device_key_id);

@@ -5,7 +5,7 @@ const inputs = JSON.parse(await readFile('dist/bundle-inputs.json', 'utf8')) as 
 const bundle = await readFile('dist/phone.js', 'utf8');
 const forbiddenInputs = inputs.filter(p => /src\/server\/|scripts\/p1[bc]?\/|scripts\/spikes\/(provider|budget|access|serve|fixture-registry|meta-gateway|langchain|safe-tracing|infrastructure|deploy-entry|vercel-entry|package-probe|deployment-browser)|node_modules\/.*(openai|sharp|meta-sam|langchain|langsmith)|\.env/.test(p));
 if (forbiddenInputs.length) throw new Error('Server-only module in browser bundle');
-if (/MODEL_API_KEY|PACK_SIGNING_JWK|TRANSFER_SIGNING_JWK|SUPABASE_SECRET_KEY|SUPABASE_DB_URL|BEGIN PRIVATE KEY|offline-keys\.json/.test(bundle)) throw new Error('Secret marker in browser bundle');
+if (/TRANSFER_AUTHORITY_SIGNING_JWK|MODEL_API_KEY|PACK_SIGNING_JWK|TRANSFER_SIGNING_JWK|SUPABASE_SECRET_KEY|SUPABASE_DB_URL|BEGIN PRIVATE KEY|offline-keys\.json/.test(bundle)) throw new Error('Secret marker in browser bundle');
 let env: Record<string, string | undefined> = {};
 try { env = parseEnv(await readFile('.env.local', 'utf8')); } catch (e) { if (!(e instanceof Error && 'code' in e && e.code === 'ENOENT')) throw e; }
 const secrets = Object.entries(env).filter((entry): entry is [string, string] => {
@@ -18,7 +18,7 @@ try {
   const files = await readdir('.next/static', { recursive: true });
   for (const file of files.filter(p => /\.(js|css|map)$/.test(p))) {
     const client = await readFile(`.next/static/${file}`, 'utf8');
-    if (/MODEL_API_KEY|TRANSFER_SIGNING_JWK|PACK_SIGNING_JWK|SUPABASE_SECRET_KEY|SUPABASE_DB_URL|BEGIN PRIVATE KEY|offline-keys\.json/.test(client) || secrets.some(([,v]) => client.includes(v))) throw new Error('Server secret/module marker in Next client assets');
+    if (/TRANSFER_AUTHORITY_SIGNING_JWK|MODEL_API_KEY|TRANSFER_SIGNING_JWK|PACK_SIGNING_JWK|SUPABASE_SECRET_KEY|SUPABASE_DB_URL|BEGIN PRIVATE KEY|offline-keys\.json/.test(client) || secrets.some(([,v]) => client.includes(v))) throw new Error('Server secret/module marker in Next client assets');
     nextStaticFilesChecked++;
   }
 } catch (e) { if (!(e instanceof Error && 'code' in e && e.code === 'ENOENT')) throw e; }

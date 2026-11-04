@@ -1,0 +1,35 @@
+{
+  "status": "approval_required",
+  "keyId": "c63e5263-29f5-4a50-911d-765cc4771611",
+  "issuerId": "30000000-0000-4000-8000-000000000002",
+  "publicKey": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "bw3MMOlLKvMVBO7jvTg9jMJQw6-lgadXnPWMKxoTqdw",
+    "y": "R9_qe3S43E2fxyOlSxC2eOFeZSsMi4KdRDo5GlMjTMY"
+  },
+  "recordTypes": [
+    "custody_snapshot"
+  ],
+  "namespaces": [
+    "packproof-demo"
+  ],
+  "validUntil": "2026-11-18T09:04:44.441Z",
+  "currentDirectoryVersion": 8,
+  "currentDirectoryHash": "88486c2f0ece11f00ee1df6f1a98a45a921bb7f3e713deefa53aa3e28590d510",
+  "target": "existing Vercel packproof-p0 Preview only",
+  "encryptedVariable": "TRANSFER_AUTHORITY_SIGNING_JWK",
+  "purpose": "Attest current verified registry ownership after a handover; no participant approval or ownership transition",
+  "forbidden": [
+    "product issuance",
+    "mapping issuance",
+    "notices",
+    "receipt signing",
+    "trust administration",
+    "ownership commit"
+  ],
+  "rootRead": false,
+  "trustRecordsWritten": false,
+  "productionChanged": false,
+  "preparedAt": "2026-11-04T14:52:54.103Z"
+}

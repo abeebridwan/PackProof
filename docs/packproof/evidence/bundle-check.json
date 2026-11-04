@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "serverOnlyInputs": 0,
-  "nextStaticFilesChecked": 26,
+  "nextStaticFilesChecked": 52,
   "checkedConfiguredSecrets": 3,
   "storedPrivateKeys": false,
   "note": "Generated test private keys stay in process memory. Browser device key is nonextractable. This check inspects the browser bundle, not Git history."

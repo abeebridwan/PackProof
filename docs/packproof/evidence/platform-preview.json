@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "deploymentId": "dpl_CtVJEJtHE1PMhNpJeoGzonDgXiWd",
+  "origin": "https://packproof-p0-preview.vercel.app",
+  "sourceSha256": "04797a0d836d20bfc6fdc0cff41ab22de0d9b3eb839dbe907a2b46348d3347df",
+  "actualPhones": 0,
+  "newProviderRequests": 0,
+  "ownershipCommits": 0,
+  "checks": [
+    {
+      "name": "hosted_route_/review",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_route_/account",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_route_/products",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_route_/dualproof",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_route_/developers",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_route_/inspector",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_route_/chainproof",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_route_/offline/index.html",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_route_/tools",
+      "status": "passed"
+    },
+    {
+      "name": "preview_remains_protected",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_sdk_actual_product_gate",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_official_mcp_actual_call_agrees_with_sdk",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_manufacturer_real_sign_in",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_two_type_profile",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_producer_mobile_layout",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_private_inspection_started",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_patched_video_decoder_executes",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_timestamped_frames_preserved",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_pack_only_signer_exports",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_signed_pack_locally_verified",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_existing_reviewer_invitation",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_participant_dualproof_read",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_saved_real_muse_sam_mismatch",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_invited_live_gateway_enabled",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_authorized_dualproof_participant_found",
+      "status": "passed"
+    },
+    {
+      "name": "hosted_actual_compared_images_displayed",
+      "status": "passed"
+    }
+  ],
+  "startedAt": "2026-11-04T15:12:35.765Z",
+  "videoId": "94d81730-f698-43ee-af3d-f1ae37028dd9",
+  "temporaryBypassRevoked": true,
+  "finishedAt": "2026-11-04T15:13:40.383Z",
+  "productionDeploymentUnchanged": "dpl_5zPWvxiKsPbeXkbw4QnCN2ZiABbJ"
+}

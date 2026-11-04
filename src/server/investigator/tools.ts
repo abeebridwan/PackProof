@@ -28,7 +28,7 @@ export async function executeTool(name:ToolName,raw:unknown,c:ToolContext):Promi
   if(args.captureId!==c.state.input.captureId)throw new InvestigationError('foreign_capture',404);
   const capture=await c.store.capture(c.owner,c.state.id,String(args.captureId));
   if(capture.revision<c.state.revision-1||capture.revision>c.state.revision)throw new InvestigationError('capture_revision_mismatch');
-  const result=ImageEvidenceResult.parse(await c.inspector.inspect(capture,args.question as 'product_mark'|'package_mark'|'printed_expiry'));
+  const result=ImageEvidenceResult.parse(await c.inspector.inspect(capture,args.question as 'product_mark'|'package_mark'|'printed_expiry'|'packaging_condition'));
   const question=result.data?.question??args.question;const expectedMark=question==='product_mark'?c.state.input.productMark:question==='package_mark'?c.state.input.packagingMark:null;
   if(result.data?.value!==null && result.data?.value!==undefined && expectedMark!==null && result.data.value!==expectedMark){
    result.status='blocked';result.reason='Literal marking differs from the supplied code; physical association remains unresolved.';result.next_actions=['Confirm the literal code from a clear view; do not infer authenticity'];

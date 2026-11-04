@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "mode": "Read-only post-release database preservation check",
+  "originalSignedRecordsUnchanged": 33,
+  "acceptedTransfers": 1,
+  "ownerVersion": 2,
+  "ownerRecordId": "518246e0-1fc6-42c6-9cb8-25902a92648e",
+  "credentialsAndOfflineReceiptKeysUnchanged": true,
+  "ownershipWrites": 0,
+  "providerRequests": 0
+}

@@ -16,3 +16,6 @@ supabase/.temp/
 next-env.d.ts
 .vercel/
 *.tsbuildinfo
+
+# Generated from the pinned, hash-verified FFmpeg source during build.
+/vendor/ffmpeg/

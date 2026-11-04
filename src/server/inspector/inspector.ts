@@ -1,4 +1,4 @@
-import {Observation,type CaptureDetails,type Question} from '../../contracts/inspection.js';
+import {Observation,type CaptureDetails,type Question,type PackagingCondition} from '../../contracts/inspection.js';
 import {ImageEvidenceResult} from '../evidence/services.js';
 import type {Capture} from '../../contracts/investigation.js';
 import type {ImageInspector} from '../providers/recorded-image.js';
@@ -8,7 +8,7 @@ import {verifySource,deriveRegion,type Segmentation} from './grounding.js';
 import {P1BudgetError} from '../providers/p1-budget.js';
 export interface GroundingProvider{
  segment(c:Capture,bytes:Uint8Array,box:CaptureDetails['box']):Promise<{parsed:Segmentation;provider:NonNullable<Observation['region']>['provider']}>;
- read(c:Capture,bytes:Uint8Array,region:NonNullable<Observation['region']>,crop:Uint8Array,q:Question):Promise<{literal:Observation['literal'];reader:NonNullable<Observation['reader']>}>;
+ read(c:Capture,bytes:Uint8Array,region:NonNullable<Observation['region']>,crop:Uint8Array,q:Question):Promise<{literal:Observation['literal'];reader:NonNullable<Observation['reader']>;condition?:PackagingCondition}>;
 }
 export class GroundedImageInspector implements ImageInspector{
  constructor(private readonly repository:InspectionRepository,private readonly load:(c:Capture)=>Promise<Uint8Array>,private readonly provider:GroundingProvider|null=null,private readonly legacy:ImageInspector=new RecordedImageInspector()){}
@@ -27,7 +27,7 @@ export class GroundedImageInspector implements ImageInspector{
    observation=Observation.parse({...base,literal:{value:null,readability:'unreadable',qualityBlockers:[!details.processingConsent?'No consent to send this image to Meta.':'Live analysis is disabled; no recorded provider result exists for this capture.']},region:null,reader:null});
   }else{
    let grounded:Observation['region']=null;
-   try{const sam=await this.provider.segment(c,bytes,details.box);const {region,crop}=await deriveRegion(c,bytes,details.box,sam.parsed,sam.provider);
+   try{const sam=await this.provider.segment(c,bytes,details.box);const {region,crop}=await deriveRegion(c,bytes,details.box,sam.parsed,sam.provider,await this.repository.frameTimestamp?.(c)??null);
     grounded=region;
     const read=await this.provider.read(c,bytes,region,crop,details.question);
     observation=Observation.parse({...base,region,...read});
@@ -40,4 +40,4 @@ export class GroundedImageInspector implements ImageInspector{
   return observationResult(await this.repository.append(observation));
  }
 }
-export function observationResult(o:Observation){return ImageEvidenceResult.parse({status:o.literal.value===null?'needs_evidence':'supported',reason:o.literal.value===null?o.literal.qualityBlockers[0]??'Retake the requested marking.':'Source-bound literal reading only; physical association remains unresolved.',evidence_refs:[o.id,o.captureId,...(o.region?[o.region.id]:[])],scope:'unit',asOf:o.createdAt,policyVersion:'p3-grounded-reading-1',next_actions:o.literal.value===null?['Retake a sharp close view of the requested marking.']:['Compare with signed records; do not infer authenticity.'],data:{value:o.literal.value,cropRecordIds:o.region?[o.region.id]:[],maskRecordIds:o.region?[o.region.id]:[],frameRecordIds:[o.captureId],provenance:'model_reading',qualityBlockers:o.literal.qualityBlockers,question:o.question,observationId:o.id}});}
+export function observationResult(o:Observation){return ImageEvidenceResult.parse({status:o.literal.value===null?'needs_evidence':'supported',reason:o.literal.value===null?o.literal.qualityBlockers[0]??'Retake the requested marking.':o.question==='packaging_condition'?'Source-bound visible condition observation only; authenticity and physical association remain unresolved.':'Source-bound literal reading only; physical association remains unresolved.',evidence_refs:[o.id,o.captureId,...(o.region?[o.region.id]:[])],scope:'unit',asOf:o.createdAt,policyVersion:'p3-grounded-reading-1',next_actions:o.literal.value===null?[o.question==='packaging_condition'?'Show the complete seal and outer packaging from a clear new angle.':'Retake a sharp close view of the requested marking.']:['Compare with signed records; do not infer authenticity.'],data:{value:o.literal.value,cropRecordIds:o.region?[o.region.id]:[],maskRecordIds:o.region?[o.region.id]:[],frameRecordIds:[o.captureId],provenance:'model_reading',qualityBlockers:o.literal.qualityBlockers,question:o.question,observationId:o.id}});}

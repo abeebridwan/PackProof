@@ -19,10 +19,10 @@ export interface CaptureStorage{upload(path:string,bytes:Uint8Array,mime:string)
 export class SupabaseCaptureStorage implements CaptureStorage{
  private request(path:string,method:string,bytes?:Uint8Array,mime?:string){
   const origin=projectUrl(process.env.SUPABASE_URL??'',process.env.SUPABASE_PROJECT_REF??'');const key=process.env.SUPABASE_SECRET_KEY??'';
-  if(!secretKeyAllowed(key)||!/^[a-f0-9-]{36}\/[a-f0-9-]{36}\/(original\.png|original\.jpg)$/.test(path))throw new InvestigationError('storage_configuration',503);
+  if(!secretKeyAllowed(key)||!/^[a-f0-9-]{36}\/[a-f0-9-]{36}\/(original\.png|original\.jpg|original\.mp4|original\.webm)$/.test(path))throw new InvestigationError('storage_configuration',503);
   return fetch(new URL(`/storage/v1/object/${method==='GET'?'authenticated/':''}packproof-p0-private/${path}`,origin),{method,headers:{apikey:key,...(key.split('.').length===3?{Authorization:`Bearer ${key}`}:{ }),...(mime?{'content-type':mime}:{})},...(bytes?{body:new Uint8Array(bytes)}:{}),redirect:'error',signal:AbortSignal.timeout(15000)});
  }
- async read(path:string){const r=await this.request(path,'GET');if(!r.ok)throw new InvestigationError('storage_unavailable',503);const reader=r.body?.getReader();if(!reader)throw new InvestigationError('storage_unavailable',503);const chunks:Uint8Array[]=[];let size=0;while(true){const v=await reader.read();if(v.done)break;size+=v.value.length;if(size>CAPTURE_LIMIT){await reader.cancel();throw new InvestigationError('stored_image_too_large');}chunks.push(v.value);}return new Uint8Array(Buffer.concat(chunks));}
+ async read(path:string){const limit=/\.(mp4|webm)$/.test(path)?3*1024*1024:CAPTURE_LIMIT;const r=await this.request(path,'GET');if(!r.ok)throw new InvestigationError('storage_unavailable',503);const reader=r.body?.getReader();if(!reader)throw new InvestigationError('storage_unavailable',503);const chunks:Uint8Array[]=[];let size=0;while(true){const v=await reader.read();if(v.done)break;size+=v.value.length;if(size>limit){await reader.cancel();throw new InvestigationError('stored_media_too_large');}chunks.push(v.value);}return new Uint8Array(Buffer.concat(chunks));}
  async upload(path:string,bytes:Uint8Array,mime:string){const r=await this.request(path,'POST',bytes,mime);if(!r.ok)throw new InvestigationError('storage_unavailable',503);}
  async remove(path:string){await this.request(path,'DELETE');}
 }

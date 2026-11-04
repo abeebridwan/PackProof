@@ -1,0 +1,7 @@
+{
+ "name":"@packproof/sdk","version":"0.1.0","private":true,"type":"module",
+ "description":"Typed client for PackProof v1 evidence and consent-gated operations",
+ "exports":{".":{"types":"./dist/packages/packproof-sdk/src/index.d.ts","import":"./dist/packages/packproof-sdk/src/index.js"}},
+ "files":["dist"],"scripts":{"build":"tsc -p tsconfig.json"},
+ "dependencies":{"zod":"4.6.7"},"engines":{"node":">=24"}
+}

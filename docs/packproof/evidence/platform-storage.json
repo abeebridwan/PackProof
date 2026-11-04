@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "bucket": "packproof-p0-private",
+  "public": false,
+  "fileSizeLimit": 3145728,
+  "allowedMimeTypes": [
+    "image/jpeg",
+    "image/png",
+    "video/mp4",
+    "video/webm"
+  ],
+  "checkedAt": "2026-11-04T12:48:34.697Z"
+}

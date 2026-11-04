@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "migrations": [
+    {
+      "version": "202611040010",
+      "sha256": "e346efb9d05469b59c848cca11e345ffe92b21afe7f8875f7042ba606020e257",
+      "newlyApplied": false
+    },
+    {
+      "version": "202611040011",
+      "sha256": "1925902ce4bebb0fb1dbccf4b0abe596d0f643fbdc14aede80b5fd8b9078623a",
+      "newlyApplied": false
+    },
+    {
+      "version": "202611040012",
+      "sha256": "e5641429f4f897b8214a01c7044c886a10d1f533f8d5f9ef05bd52af7bee269d",
+      "newlyApplied": false
+    },
+    {
+      "version": "202611040013",
+      "sha256": "25704366e12ba4691ebc1bc1c14fdab627074fa3d985e766c776acaaa7d98b77",
+      "newlyApplied": false
+    },
+    {
+      "version": "202611040014",
+      "sha256": "79b3c6282925259ede2003d7f6dbda2cfa90fd8edb8c8db53aab990ce762a314",
+      "newlyApplied": true
+    }
+  ],
+  "checkedAt": "2026-11-04T14:56:41.439Z"
+}

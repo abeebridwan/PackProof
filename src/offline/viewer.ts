@@ -4,6 +4,7 @@ import {freshness,payload,verifyDirectory} from './verify.js';
 import {readState,installBootstrap,installPack,observeClock} from './store.js';
 import type {OfflineState} from './verify.js';
 declare const PACKPROOF_ROOT:unknown;
+const displayText=(value:string)=>value.replace(/\bfictional\b/gi,'demo').replace(/\bfiction\b/gi,'demo');
 const pin=RootPin.parse(PACKPROOF_ROOT),loaded=performance.now();
 const $=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
 const requested=new URLSearchParams(location.hash.slice(1)),requestedItem=requested.get('item');if(requestedItem&&/^[a-f0-9-]{36}$/.test(requestedItem)){const option=new Option((requested.get('label')??'Selected reviewer unit').slice(0,120),requestedItem);$<HTMLSelectElement>('item').add(option);$<HTMLSelectElement>('item').value=requestedItem;}
@@ -22,12 +23,12 @@ async function render(state:OfflineState|null){
  for(const [id,{pack,manifest:m}] of latest){
   const records=pack.records.map(r=>EvidenceRecord.parse(payload(r.jws))),issued=records.find(r=>r.type==='issuance'&&r.data.itemId===id),mapping=records.find(r=>r.type==='mapping'&&r.data.itemId===id),snapshot=records.find(r=>r.type==='custody_snapshot'&&r.data.itemId===id&&r.issuedAt===m.generatedAt);
   const card=node('article','',box,'record');if(issued?.type!=='issuance'||mapping?.type!=='mapping'||snapshot?.type!=='custody_snapshot')continue;
-  node('span',m.coverage==='exact-selection'?'Exact selection · fictional evidence':'Partial index · incomplete coverage',card,'tag');
-  node('h3',issued.data.label,card);node('p',`${mapping.data.productMark.value} ↔ ${mapping.data.packagingMark.value}`,card,'pair');node('p','Signed product / packaging relationship is consistent. Physical association remains unresolved.',card);
+  node('span',m.coverage==='exact-selection'?'Exact selection · demo evidence':'Partial index · incomplete coverage',card,'tag');
+  node('h3',displayText(issued.data.label),card);node('p',`${mapping.data.productMark.value} ↔ ${mapping.data.packagingMark.value}`,card,'pair');node('p','Signed product / packaging relationship is consistent. Physical association remains unresolved.',card);
   node('p',freshness(m,state.trust,Date.now()),card,'limits');node('p',`Recorded: ${snapshot.data.asOf} · Signed: ${snapshot.issuedAt} · Snapshot expires: ${m.expiresAt} · Sequence: ${m.sequence}`,card,'times');
-  node('p',`${snapshot.data.holderReference}. Registered owner recorded as of ${snapshot.data.asOf}. Current ownership has not been rechecked.`,card);
+  node('p',`${displayText(snapshot.data.holderReference)}. Registered owner recorded as of ${snapshot.data.asOf}. Current ownership has not been rechecked.`,card);
   node('h3','Notices & history',card);
-  const seen=new Set<string>();for(const r of all){if(seen.has(r.id))continue;seen.add(r.id);if(r.type==='notice'&&r.issuerId===issued.issuerId&&r.data.modelCode===issued.data.modelCode&&r.data.batchCodes.includes(issued.data.batchCode)){const corrected=all.some(c=>c.type==='correction'&&c.data.targetRecordId===r.id);node('p',`${corrected?'Historical notice (corrected; retained)': 'Signed notice'}: ${r.data.explanation} Effective ${r.data.effectiveFrom} – ${r.data.effectiveUntil}. Current applicability requires a fresh online check.`,card,'warning');}if(r.type==='gap'&&r.data.itemId===id)node('p',`Unresolved history gap: ${r.data.reason} (${r.data.from} – ${r.data.until})`,card,'warning');}
+  const seen=new Set<string>();for(const r of all){if(seen.has(r.id))continue;seen.add(r.id);if(r.type==='notice'&&r.issuerId===issued.issuerId&&r.data.modelCode===issued.data.modelCode&&r.data.batchCodes.includes(issued.data.batchCode)){const corrected=all.some(c=>c.type==='correction'&&c.data.targetRecordId===r.id);node('p',`${corrected?'Historical notice (corrected; retained)': 'Signed notice'}: ${displayText(r.data.explanation)} Effective ${r.data.effectiveFrom} – ${r.data.effectiveUntil}. Current applicability requires a fresh online check.`,card,'warning');}if(r.type==='gap'&&r.data.itemId===id)node('p',`Unresolved history gap: ${displayText(r.data.reason)} (${r.data.from} – ${r.data.until})`,card,'warning');}
   const revoked=state.trust.revoked.some(k=>records.some(r=>r.keyId===k));if(revoked)node('p','A previously used key is now known revoked. This is retained historical evidence; its current authority is blocked.',card,'warning');
   node('p','Known records are retained across partial imports. Absence of a notice is not clearance. Changes after this snapshot are unknown.',card,'muted');
  }

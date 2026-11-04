@@ -3,10 +3,10 @@ import {decodeSam} from '../../../scripts/spikes/sam.js';
 import {MUSE_MODEL} from '../../../scripts/spikes/meta-gateway.js';
 import {ImageEvidenceResult} from '../evidence/services.js';
 import type {Capture} from '../../contracts/investigation.js';
-export interface ImageInspector{question?(capture:Capture):Promise<'product_mark'|'package_mark'|'printed_expiry'>;inspect(capture:Capture,question:'product_mark'|'package_mark'|'printed_expiry'):Promise<ReturnType<typeof ImageEvidenceResult.parse>>;}
+export interface ImageInspector{question?(capture:Capture):Promise<'product_mark'|'package_mark'|'printed_expiry'|'packaging_condition'>;inspect(capture:Capture,question:'product_mark'|'package_mark'|'printed_expiry'|'packaging_condition'):Promise<ReturnType<typeof ImageEvidenceResult.parse>>;}
 const empty=(reason:string)=>ImageEvidenceResult.parse({status:'needs_evidence',reason,evidence_refs:[],scope:'unit',asOf:new Date().toISOString(),policyVersion:'p1b-image-interface-1',next_actions:['Capture a closer view; live visual validation remains disabled'],data:{value:null,cropRecordIds:[],maskRecordIds:[],frameRecordIds:[],provenance:'model_reading',qualityBlockers:[reason]}});
 export class RecordedImageInspector implements ImageInspector{
- async inspect(capture:Capture,question:'product_mark'|'package_mark'|'printed_expiry'){
+ async inspect(capture:Capture,question:'product_mark'|'package_mark'|'printed_expiry'|'packaging_condition'){
   const saved=JSON.parse(await readFile('docs/packproof/evidence/provider.json','utf8'));
   if(capture.sha256!==saved.sam?.sourceSha256||capture.width!==600||capture.height!==480)return empty('This capture has no authorized live model analysis; its marking is unknown');
   if(question!=='product_mark')return empty('Saved authentic fixture does not establish this requested marking');

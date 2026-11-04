@@ -1,8 +1,10 @@
 import {describe,it,expect} from 'vitest';
-import {AccountType,ProductDraftInput,ProfileInput,EvidenceLinkInput} from '../../src/contracts/platform.js';
+import {AccountType,ProductDraftInput,ProfileInput,EvidenceLinkInput,EvidenceSubjectInput} from '../../src/contracts/platform.js';
+import {PackagingCondition} from '../../src/contracts/inspection.js';
 import {API_OPERATIONS,NoticeEvent} from '../../src/contracts/api-v1.js';
 describe('platform contracts',()=>{
  it('has exactly two account types and no selectable issuer grant',()=>{expect(AccountType.options).toEqual(['manufacturer','regular']);for(const accountType of ['seller','buyer','distributor','issuer'])expect(ProfileInput.safeParse({accountType,displayName:'Participant'}).success).toBe(false);expect(ProfileInput.safeParse({accountType:'manufacturer',displayName:'Producer',issuer:true}).success).toBe(false);});
  it('preserves literal identifiers and requires distinct unit marks',()=>{const draft={name:'Sample',description:'',producer:'Producer',scope:'unit',modelCode:'001',batchCode:'002',productMark:'0003',packagingMark:'0004',containerMark:null,printedExpiry:null};expect(ProductDraftInput.parse(draft).productMark).toBe('0003');expect(ProductDraftInput.safeParse({...draft,packagingMark:'0003'}).success).toBe(false);expect(ProductDraftInput.safeParse({...draft,productMark:3}).success).toBe(false);});
  it('does not expose autonomous ownership commits',()=>{expect(Object.keys(API_OPERATIONS)).not.toContain('transfers.confirm');expect(API_OPERATIONS['transfers.propose'].publicRead).toBe(false);expect(NoticeEvent.safeParse({type:'history_gap'}).success).toBe(false);expect(EvidenceLinkInput.safeParse({}).success).toBe(false);});
+ it('requires one evidence subject and rejects a provider condition disguised as an authenticity verdict',()=>{const draftId=crypto.randomUUID();expect(EvidenceSubjectInput.parse({draftId,transferId:null,side:'origin',conditionNote:''}).draftId).toBe(draftId);expect(EvidenceSubjectInput.safeParse({draftId,transferId:crypto.randomUUID(),side:'origin',conditionNote:''}).success).toBe(false);expect(PackagingCondition.safeParse({seal:'guaranteed_genuine',surface:'no_damage_observed',qualityBlockers:[]}).success).toBe(false);});
 });
