@@ -1,0 +1,217 @@
+{
+  "status": "passed_deployed",
+  "origin": "https://packproof-p0.vercel.app",
+  "deploymentId": "dpl_8dFRUdGvhhjN9Z8FuaSMtChafom1",
+  "sourceSha256": "4e62b454529df9bf337d1ba0c03bfdc18d41ee9319ec3ff78d60715e0aa46823",
+  "sourceFiles": 142,
+  "uploadedSourceMatchesWorkspace": true,
+  "authorization": "User requested publication of the unified app at its permanent Production URL",
+  "configuration": {
+    "status": "configured",
+    "projectId": "prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t",
+    "target": "production",
+    "encryptedServerVariables": [
+      "TRANSFER_AUTHORITY_SIGNING_JWK"
+    ],
+    "grantId": "review-live-2026-11-04",
+    "totalExistingBudgetUsd": 10,
+    "additionalBudgetUsd": 0,
+    "requestCountCap": null,
+    "packKeyId": "5cfb7e97-52cc-47c1-9228-294665cd9fca",
+    "snapshotKeyId": "c63e5263-29f5-4a50-911d-765cc4771611",
+    "rootOrProductIssuerKeysRead": false,
+    "productionChanged": true,
+    "existingVariablePreserved": false,
+    "checkedAt": "2026-11-04T18:49:27.273Z"
+  },
+  "npm": {
+    "package": "@packproof/sdk",
+    "version": "0.1.0",
+    "url": "https://www.npmjs.com/package/@packproof/sdk",
+    "status": "published_verified",
+    "releaseEvidence": "docs/packproof/evidence/sdk-release.json"
+  },
+  "checks": {
+    "typecheck": "passed",
+    "changedSourceSecretAudit": "passed",
+    "privateAccessSheet390px": "passed",
+    "productionRuntime": "passed: 33 focused checks; desktop Chrome at 390px, not new phone evidence",
+    "savedEvidenceDisplay": "Initial 5-second image assertion timed out; private image HTTP 200 and actual browser image load passed on the same saved sample with a 30-second bound. No application change or duplicate product creation."
+  },
+  "newProviderRequests": 0,
+  "ownershipCommits": 0,
+  "readyState": "READY",
+  "alias": {
+    "alias": "packproof-p0.vercel.app",
+    "deploymentId": "dpl_8dFRUdGvhhjN9Z8FuaSMtChafom1",
+    "verifiedAt": "2026-11-04T18:59:52.959Z"
+  },
+  "checkedAt": "2026-11-04T19:01:53.543Z",
+  "runtime": {
+    "status": "passed",
+    "origin": "https://packproof-p0.vercel.app",
+    "deploymentId": "dpl_8dFRUdGvhhjN9Z8FuaSMtChafom1",
+    "sourceSha256": "4e62b454529df9bf337d1ba0c03bfdc18d41ee9319ec3ff78d60715e0aa46823",
+    "actualPhones": 0,
+    "newProviderRequests": 0,
+    "ownershipCommits": 0,
+    "checks": [
+      {
+        "name": "permanent_home_public_without_vercel_signin",
+        "status": "passed"
+      },
+      {
+        "name": "published_npm_sdk_reads_production_evidence",
+        "status": "passed"
+      },
+      {
+        "name": "official_mcp_client_agrees_with_sdk",
+        "status": "passed"
+      },
+      {
+        "name": "production_mobile_route_/",
+        "status": "passed"
+      },
+      {
+        "name": "production_mobile_route_/products",
+        "status": "passed"
+      },
+      {
+        "name": "production_mobile_route_/investigate",
+        "status": "passed"
+      },
+      {
+        "name": "production_mobile_route_/inspector",
+        "status": "passed"
+      },
+      {
+        "name": "production_mobile_route_/chainproof",
+        "status": "passed"
+      },
+      {
+        "name": "production_mobile_route_/dualproof",
+        "status": "passed"
+      },
+      {
+        "name": "production_mobile_route_/offline/index.html",
+        "status": "passed"
+      },
+      {
+        "name": "production_mobile_route_/developers",
+        "status": "passed"
+      },
+      {
+        "name": "production_mobile_route_/tools",
+        "status": "passed"
+      },
+      {
+        "name": "correct_public_npm_link",
+        "status": "passed"
+      },
+      {
+        "name": "sdk_example_uses_permanent_backend",
+        "status": "passed"
+      },
+      {
+        "name": "anonymous_private_products_denied",
+        "status": "passed"
+      },
+      {
+        "name": "existing_manufacturer_signin_on_production",
+        "status": "passed"
+      },
+      {
+        "name": "complete_editable_sample_form",
+        "status": "passed"
+      },
+      {
+        "name": "manufacturer_saves_actual_sample_product",
+        "status": "passed"
+      },
+      {
+        "name": "saved_product_has_matching_synthetic_label",
+        "status": "passed"
+      },
+      {
+        "name": "manufacturer_product_survives_reload",
+        "status": "passed"
+      },
+      {
+        "name": "product_to_inspector_preserves_subject",
+        "status": "passed"
+      },
+      {
+        "name": "private_product_evidence_investigation",
+        "status": "passed"
+      },
+      {
+        "name": "production_private_video_decode_and_attach",
+        "status": "passed"
+      },
+      {
+        "name": "real_ffmpeg_frames",
+        "status": "passed"
+      },
+      {
+        "name": "existing_manufacturer_signin_for_remaining_checks",
+        "status": "passed"
+      },
+      {
+        "name": "saved_product_evidence_history_retrieval",
+        "status": "passed"
+      },
+      {
+        "name": "three_saved_video_frames_retained",
+        "status": "passed"
+      },
+      {
+        "name": "saved_product_private_image_retrieval",
+        "status": "passed"
+      },
+      {
+        "name": "manufacturer_saved_evidence_visible",
+        "status": "passed"
+      },
+      {
+        "name": "production_signed_pack_export",
+        "status": "passed"
+      },
+      {
+        "name": "exported_pack_verified_locally",
+        "status": "passed"
+      },
+      {
+        "name": "existing_seller_reviewer_invitation_on_production",
+        "status": "passed"
+      },
+      {
+        "name": "reviewer_live_gateway_enabled_without_inference",
+        "status": "passed"
+      }
+    ],
+    "startedAt": "2026-11-04T19:01:28.875Z",
+    "manufacturerSample": {
+      "id": "64bdfd1e-a844-4e5e-a436-92bed730e28f",
+      "productMark": "SAMPLE-UNIT-F37BB8907B0F42BA",
+      "packagingMark": "SAMPLE-PACK-F37BB8907B0F42BA",
+      "trustedIssuance": false,
+      "videoId": "735f19ec-31b6-4767-8b94-9ae02e240516",
+      "frameCount": 3
+    },
+    "initialEvidenceDisplayTimeoutMs": 5000,
+    "savedEvidenceMedia": {
+      "status": 200,
+      "mime": "image/jpeg",
+      "elapsedMs": 2193,
+      "bytes": 10632
+    },
+    "budgetRemainingCents": 834,
+    "uploadedSourceMatchesWorkspace": true,
+    "finishedAt": "2026-11-04T19:01:53.543Z"
+  },
+  "limits": [
+    "New trusted issuance still needs a separately authorized issuer-signing workflow. Saved manufacturer products and original evidence are private drafts.",
+    "Public signup email delivery and a new Android walkthrough remain unverified.",
+    "Live reviewer access remains within the existing shared $10 allowance and finite 18 November review window. No new inference was run for this release."
+  ]
+}

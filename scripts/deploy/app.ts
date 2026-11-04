@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import {parseEnv} from 'node:util';
 
 // One existing application/project. Production requires an explicit --production action.
-// The user approved P2 Production publication after physical-phone acceptance.
+// The user approved the current unified app for Production publication.
 // The same receipt-only signing key may now be encrypted for Production; root/issuer keys stay offline.
 const projectId='prj_vU1jMdmznW0w84xGDOTgdGW3vZ2t',teamId='team_JGBEC35F2KTZM2qjdNzdMLZv';
 const args=process.argv.slice(2),attempt=Number(args.find(a=>a.startsWith('--attempt='))?.split('=')[1]??1);
@@ -80,7 +80,7 @@ if(prior){
  }else{
   const existing=await api(`/v9/projects/${projectId}/env?${query}&decrypt=false`);
   existingProductionNames=existing.envs.filter((v:{target?:string[]})=>v.target?.includes(target)).map((v:{key:string})=>v.key);
-  for(const key of ['P1_PROVIDER_MODE','P2_ENABLED','SUPABASE_PROJECT_REF','SUPABASE_URL','SUPABASE_PUBLISHABLE_KEY','SUPABASE_SECRET_KEY','SUPABASE_DB_URL','SUPABASE_DB_SSLROOTCERT','TRANSFER_SIGNING_JWK',...(production?['APP_ORIGIN']:[]),...(production&&manifest.some(f=>f.path==='src/offline/viewer.ts')?['PACK_SIGNING_JWK']:[]),...(production&&manifest.some(f=>f.path==='src/server/review/http.ts')?['MODEL_API_KEY','REVIEW_LIVE_ENABLED']:[])])if(!existingProductionNames.includes(key))throw new Error('Required existing Production configuration missing');
+  for(const key of ['P1_PROVIDER_MODE','P2_ENABLED','SUPABASE_PROJECT_REF','SUPABASE_URL','SUPABASE_PUBLISHABLE_KEY','SUPABASE_SECRET_KEY','SUPABASE_DB_URL','SUPABASE_DB_SSLROOTCERT','TRANSFER_SIGNING_JWK',...(production?['APP_ORIGIN']:[]),...(production&&manifest.some(f=>f.path==='src/offline/viewer.ts')?['PACK_SIGNING_JWK']:[]),...(production&&manifest.some(f=>f.path==='src/server/review/http.ts')?['MODEL_API_KEY','REVIEW_LIVE_ENABLED']:[]),...(production&&manifest.some(f=>f.path==='src/server/platform/api.ts')?['TRANSFER_AUTHORITY_SIGNING_JWK']:[])])if(!existingProductionNames.includes(key))throw new Error('Required existing Production configuration missing');
  }
  if(prepare){
   await writeFile(`${directory}/${target}-upload-manifest.json`,JSON.stringify({...receipt,environmentNames:reuseExisting?existingProductionNames:Object.keys(settings),credentialDestination:reuseExisting?`Existing ${target} variables inherited without writes`:`existing Vercel project, encrypted ${target} environment`,productionChanged:false,target},null,2)+'\n',{mode:0o600});

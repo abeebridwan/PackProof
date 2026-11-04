@@ -110,7 +110,7 @@ try{
   await sharp(Buffer.from(svg)).png().toFile('public/review-label.png');
   const evidence={...previousRelease,status:'passed',checkedAt:at,pairs:pairs.length,syntheticUnits:pairs.flatMap(p=>p.items).length,newProducts:products.length,newRestrictedAuthorities:authorities,migrationSha256:hash,grant:REVIEW_GRANT,limitUsd:budget.limit_cents/100,requestCountCap:null,invitationFile:path,privateKeysDeployed:false,originalItemsReset:false,reviewUntil,originalItemAuthorityWindowHours:24,syntheticReviewerAuthorityWindowDays:14};
   await writeFile('docs/packproof/evidence/reviewer-release.json',JSON.stringify(evidence,null,2)+'\n');
-  const origin=process.env.PACKPROOF_REVIEW_ORIGIN??'https://packproof-p0-preview.vercel.app';
+  const origin=process.env.PACKPROOF_REVIEW_ORIGIN??'https://packproof-p0.vercel.app';
   if(!['https://packproof-p0-preview.vercel.app','https://packproof-p0.vercel.app'].includes(origin))throw new Error('existing_app_origin_required');
   await writeReviewAccess(pairs,{origin,limitUsd:budget.limit_cents/100,reviewUntil});
   console.log(JSON.stringify({status:evidence.status,pairs:evidence.pairs,syntheticUnits:evidence.syntheticUnits,newProducts:evidence.newProducts,newRestrictedAuthorities:evidence.newRestrictedAuthorities,limitUsd:evidence.limitUsd,reviewUntil,privateAccessFile:'.local/review/access.html',origin}));

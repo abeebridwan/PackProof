@@ -1275,7 +1275,7 @@
   },
   "p1Ready": true,
   "handoffDirectory": "project_handoff",
-  "repositoryStatus": "Terminal 1 verified checkpoint with explicit blockers on protected Preview. Production received only the approved shared-budget compatibility patch; Terminal 1 features were not promoted. No Git push, npm publication or public repository creation.",
+  "repositoryStatus": "Unified Terminal 1 app published at the permanent Production URL; @packproof/sdk 0.1.0 published publicly under MIT. Manufacturer own/sample product creation and private evidence verified on Production. Explicit signup/issuer/device/integration blockers remain. No Git push or public repository creation.",
   "localToolchain": {
     "node": "24.22.2",
     "pnpm": "12.16.1",
@@ -1390,7 +1390,7 @@
     "stagedSecretScan": "105 staged files checked against23 known secrets; no private bytes or ignored credential/operator paths"
   },
   "p1IndependentWorkAuthorized": true,
-  "nextAuthorizedWork": "Finish protected Preview validation and checkpoint the Terminal 1 platform. No automatic Production promotion; review tested Terminal 2/3 commits before later integration.",
+  "nextAuthorizedWork": "Production checkpoint published and verified. Continue feature-by-feature user acceptance and resolve documented signup, trusted issuance and integration blockers within authorized scope; preserve existing signed evidence and identities.",
   "p1bReadiness": {
     "foundationReady": true,
     "implementationStarted": true,
@@ -1563,7 +1563,7 @@
     }
   },
   "terminal1": {
-    "status": "verified_checkpoint_with_explicit_blockers",
+    "status": "production_published_with_explicit_blockers",
     "contractCommit": "7ff3ef9",
     "primaryAccountTypes": [
       "manufacturer",
@@ -1592,7 +1592,8 @@
       "namespace": "packproof-demo",
       "validUntil": "2026-11-18T09:04:44.441Z",
       "keyDeploymentTargets": [
-        "preview"
+        "preview",
+        "production"
       ],
       "rootRemainsOffline": true,
       "ownerCommitAuthority": false
@@ -1682,7 +1683,8 @@
         "ownershipCommits": 0,
         "physicalAndroidRetest": "pending"
       },
-      "sampleAssessmentPolicy": "Finite 14-day read-only assessment window for three pinned public synthetic examples and authorized reviewer units during the active review period. Actual signed dates remain visible; ordinary evidence, issuer expiry and ChainProof commit checks remain unchanged."
+      "sampleAssessmentPolicy": "Finite 14-day read-only assessment window for three pinned public synthetic examples and authorized reviewer units during the active review period. Actual signed dates remain visible; ordinary evidence, issuer expiry and ChainProof commit checks remain unchanged.",
+      "production": "33 focused hosted checks passed: published npm SDK, official MCP, nine mobile-width routes, existing manufacturer sign-in, own/sample form, real saved product/reload, private video frames/media, signed pack export/verification and reviewer live gateway; no inference or ownership commits."
     },
     "acceptance": {
       "1": {
@@ -1758,13 +1760,14 @@
       "docs/packproof/evidence/platform-preservation.json",
       "docs/packproof/evidence/platform-browser.json",
       "docs/packproof/evidence/platform-preview.json",
-      "docs/packproof/evidence/platform-preview-alias.json"
+      "docs/packproof/evidence/platform-preview-alias.json",
+      "docs/packproof/evidence/platform-production.json"
     ],
     "remaining": [
       "Public self-signup email confirmation and delivery",
       "New product drafts need separately authorized issuance before registered handovers",
       "Physical Android walkthrough of the new account/DualProof/video pages",
-      "Terminal 2/3 integration and final integrated acceptance; no automatic Production promotion",
+      "Terminal 2/3 integration and final integrated acceptance",
       "P4 public repository and demo film remain unprovided"
     ],
     "sharedBudget": {
@@ -1820,14 +1823,38 @@
       "status": "published_verified",
       "evidence": "docs/packproof/evidence/sdk-release.json",
       "url": "https://www.npmjs.com/package/@packproof/sdk",
-      "previewUrl": "https://packproof-p0-preview.vercel.app/developers"
+      "previewUrl": "https://packproof-p0-preview.vercel.app/developers",
+      "productionUrl": "https://packproof-p0.vercel.app/developers"
     },
     "privateAccessSheet": {
-      "roles": "First sender / First receiver per pair; separate Manufacturer / Producer sign-in",
+      "roles": "Seller / Buyer per pair; separate Manufacturer / Producer sign-in",
       "renderer": "scripts/review/access.ts",
       "containsSecrets": true,
       "tracked": false,
-      "checks": "390px layout passed; no database or provider calls"
+      "checks": "390px layout passed; no database or provider calls",
+      "origin": "https://packproof-p0.vercel.app",
+      "manufacturerFlow": "Products \u2192 Use a sample product (or own details) \u2192 Save product \u2192 Add photos or video"
+    },
+    "production": {
+      "status": "passed_deployed",
+      "url": "https://packproof-p0.vercel.app/",
+      "deploymentId": "dpl_8dFRUdGvhhjN9Z8FuaSMtChafom1",
+      "sourceSha256": "4e62b454529df9bf337d1ba0c03bfdc18d41ee9319ec3ff78d60715e0aa46823",
+      "sourceFiles": 142,
+      "aliasVerified": true,
+      "checksPassed": 33,
+      "evidence": "docs/packproof/evidence/platform-production.json",
+      "newProviderRequests": 0,
+      "ownershipCommits": 0,
+      "physicalAndroidRetest": "pending"
+    },
+    "manufacturerProducts": {
+      "status": "saved_private_products_and_evidence_verified_on_production",
+      "input": "Own details or complete editable synthetic sample with unique literal identifiers",
+      "sampleLabel": "Matching SVG label available on the saved product for display/printing and photography",
+      "evidence": "Original photo/short-video attachment and retrieval; real 3-frame FFmpeg upload checked on Production",
+      "trustedIssuance": false,
+      "newIssuanceBlocker": "Separately authorized issuer review/signing workflow not configured"
     }
   }
 }
