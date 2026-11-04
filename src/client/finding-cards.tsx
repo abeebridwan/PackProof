@@ -12,5 +12,5 @@ export function FindingCards({finding:f}:{finding:Finding}){return <>
   <article className="evidence-card"><span className="card-number"><span aria-hidden="true">04</span> Custody history</span><h3>{f.history?.data?.gaps.length?'A history gap remains':'Dated history'}</h3><p>{displayText(f.history?.reason??'History checks could not be completed.')}</p>{f.history?.data?.gaps.map(g=><p className="gap-note" key={g.recordId}>{displayText(g.reason)}</p>)}{f.history?.data?.snapshot&&<p className="muted">Snapshot: {new Date(f.history.data.snapshot.asOf).toLocaleString()}</p>}<References ids={f.history?.evidence_refs??[]}/></article>
  </div>
  {f.claims.length>0&&<section className="explanation"><h3>What the evidence says</h3>{f.claims.map(c=><div key={c.id}><p>{displayText(c.text)}</p><References ids={c.evidence_refs}/></div>)}</section>}
- <p className="fine-print">Checked {new Date(f.asOf).toLocaleString()}. Demo records only. A matching code does not prove authenticity, physical association, safety or legal title.</p>
+ <p className="fine-print">Checked {new Date(f.asOf).toLocaleString()}. Sample records only. A matching code does not prove authenticity, physical association, safety or legal title.</p>
  </>;}

@@ -1616,7 +1616,15 @@
       "publicSignup": "email confirmation/delivery unverified: provider rate limit; test identities were explicitly admin-created synthetic accounts",
       "liveDualProof": "Actual SAM/Muse dispatch 19/08/2028 versus arrival 20/08/2028 mismatch; no ownership change",
       "packagingCondition": "Source-bound seal/surface comparison and unknown handling tested with controlled observations; live condition-model acceptance not run",
-      "hosted": "26 checks passed including real private video decoder execution, actual official MCP/SDK calls, signed-pack verification and saved live mismatch UI; zero new inference or owner commits"
+      "hosted": "26 checks passed including real private video decoder execution, actual official MCP/SDK calls, signed-pack verification and saved live mismatch UI; zero new inference or owner commits",
+      "uiFollowup": {
+        "localChecksPassed": 12,
+        "hostedChecksPassed": 14,
+        "typecheck": "passed",
+        "build": "passed",
+        "evidence": "docs/packproof/evidence/platform-browser.json#uiFollowup",
+        "newProviderRequests": 0
+      }
     },
     "acceptance": {
       "1": {
@@ -1717,8 +1725,8 @@
     "preview": {
       "status": "passed_deployed",
       "url": "https://packproof-p0-preview.vercel.app/review",
-      "deploymentId": "dpl_CtVJEJtHE1PMhNpJeoGzonDgXiWd",
-      "sourceSha256": "04797a0d836d20bfc6fdc0cff41ab22de0d9b3eb839dbe907a2b46348d3347df",
+      "deploymentId": "dpl_E1MSYn5jniJgXji9SuincPWzLKJB",
+      "sourceSha256": "7653633221055936122f67452126905c1c0803a5aeee143435a4d0ead31989c9",
       "protected": true,
       "productionDeploymentChanged": false,
       "newEncryptedPreviewVariables": [
@@ -1727,10 +1735,15 @@
         "PACK_SIGNING_JWK",
         "TRANSFER_AUTHORITY_SIGNING_JWK"
       ],
-      "hostedChecksPassed": 26,
       "newProviderRequests": 0,
       "temporaryAutomationBypassRevoked": true,
-      "physicalPhoneWalkthrough": "not_run"
+      "physicalPhoneWalkthrough": "feedback_received_corrected_ui_retest_pending",
+      "previousFunctionalHostedValidation": {
+        "deploymentId": "dpl_CtVJEJtHE1PMhNpJeoGzonDgXiWd",
+        "checksPassed": 26,
+        "evidence": "docs/packproof/evidence/platform-preview.json"
+      },
+      "hostedUiChecksPassed": 14
     }
   }
 }

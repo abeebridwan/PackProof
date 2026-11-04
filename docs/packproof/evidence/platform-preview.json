@@ -116,5 +116,15 @@
   "videoId": "94d81730-f698-43ee-af3d-f1ae37028dd9",
   "temporaryBypassRevoked": true,
   "finishedAt": "2026-11-04T15:13:40.383Z",
-  "productionDeploymentUnchanged": "dpl_5zPWvxiKsPbeXkbw4QnCN2ZiABbJ"
+  "productionDeploymentUnchanged": "dpl_5zPWvxiKsPbeXkbw4QnCN2ZiABbJ",
+  "uiFollowup": {
+    "status": "passed",
+    "deploymentId": "dpl_E1MSYn5jniJgXji9SuincPWzLKJB",
+    "sourceSha256": "7653633221055936122f67452126905c1c0803a5aeee143435a4d0ead31989c9",
+    "checksPassed": 14,
+    "evidence": "docs/packproof/evidence/platform-browser.json#uiFollowup",
+    "physicalPhoneRetest": "pending",
+    "newProviderRequests": 0,
+    "ownershipCommits": 0
+  }
 }

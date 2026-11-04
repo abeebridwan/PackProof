@@ -80,5 +80,156 @@
     "returnShape": "string",
     "returnKeys": []
   },
-  "status": "passed"
+  "status": "passed",
+  "uiFollowup": {
+    "local": {
+      "origin": "http://localhost:4312",
+      "status": "passed",
+      "conditions": "Actual desktop Chrome at 390px viewport; physical vivo check pending",
+      "checks": [
+        {
+          "name": "sign_in_visible_without_scrolling",
+          "status": "passed"
+        },
+        {
+          "name": "review_has_no_decorative_demo_copy",
+          "status": "passed"
+        },
+        {
+          "name": "sign_in_opens_real_account_form",
+          "status": "passed"
+        },
+        {
+          "name": "dualproof_card_links_to_comparison",
+          "status": "passed"
+        },
+        {
+          "name": "dualproof_has_explicit_navigation_name",
+          "status": "passed"
+        },
+        {
+          "name": "existing_account_signs_in",
+          "status": "passed"
+        },
+        {
+          "name": "signed_in_header_opens_account",
+          "status": "passed"
+        },
+        {
+          "name": "video_choice_visible_before_starting",
+          "status": "passed"
+        },
+        {
+          "name": "video_picker_visible_and_accepts_clip_without_collapsed_section",
+          "status": "passed"
+        },
+        {
+          "name": "switch_to_photo_preserves_camera_and_clears_unsaved_clip",
+          "status": "passed"
+        },
+        {
+          "name": "switch_back_does_not_reuse_previous_clip",
+          "status": "passed"
+        },
+        {
+          "name": "inspector_mobile_has_no_horizontal_overflow",
+          "status": "passed"
+        }
+      ],
+      "newProviderRequests": 0,
+      "ownershipCommits": 0,
+      "startedAt": "2026-11-04T15:37:53.225Z",
+      "browserVersion": "156.0.8078.47",
+      "finishedAt": "2026-11-04T15:38:12.668Z"
+    },
+    "hosted": {
+      "origin": "https://packproof-p0-preview.vercel.app",
+      "status": "passed",
+      "conditions": "Actual desktop Chrome at 390px viewport; physical vivo check pending",
+      "checks": [
+        {
+          "name": "sign_in_visible_without_scrolling",
+          "status": "passed"
+        },
+        {
+          "name": "review_has_no_decorative_demo_copy",
+          "status": "passed"
+        },
+        {
+          "name": "sign_in_opens_real_account_form",
+          "status": "passed"
+        },
+        {
+          "name": "dualproof_card_links_to_comparison",
+          "status": "passed"
+        },
+        {
+          "name": "dualproof_has_explicit_navigation_name",
+          "status": "passed"
+        },
+        {
+          "name": "existing_account_signs_in",
+          "status": "passed"
+        },
+        {
+          "name": "signed_in_header_opens_account",
+          "status": "passed"
+        },
+        {
+          "name": "video_choice_visible_before_starting",
+          "status": "passed"
+        },
+        {
+          "name": "video_picker_visible_and_accepts_clip_without_collapsed_section",
+          "status": "passed"
+        },
+        {
+          "name": "switch_to_photo_preserves_camera_and_clears_unsaved_clip",
+          "status": "passed"
+        },
+        {
+          "name": "switch_to_video_clears_photo_and_does_not_reuse_consent",
+          "status": "passed"
+        },
+        {
+          "name": "switch_back_does_not_reuse_previous_clip",
+          "status": "passed"
+        },
+        {
+          "name": "inspector_mobile_has_no_horizontal_overflow",
+          "status": "passed"
+        },
+        {
+          "name": "temporary_preview_bypass_revoked",
+          "status": "passed"
+        }
+      ],
+      "newProviderRequests": 0,
+      "ownershipCommits": 0,
+      "startedAt": "2026-11-04T15:45:01.356Z",
+      "deploymentId": "dpl_E1MSYn5jniJgXji9SuincPWzLKJB",
+      "sourceSha256": "7653633221055936122f67452126905c1c0803a5aeee143435a4d0ead31989c9",
+      "protectionProbe": [
+        {
+          "status": 302,
+          "loginRedirect": true
+        },
+        {
+          "status": 302,
+          "loginRedirect": true
+        },
+        {
+          "status": 302,
+          "loginRedirect": true
+        },
+        {
+          "status": 307,
+          "loginRedirect": false
+        }
+      ],
+      "browserVersion": "156.0.8078.47",
+      "finishedAt": "2026-11-04T15:45:34.825Z"
+    },
+    "physicalPhone": "Vivo Preview feedback identified hidden sign-in, DualProof and video controls. Corrected physical-device walkthrough pending; earlier P0\u2013P4 phone passes remain unchanged."
+  }
 }

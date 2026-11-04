@@ -1,6 +1,6 @@
 # PackProof
 
-PackProof connects signed product records, visible evidence, registered handovers and offline verification in one Next.js PWA. The demonstration uses sample products; signatures, database authorization and cryptographic checks are real. A matching code or photograph never establishes authenticity, safety, legal title or uninterrupted custody.
+PackProof connects signed product records, visible evidence, registered handovers and offline verification in one Next.js PWA. Sample products are clearly labeled; signatures, database authorization and cryptographic checks are real. A matching code or photograph never establishes authenticity, safety, legal title or uninterrupted custody.
 
 The permanent application is [packproof-p0.vercel.app](https://packproof-p0.vercel.app/review). The Terminal 1 checkpoint is deployed and runtime-validated on [protected Preview](https://packproof-p0-preview.vercel.app/review); they have **not been promoted to Production**. Current acceptance and deployment status live in [BUILD_STATE.json](project_handoff/BUILD_STATE.json).
 
@@ -15,11 +15,11 @@ Buyer, seller, distributor, wholesaler and retailer are transaction roles. A rec
 
 | Page | Purpose |
 | --- | --- |
-| `/review` | Start the guided sample journey or enter a private reviewer invitation. |
+| `/review` | Find every feature, sign in or enter a private reviewer invitation. |
 | `/account` | Register, sign in and choose one of the two account types. |
 | `/products` | Save literal model/batch/unit/container identifiers and original producer evidence. |
 | `/` | Investigate signed product, seller, notice and custody records through the six typed tools and mandatory Evidence Engine. |
-| `/inspector` | Capture a photo, select a region, give processing consent, inspect a visible detail and resume with a clearer view. |
+| `/inspector` | Choose Photo or Short video, select a region or decoded frame, give processing consent and resume with a clearer view. |
 | `/chainproof` | Receive or send an exact registered item, exchange signed QR sequences and verify the receipt. |
 | `/dualproof` | Compare participant-bound dispatch and arrival evidence; open Inspector for discrepancies. |
 | `/offline/index.html` | Download or import signed evidence packs and verify them offline after trusted setup. |
