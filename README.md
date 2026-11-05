@@ -26,13 +26,76 @@ Use the **[Production homepage](https://packproof-p0.vercel.app/)** throughout. 
 ### 1. Get access and prepare
 
 - Use Chrome on Android or a current desktop browser. Camera capture needs HTTPS and camera permission. Two phones are needed for the actual QR exchange and Bluetooth transport; one browser can still test investigation, inspection, product creation and developer tools.
-- **Reviewers:** obtain your individual invitation/code from the project owner through the submission’s private reviewer instructions. Open the invitation, or go to [Home → Have a reviewer invitation?](https://packproof-p0.vercel.app/#reviewer), enter the code and select **Enter reviewer session**. The header changes to **Your account**. Check that the homepage says live Muse/SAM are enabled before testing live image reading.
-- **Project owner’s complete access sheet:** open `.local/review/access.html` on the development computer. It contains 12 numbered pairs, Seller/Buyer invitation links and QR codes, each pair’s assigned items, and an expandable **Manufacturer / Producer account** section with its existing email/password. This is a private local file, not a deployed URL or a file included in a public clone. Share only each reviewer’s intended invitation and the needed manufacturer details privately; passwords, codes and the full sheet are deliberately absent from this public README/GitHub.
-- Each pair has two **Regular User** identities. **Seller** owns its assigned items initially; **Buyer** receives them. Use the same pair number on the two phones and one identity per phone. Do not use the same account on both phones. Manufacturer access is separate and does not automatically grant live reviewer AI access.
-- To regenerate the owner’s sheet from the existing ignored local account/invitation files, run `node --import tsx scripts/review/access.ts` with the pinned local toolchain. This does not recreate accounts or reset ownership. A fresh clone needs the owner to supply private access; this command cannot recover missing secrets.
+- **Reviewers:** use a Seller or Buyer invitation in the [evaluation access below](#evaluation-access). The link opens the Production homepage; enter the reviewer session if prompted. Alternatively paste its code into **Have a reviewer invitation? → Enter reviewer session**. The header changes to **Your account**. Confirm live Muse/SAM are enabled before image testing.
+- Each pair contains two **Regular User** accounts: **Seller** initially owns its assigned items; **Buyer** receives them. Use the same pair number on two phones, with a different identity on each. After a transfer, the buyer can sell onward using the same account. Choose an unused pair/item if another reviewer has already transferred one.
+- Manufacturer sign-in is included below for product creation. Manufacturer access does not automatically grant live reviewer AI access.
 - Normal accounts use [Account](https://packproof-p0.vercel.app/account). Public sign-up supports Regular User or Manufacturer / Producer, but email delivery remains unverified after provider limits. Use prepared invitations for the submission walkthrough rather than depending on new email delivery.
 
 **Access limits:** reviewer access and prepared examples have a finite review window through **18 November 2026**. Live calls share the existing **$10 total** allowance, including previous usage. An expired invitation, exhausted allowance or disabled live gateway does not become a successful live test. Anonymous/non-reviewer sessions use recorded AI with real database checks. No reviewer needs your Meta API key, database password or signing keys.
+
+### Evaluation access
+
+These dedicated synthetic test accounts and invitations are published for submission evaluation. Open an invitation to sign in without typing a password. All pairs share the **$10 total AI allowance** and access window through **18 November 2026**. Use one pair together for a two-phone handover.
+
+| Pair | Seller invitation and code | Buyer invitation and code | Assigned product / packaging |
+| --- | --- | --- | --- |
+| 1 | [Open seller](https://packproof-p0.vercel.app/#invite=nEelMB0GZcNJ0llfLqqMhtJ-cJuZFIks) · `nEelMB0GZcNJ0llfLqqMhtJ-cJuZFIks` | [Open buyer](https://packproof-p0.vercel.app/#invite=TaolP75Ma507wKyCd0gXnlNI-NsmYH6m) · `TaolP75Ma507wKyCd0gXnlNI-NsmYH6m` | `JR-F7C45272-11 / JP-F7C45272-11`<br>`JR-F7C45272-12 / JP-F7C45272-12`<br>`JR-F7C45272-13 / JP-F7C45272-13` |
+| 2 | [Open seller](https://packproof-p0.vercel.app/#invite=VBorQ1NR6tYbB3sZobzHljVODlwyap95) · `VBorQ1NR6tYbB3sZobzHljVODlwyap95` | [Open buyer](https://packproof-p0.vercel.app/#invite=Yypac60h9Q_QE_CbgP0Xz_QAvUuPfA92) · `Yypac60h9Q_QE_CbgP0Xz_QAvUuPfA92` | `JR-F7C45272-21 / JP-F7C45272-21`<br>`JR-F7C45272-22 / JP-F7C45272-22`<br>`JR-F7C45272-23 / JP-F7C45272-23` |
+| 3 | [Open seller](https://packproof-p0.vercel.app/#invite=rhFURgViOmnQMwL_5bcOZAh9g7h2bwXB) · `rhFURgViOmnQMwL_5bcOZAh9g7h2bwXB` | [Open buyer](https://packproof-p0.vercel.app/#invite=9C7BoYI2iN8mzLC6eOhEdT1K6luU_IQR) · `9C7BoYI2iN8mzLC6eOhEdT1K6luU_IQR` | `JR-6CF32C4E-3-1 / JP-6CF32C4E-3-1`<br>`JR-6CF32C4E-3-2 / JP-6CF32C4E-3-2` |
+| 4 | [Open seller](https://packproof-p0.vercel.app/#invite=izDqp_eY_Gb8G8Vi2kk0j10zjQgLwrdZ) · `izDqp_eY_Gb8G8Vi2kk0j10zjQgLwrdZ` | [Open buyer](https://packproof-p0.vercel.app/#invite=Wfl07XwgtGQcR-FboqGJTIxYe8bFRDLL) · `Wfl07XwgtGQcR-FboqGJTIxYe8bFRDLL` | `JR-6CF32C4E-4-1 / JP-6CF32C4E-4-1`<br>`JR-6CF32C4E-4-2 / JP-6CF32C4E-4-2` |
+| 5 | [Open seller](https://packproof-p0.vercel.app/#invite=cmAcknAMjflO-P7pVwCnmJ3aAsUVxXr5) · `cmAcknAMjflO-P7pVwCnmJ3aAsUVxXr5` | [Open buyer](https://packproof-p0.vercel.app/#invite=-Sv7IJa-mM4Kq_2fWzU2vTNABBrJtG_0) · `-Sv7IJa-mM4Kq_2fWzU2vTNABBrJtG_0` | `JR-6CF32C4E-5-1 / JP-6CF32C4E-5-1`<br>`JR-6CF32C4E-5-2 / JP-6CF32C4E-5-2` |
+| 6 | [Open seller](https://packproof-p0.vercel.app/#invite=a2CyPUzwuhU__Bv6RzpSvPZaeez-pPYi) · `a2CyPUzwuhU__Bv6RzpSvPZaeez-pPYi` | [Open buyer](https://packproof-p0.vercel.app/#invite=FnyWkgYuvjkhdsHq9AubFu4uvOm8NJqr) · `FnyWkgYuvjkhdsHq9AubFu4uvOm8NJqr` | `JR-6CF32C4E-6-1 / JP-6CF32C4E-6-1`<br>`JR-6CF32C4E-6-2 / JP-6CF32C4E-6-2` |
+| 7 | [Open seller](https://packproof-p0.vercel.app/#invite=TMVRrEGlnWcaHkp6mWIvG0XQjbTNRS1t) · `TMVRrEGlnWcaHkp6mWIvG0XQjbTNRS1t` | [Open buyer](https://packproof-p0.vercel.app/#invite=XXgMr7N2UtdF1BHR1jEmujOcfXg3WaN6) · `XXgMr7N2UtdF1BHR1jEmujOcfXg3WaN6` | `JR-6CF32C4E-7-1 / JP-6CF32C4E-7-1`<br>`JR-6CF32C4E-7-2 / JP-6CF32C4E-7-2` |
+| 8 | [Open seller](https://packproof-p0.vercel.app/#invite=g_uZGs7ih9d0hMHyw8I3cNhO4OmKKjBV) · `g_uZGs7ih9d0hMHyw8I3cNhO4OmKKjBV` | [Open buyer](https://packproof-p0.vercel.app/#invite=TmFp9MHwaJ0Vu6ABtiVzgrzdBYVNvfBq) · `TmFp9MHwaJ0Vu6ABtiVzgrzdBYVNvfBq` | `JR-6CF32C4E-8-1 / JP-6CF32C4E-8-1`<br>`JR-6CF32C4E-8-2 / JP-6CF32C4E-8-2` |
+| 9 | [Open seller](https://packproof-p0.vercel.app/#invite=MqsFabEbEKdmo5wo9Tz8H1m-JdatSSB3) · `MqsFabEbEKdmo5wo9Tz8H1m-JdatSSB3` | [Open buyer](https://packproof-p0.vercel.app/#invite=Nihe3P-xvIoixdtMqpkvY9XTLDgBlyTH) · `Nihe3P-xvIoixdtMqpkvY9XTLDgBlyTH` | `JR-6CF32C4E-9-1 / JP-6CF32C4E-9-1`<br>`JR-6CF32C4E-9-2 / JP-6CF32C4E-9-2` |
+| 10 | [Open seller](https://packproof-p0.vercel.app/#invite=DUUCFcTnLQbQb274qGgRsx3UUl9jMVQl) · `DUUCFcTnLQbQb274qGgRsx3UUl9jMVQl` | [Open buyer](https://packproof-p0.vercel.app/#invite=zQhvRJbhPu9rd8nd3YBl3sg52_p7YDv_) · `zQhvRJbhPu9rd8nd3YBl3sg52_p7YDv_` | `JR-6CF32C4E-10-1 / JP-6CF32C4E-10-1`<br>`JR-6CF32C4E-10-2 / JP-6CF32C4E-10-2` |
+| 11 | [Open seller](https://packproof-p0.vercel.app/#invite=ANbrZ0O452j4WhaDEThS1HOTDKUvDpKt) · `ANbrZ0O452j4WhaDEThS1HOTDKUvDpKt` | [Open buyer](https://packproof-p0.vercel.app/#invite=2CIyFV08idv4nXMl7ummpzxWAOJbeveI) · `2CIyFV08idv4nXMl7ummpzxWAOJbeveI` | `JR-6CF32C4E-11-1 / JP-6CF32C4E-11-1`<br>`JR-6CF32C4E-11-2 / JP-6CF32C4E-11-2` |
+| 12 | [Open seller](https://packproof-p0.vercel.app/#invite=_OwPkKW9mzsFKyrMRKjuqPZHFP13cHFy) · `_OwPkKW9mzsFKyrMRKjuqPZHFP13cHFy` | [Open buyer](https://packproof-p0.vercel.app/#invite=iMqonrGwxP2IzIVawJaXB6lOyBnNY7lL) · `iMqonrGwxP2IzIVawJaXB6lOyBnNY7lL` | `JR-6CF32C4E-12-1 / JP-6CF32C4E-12-1`<br>`JR-6CF32C4E-12-2 / JP-6CF32C4E-12-2` |
+
+<details>
+<summary>Seller and buyer email/password sign-in alternatives</summary>
+
+Invitations above are the easiest route and enable reviewer access. These account logins are available at [Account](https://packproof-p0.vercel.app/account); use the invitation as well when live reviewer authorization is needed.
+
+| Pair | Transaction role | Email | Password |
+| --- | --- | --- | --- |
+| 1 | Seller | `packproof-review-f7c45272-1-seller@example.invalid` | `2AxLQC_jJN0d_K0N9n7EtsU0fyrd8Hzi` |
+| 1 | Buyer | `packproof-review-f7c45272-1-buyer@example.invalid` | `aXJTby7s-fbTIQU7GQ6JX3N2Y9U6ZoqY` |
+| 2 | Seller | `packproof-review-f7c45272-2-seller@example.invalid` | `O7MB_Hw8eceuDuouwSQM53cDruXYhO5Y` |
+| 2 | Buyer | `packproof-review-f7c45272-2-buyer@example.invalid` | `6rBWVM1g-FQ2ZHZ_xbAXOKU1uD16GH7r` |
+| 3 | Seller | `packproof-review-6cf32c4e-3-seller@example.invalid` | `PtAMDrZJp0Enb94vShQUEukszD3HP_en` |
+| 3 | Buyer | `packproof-review-6cf32c4e-3-buyer@example.invalid` | `aUBBIRJsVaI6Wh6Q4lR68vm-NwwF67He` |
+| 4 | Seller | `packproof-review-6cf32c4e-4-seller@example.invalid` | `tSL3Ee31uNzgBdwCxLUvq7gWo5hSIsY8` |
+| 4 | Buyer | `packproof-review-6cf32c4e-4-buyer@example.invalid` | `KkdNLXGF_S7RMnVT-IU0aOpahVVcx21D` |
+| 5 | Seller | `packproof-review-6cf32c4e-5-seller@example.invalid` | `s44TnOrqzbBs376m3OC2Mg94DxdTRCnV` |
+| 5 | Buyer | `packproof-review-6cf32c4e-5-buyer@example.invalid` | `uMZHK11yqyLpWHdQ54bjDVlvGD8Cy7Vq` |
+| 6 | Seller | `packproof-review-6cf32c4e-6-seller@example.invalid` | `bdbNgt9jH3yRZxXh92WhJAlNq5HlZZhN` |
+| 6 | Buyer | `packproof-review-6cf32c4e-6-buyer@example.invalid` | `xuNb2Wm1bWdrtOgWAtj25IMsIRd0Ru0q` |
+| 7 | Seller | `packproof-review-6cf32c4e-7-seller@example.invalid` | `HuaA6Pk0nepLy-skWKJZw5ArsxbIH822` |
+| 7 | Buyer | `packproof-review-6cf32c4e-7-buyer@example.invalid` | `Ib5DSMgGvA62SaZLK5HCZ-XRgWeQ8FVg` |
+| 8 | Seller | `packproof-review-6cf32c4e-8-seller@example.invalid` | `FIT-5cM0oFmYkJ71J-_dvH3IwOcExUKo` |
+| 8 | Buyer | `packproof-review-6cf32c4e-8-buyer@example.invalid` | `X-mdCjJfgThUDEAnvILoskhxdIi1j5D5` |
+| 9 | Seller | `packproof-review-6cf32c4e-9-seller@example.invalid` | `lEZtRPVDeALlOcb4bgYrZHLnl7mbxARA` |
+| 9 | Buyer | `packproof-review-6cf32c4e-9-buyer@example.invalid` | `qwjJu2afyyh96m7u8JQOGxGW-rThG8f4` |
+| 10 | Seller | `packproof-review-6cf32c4e-10-seller@example.invalid` | `-0180Ng4WPmzVpjJqTNn4P7BFm1vV_dr` |
+| 10 | Buyer | `packproof-review-6cf32c4e-10-buyer@example.invalid` | `3XRP5Z4dRcHldZW0HzCicZnorgooD-xy` |
+| 11 | Seller | `packproof-review-6cf32c4e-11-seller@example.invalid` | `upHwuxOpYCASeihipn3rqwZreJol0YtN` |
+| 11 | Buyer | `packproof-review-6cf32c4e-11-buyer@example.invalid` | `54z8tsFOvhvbWCcRzYmTTMFVnZIfS_l3` |
+| 12 | Seller | `packproof-review-6cf32c4e-12-seller@example.invalid` | `KIiwJ3bWWMPc7k1CE2fNjd_NMZPZrF2n` |
+| 12 | Buyer | `packproof-review-6cf32c4e-12-buyer@example.invalid` | `Q86wYITdM_9_Maq6wlL0XtGmQzA4jccD` |
+
+</details>
+
+#### Manufacturer / Producer test login
+
+[Open manufacturer sign-in → Products](https://packproof-p0.vercel.app/account?next=/products)
+
+- Email: `packproof-platform-cacae3233eda02c8@example.com`
+- Password: `YXo3xBYmEwmvIc6nvnewmgWAaIO2ZK-q`
+
+Use this account to save your own product or **Use a sample product → Save product → Add photos or video**. It creates private product drafts and original evidence; trusted issuance still requires independently verified issuer authority. For live reviewer AI while creating drafts, use a reviewer invitation and choose Manufacturer / Producer in that same account’s profile.
+
+The local `.local/review/access.html` sheet provides the same invitation links with QR codes for the project owner; a public clone does not need that local file because the test access is included here. Infrastructure credentials, API keys and private signing keys are not needed by reviewers.
 
 ### 2. Investigate signed records
 
@@ -41,7 +104,7 @@ Use the **[Production homepage](https://packproof-p0.vercel.app/)** throughout. 
 3. Expect supported record evidence with references. The physical item remains uninspected; this is not an authenticity or safety certificate.
 4. Run **Shop A · unauthorized seller**: expect a seller-authority refusal. Run **Incomplete custody history**: expect an unresolved history gap, not a danger alert. **Shop B · previously transferred item** checks current ownership; an old owner cannot automatically transfer it again.
 5. **A listing** checks a seller’s description/records. **An item in front of me** adds a request for physical evidence. Leave packaging code absent to exercise the missing-information request, then supply its literal value or follow **Open guided photo Inspector**.
-6. For your reviewer items, use the exact product/packaging codes from your pair’s sheet and **Your reviewer seller**. Do not substitute another pair’s items.
+6. For your reviewer items, use the exact product/packaging codes from your pair’s row in the access table and **Your reviewer seller**. Do not substitute another pair’s items.
 7. Use **Reload results** to recover saved progress. It reloads an assessment; it does not renew signed evidence. If an old Inspector assessment is stale, explicitly use **Check records again** or start a new inspection.
 
 ### 3. Inspect a real photo and request a better view
@@ -64,7 +127,7 @@ Use the **[Production homepage](https://packproof-p0.vercel.app/)** throughout. 
 
 ### 5. Add a manufacturer’s product and original evidence
 
-1. Obtain the manufacturer email/password from the private access sheet’s **Manufacturer / Producer account** section. Sign in at [Account → Products](https://packproof-p0.vercel.app/account?next=/products), using a separate browser/profile if keeping a reviewer session active.
+1. Use the [Manufacturer / Producer test login](#manufacturer--producer-test-login) above. Sign in at [Account → Products](https://packproof-p0.vercel.app/account?next=/products), using a separate browser/profile if keeping a reviewer session active.
 2. Open [Products](https://packproof-p0.vercel.app/products). Enter your own details or tap **Use a sample product** to fill complete editable identifiers. Tap **Save product**.
 3. Find the product under **Your products**. For a sample, expand **Show sample label to photograph**; it contains that saved product’s actual generated codes and printed expiry.
 4. Tap **Add photos or video**. The linked Inspector retains the draft context. Save a photo or short clip; return to Products and use **View saved evidence**. Refresh and confirm the product/evidence remain.
@@ -132,7 +195,7 @@ Only signed records/public verification material are transferred. Offline import
 - No live reading: verify reviewer sign-in, homepage live status, consent and remaining allowance. **Unknown** is a valid uncertainty outcome, not proof that live processing succeeded.
 - Camera blocked: allow permission in browser settings or use a saved image/manual code. Production HTTPS needs no laptop certificate, local IP, firewall setup or `mkcert` installation.
 - Lost handover: recover with its ID/recent handover; do not recreate a committed sale. Stale/expired authority remains a gate, never disable it for testing.
-- A public clone cannot contain the private access sheet, passwords or customer media. Request the assigned invitation privately from the project owner; there is no public master login.
+- All prepared evaluation invitations and account logins are in [Evaluation access](#evaluation-access). Private customer media, infrastructure credentials and signing keys are not included. Use a separate pair per two-person test.
 - Current acceptance/deployment state is in [BUILD_STATE.json](project_handoff/BUILD_STATE.json), material changes in [BUILD_LOG.md](project_handoff/BUILD_LOG.md), and sanitized provider/device/security receipts in [evidence](docs/packproof/evidence). Private session details and signing keys are not published logs.
 
 ## Not yet completed
@@ -169,7 +232,7 @@ Prepared examples have a finite 14-day review window through **18 November 2026*
 
 OfflineProof pins trusted roots, verifies signed dependencies, prevents rollback and stores accepted packs atomically in IndexedDB. Unknown roots and tampered packs fail verification while previously accepted evidence remains available. Expired packs remain dated history. An absent notice never means clearance.
 
-Root and original product-issuer private keys stay offline. Receipt, pack and ownership-snapshot signers have separate purposes. Raw media stays private; secrets and private model reasoning do not belong in logs, Git or browser bundles.
+Root and original product-issuer private keys stay offline. Receipt, pack and ownership-snapshot signers have separate purposes. Raw media stays private. Infrastructure credentials, private signing keys and private model reasoning stay out of logs, Git and browser bundles. The dedicated synthetic evaluation logins above are intentionally public for reviewers.
 
 ## API, SDK, MCP and WebMCP
 
