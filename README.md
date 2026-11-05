@@ -19,30 +19,132 @@ Signed records, database authorization and cryptographic checks are real. Prepar
 | [Developer tools](https://packproof-p0.vercel.app/developers) | Provides scoped API keys, REST API v1, the published SDK, MCP and native browser WebMCP tools using the same authorization and evidence contracts. |
 | [Device checks](https://packproof-p0.vercel.app/tools) | Retains the camera, manual-entry, QR-rate, browser cryptography and JSON-transport feasibility probes. |
 
-## Try the app
+## Test the application from beginning to end
 
-Open **[PackProof](https://packproof-p0.vercel.app/)** and choose a task. Public record checks work without an account. Private evidence, product drafts and handovers require sign-in.
+Use the **[Production homepage](https://packproof-p0.vercel.app/)** throughout. There is no separate app for each feature and no Preview login is needed. Public record checks work without an account. Live AI, private product evidence and handovers require the appropriate sign-in. Start with steps 1–3; use two phones for the complete handover/offline journey.
 
-For a reviewer, the operator supplies one private invitation. Open it to sign in and return to the homepage. The operator's ignored `.local/review/access.html` brings together **12 seller–buyer pairs**, their assigned items, the separate manufacturer sign-in and the app/developer/npm links. Share each person's invitation individually.
+### 1. Get access and prepare
 
-- **Seller:** owns the pair's assigned items at the start and initiates the handover.
-- **Buyer:** receives the item; use the buyer from the same pair on a second phone.
-- **Manufacturer / Producer:** creates drafts and attaches original product evidence using the separate sign-in on the access sheet.
+- Use Chrome on Android or a current desktop browser. Camera capture needs HTTPS and camera permission. Two phones are needed for the actual QR exchange and Bluetooth transport; one browser can still test investigation, inspection, product creation and developer tools.
+- **Reviewers:** obtain your individual invitation/code from the project owner through the submission’s private reviewer instructions. Open the invitation, or go to [Home → Have a reviewer invitation?](https://packproof-p0.vercel.app/#reviewer), enter the code and select **Enter reviewer session**. The header changes to **Your account**. Check that the homepage says live Muse/SAM are enabled before testing live image reading.
+- **Project owner’s complete access sheet:** open `.local/review/access.html` on the development computer. It contains 12 numbered pairs, Seller/Buyer invitation links and QR codes, each pair’s assigned items, and an expandable **Manufacturer / Producer account** section with its existing email/password. This is a private local file, not a deployed URL or a file included in a public clone. Share only each reviewer’s intended invitation and the needed manufacturer details privately; passwords, codes and the full sheet are deliberately absent from this public README/GitHub.
+- Each pair has two **Regular User** identities. **Seller** owns its assigned items initially; **Buyer** receives them. Use the same pair number on the two phones and one identity per phone. Do not use the same account on both phones. Manufacturer access is separate and does not automatically grant live reviewer AI access.
+- To regenerate the owner’s sheet from the existing ignored local account/invitation files, run `node --import tsx scripts/review/access.ts` with the pinned local toolchain. This does not recreate accounts or reset ownership. A fresh clone needs the owner to supply private access; this command cannot recover missing secrets.
+- Normal accounts use [Account](https://packproof-p0.vercel.app/account). Public sign-up supports Regular User or Manufacturer / Producer, but email delivery remains unverified after provider limits. Use prepared invitations for the submission walkthrough rather than depending on new email delivery.
 
-A useful review order is **check records → inspect a label → hand over → compare evidence → keep a signed pack offline**. For manufacturer testing, use Products → Use a sample product → Save product → Add photos or video. A saved sample includes a label you can display or print and photograph. Your own product details can be entered instead. After receiving an item, the buyer can sell onward with the same account and enrolled device.
+**Access limits:** reviewer access and prepared examples have a finite review window through **18 November 2026**. Live calls share the existing **$10 total** allowance, including previous usage. An expired invitation, exhausted allowance or disabled live gateway does not become a successful live test. Anonymous/non-reviewer sessions use recorded AI with real database checks. No reviewer needs your Meta API key, database password or signing keys.
 
-The Investigator includes these prepared examples:
+### 2. Investigate signed records
 
-| Example | What to observe |
-| --- | --- |
-| Matching records · registered owner | Supported record evidence; the physical item remains uninspected. |
-| Shop A · unauthorized seller | Seller authority blocks the claimed handover. |
-| Incomplete custody history | The history gap remains unresolved and requires evidence. |
-| Shop B · previously transferred item | Current ownership is checked; an earlier seller cannot automatically sell it again. |
+1. Open [Investigator](https://packproof-p0.vercel.app/investigate).
+2. Select **Matching records · registered owner** and run **Investigate evidence** if the example has only filled the form. The selected/checking state identifies the active example.
+3. Expect supported record evidence with references. The physical item remains uninspected; this is not an authenticity or safety certificate.
+4. Run **Shop A · unauthorized seller**: expect a seller-authority refusal. Run **Incomplete custody history**: expect an unresolved history gap, not a danger alert. **Shop B · previously transferred item** checks current ownership; an old owner cannot automatically transfer it again.
+5. **A listing** checks a seller’s description/records. **An item in front of me** adds a request for physical evidence. Leave packaging code absent to exercise the missing-information request, then supply its literal value or follow **Open guided photo Inspector**.
+6. For your reviewer items, use the exact product/packaging codes from your pair’s sheet and **Your reviewer seller**. Do not substitute another pair’s items.
+7. Use **Reload results** to recover saved progress. It reloads an assessment; it does not renew signed evidence. If an old Inspector assessment is stale, explicitly use **Check records again** or start a new inspection.
 
-For physical inspection, photograph a clearly printed label or open the sample label linked from the homepage. Choose the requested marking, select and lock its region, and consent before live processing. Poor or missing evidence stays unknown. The tool can request a closer or clearer view and resume the saved investigation.
+### 3. Inspect a real photo and request a better view
 
-For OfflineProof, first prepare each browser online. Download a signed pack, share it by Bluetooth or an identified local Wi-Fi route, then import it with internet off. The file contains signed evidence and public verification material; private signing keys are never transferred.
+1. Remain signed in with a live reviewer invitation. Open [Inspector](https://packproof-p0.vercel.app/inspector), preferably using the Investigator/homepage link so the item context is carried across.
+2. Confirm product/packaging codes and tap **Start a new inspection**. Wait for its requested view before supplying media.
+3. Use your own non-sensitive package with a clearly printed product code, batch or expiry. A label with NAFDAC registration, batch, manufacturing and expiry dates is suitable; choose one marking to read. Alternatively display/print the [synthetic label](https://packproof-p0.vercel.app/review-label.png) on another screen and photograph it. Synthetic evidence remains identified as synthetic.
+4. Choose **Photo → Open rear camera**, allow access, then **Take photo** and **Stop camera**, or choose a JPEG/PNG. If permission is denied, use the saved-file/manual-code route; camera denial is not successful capture.
+5. Drag/resize the green region around the **complete** marking, lock the selection and inspect the selected-area preview. The whole-image option is available when useful, but include enough label context and legible text.
+6. Under **What should be read?**, select **Printed expiry**, **Product code**, **Packaging code** or **Visible packaging condition**. For a live reading, explicitly check consent to send the selected image/crop to Meta, then submit/continue the inspection using its form button.
+7. Expect source-bound original/grounded images and a literal reading or **Unknown**. Compare the reading with the physical label yourself. A printed expiry observation does not verify regulatory registration, batch validity or safety. Confirm the result’s mode is **live**; “No model reading”/recorded mode does not establish that the text was unreadable.
+8. To exercise recapture, submit a genuinely blurred/obscured view. When a closer/clearer view is requested, provide a sharp replacement in the same investigation and continue. Unreadable text must stay unknown. Refresh to recover the saved result and images.
+
+### 4. Inspect a short video
+
+1. Start an inspection as above and select **Short video**.
+2. Choose an MP4/WebM clip of at most **8 seconds / 3 MiB**. Pick the marking and set consent before **Save clip and extract frames**.
+3. Inspect the timestamped frame thumbnails, select **Inspect this frame**, and continue the inspection. **View private original clip** retrieves the original for your authorized account.
+4. Expect a reading or unknown tied to that selected frame. The complete clip is retained privately; only the selected frame enters image analysis. Whole-video tracking and forensic editing detection are not implemented.
+
+### 5. Add a manufacturer’s product and original evidence
+
+1. Obtain the manufacturer email/password from the private access sheet’s **Manufacturer / Producer account** section. Sign in at [Account → Products](https://packproof-p0.vercel.app/account?next=/products), using a separate browser/profile if keeping a reviewer session active.
+2. Open [Products](https://packproof-p0.vercel.app/products). Enter your own details or tap **Use a sample product** to fill complete editable identifiers. Tap **Save product**.
+3. Find the product under **Your products**. For a sample, expand **Show sample label to photograph**; it contains that saved product’s actual generated codes and printed expiry.
+4. Tap **Add photos or video**. The linked Inspector retains the draft context. Save a photo or short clip; return to Products and use **View saved evidence**. Refresh and confirm the product/evidence remain.
+5. The prepared manufacturer account can save private evidence. Live AI requires reviewer authorization separately. A regular reviewer can select Manufacturer / Producer in its existing Account profile to exercise draft creation while retaining its own reviewer authorization; choosing that profile never grants trusted issuer authority.
+6. **Expected boundary:** a saved product is a private draft. New trusted issuance/review signing is unfinished. Use your pair’s existing signed items for ChainProof; a newly saved draft cannot be passed off as an issued, transferable product.
+
+### 6. Complete a two-phone ChainProof handover
+
+1. Sign in **Seller** on phone A and **Buyer** on phone B from the **same pair**. Keep internet on. Open [ChainProof](https://packproof-p0.vercel.app/chainproof) on each.
+2. Tap **Set up this browser** on each phone if requested. This creates/enrolls a nonextractable signing key in that browser. Keep the same accounts/browsers; replacing a device can cancel pending handovers.
+3. Seller selects **I’m selling**. Buyer selects **I’m buying**, chooses an available assigned example unit and checks the seller reference, then taps **Prepare agreement**. If the owner has already changed, use another available unit or its actual current owner—do not reset a completed transfer.
+4. Buyer checks the item/participants and taps **Agree & show my QR**.
+5. Seller taps **Scan buyer QR**, permits camera access and points at the buyer’s screen until three distinct consecutive QR frames are checked. No still photograph or video recording of the animation is required.
+6. Seller checks the agreement and taps **Approve sale & show return QR**. Buyer then taps **Scan seller QR** and scans the seller’s return animation.
+7. Buyer reviews the consent and taps **Confirm registered transfer**. Approve promptly within the displayed consent timer; agreements and QR frames are deliberately short-lived. If expired, cancel/start a fresh agreement rather than bypassing the checks.
+8. Both phones use **Reload handover status** when necessary, then **Verify & download receipt**. Expect the same committed handover and verification of its receipt/both approvals. Refresh and recover the same receipt; refreshing must not create a second transfer.
+9. Save the handover ID from **Handover ID, records & signed agreement**. **Open or recover with a handover ID** opens existing status if needed. The former buyer can subsequently sell onward using the same account/device; the other participant must still be distinct.
+
+QR exchange proves the checked signed sequence, not GPS proximity or physical authenticity. Do not repeat a completed transfer just to reproduce a receipt.
+
+### 7. Compare dispatch and arrival with DualProof
+
+1. From the handover, follow **Compare dispatch and arrival evidence**, or open [DualProof](https://packproof-p0.vercel.app/dualproof) and choose that handover.
+2. Tap **Compare saved evidence**. The signed agreement determines your side: seller = dispatch, buyer = arrival.
+3. Seller follows **Add dispatch photos in Inspector**; buyer follows **Add arrival photos in Inspector** on their own phone. Supply readable product/packaging codes, expiry or a full-package condition view, with consent for live processing. Each source stays attached to its participant and handover.
+4. Return to DualProof and compare again. Missing evidence stays unknown. Matching supported observations show consistency; a genuine difference produces a discrepancy and a next-view request. **Inspect discrepancy** carries context back to Inspector.
+5. For a controlled synthetic difference, photograph two clearly marked practice labels with different expiry values; do not misrepresent altered practice evidence as a real product change. For real before/after evidence, capture dispatch before shipment and arrival after receipt. Adding both after a receipt only tests the interface and does not establish capture timing or uninterrupted custody.
+6. Inspect **Shared handover evidence**, its original images, frame timestamps/clip links and source references. DualProof does not approve or change ownership.
+
+### 8. Verify signed packs completely offline
+
+1. While online, open [OfflineProof](https://packproof-p0.vercel.app/offline/index.html) on both phones. Expand **Prepare or download a pack → Set up this browser** and tap **Prepare for offline use**. Both must report trusted setup complete before disconnecting.
+2. On the sending phone, keep your PackProof sign-in. Use the receipt’s offline-pack link for the transferred item, or choose **FP-1002 / PK-2002** in OfflineProof. Tap **Download signed pack** and locate the `.packproof.json` file in Android Files/Downloads.
+3. Turn off Wi-Fi and mobile data on both phones, leaving Bluetooth enabled. Share the **actual downloaded file**, not its name or a screenshot, to the other phone. Accept the Bluetooth transfer; locate it in Files/Bluetooth or Downloads.
+4. On the receiving phone, use **Open an evidence pack** to select that received file. Expect **Pack accepted. Signatures and dependencies verified locally.** No separate fingerprint entry is required for P4 signed packs; the P0 JSON probe is a different feasibility test.
+5. Keep internet off, force-stop Chrome through Android App info, reopen the same OfflineProof URL and pull to refresh. Accepted product/notice/dated-owner evidence should return from local storage.
+6. Reconnect only the sender, download **FP-GAP-01 / PK-GAP-01**, disconnect again and send/import it by Bluetooth. Expect the signed pack to be accepted with an **Unresolved history gap**.
+7. Optional rejection check: on a laptop, copy a downloaded pack and change one valid character in the middle of the signature portion (third dot-separated portion) of `manifestJws`, preserving JSON. Send/import the copy offline. Expect rejection with earlier accepted evidence retained. A copy missing its final `}` must also be rejected. Keep the original unchanged.
+8. Optionally expand **Compare the codes you can read** for a literal match/mismatch against accepted local records, and **Optional device test report** to record devices, sharing method and observed timings.
+
+Only signed records/public verification material are transferred. Offline import does not transfer ownership or establish current ownership after the dated snapshot. Trusted setup cannot first be established from an arbitrary peer file. The rest of the app’s online pages are not promised to work offline.
+
+### 9. Test the API, published SDK, MCP and WebMCP
+
+1. Open [Developers](https://packproof-p0.vercel.app/developers). Public reads require no account/key. For private operations, sign in, name a developer key, choose only needed scopes and **Create scoped key**. Copy it once privately. Test **Rotate key**/**Revoke key** only on your own disposable key.
+2. Public REST lookup (no paid model call):
+
+   ```bash
+   curl -sS https://packproof-p0.vercel.app/api/v1/products.lookup \
+     -H 'Content-Type: application/json' \
+     --data '{"namespace":"packproof-demo","productMark":"FP-1001","packagingMark":"PK-2001"}'
+   ```
+
+3. Install [@packproof/sdk](https://www.npmjs.com/package/@packproof/sdk) and run the production lookup example in [API, SDK, MCP and WebMCP](#api-sdk-mcp-and-webmcp) below. Expect the same structured evidence status/references as REST.
+4. Add remote MCP server **`https://packproof-p0.vercel.app/api/mcp`** to a client supporting **Streamable HTTP**. Public `products_lookup` uses `{namespace:"packproof-demo", productMark:"FP-1001", packagingMark:"PK-2001"}`. Private tools use `Authorization: Bearer <your-scoped-key>`. The official client example is below. Opening this endpoint as a normal browser page is not an MCP test; there is no automatic OAuth login.
+5. WebMCP uses native `document.modelContext` on supporting browsers. Use a compatible browser agent to discover/run the registered product lookup, then confirm writes require explicit approval. On unsupported browsers, use REST/MCP/the normal UI; absence of this experimental browser API is not a failed signature or evidence check.
+
+### 10. Optional device feasibility tools
+
+[Device checks](https://packproof-p0.vercel.app/tools) preserves the earlier P0 probes: camera/local capture, manual mark entry, browser/Node signing and tamper checks, rotating QR measurements and small JSON transport. Device model/OS/browser fields are optional test-report metadata, not a normal production registration requirement. For QR-rate measurement one phone displays and the other continuously scans, then swap roles at the displayed 5/10 frames-per-second targets. Download the reports; a target rate is not a measured scan-success rate. These probes do not replace ChainProof or the signed-pack test above.
+
+### Troubleshooting and saved evidence
+
+- **Your account** means signed in. **Account / Sign in** means sign-in is needed. Use the same Production origin on all pages; Vercel/Google dashboard login is separate from PackProof login.
+- No live reading: verify reviewer sign-in, homepage live status, consent and remaining allowance. **Unknown** is a valid uncertainty outcome, not proof that live processing succeeded.
+- Camera blocked: allow permission in browser settings or use a saved image/manual code. Production HTTPS needs no laptop certificate, local IP, firewall setup or `mkcert` installation.
+- Lost handover: recover with its ID/recent handover; do not recreate a committed sale. Stale/expired authority remains a gate, never disable it for testing.
+- A public clone cannot contain the private access sheet, passwords or customer media. Request the assigned invitation privately from the project owner; there is no public master login.
+- Current acceptance/deployment state is in [BUILD_STATE.json](project_handoff/BUILD_STATE.json), material changes in [BUILD_LOG.md](project_handoff/BUILD_LOG.md), and sanitized provider/device/security receipts in [evidence](docs/packproof/evidence). Private session details and signing keys are not published logs.
+
+## Not yet completed
+
+This is a working hackathon platform with explicit unfinished areas:
+
+- **Radio broadcasting, radio/voice workflows, telephone calling and live voice agents are not implemented.** No claim is made that those features are available from the current UI/API.
+- **Glimmer hosting/distillation and a Glimmer-distilled student for offline POS/Android guidance remain future work**, conditional on the core build. The intended scope includes both POS/Android verification guidance and radio/voice content preparation. Glimmer 30B is not claimed to run on ordinary POS hardware.
+- Native apps, radio/mesh integration and GPS-based proximity are not delivered. Current browser QR exchange does not provide GPS proximity proof.
+- New manufacturer drafts still need a separately authorized trusted-issuance/signing workflow. Creating a manufacturer profile is not issuer authorization.
+- General public signup email delivery, a fresh physical Android walkthrough of the newest platform pages, later Terminal 2/3 integration/final acceptance and the final three-minute film remain incomplete or unverified. Earlier recorded P0–P4 device checks remain valid within their documented scope.
+- Whole-video tracking/forensic manipulation detection, unrestricted anonymous live AI and automatic external regulatory/safety clearance are not provided.
 
 ## Accounts and product issuance
 
